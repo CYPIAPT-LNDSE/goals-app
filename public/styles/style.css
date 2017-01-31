@@ -1,14 +1,45 @@
 html {
-  font-size: 1em; }
+  font-size: 1em;
+  height: 100%; }
 
 body {
   background-color: #ddd;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  height: 100vh; }
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
 
 div {
   border: 1px solid hotpink; }
+
+.welcome-message {
+  height: 20%; }
+
+.add-goal-button {
+  height: 10%; }
+
+.container-list-goals {
+  height: 70%;
+  display: flex;
+  flex-direction: row; }
+
+.list-goals {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0; }
+
+.goal-item {
+  margin: 0; }
 
 /*# sourceMappingURL=style.css.map */
