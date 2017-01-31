@@ -1,2 +1,4 @@
 ./public/.sass-cache
 public/styles/.sass-cache/*
+.DS_Store
+public/.DS_Store
