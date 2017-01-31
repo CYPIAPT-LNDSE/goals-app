@@ -1,3 +1,5 @@
+$goal-box-size
+
 html {
   font-size: 1em;
   height: 100%;
@@ -99,7 +101,7 @@ div {
   width: 100%;
   border: 3px solid #ddd;
   cursor: pointer;
-  height: 70px;
+  height: $goal-box-size;
 
   &:hover {
     background-color: #aaa;
@@ -116,8 +118,8 @@ div {
 }
 
 .goal-item-img-container {
-  height: 70px;
-  width: 70px;
+  height: $goal-box-size;
+  width: $goal-box-size;
   margin: 0 20px 0 20px;
 
   img {

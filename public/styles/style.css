@@ -1,106 +1,43 @@
-html {
-  font-size: 1em;
-  height: 100%; }
+/*
+Error: Invalid CSS after "$goal-box-size": expected ":", was "html {"
+        on line 3 of style.scss
 
-body {
-  background-color: #ddd;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  height: 100vh; }
+1: $goal-box-size
+2: 
+3: html {
+4:   font-size: 1em;
+5:   height: 100%;
+6: }
+7: 
+8: body {
 
-.main-button {
-  height: 35px;
-  align-self: center;
-  border-radius: 40px;
-  display: block;
-  border: 0;
-  width: 100%;
-  cursor: pointer;
-  background-color: #aaa;
-  box-shadow: 0 4px 2px #666; }
-  .main-button:hover {
-    background-color: #666; }
-
-.button-outer {
-  position: relative;
-  align-self: center;
-  text-align: center;
-  width: 50%; }
-
-.landing-page {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  width: 100vw;
-  max-width: 600px;
-  height: 100%; }
-
-div {
-  border: 1px solid hotpink; }
-
-.welcome-message {
-  background-color: #666;
-  height: 20%;
-  padding: 20px;
-  color: #ddd; }
-  .welcome-message .welcome-hello {
-    font-size: 1.5em; }
-  .welcome-message .welcome-question {
-    font-size: 1.3em; }
-
-.add-goal-button {
-  height: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
-
-.container-list-goals {
-  height: 70%;
-  display: flex;
-  flex-direction: row;
-  background-color: #666; }
-
-.list-goals {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 0;
-  list-style: none;
-  width: 100%;
-  padding: 0; }
-
-.goal-item {
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  width: 100%; }
-
-.goal-item-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  border: 3px solid #ddd;
-  cursor: pointer;
-  height: 70px; }
-  .goal-item-box:hover {
-    background-color: #aaa; }
-  .goal-item-box p {
-    font-size: 1.2em;
-    color: #ddd; }
-    .goal-item-box p:hover {
-      text-decoration: underline; }
-
-.goal-item-img-container {
-  height: 70px;
-  width: 70px;
-  margin: 0 20px 0 20px; }
-  .goal-item-img-container img {
-    max-height: 100%; }
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+style.scss:3
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:619:in `variable'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"$goal-box-size\": expected \":\", was \"html {\"\A         on line 3 of style.scss\A \A 1: $goal-box-size\A 2: \A 3: html {\A 4:   font-size: 1em;\A 5:   height: 100%;\A 6: }\A 7: \A 8: body {"; }
