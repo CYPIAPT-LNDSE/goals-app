@@ -29,6 +29,8 @@
 }
 
 .new-goal-header {
+  font-size: 1.5em;
+  margin: 15px 0 15px;
 }
 
 .new-goal-container {
@@ -51,4 +53,24 @@
   outline: none;
   border: none;
   font-size: 1.3em;
+}
+
+.icons {
+  padding: 32px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goal-icon-container {
+  width: 143px;
+  height: 143px;
+}
+
+.save-new-goal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%;
 }

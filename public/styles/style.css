@@ -25,6 +25,10 @@
   display: flex;
   flex-direction: column; }
 
+.new-goal-header {
+  font-size: 1.5em;
+  margin: 15px 0 15px; }
+
 .new-goal-container {
   display: flex;
   flex-direction: row;
@@ -42,6 +46,30 @@
   outline: none;
   border: none;
   font-size: 1.3em; }
+
+.icons {
+  padding: 32px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between; }
+
+.goal-icon-container {
+  width: 143px;
+  height: 143px; }
+
+.save-new-goal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%; }
+
+.goal-item-img-container {
+  height: 70px;
+  width: 70px;
+  margin: 0 20px 0 20px; }
+  .goal-item-img-container img {
+    max-height: 100%; }
 
 html {
   font-size: 1em;
@@ -140,12 +168,5 @@ div {
     color: #ddd; }
     .goal-item-box p:hover {
       text-decoration: underline; }
-
-.goal-item-img-container {
-  height: 70px;
-  width: 70px;
-  margin: 0 20px 0 20px; }
-  .goal-item-img-container img {
-    max-height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
