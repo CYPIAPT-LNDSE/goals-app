@@ -1,4 +1,4 @@
-.page, .add-goal-page {
+.page, .add-goal-page, .rate-progress-page {
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -42,6 +42,51 @@
   outline: none;
   border: none;
   font-size: 1.3em; }
+
+.page, .add-goal-page, .rate-progress-page {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
+
+.rate-progress-header-container {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: #fff; }
+
+.header-image-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ccc; }
+  .header-image-container img {
+    max-height: 64px;
+    max-width: 64px;
+    align-self: center; }
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .header-title-container p {
+    margin-left: 10px; }
+
+.rate-progress-slider-animation {
+  height: 65%; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
 
 html {
   font-size: 1em;
