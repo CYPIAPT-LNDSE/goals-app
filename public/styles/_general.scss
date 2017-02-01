@@ -44,25 +44,10 @@
 }
 
 .main-button {
-  height: 35px;
-  align-self: center;
-  border-radius: 40px;
-  display: block;
-  border: 0;
-  width: 100%;
-  cursor: pointer;
-  background-color: #aaa;
-  box-shadow: 0 4px 2px #666;
-  font-family: leagueSpartan;
-
-  &:hover {
-    background-color: #666;
-  }
-}
-
-.button-outer {
-  position: relative;
-  align-self: center;
-  text-align: center;
-  width: 50%;
+  border: 2px solid #2364AA;
+  border-radius: 86px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2364AA;
+  letter-spacing: 2.1px;
 }
