@@ -9,6 +9,11 @@ $black: #888;
   background-color: #fff;
   color: $grey;
   letter-spacing: 2.1px;
+  border: none;
+
+  div {
+    border: none;
+  }
 }
 
 .back-button-container {
