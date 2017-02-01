@@ -1,10 +1,12 @@
 @import 'general';
+@import "colors";
 
 $black: #888;
 $grey: #666;
 
 .add-goal-page {
   @extend .page;
+  background-color: #fff;
 }
 
 .back-button-container {
@@ -57,17 +59,24 @@ $grey: #666;
 }
 
 .icons {
-  padding: 32px;
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .goal-icon-container {
-  width: 46%;
-  height: 46%;
+  width: 143px;
+  height: 140px;
   text-align: center;
+  background-color: $light;
+  border: $blueBorder;
+  border-radius: 6px;
+  margin: 3px;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 .save-new-goal {
