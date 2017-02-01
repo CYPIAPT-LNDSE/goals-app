@@ -1,4 +1,4 @@
-.page, .add-goal-page, .rate-progress-page {
+.page, .add-goal-page, .rate-progress-page, .review-progress-page {
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -64,7 +64,7 @@
   justify-content: center;
   height: 15%; }
 
-.page, .add-goal-page, .rate-progress-page {
+.page, .add-goal-page, .rate-progress-page, .review-progress-page {
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -175,6 +175,9 @@ input[type=range]::-webkit-slider-runnable-track {
   margin: 0 20px 0 20px; }
   .goal-item-img-container img {
     max-height: 100%; }
+
+.review-progress-graphic-container {
+  height: 80%; }
 
 html {
   font-size: 1em;
