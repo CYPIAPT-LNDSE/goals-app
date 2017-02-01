@@ -9,6 +9,7 @@ html {
 }
 
 body {
+  font-family: leagueSpartan;
   background-color: #ddd;
   margin: 0;
   padding: 0;
@@ -95,4 +96,9 @@ div {
       text-decoration: underline;
     }
   }
+}
+
+@font-face {
+  font-family: leagueSpartan;
+  src: url('./../LeagueSpartan-Bold.otf');
 }
