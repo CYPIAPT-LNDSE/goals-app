@@ -10,6 +10,13 @@
   width: 100%;
   height: 10%;
   position: relative;
+
+  p {
+    margin-left: 5%;
+    font-size: 0.7em;
+    position: absolute;
+    top: 50%;
+  }
 }
 
 .slider-scale {
@@ -17,29 +24,107 @@
   align-self: center;
   height: 5px;
   border: none;
-  background-color: #666;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 5%;
 }
 
+.scale-front {
+  //width: 45%;
+  background-color: hotpink;
+  //animation: stretchRight 2s;
+}
+
+.scale-back {
+  width: 90%;
+  background-color: pink;
+}
+
 .slider-thumb {
-  height: 40px;
-  width: 13px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
   position: absolute;
-  left: 50%;
-  background: #fff;
+  //left: 45%;
+  background-color: pink;
+  border: 2px solid hotpink;
   cursor: pointer;
   margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  background: url('./../icons/chili-pepper_s.png') no-repeat center;
-  top: 45%;
+  top: 40%;
+
+  p {
+    position: absolute;
+    top: -55%;
+    text-align: center;
+    line-height: 8px;
+    width: 100%;
+    font-size: 1.1em;
+  }
 }
 
 .slide-right {
-  animation: slideRight 2s;
+  //animation: slideRight 2s;
 }
 
-@keyframes slideRight {
+.slider-1 {
+  .scale-front {
+    width: 45%;
+    animation: stretchRight5 2s;
+  }
+  .slider-thumb {
+    left: 45%;
+    animation: slideRight5 2s; }
+
+}
+
+.slider-2 {
+  .scale-front {
+    width: 55%;
+    animation: stretchRight6 2s;
+  }
+  .slider-thumb {
+    left: 55%;
+    animation: slideRight6 2s;
+  }
+}
+
+.slider-3 {
+  .scale-front {
+    width: 25%;
+    animation: stretchRight3 2s;
+  }
+  .slider-thumb {
+    left: 25%;
+    animation: slideRight3 2s;
+  }
+}
+
+@keyframes slideRight5 {
   from {left: 5%;}
-  to {left: 50%;}
+  to {left: 45%;}
+}
+
+@keyframes stretchRight5 {
+  from {width: 0;}
+  to {width: 45%;}
+}
+
+@keyframes slideRight6 {
+  from {left: 5%;}
+  to {left: 55%;}
+}
+
+@keyframes stretchRight6 {
+  from {width: 0;}
+  to {width: 55%;}
+}
+
+@keyframes slideRight3 {
+  from {left: 5%;}
+  to {left: 25%;}
+}
+
+@keyframes stretchRight3 {
+  from {width: 0;}
+  to {width: 25%;}
 }
