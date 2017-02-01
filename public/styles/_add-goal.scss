@@ -1,9 +1,6 @@
 @import 'general';
 @import "colors";
 
-$black: #888;
-
-
 .add-goal-page {
   @extend .page;
   background-color: #fff;
@@ -16,31 +13,17 @@ $black: #888;
   }
 }
 
-.back-button-container {
-    height: 6%;
-    display: flex;
-    align-items: center;
-}
-
-.back-button {
-  margin-left: 5px;
-  flex-direction: row;
-  background-color: transparent;
-  border: none;
-  text-shadow: 0 2px 1px $black;
-  color: $grey;
-}
-
 .write-a-new-goal {
     height: 15%;
     padding: 10px;
     display: flex;
     flex-direction: column;
-}
 
-.new-goal-header {
-  font-size: 1em;
-  margin: 15px 0 15px;
+    label {
+      font-size: 1em;
+      color: $blue;
+      margin: 15px 0 15px;
+    }
 }
 
 .new-goal-container {
@@ -81,6 +64,10 @@ $black: #888;
   background-color: $light;
   border-radius: 6px;
   margin: 3px;
+
+  &:hover {
+    border: 1px solid $blue;
+  }
 
   img {
     max-height: 100%;
