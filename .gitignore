@@ -1,4 +1,5 @@
 .sass-cache/*
 ./public/.sass-cache/*
 **.DS_Store
-public/styles/style.css
+./public/styles/style.css
+./public/styles/style.css.map
