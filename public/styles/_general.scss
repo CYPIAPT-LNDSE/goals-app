@@ -1,4 +1,5 @@
 $blueBorder: 1px solid #2364AA;
+@import "colors";
 
 .page {
   display: flex;
@@ -10,7 +11,7 @@ $blueBorder: 1px solid #2364AA;
 }
 
 .goal-grow-nav {
-  background-color: #F7F9F9;
+  background-color: $light;
   height: 90px;
   text-align: center;
 
@@ -18,6 +19,7 @@ $blueBorder: 1px solid #2364AA;
     font-size: 28px;
     color: #2364AA;
     letter-spacing: 2.1px;
+    cursor: pointer;
   }
 }
 
@@ -58,12 +60,18 @@ $blueBorder: 1px solid #2364AA;
 }
 
 .main-button {
-  border: 2px solid #2364AA;
-  border-radius: 86px;
+  border: $blueBorder;
+  border-radius: 6px;
   background-color: transparent;
   font-size: 14px;
-  color: #2364AA;
+  color: $blue;
   letter-spacing: 2.1px;
   width: 200px;
   font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blue;
+    color: $light;
+  }
 }
