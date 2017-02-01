@@ -1,3 +1,5 @@
+@import 'general';
+
 $goal-box-size: 70px;
 
 .landing-page {
@@ -9,11 +11,37 @@ $goal-box-size: 70px;
   height: 100%;
 }
 
-.main-button {
-  // font-family: LeagueSpartan-Bold;
-  font-size: 14px;
-  color: #2364AA;
-  letter-spacing: 2.1px;
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center;
+
+  p {
+    font-size: 28px;
+    color: #2364AA;
+    letter-spacing: 2.1px;
+  }
+}
+
+
+.add-goal-button-container {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-outer {
+  position: relative;
+  align-self: center;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+}
+
+.add-goal-button {
+  @extend .main-button;
+  height: 100%;
+  width: 70%;
 }
 
 .goal-item-img-container {
