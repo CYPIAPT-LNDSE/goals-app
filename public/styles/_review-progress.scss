@@ -1,3 +1,8 @@
+$positionStart: 5%;
+$position5: 45%;
+$position6: 55%;
+$position3: 25%;
+
 .review-progress-page {
   @extend .page;
 }
@@ -30,9 +35,7 @@
 }
 
 .scale-front {
-  //width: 45%;
   background-color: hotpink;
-  //animation: stretchRight 2s;
 }
 
 .scale-back {
@@ -45,11 +48,10 @@
   width: 20px;
   border-radius: 50%;
   position: absolute;
-  //left: 45%;
   background-color: pink;
   border: 2px solid hotpink;
   cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  margin-top: -14px; /* needs value in chrome */
   top: 40%;
 
   p {
@@ -62,69 +64,65 @@
   }
 }
 
-.slide-right {
-  //animation: slideRight 2s;
-}
-
 .slider-1 {
   .scale-front {
-    width: 45%;
+    width: $position5;
     animation: stretchRight5 2s;
   }
   .slider-thumb {
-    left: 45%;
+    left: $position5;
     animation: slideRight5 2s; }
 
 }
 
 .slider-2 {
   .scale-front {
-    width: 55%;
+    width: $position6;
     animation: stretchRight6 2s;
   }
   .slider-thumb {
-    left: 55%;
+    left: $position6;
     animation: slideRight6 2s;
   }
 }
 
 .slider-3 {
   .scale-front {
-    width: 25%;
+    width: $position3;
     animation: stretchRight3 2s;
   }
   .slider-thumb {
-    left: 25%;
+    left: $position3;
     animation: slideRight3 2s;
   }
 }
 
 @keyframes slideRight5 {
-  from {left: 5%;}
-  to {left: 45%;}
+  from {left: $positionStart;}
+  to {left: $position5;}
 }
 
 @keyframes stretchRight5 {
   from {width: 0;}
-  to {width: 45%;}
+  to {width: $position5;}
 }
 
 @keyframes slideRight6 {
-  from {left: 5%;}
-  to {left: 55%;}
+  from {left: $positionStart;}
+  to {left: $position6;}
 }
 
 @keyframes stretchRight6 {
   from {width: 0;}
-  to {width: 55%;}
+  to {width: $position6;}
 }
 
 @keyframes slideRight3 {
-  from {left: 5%;}
-  to {left: 25%;}
+  from {left: $positionStart;}
+  to {left: $position3;}
 }
 
 @keyframes stretchRight3 {
   from {width: 0;}
-  to {width: 25%;}
+  to {width: $position3;}
 }
