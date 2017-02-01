@@ -30,6 +30,24 @@
   }
 }
 
+.selected-goal-section {
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.goal-background {
+  background-image: url(../icons/boxPNG.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  border: $blueBorder;
+  border-radius: 6px;
+  width: 289px;
+  height: 98px;
+  align-self: center;
+}
+
 .main-content-title {
   h1 {
     margin-left: 10px;
