@@ -51,13 +51,15 @@
   position: relative;
 
   img {
-    align-self: center;
     max-height: 100%;
     position: absolute;
+    left: 50%;
+    margin-left: -100px;
   }
 
   #blue-earth-icon {
     bottom: 0;
+    width: 200px;
   }
 }
 
@@ -68,6 +70,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: #fff;
 }
 
 input[type=range] {
