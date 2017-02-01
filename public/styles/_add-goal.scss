@@ -17,11 +17,10 @@ $black: #888;
     align-items: center;
 }
 
-
 .back-button {
   margin-left: 5px;
   flex-direction: row;
-  background-color: Transparent;
+  background-color: transparent;
   border: none;
   text-shadow: 0 2px 1px $black;
   color: $grey;
@@ -51,7 +50,6 @@ $black: #888;
   input {
     width: 100%;
     background: transparent;
-    position: absolute;
     outline: none;
     border: none;
     font-size: 1em;
@@ -61,7 +59,7 @@ $black: #888;
     line-height: 40px;
     font-size: inherit;
     letter-spacing: 2.1px;
-    left: 2px;
+    padding-left: 2%;
   }
 }
 
@@ -76,7 +74,6 @@ $black: #888;
   height: 140px;
   text-align: center;
   background-color: $light;
-  border: $blueBorder;
   border-radius: 6px;
   margin: 3px;
 
