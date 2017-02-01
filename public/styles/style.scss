@@ -17,29 +17,6 @@ body {
   height: 100vh
 }
 
-.main-button {
-  height: 35px;
-  align-self: center;
-  border-radius: 40px;
-  display: block;
-  border: 0;
-  width: 100%;
-  cursor: pointer;
-  background-color: #aaa;
-  box-shadow: 0 4px 2px #666;
-
-  &:hover {
-    background-color: #666;
-  }
-}
-
-.button-outer {
-  position: relative;
-  align-self: center;
-  text-align: center;
-  width: 50%;
-}
-
 .landing-page {
   display: flex;
   flex-direction: column;
