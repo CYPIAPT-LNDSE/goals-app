@@ -1,0 +1,124 @@
+@import 'general';
+
+.rate-progress-page {
+  @extend .page;
+}
+
+.rate-progress-header-container {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: #fff;
+}
+
+.header-image-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ccc;
+
+  img {
+    max-height: 64px;
+    max-width: 64px;
+    align-self: center;
+  }
+}
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal;
+  }
+
+  p {
+    margin-left: 10px;
+  }
+}
+
+.rate-progress-slider-animation {
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.animation-container {
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  img {
+    align-self: center;
+    max-height: 100%;
+  }
+}
+
+.slider-container {
+  padding-top: 20px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  p {
+    align-self: center;
+    font-size: 1.3em;
+  }
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 90%; /* Specific width is required for Firefox. */
+  background-color: transparent;
+  align-self: center;
+
+  &:active, &:hover, &:focus  {
+    outline: none;
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 15px;
+  background: #fff;
+  background-image: url(./icons/chili-pepper_s.png);
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  background: url('./../icons/chili-pepper_s.png') no-repeat center;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #666;
+  border-radius: 1.3px;
+}
+
+.animation-title {
+  h1 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
