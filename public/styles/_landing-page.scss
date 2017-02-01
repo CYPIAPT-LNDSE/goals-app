@@ -40,8 +40,11 @@ $goal-box-size: 70px;
 
 .add-goal-button {
   @extend .main-button;
+  border-radius: 86px;
   height: 100%;
   width: 70%;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .container-list-goals {
@@ -62,20 +65,44 @@ $goal-box-size: 70px;
   padding: 0;
 }
 
+.goal-item-box {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: flex-start;
+  // align-items: center;
+
+  border: none;
+  // max-width: 100%;
+  // max-height: 100%;
+  // height: auto;
+  // width: auto;
+  cursor: pointer;
+  // height: $goal-box-size;
+
+}
+
 .goal-item {
-  background: #F7F9F9;
+  background-image: url(../icons/boxPNG.png);
+  background-repeat: no-repeat;
+  background-size:contain;
   border: 1px solid #2364AA;
   border-radius: 6px;
-  width: 90%;
-  height: 27%;
+  width: 289px;
+  height: 98px;
   align-self: center;
 }
 
-.goal-item-img-container {
-  height: $goal-box-size;
-  width: $goal-box-size;
-  margin: 0 20px 0 20px;
+.goal-item-title {
+  font-size: 14px;
+  color: #2364AA;
+  letter-spacing: 2.1px;
+}
 
+.goal-item-img-container {
+  height: 83px;
+  width: 68px;
+  margin-top: 5px;
+  margin-left: 5px;
   img {
     max-height: 100%;
   }
