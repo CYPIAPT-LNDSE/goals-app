@@ -97,6 +97,24 @@ $goal-box-size: 70px;
   letter-spacing: 2.1px;
 }
 
+.goal-item-rating {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: 1px solid #2364AA;
+  margin-left: 161px;
+  margin-top: 5px;
+  background-color: #F7F9F9;
+  display: flex;
+  justify-content: center;
+  p {
+    font-size: 14px;
+    color: #2364AA;
+    letter-spacing: 2.1px;
+    align-self: center;
+  }
+}
+
 .goal-item-img-container {
   height: 83px;
   width: 68px;
