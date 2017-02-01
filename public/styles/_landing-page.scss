@@ -1,4 +1,5 @@
 @import 'general';
+@import "colors";
 
 $goal-box-size: 70px;
 
@@ -18,7 +19,7 @@ $goal-box-size: 70px;
 
   p {
     font-size: 28px;
-    color: #2364AA;
+    color: $blue;
     letter-spacing: 2.1px;
   }
 }
@@ -76,7 +77,7 @@ $goal-box-size: 70px;
   background-image: url(../icons/boxPNG.png);
   background-repeat: no-repeat;
   background-size:contain;
-  border: 1px solid #2364AA;
+  border: $blueBorder;
   border-radius: 6px;
   width: 289px;
   height: 98px;
@@ -93,7 +94,7 @@ $goal-box-size: 70px;
 
 .goal-item-title {
   font-size: 14px;
-  color: #2364AA;
+  color: $blue;
   letter-spacing: 2.1px;
 }
 
@@ -101,15 +102,15 @@ $goal-box-size: 70px;
   width: 31px;
   height: 31px;
   border-radius: 50%;
-  border: 1px solid #2364AA;
+  border: 1px solid $blue;
   margin-left: 161px;
   margin-top: 5px;
-  background-color: #F7F9F9;
+  background-color: $light;
   display: flex;
   justify-content: center;
   p {
     font-size: 14px;
-    color: #2364AA;
+    color: $blue;
     letter-spacing: 2.1px;
     align-self: center;
   }
