@@ -6,3 +6,63 @@
   max-width: 600px;
   height: 100%;
 }
+
+.header-box {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: #fff;
+}
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal;
+  }
+
+  p {
+    margin-left: 10px;
+  }
+}
+
+.main-content-title {
+  h1 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+.main-button {
+  height: 35px;
+  align-self: center;
+  border-radius: 40px;
+  display: block;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+  background-color: #aaa;
+  box-shadow: 0 4px 2px #666;
+  font-family: leagueSpartan;
+
+  &:hover {
+    background-color: #666;
+  }
+}
+
+.button-outer {
+  position: relative;
+  align-self: center;
+  text-align: center;
+  width: 50%;
+}

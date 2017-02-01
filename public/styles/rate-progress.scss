@@ -4,14 +4,6 @@
   @extend .page;
 }
 
-.rate-progress-header-container {
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  background-color: #fff;
-}
-
 .header-image-container {
   width: 20%;
   height: 100%;
@@ -24,25 +16,6 @@
     max-height: 64px;
     max-width: 64px;
     align-self: center;
-  }
-}
-
-.header-title-container {
-  width: 80%;
-  height: 100%;
-  font-size: 1.3em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  h2 {
-    font-size: 0.8em;
-    margin-left: 10px;
-    font-weight: normal;
-  }
-
-  p {
-    margin-left: 10px;
   }
 }
 
@@ -106,15 +79,6 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   background: #666;
   border-radius: 1.3px;
-}
-
-.animation-title {
-  h1 {
-    margin-left: 10px;
-    font-weight: normal;
-    font-size: 1.5em;
-    text-align: center;
-  }
 }
 
 .save-container {
