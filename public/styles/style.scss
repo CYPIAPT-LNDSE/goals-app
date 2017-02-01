@@ -10,7 +10,6 @@ html {
 
 body {
   font-family: leagueSpartan;
-  background-color: #ddd;
   margin: 0;
   padding: 0;
   display: flex;
@@ -24,15 +23,6 @@ div {
   border: 1px solid hotpink
 }
 
-.welcome-message {
-  background-color: #666;
-  height: 20%;
-  padding: 20px;
-  color: #ddd;
-
-  .welcome-hello { font-size: 1.5em; }
-  .welcome-question { font-size: 1.3em; }
-}
 
 .add-goal-button {
   height: 10%;

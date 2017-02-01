@@ -10,12 +10,11 @@ $goal-box-size: 70px;
 }
 
 .goal-grow-nav {
-  background: #F7F9F9;
+  background-color: #F7F9F9;
   height: 90px;
   text-align: center;
 
-  h1 {
-    font-family: LeagueSpartan-Bold;
+  p {
     font-size: 28px;
     color: #2364AA;
     letter-spacing: 2.1px;
@@ -23,7 +22,7 @@ $goal-box-size: 70px;
 }
 
 .main-button {
-  font-family: LeagueSpartan-Bold;
+  // font-family: LeagueSpartan-Bold;
   font-size: 14px;
   color: #2364AA;
   letter-spacing: 2.1px;
