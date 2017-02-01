@@ -3,6 +3,8 @@
 
 .rate-progress-page {
   @extend .page;
+  color: $blue;
+  letter-spacing: 2.1px;
 }
 
 .header-image-container {
@@ -17,6 +19,23 @@
     max-height: 64px;
     max-width: 64px;
     align-self: center;
+  }
+}
+
+.title-container {
+  h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin-left: 10px;
+  }
+}
+
+.main-content-title {
+  h1 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: center;
   }
 }
 
