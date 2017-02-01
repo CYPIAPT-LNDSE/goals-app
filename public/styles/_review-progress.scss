@@ -5,3 +5,24 @@
 .review-progress-graphic-container {
   height: 80%;
 }
+
+.slider-box {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slider-scale {
+  width: 90%;
+  align-self: center;
+  height: 5px;
+}
+
+.slider-thumb {
+  height: 40px;
+  width: 15px;
+  position: absolute;
+  left: 5%;
+}
