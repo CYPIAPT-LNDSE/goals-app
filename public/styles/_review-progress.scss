@@ -24,5 +24,14 @@
   height: 40px;
   width: 13px;
   position: absolute;
-  left: 5%;
+  left: 50%;
+}
+
+.slide-right {
+  animation: slideRight 2s;
+}
+
+@keyframes slideRight {
+  from {left: 5%;}
+  to {left: 50%;}
 }
