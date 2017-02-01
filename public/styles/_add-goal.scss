@@ -1,5 +1,8 @@
 @import 'general';
 
+$black: #888;
+$grey: #666;
+
 .add-goal-page {
   @extend .page;
 }
@@ -16,8 +19,8 @@
   flex-direction: row;
   background-color: Transparent;
   border: none;
-  text-shadow: 0 2px 1px #888;
-  color: #666;
+  text-shadow: 0 2px 1px $black;
+  color: $grey;
 }
 
 .write-a-new-goal {
@@ -62,8 +65,9 @@
 }
 
 .goal-icon-container {
-  width: 143px;
-  height: 143px;
+  width: 46%;
+  height: 46%;
+  text-align: center;
 }
 
 .save-new-goal {
