@@ -1,4 +1,5 @@
 @import 'general';
+@import "colors";
 
 .rate-progress-page {
   @extend .page;
@@ -43,17 +44,13 @@
   height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-
-  p {
-    align-self: center;
-    font-size: 1.3em;
-  }
+  justify-content: space-around;
+  align-items: center;
 }
 
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 90%; /* Specific width is required for Firefox. */
+  width: 90%;
   background-color: transparent;
   align-self: center;
 
@@ -77,8 +74,23 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
-  background: #666;
-  border-radius: 1.3px;
+  background: $light;
+  border: $blueBorder;
+  border-radius: 3px;
+}
+
+.current-value-circle {
+  border: $blueBorder;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: inherit;
+
+  p {
+    font-size: 0.8em;
+    color: $blue;
+  }
 }
 
 .save-container {
