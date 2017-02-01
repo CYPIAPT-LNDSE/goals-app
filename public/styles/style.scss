@@ -1,4 +1,5 @@
-$goal-box-size: 70px;
+@import 'add-goal';
+@import 'landing-page';
 
 html {
   font-size: 1em;
@@ -114,15 +115,5 @@ div {
     &:hover {
       text-decoration: underline;
     }
-  }
-}
-
-.goal-item-img-container {
-  height: $goal-box-size;
-  width: $goal-box-size;
-  margin: 0 20px 0 20px;
-
-  img {
-    max-height: 100%;
   }
 }

@@ -1,0 +1,80 @@
+@import 'general';
+
+$black: #888;
+$grey: #666;
+
+.add-goal-page {
+  @extend .page;
+}
+
+.back-button-container {
+    height: 6%;
+    display: flex;
+    align-items: center;
+}
+
+
+.back-button {
+  margin-left: 5px;
+  flex-direction: row;
+  // height: 28px;
+  background-color: Transparent;
+  border: none;
+  text-shadow: 0 2px 1px $black;
+  color: $grey;
+}
+
+.write-a-new-goal {
+    height: 15%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-goal-header {
+  font-size: 1.5em;
+  margin: 15px 0 15px;
+}
+
+.new-goal-container {
+  display: flex;
+  flex-direction: row;
+  height:30px;
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 97%;
+  align-self: center;
+}
+
+.new-goal-label {
+  font-size: 1.3em;
+}
+
+.new-goal-input {
+  // height: 40px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 1.3em;
+}
+
+.icons {
+  padding: 32px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goal-icon-container {
+  width: 46%;
+  height: 46%;
+  text-align: center;
+}
+
+.save-new-goal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%;
+}

@@ -1,0 +1,11 @@
+$goal-box-size: 70px;
+
+.goal-item-img-container {
+  height: $goal-box-size;
+  width: $goal-box-size;
+  margin: 0 20px 0 20px;
+
+  img {
+    max-height: 100%;
+  }
+}
