@@ -1,7 +1,7 @@
 @import 'general';
-@import "colors";
-
-$goal-box-size: 70px;
+@import 'colors';
+@import 'imgsize';
+@import 'general';
 
 .landing-page {
   display: flex;
@@ -13,7 +13,7 @@ $goal-box-size: 70px;
 }
 
 .goal-grow-nav {
-  background-color: #F7F9F9;
+  background-color: $light;
   height: 90px;
   text-align: center;
 
@@ -76,11 +76,12 @@ $goal-box-size: 70px;
 .goal-item {
   background-image: url(../icons/boxPNG.png);
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size: contain;
   border: $blueBorder;
+  position: relative;
   border-radius: 6px;
-  width: 289px;
-  height: 98px;
+  width: $width;
+  height: $height;
   align-self: center;
 }
 
@@ -125,3 +126,14 @@ $goal-box-size: 70px;
     max-height: 100%;
   }
 }
+
+// .goal-item-rating-progress {
+//   background-color: #5DEE3D;
+//   opacity: 0.3;
+//   position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 70%;
+//     height: 100%;
+// }
+// changes to be discussed with Noga before committing
