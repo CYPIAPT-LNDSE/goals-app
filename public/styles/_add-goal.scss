@@ -90,3 +90,9 @@ $black: #888;
   justify-content: center;
   height: 15%;
 }
+
+.save-goal-button {
+  @extend .main-button;
+  height: 100%;
+  text-transform: uppercase;
+}
