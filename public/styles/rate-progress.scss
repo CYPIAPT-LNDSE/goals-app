@@ -57,8 +57,42 @@
     margin-left: -100px;
   }
 
+  #flower-head {
+    height: 60px;
+    width: 60px;
+    bottom: 85px;
+    margin-left: -80px;
+    z-index: -5;
+  }
+
+  #leaf1 {
+    margin-left: -10px;
+    bottom: 50px;
+    height: 12px;
+  }
+
+  #leaf2 {
+    margin-left: -40px;
+    bottom: 70px;
+    height: 12px;
+  }
+
+  #leaf3 {
+    margin-left: -30px;
+    bottom: 30px;
+    height: 14px;
+  }
+
+  #stem-full {
+    height: 100px;
+    bottom: 10px;
+    margin-left: -50px;
+    z-index: -10;
+  }
+
   #blue-earth-icon {
     bottom: 0;
+    height: 30px;
     width: 200px;
   }
 }
