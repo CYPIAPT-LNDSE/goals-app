@@ -9,6 +9,18 @@ $blueBorder: 1px solid #2364AA;
   height: 100%;
 }
 
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center;
+
+  p {
+    font-size: 28px;
+    color: #2364AA;
+    letter-spacing: 2.1px;
+  }
+}
+
 .header-box {
   height: 20%;
   display: flex;

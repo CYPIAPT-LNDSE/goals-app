@@ -2,11 +2,13 @@
 @import "colors";
 
 $black: #888;
-$grey: #666;
+
 
 .add-goal-page {
   @extend .page;
   background-color: #fff;
+  color: $grey;
+  letter-spacing: 2.1px;
 }
 
 .back-button-container {
@@ -33,29 +35,34 @@ $grey: #666;
 }
 
 .new-goal-header {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 15px 0 15px;
 }
 
 .new-goal-container {
-  display: flex;
-  flex-direction: row;
-  height:30px;
-  border: none;
-  border-bottom: 1px solid #000;
-  width: 97%;
+  height:40px;
   align-self: center;
-}
+  width: 95%;
+  position: relative;
+  border: $blueBorder;
+  border-radius: 6%;
+  background-color: $light;
 
-.new-goal-label {
-  font-size: 1.3em;
-}
-
-.new-goal-input {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  font-size: 1.3em;
+  input {
+    width: 100%;
+    background: transparent;
+    position: absolute;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: #666;
+    height: 100%;
+    box-shadow: none;
+    line-height: 40px;
+    font-size: inherit;
+    letter-spacing: 2.1px;
+    left: 2px;
+  }
 }
 
 .icons {
@@ -76,6 +83,7 @@ $grey: #666;
   img {
     max-height: 100%;
     max-width: 100%;
+    cursor: pointer;
   }
 }
 

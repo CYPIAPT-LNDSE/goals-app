@@ -1,5 +1,21 @@
 $goal-box-size: 70px;
 
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%;
+}
+
+.main-button {
+  // font-family: LeagueSpartan-Bold;
+  font-size: 14px;
+  color: #2364AA;
+  letter-spacing: 2.1px;
+}
+
 .goal-item-img-container {
   height: $goal-box-size;
   width: $goal-box-size;
