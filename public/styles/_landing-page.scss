@@ -83,6 +83,7 @@
   width: $width;
   height: $height;
   align-self: center;
+  z-index: -1;
 }
 
 .goal-item-description {
@@ -136,7 +137,6 @@
   height: 100%;
   z-index: -1;
 }
-
 
 .goal-item-rating-progress-9 {
   @extend .goal-item-rating-progress;
