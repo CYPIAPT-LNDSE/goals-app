@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/normalise.css" />
+    <title></title>
+  </head>
+  <body>
+    <div class="rate-progress-page">
+      <nav class="goal-grow-nav">
+        <p>GoalGrow</p>
+      </nav>
+      <div class="title-container">
+        <h2>Your goal:</h2>
+      </div>
+      <div class="selected-goal-section">
+        <div class="goal-background">
+          <div class="goal-item-box">
+            <div class="goal-item-img-container">
+              <img class="goal-item-img" src="./icons/plant_icn.png" />
+            </div>
+            <div class="goal-item-description">
+              <p class="goal-item-title">Eat less pizza.</p>
+              <div class="goal-item-rating">
+                <p>7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rate-progress-slider-animation">
+        <div class="main-content-title">
+          <h1>How well did you do today?</h1>
+        </div>
+        <div class="animation-container">
+          <img src="./icons/rate-goal-animation/flower-head.svg" id="flower-head" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf1.svg" id="leaf1" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf2.svg" id="leaf2" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf3.svg" id="leaf3" class="hide-start">
+          <img src="./icons/rate-goal-animation/full_stem.svg" id="stem-full" class="hide-start">
+          <img src="./icons/rate-goal-animation/blue-earth.svg" id="blue-earth-icon" />
+        </div>
+        <div class="slider-container">
+          <p>Give yourself marks out of ten by moving the slider</p>
+          <input type="range" id="slider" min="0" max="10" value="0" step="1" list="slider-range" onInput="updateSliderValue(this.value)" onChange="updateSliderValue(this.value)">
+          <div class="current-value-circle">
+            <p id="slider-current-value">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="save-container">
+        <div class="button-outer">
+          <button type="button" name="button" class="save-goal-button">Rate</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./js/rate-progress.js"></script>
+    <script src="https://use.fontawesome.com/8b2b398755.js"></script>
+  </body>
+</html>

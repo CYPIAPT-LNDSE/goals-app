@@ -1,0 +1,28 @@
+@import 'add-goal';
+@import 'rate-progress';
+@import 'landing-page';
+@import 'review-progress';
+
+html {
+  font-size: 1em;
+  height: 100%;
+}
+
+body {
+  font-family: leagueSpartan;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh
+}
+
+input {
+  font-family: leagueSpartan;
+}
+
+
+@font-face {
+  font-family: leagueSpartan;
+  src: url('../LeagueSpartan-Bold.otf');
+}

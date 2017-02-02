@@ -1,0 +1,79 @@
+@import 'general';
+@import "colors";
+
+.add-goal-page {
+  @extend .page;
+  color: $grey;
+  letter-spacing: 2.1px;
+  color: $blue;
+}
+
+.write-a-new-goal {
+    height: 15%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin: 15px 0 15px;
+      cursor: pointer;
+    }
+}
+
+.new-goal-container {
+  height:40px;
+  width: 95%;
+  align-self: center;
+  position: relative;
+  border: $blueBorder;
+  border-radius: 6%;
+  background-color: $light;
+
+  input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: $grey;
+    box-shadow: none;
+    font-size: inherit;
+    letter-spacing: 2.1px;
+    padding-left: 2%;
+  }
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.icons-description {
+  text-align: center;
+  margin-left: 10px;
+}
+
+.goal-icon-container {
+  width: 143px;
+  height: 140px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  margin: 3px;
+
+  &:hover {
+    border: $blueBorder;
+    margin: 2px;
+  }
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    cursor: pointer;
+  }
+}
+
+.selected {
+  border: 1px solid $blue;
+}

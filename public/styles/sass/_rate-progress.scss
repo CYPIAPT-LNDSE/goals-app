@@ -1,0 +1,185 @@
+@import 'general';
+@import "colors";
+
+.rate-progress-page {
+  @extend .page;
+  color: $blue;
+  letter-spacing: 2.1px;
+}
+
+.header-image-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ccc;
+
+  img {
+    max-height: 64px;
+    max-width: 64px;
+    align-self: center;
+  }
+}
+
+.title-container {
+  h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin-left: 10px;
+  }
+}
+
+.selected-goal-section {
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.goal-background {
+  background-image: url(../icons/boxPNG.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  border: $blueBorder;
+  border-radius: 6px;
+  width: 289px;
+  height: 98px;
+  align-self: center;
+}
+
+.main-content-title {
+  h1 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+.rate-progress-slider-animation {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.animation-container {
+  height: 45%;
+  position: relative;
+
+  img {
+    max-height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+  }
+
+  #flower-head {
+    height: 30px;
+    width: 30px;
+    bottom: 75px;
+    margin-left: -80px;
+    z-index: -5;
+  }
+
+  #leaf1 {
+    margin-left: -10px;
+    bottom: 50px;
+    height: 12px;
+  }
+
+  #leaf2 {
+    margin-left: -40px;
+    bottom: 70px;
+    height: 12px;
+  }
+
+  #leaf3 {
+    margin-left: -30px;
+    bottom: 30px;
+    height: 14px;
+    z-index: -10;
+  }
+
+  #stem-full {
+    height: 100px;
+    bottom: -90px;
+    margin-left: -50px;
+    z-index: -10;
+  }
+
+  #blue-earth-icon {
+    bottom: -20px;
+    height: 50px;
+    width: 200px;
+  }
+}
+
+.hide-start {
+  display: none;
+}
+
+.slider-container {
+  padding-top: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+
+  p {
+    text-align: center;
+  }
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 90%;
+  background-color: transparent;
+  align-self: center;
+
+  &:active, &:hover, &:focus  {
+    outline: none;
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 50px;
+  width: 15px;
+  background: #fff;
+  background-image: url(./icons/chili-pepper_s.png);
+  cursor: pointer;
+  margin-top: -20px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  background: url('./../icons/pepper_slider_SVG.svg') no-repeat center;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: $light;
+  border: $blueBorder;
+  border-radius: 3px;
+}
+
+.current-value-circle {
+  border: $blueBorder;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: inherit;
+
+  p {
+    font-size: 0.8em;
+  }
+}
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

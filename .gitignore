@@ -2,8 +2,6 @@
 ./public/.sass-cache/*
 **/.sass-cache/
 **.DS_Store
-public/styles/style.scss
+public/styles/style.css
 public/styles/style.css.map
-public/html/*
-public/styles/sass/*
 .gitignore
