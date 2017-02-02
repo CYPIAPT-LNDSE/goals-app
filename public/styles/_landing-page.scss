@@ -83,6 +83,7 @@
   width: $width;
   height: $height;
   align-self: center;
+  z-index: -1;
 }
 
 .goal-item-description {
@@ -131,9 +132,24 @@
   background-color: #5DEE3D;
   opacity: 0.3;
   position: absolute;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 100%;
+  top: 0;
+  left: 0;
+  // width: 70%;
+  height: 100%;
+  z-index: -1;
 }
-// changes to be discussed with Noga before committing
+
+.goal-item-rating-progress-9 {
+  @extend .goal-item-rating-progress;
+  width: 90%;
+}
+
+.goal-item-rating-progress-7 {
+  @extend .goal-item-rating-progress;
+  width: 70%;
+}
+
+.goal-item-rating-progress-4 {
+  @extend .goal-item-rating-progress;
+  width: 40%;
+}
