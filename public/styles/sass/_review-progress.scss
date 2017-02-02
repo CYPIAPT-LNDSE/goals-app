@@ -9,10 +9,26 @@ $position3: 25%;
   @extend .page;
   color: $blue;
   letter-spacing: 2.1px;
+  height: auto;
+
+  nav {
+    height: 30%;
+  }
+
+  .title-container {
+    height: 15%;
+  }
+
+  .selected-goal-section {
+    height: 35%;
+  }
 }
 
 .review-progress-graphic-container {
   height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .slider-box {
@@ -103,6 +119,21 @@ $position3: 25%;
   .slider-thumb {
     left: $position3;
     animation: slideRight3 2s;
+  }
+}
+
+.pie-chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 60%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
   }
 }
 

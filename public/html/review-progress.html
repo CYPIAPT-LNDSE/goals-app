@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/normalise.css" />
-    <link rel="stylesheet" href="./LeagueSpartan-Bold.otf" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/normalise.css" />
     <title></title>
   </head>
   <body>
     <div class="review-progress-page">
-      <nav class="goal-grow-nav">
+      <nav class="goal-grow-nav" onclick="showhide('landing-page','review-progress-page')">
         <p>GoalGrow</p>
       </nav>
       <div class="title-container">
@@ -20,7 +19,7 @@
         <div class="goal-background">
           <div class="goal-item-box">
             <div class="goal-item-img-container">
-              <img class="goal-item-img" src="./icons/plant_icn.png" />
+              <img class="goal-item-img" src="../icons/landing/plant_icn.png" />
             </div>
             <div class="goal-item-description">
               <p class="goal-item-title">Eat less pizza.</p>
@@ -65,6 +64,10 @@
           </div>
           <p class="time">Two weeks ago</p>
         </div>
+      </div>
+      <div class="pie-chart-container">
+        <p>Your progress overall</p>
+        <img src="../icons/pie-chart.png" alt="pie-chart">
       </div>
     </div>
     <script src="https://use.fontawesome.com/8b2b398755.js"></script>
