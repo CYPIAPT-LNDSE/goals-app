@@ -22,7 +22,7 @@
       <div class="container-list-goals">
         <ul class="list-goals">
           <li class="goal-item">
-            <div class="goal-item-box">
+            <div class="goal-item-box" onclick="showhide('rate-progress-page','landing-page')">
               <div class="goal-item-rating-progress-7">
                 <!-- div on top of background to have a green progress bar -->
               </div>
@@ -37,7 +37,7 @@
               </div>
             </div>
           </li>
-          <li class="goal-item">
+          <li class="goal-item" onclick="showhide('rate-progress-page','landing-page')">
             <div class="goal-item-box">
               <div class="goal-item-rating-progress-4">
                 <!-- div on top of background to have a green progress bar -->
@@ -53,7 +53,7 @@
               </div>
             </div>
           </li>
-          <li class="goal-item">
+          <li class="goal-item" onclick="showhide('rate-progress-page','landing-page')">
             <div class="goal-item-box">
               <div class="goal-item-rating-progress-9">
                 <!-- div on top of background to have a green progress bar -->
@@ -76,7 +76,7 @@
     <!-- Add goal page -->
     <div class="add-goal-page">
       <nav class="goal-grow-nav">
-        <p>GoalGrow</p>
+        <p onclick="showhide('landing-page','add-goal-page')">GoalGrow</p>
       </nav>
        <div class="write-a-new-goal">
          <label class="new-goal-header" for="new-goal">Your new goal:</label>
@@ -104,12 +104,62 @@
         </div>
        <div class="save-container">
          <div class="button-outer">
-           <button type="button" name="button" class="save-goal-button">Add</button>
+           <button type="button" name="button" class="save-goal-button" onclick="showhide('landing-page','add-goal-page')">
+             Add</button>
          </div>
        </div>
     </div>
     <!-- **************************************************************** -->
-  <script src="https://use.fontawesome.com/8b2b398755.js"></script>
+    <!-- Rate progress page -->
+    <div class="rate-progress-page">
+      <nav class="goal-grow-nav" onclick="showhide('landing-page','rate-progress-page')">
+        <p>GoalGrow</p>
+      </nav>
+      <div class="title-container">
+        <h2>Your goal:</h2>
+      </div>
+      <div class="selected-goal-section">
+        <div class="goal-background">
+          <div class="goal-item-box">
+            <div class="goal-item-img-container">
+              <img class="goal-item-img" src="./icons/plant_icn.png" />
+            </div>
+            <div class="goal-item-description">
+              <p class="goal-item-title">Eat less pizza.</p>
+              <div class="goal-item-rating">
+                <p>7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rate-progress-slider-animation">
+        <div class="main-content-title">
+          <h1>How well did you do today?</h1>
+        </div>
+        <div class="animation-container">
+          <img src="./icons/rate-goal-animation/flower-head.svg" id="flower-head" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf1.svg" id="leaf1" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf2.svg" id="leaf2" class="hide-start">
+          <img src="./icons/rate-goal-animation/leaf3.svg" id="leaf3" class="hide-start">
+          <img src="./icons/rate-goal-animation/full_stem.svg" id="stem-full" class="hide-start">
+          <img src="./icons/rate-goal-animation/blue-earth.svg" id="blue-earth-icon" />
+        </div>
+        <div class="slider-container">
+          <input type="range" id="slider" min="0" max="10" value="0" step="1" list="slider-range" onInput="updateSliderValue(this.value)" onChange="updateSliderValue(this.value)">
+          <div class="current-value-circle">
+            <p id="slider-current-value">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="save-container">
+        <div class="button-outer">
+          <button type="button" name="button" class="save-goal-button">Rate</button>
+        </div>
+      </div>
+    </div>
+    <!-- **************************************************************** -->
+    <script src="https://use.fontawesome.com/8b2b398755.js"></script>
   <script type="text/javascript" src="./js/index.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
