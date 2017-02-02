@@ -41,13 +41,14 @@
     outline: none;
     border: none;
     font-size: 1em;
-    color: #666;
+    color: $grey;
     height: 100%;
     box-shadow: none;
     line-height: 40px;
     font-size: inherit;
     letter-spacing: 2.1px;
     padding-left: 2%;
+    cursor: pointer;
   }
 }
 

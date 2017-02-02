@@ -58,14 +58,14 @@
 }
 
 .rate-progress-slider-animation {
-  height: 65%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
 .animation-container {
-  height: 70%;
+  height: 45%;
   position: relative;
 
   img {
@@ -122,12 +122,16 @@
 
 .slider-container {
   padding-top: 20px;
-  height: 30%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
+
+  p {
+    text-align: center;
+  }
 }
 
 input[type=range] {
