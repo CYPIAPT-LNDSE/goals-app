@@ -62,11 +62,13 @@
   height: 140px;
   text-align: center;
   background-color: $light;
+  border: 1px solid transparent;
   border-radius: 6px;
   margin: 3px;
 
   &:hover {
     border: 1px solid $blue;
+    margin: 2px;
   }
 
   img {
