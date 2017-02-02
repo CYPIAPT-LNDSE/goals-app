@@ -3,14 +3,9 @@
 
 .add-goal-page {
   @extend .page;
-  background-color: #fff;
   color: $grey;
   letter-spacing: 2.1px;
-  border: none;
-
-  div {
-    border: none;
-  }
+  color: $blue;
 }
 
 .write-a-new-goal {
@@ -20,16 +15,15 @@
     flex-direction: column;
 
     label {
-      font-size: 1em;
-      color: $blue;
       margin: 15px 0 15px;
+      cursor: pointer;
     }
 }
 
 .new-goal-container {
   height:40px;
-  align-self: center;
   width: 95%;
+  align-self: center;
   position: relative;
   border: $blueBorder;
   border-radius: 6%;
@@ -37,18 +31,16 @@
 
   input {
     width: 100%;
+    height: 100%;
     background: transparent;
     outline: none;
     border: none;
     font-size: 1em;
     color: $grey;
-    height: 100%;
     box-shadow: none;
-    line-height: 40px;
     font-size: inherit;
     letter-spacing: 2.1px;
     padding-left: 2%;
-    cursor: pointer;
   }
 }
 
@@ -58,17 +50,20 @@
   justify-content: center;
 }
 
+.icons-description {
+  text-align: center;
+  margin-left: 10px;
+}
+
 .goal-icon-container {
   width: 143px;
   height: 140px;
-  text-align: center;
-  background-color: $light;
   border: 1px solid transparent;
   border-radius: 6px;
   margin: 3px;
 
   &:hover {
-    border: 1px solid $blue;
+    border: $blueBorder;
     margin: 2px;
   }
 
@@ -77,4 +72,8 @@
     max-width: 100%;
     cursor: pointer;
   }
+}
+
+.selected {
+  border: 1px solid $blue;
 }
