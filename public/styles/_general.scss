@@ -17,18 +17,10 @@ $blueBorder: 1px solid #2364AA;
 
   p {
     font-size: 28px;
-    color: #2364AA;
+    color: $blue;
     letter-spacing: 2.1px;
     cursor: pointer;
   }
-}
-
-.header-box {
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  background-color: #fff;
 }
 
 .header-title-container {
@@ -50,15 +42,6 @@ $blueBorder: 1px solid #2364AA;
   }
 }
 
-.main-content-title {
-  h1 {
-    margin-left: 10px;
-    font-weight: normal;
-    font-size: 1.5em;
-    text-align: center;
-  }
-}
-
 .main-button {
   border: $blueBorder;
   border-radius: 6px;
@@ -74,4 +57,21 @@ $blueBorder: 1px solid #2364AA;
     background-color: $blue;
     color: $light;
   }
+
+  &:active, &:hover, &:focus {
+    outline: none;
+  }
+}
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%;
+}
+
+.save-goal-button {
+  @extend .main-button;
+  height: 100%;
+  text-transform: uppercase;
 }

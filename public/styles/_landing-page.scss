@@ -1,6 +1,7 @@
 @import 'general';
 @import 'colors';
 @import 'imgsize';
+@import 'general';
 
 .landing-page {
   display: flex;
@@ -75,11 +76,9 @@
 .goal-item {
   background-image: url(../icons/boxPNG.png);
   background-repeat: no-repeat;
-  background-size:contain;
-  // background-color: #5DEE3D;
+  background-size: contain;
+  border: $blueBorder;
   position: relative;
-  // opacity: 0.5;
-  border: 1px solid $blue;
   border-radius: 6px;
   width: $width;
   height: $height;
@@ -96,7 +95,7 @@
 
 .goal-item-title {
   font-size: 14px;
-  color: #2364AA;
+  color: $blue;
   letter-spacing: 2.1px;
 }
 
