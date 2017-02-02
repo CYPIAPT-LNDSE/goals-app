@@ -1,54 +1,695 @@
-/*
-Error: File to import not found or unreadable: add-goal.
-        on line 1 of public/styles/style.scss
+.page, .add-goal-page, .rate-progress-page, .landing-page, .review-progress-page {
+  display: none;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
 
-1: @import 'add-goal';
-2: @import 'rate-progress';
-3: @import 'landing-page';
-4: @import 'review-progress';
-5: 
-6: html {
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center; }
+  .goal-grow-nav p {
+    font-size: 28px;
+    color: #2364aa;
+    letter-spacing: 2.1px;
+    cursor: pointer; }
 
-Backtrace:
-public/styles/style.scss:1
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/import_node.rb:45:in `import'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/import_node.rb:28:in `imported_file'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/import_node.rb:37:in `css_import?'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:313:in `visit_import'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
-/var/lib/gems/2.3.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: add-goal.\A         on line 1 of public/styles/style.scss\A \A 1: @import 'add-goal';\A 2: @import 'rate-progress';\A 3: @import 'landing-page';\A 4: @import 'review-progress';\A 5: \A 6: html {"; }
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  .header-title-container h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal; }
+  .header-title-container p {
+    margin-left: 10px; }
+
+.main-button, .save-goal-button, .add-goal-button {
+  border: 1px solid #2364AA;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2364aa;
+  letter-spacing: 2.1px;
+  width: 200px;
+  font-weight: bold;
+  cursor: pointer; }
+  .main-button:hover, .save-goal-button:hover, .add-goal-button:hover {
+    background-color: #2364aa;
+    color: #F7F9F9;
+    outline: none; }
+  .main-button:active, .save-goal-button:active, .add-goal-button:active, .main-button:hover, .save-goal-button:hover, .add-goal-button:hover, .main-button:focus, .save-goal-button:focus, .add-goal-button:focus {
+    outline: none; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%; }
+
+.save-goal-button {
+  height: 100%;
+  text-transform: uppercase; }
+
+.add-goal-page {
+  color: #666;
+  letter-spacing: 2.1px;
+  color: #2364aa; }
+
+.write-a-new-goal {
+  height: 15%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; }
+  .write-a-new-goal label {
+    margin: 15px 0 15px;
+    cursor: pointer; }
+
+.new-goal-container {
+  height: 40px;
+  width: 95%;
+  align-self: center;
+  position: relative;
+  border: 1px solid #2364AA;
+  border-radius: 6%;
+  background-color: #F7F9F9; }
+  .new-goal-container input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: #666;
+    box-shadow: none;
+    font-size: inherit;
+    letter-spacing: 2.1px;
+    padding-left: 2%; }
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.icons-description {
+  text-align: center;
+  margin-left: 10px; }
+
+.goal-icon-container {
+  width: 143px;
+  height: 140px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  margin: 3px; }
+  .goal-icon-container:hover {
+    border: 1px solid #2364AA;
+    margin: 2px; }
+  .goal-icon-container img {
+    max-height: 100%;
+    max-width: 100%;
+    cursor: pointer; }
+
+.selected {
+  border: 1px solid #2364aa; }
+
+.page, .add-goal-page, .rate-progress-page, .landing-page, .review-progress-page {
+  display: none;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
+
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center; }
+  .goal-grow-nav p {
+    font-size: 28px;
+    color: #2364aa;
+    letter-spacing: 2.1px;
+    cursor: pointer; }
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  .header-title-container h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal; }
+  .header-title-container p {
+    margin-left: 10px; }
+
+.main-button, .save-goal-button, .add-goal-button {
+  border: 1px solid #2364AA;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2364aa;
+  letter-spacing: 2.1px;
+  width: 200px;
+  font-weight: bold;
+  cursor: pointer; }
+  .main-button:hover, .save-goal-button:hover, .add-goal-button:hover {
+    background-color: #2364aa;
+    color: #F7F9F9;
+    outline: none; }
+  .main-button:active, .save-goal-button:active, .add-goal-button:active, .main-button:hover, .save-goal-button:hover, .add-goal-button:hover, .main-button:focus, .save-goal-button:focus, .add-goal-button:focus {
+    outline: none; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%; }
+
+.save-goal-button {
+  height: 100%;
+  text-transform: uppercase; }
+
+.rate-progress-page {
+  color: #2364aa;
+  letter-spacing: 2.1px; }
+
+.header-image-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ccc; }
+  .header-image-container img {
+    max-height: 64px;
+    max-width: 64px;
+    align-self: center; }
+
+.title-container h2 {
+  font-size: 1em;
+  font-weight: normal;
+  margin-left: 10px; }
+
+.selected-goal-section {
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.goal-background {
+  background-image: url(../icons/boxPNG.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid #2364AA;
+  border-radius: 6px;
+  width: 289px;
+  height: 98px;
+  align-self: center; }
+
+.main-content-title h1 {
+  margin-left: 10px;
+  font-weight: normal;
+  font-size: 1em;
+  text-align: center; }
+
+.rate-progress-slider-animation {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+
+.animation-container {
+  height: 45%;
+  position: relative; }
+  .animation-container img {
+    max-height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px; }
+  .animation-container #flower-head {
+    height: 30px;
+    width: 30px;
+    bottom: 75px;
+    margin-left: -80px;
+    z-index: -5; }
+  .animation-container #leaf1 {
+    margin-left: -10px;
+    bottom: 50px;
+    height: 12px; }
+  .animation-container #leaf2 {
+    margin-left: -40px;
+    bottom: 70px;
+    height: 12px; }
+  .animation-container #leaf3 {
+    margin-left: -30px;
+    bottom: 30px;
+    height: 14px;
+    z-index: -10; }
+  .animation-container #stem-full {
+    height: 100px;
+    bottom: -90px;
+    margin-left: -50px;
+    z-index: -10; }
+  .animation-container #blue-earth-icon {
+    bottom: -20px;
+    height: 50px;
+    width: 200px; }
+
+.hide-start {
+  display: none; }
+
+.slider-container {
+  padding-top: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff; }
+  .slider-container p {
+    text-align: center; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 90%;
+  background-color: transparent;
+  align-self: center; }
+  input[type=range]:active, input[type=range]:hover, input[type=range]:focus {
+    outline: none; }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 50px;
+  width: 15px;
+  background: #fff;
+  background-image: url(./icons/chili-pepper_s.png);
+  cursor: pointer;
+  margin-top: -20px;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  background: url("./../icons/pepper_slider_SVG.svg") no-repeat center; }
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #F7F9F9;
+  border: 1px solid #2364AA;
+  border-radius: 3px; }
+
+.current-value-circle {
+  border: 1px solid #2364AA;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: inherit; }
+  .current-value-circle p {
+    font-size: 0.8em; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.page, .add-goal-page, .rate-progress-page, .landing-page, .review-progress-page {
+  display: none;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
+
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center; }
+  .goal-grow-nav p {
+    font-size: 28px;
+    color: #2364aa;
+    letter-spacing: 2.1px;
+    cursor: pointer; }
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  .header-title-container h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal; }
+  .header-title-container p {
+    margin-left: 10px; }
+
+.main-button, .save-goal-button, .add-goal-button {
+  border: 1px solid #2364AA;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2364aa;
+  letter-spacing: 2.1px;
+  width: 200px;
+  font-weight: bold;
+  cursor: pointer; }
+  .main-button:hover, .save-goal-button:hover, .add-goal-button:hover {
+    background-color: #2364aa;
+    color: #F7F9F9;
+    outline: none; }
+  .main-button:active, .save-goal-button:active, .add-goal-button:active, .main-button:hover, .save-goal-button:hover, .add-goal-button:hover, .main-button:focus, .save-goal-button:focus, .add-goal-button:focus {
+    outline: none; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%; }
+
+.save-goal-button {
+  height: 100%;
+  text-transform: uppercase; }
+
+.page, .add-goal-page, .rate-progress-page, .landing-page, .review-progress-page {
+  display: none;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%; }
+
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center; }
+  .goal-grow-nav p {
+    font-size: 28px;
+    color: #2364aa;
+    letter-spacing: 2.1px;
+    cursor: pointer; }
+
+.header-title-container {
+  width: 80%;
+  height: 100%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  .header-title-container h2 {
+    font-size: 0.8em;
+    margin-left: 10px;
+    font-weight: normal; }
+  .header-title-container p {
+    margin-left: 10px; }
+
+.main-button, .save-goal-button, .add-goal-button {
+  border: 1px solid #2364AA;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2364aa;
+  letter-spacing: 2.1px;
+  width: 200px;
+  font-weight: bold;
+  cursor: pointer; }
+  .main-button:hover, .save-goal-button:hover, .add-goal-button:hover {
+    background-color: #2364aa;
+    color: #F7F9F9;
+    outline: none; }
+  .main-button:active, .save-goal-button:active, .add-goal-button:active, .main-button:hover, .save-goal-button:hover, .add-goal-button:hover, .main-button:focus, .save-goal-button:focus, .add-goal-button:focus {
+    outline: none; }
+
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%; }
+
+.save-goal-button {
+  height: 100%;
+  text-transform: uppercase; }
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+  height: 100%;
+  visibility: visible; }
+
+.goal-grow-nav {
+  background-color: #F7F9F9;
+  height: 90px;
+  text-align: center; }
+  .goal-grow-nav p {
+    font-size: 28px;
+    color: #2364aa;
+    letter-spacing: 2.1px; }
+
+.add-goal-button-container {
+  height: 20%;
+  display: flex;
+  justify-content: center; }
+
+.button-outer {
+  position: relative;
+  align-self: center;
+  text-align: center;
+  outline: none;
+  width: 100%;
+  height: 50%; }
+
+.add-goal-button {
+  border-radius: 86px;
+  outline: none;
+  height: 100%;
+  width: 70%;
+  font-size: 14px;
+  font-weight: bolder; }
+
+.container-list-goals {
+  height: 66%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.list-goals {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  padding: 0; }
+
+.goal-item-box {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  cursor: pointer; }
+
+.goal-item {
+  background-image: url(../icons/boxPNG.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid #2364AA;
+  position: relative;
+  border-radius: 6px;
+  width: 289px;
+  height: 98px;
+  align-self: center;
+  z-index: 0;
+  cursor: pointer; }
+
+.goal-item-description {
+  width: 206px;
+  height: auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 6px; }
+
+.goal-item-title {
+  font-size: 14px;
+  color: #2364aa;
+  letter-spacing: 2.1px; }
+
+.goal-item-rating {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: 1px solid #2364aa;
+  margin-left: 161px;
+  margin-top: 5px;
+  background-color: #F7F9F9;
+  display: flex;
+  justify-content: center; }
+  .goal-item-rating p {
+    font-size: 14px;
+    color: #2364aa;
+    letter-spacing: 2.1px;
+    align-self: center; }
+
+.goal-item-img-container {
+  height: 83px;
+  width: 68px;
+  margin-top: 5px;
+  margin-left: 5px; }
+  .goal-item-img-container img {
+    max-height: 100%; }
+
+.goal-item-rating-progress, .goal-item-rating-progress-9, .goal-item-rating-progress-7, .goal-item-rating-progress-4 {
+  background-color: #86e889;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1; }
+
+.goal-item-rating-progress-9 {
+  width: 90%; }
+
+.goal-item-rating-progress-7 {
+  width: 70%; }
+
+.goal-item-rating-progress-4 {
+  width: 40%; }
+
+.review-progress-page {
+  color: #2364aa;
+  letter-spacing: 2.1px; }
+
+.review-progress-graphic-container {
+  height: 80%; }
+
+.slider-box {
+  width: 100%;
+  height: 15%;
+  position: relative; }
+  .slider-box p {
+    margin-left: 5%;
+    font-size: 0.7em;
+    position: absolute;
+    top: 50%; }
+  .slider-box .time {
+    color: #666; }
+
+.slider-scale {
+  width: 90%;
+  align-self: center;
+  height: 10px;
+  background: transparent;
+  border: 1px solid #2364AA;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  border-radius: 6%; }
+
+.scale-front {
+  background-color: #2364aa; }
+
+.scale-back {
+  width: 90%;
+  background-color: #F7F9F9; }
+
+.slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #F7F9F9;
+  border: 1px solid #2364AA;
+  cursor: pointer;
+  margin-top: -14px;
+  /* needs value in chrome */
+  top: 40%; }
+  .slider-thumb p {
+    position: absolute;
+    top: -20%;
+    text-align: center;
+    line-height: 8px;
+    width: 100%;
+    font-size: 0.8em; }
+
+.slider-1 .scale-front {
+  width: 42%;
+  animation: stretchRight5 2s; }
+.slider-1 .slider-thumb {
+  left: 45%;
+  animation: slideRight5 2s; }
+
+.slider-2 .scale-front {
+  width: 52%;
+  animation: stretchRight6 2s; }
+.slider-2 .slider-thumb {
+  left: 55%;
+  animation: slideRight6 2s; }
+
+.slider-3 .scale-front {
+  width: 22%;
+  animation: stretchRight3 2s; }
+.slider-3 .slider-thumb {
+  left: 25%;
+  animation: slideRight3 2s; }
+
+@keyframes slideRight5 {
+  from {
+    left: 5%; }
+  to {
+    left: 45%; } }
+@keyframes stretchRight5 {
+  from {
+    width: 0; }
+  to {
+    width: 42%; } }
+@keyframes slideRight6 {
+  from {
+    left: 5%; }
+  to {
+    left: 55%; } }
+@keyframes stretchRight6 {
+  from {
+    width: 0; }
+  to {
+    width: 52%; } }
+@keyframes slideRight3 {
+  from {
+    left: 5%; }
+  to {
+    left: 25%; } }
+@keyframes stretchRight3 {
+  from {
+    width: 0; }
+  to {
+    width: 22%; } }
+html {
+  font-size: 1em;
+  height: 100%; }
+
+body {
+  font-family: leagueSpartan;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh; }
+
+input {
+  font-family: leagueSpartan; }
+
+@font-face {
+  font-family: leagueSpartan;
+  src: url("./../LeagueSpartan-Bold.otf"); }
+
+/*# sourceMappingURL=style.css.map */
