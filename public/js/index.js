@@ -1,4 +1,5 @@
 function selectNewIcon (elem) {
+  var selectedIcon = $('#' + elem);
   $('.goal-icon-container').removeClass('selected');
-  $('#' + elem).addClass('selected');
+  selectedIcon.addClass('selected');
 }
