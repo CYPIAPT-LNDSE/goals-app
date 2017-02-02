@@ -56,6 +56,7 @@ $blueBorder: 1px solid #2364AA;
   &:hover {
     background-color: $blue;
     color: $light;
+    outline: none;
   }
 
   &:active, &:hover, &:focus {
