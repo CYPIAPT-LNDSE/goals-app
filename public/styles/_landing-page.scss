@@ -126,3 +126,29 @@
     max-height: 100%;
   }
 }
+
+.goal-item-rating-progress {
+  background-color: $green;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+
+
+.goal-item-rating-progress-9 {
+  @extend .goal-item-rating-progress;
+  width: 90%;
+}
+
+.goal-item-rating-progress-7 {
+  @extend .goal-item-rating-progress;
+  width: 70%;
+}
+
+.goal-item-rating-progress-4 {
+  @extend .goal-item-rating-progress;
+  width: 40%;
+}
