@@ -1,3 +1,6 @@
+$blueBorder: 1px solid #2364AA;
+@import "colors";
+
 .page {
   display: flex;
   flex-direction: column;
@@ -7,12 +10,17 @@
   height: 100%;
 }
 
-.header-box {
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  background-color: #fff;
+.goal-grow-nav {
+  background-color: $light;
+  height: 90px;
+  text-align: center;
+
+  p {
+    font-size: 28px;
+    color: $blue;
+    letter-spacing: 2.1px;
+    cursor: pointer;
+  }
 }
 
 .header-title-container {
@@ -34,35 +42,36 @@
   }
 }
 
-.main-content-title {
-  h1 {
-    margin-left: 10px;
-    font-weight: normal;
-    font-size: 1.5em;
-    text-align: center;
-  }
-}
-
 .main-button {
-  height: 35px;
-  align-self: center;
-  border-radius: 40px;
-  display: block;
-  border: 0;
-  width: 100%;
+  border: $blueBorder;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: $blue;
+  letter-spacing: 2.1px;
+  width: 200px;
+  font-weight: bold;
   cursor: pointer;
-  background-color: #aaa;
-  box-shadow: 0 4px 2px #666;
-  font-family: leagueSpartan;
 
   &:hover {
-    background-color: #666;
+    background-color: $blue;
+    color: $light;
+  }
+
+  &:active, &:hover, &:focus {
+    outline: none;
   }
 }
 
-.button-outer {
-  position: relative;
-  align-self: center;
-  text-align: center;
-  width: 50%;
+.save-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15%;
+}
+
+.save-goal-button {
+  @extend .main-button;
+  height: 100%;
+  text-transform: uppercase;
 }
