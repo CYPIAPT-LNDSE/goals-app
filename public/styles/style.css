@@ -500,7 +500,7 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer; }
 
 .goal-item {
-  background-image: url(../icons/boxPNG.png);
+  background-image: url(../../icons/landing/boxPNG.png);
   background-repeat: no-repeat;
   background-size: contain;
   border: 1px solid #2364AA;
@@ -690,6 +690,6 @@ input {
 
 @font-face {
   font-family: leagueSpartan;
-  src: url("./../LeagueSpartan-Bold.otf"); }
+  src: url("./../../LeagueSpartan-Bold.otf"); }
 
 /*# sourceMappingURL=style.css.map */
