@@ -1,5 +1,7 @@
 # GoalGrow
 
+You can view the app [here](https://cypiapt-lndse.github.io/goals-app/).
+
 GoalGrow is an app primarily aimed at 12-18 year-olds in the CAMHs system. Our young users can set themselves goals, either on their own at home, or in a session with a clinician.
 
 We have chosen the theme of growth, focussing on plants and vegetables like you might have in a garden. Each goal is represented by a choice of plant. The plant grows with progress. The user can review their overall progress based on an ecosystem of the plants they have grown.
