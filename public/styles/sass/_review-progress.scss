@@ -137,6 +137,12 @@ $position3: 25%;
   }
 }
 
+.goal-background {
+background-image: url(../icons/landing/boxPNG.png);
+background-repeat: no-repeat;
+background-size: contain;
+}
+
 @keyframes slideRight5 {
   from {left: $positionStart;}
   to {left: $position5;}
