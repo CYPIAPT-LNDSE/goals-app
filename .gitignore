@@ -6,3 +6,4 @@ public/styles/style.scss
 public/styles/style.css.map
 public/html/*
 public/styles/sass/*
+.gitignore
