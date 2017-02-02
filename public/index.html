@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/normalise.css" />
+    <title></title>
+  </head>
+  <body>
+    <!-- Landing page section -->
+    <div class="landing-page">
+    <nav class="goal-grow-nav">
+      <p>GoalGrow</p>
+    </nav>
+      <div class="add-goal-button-container">
+        <div class="button-outer">
+          <button type="button" name="button" class="add-goal-button" onclick="showAddGoalPage()">
+            ADD A GOAL &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="container-list-goals">
+        <ul class="list-goals">
+          <li class="goal-item">
+            <div class="goal-item-box">
+              <div class="goal-item-rating-progress-7">
+                <!-- div on top of background to have a green progress bar -->
+              </div>
+              <div class="goal-item-img-container">
+                <img class="goal-item-img" src="./icons/plant_icn.png" />
+              </div>
+              <div class="goal-item-description">
+                <p class="goal-item-title">Eat less pizza.</p>
+                <div class="goal-item-rating">
+                  <p>7</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="goal-item">
+            <div class="goal-item-box">
+              <div class="goal-item-rating-progress-4">
+                <!-- div on top of background to have a green progress bar -->
+              </div>
+              <div class="goal-item-img-container">
+                <img class="goal-item-img" src="./icons/pumpkin_icn.png" />
+              </div>
+              <div class="goal-item-description">
+                <p class="goal-item-title">Don't drink too much.</p>
+                <div class="goal-item-rating">
+                  <p>4</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="goal-item">
+            <div class="goal-item-box">
+              <div class="goal-item-rating-progress-9">
+                <!-- div on top of background to have a green progress bar -->
+              </div>
+              <div class="goal-item-img-container">
+                <img class="goal-item-img" src="./icons/pepper_icn.png" />
+              </div>
+              <div class="goal-item-description">
+                <p class="goal-item-title">Stop spending money.</p>
+                <div class="goal-item-rating">
+                  <p>9</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- **************************************************************** -->
+    <!-- Add goal page -->
+    <div class="add-goal-page">
+      <nav class="goal-grow-nav">
+        <p>GoalGrow</p>
+      </nav>
+       <div class="write-a-new-goal">
+         <label class="new-goal-header" for="new-goal">Your new goal:</label>
+         <div class="new-goal-container">
+           <input id="new-goal" class="new-goal-input" type="text" placeholder="I will " autofocus>
+         </div>
+       </div>
+       <div class="icons">
+         <div class="icons-row">
+           <div class="goal-icon-container">
+             <img class="goal-item-img" src="./icons/add-goal/flower.png" />
+           </div>
+           <div class="goal-icon-container">
+             <img class="goal-item-img" src="./icons/add-goal/sprout.png" />
+           </div>
+         </div>
+         <div class="icons-row">
+           <div class="goal-icon-container">
+             <img class="goal-item-img" src="./icons/add-goal/pepper.png" />
+           </div>
+           <div class="goal-icon-container">
+             <img class="goal-item-img" src="./icons/add-goal/pumpkin.png" />
+           </div>
+         </div>
+        </div>
+       <div class="save-container">
+         <div class="button-outer">
+           <button type="button" name="button" class="save-goal-button">Add</button>
+         </div>
+       </div>
+    </div>
+    <!-- **************************************************************** -->
+  <script src="https://use.fontawesome.com/8b2b398755.js"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </body>
+</html>

@@ -4,12 +4,14 @@
 @import 'general';
 
 .landing-page {
+  @extend .page;
   display: flex;
   flex-direction: column;
   align-content: space-between;
   width: 100vw;
   max-width: 600px;
   height: 100%;
+  visibility: visible;
 }
 
 .goal-grow-nav {
