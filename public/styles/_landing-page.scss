@@ -4,12 +4,14 @@
 @import 'general';
 
 .landing-page {
+  @extend .page;
   display: flex;
   flex-direction: column;
   align-content: space-between;
   width: 100vw;
   max-width: 600px;
   height: 100%;
+  visibility: visible;
 }
 
 .goal-grow-nav {
@@ -35,6 +37,7 @@
   position: relative;
   align-self: center;
   text-align: center;
+  outline: none;
   width: 100%;
   height: 50%;
 }
@@ -42,6 +45,7 @@
 .add-goal-button {
   @extend .main-button;
   border-radius: 86px;
+  outline: none;
   height: 100%;
   width: 70%;
   font-size: 14px;
@@ -83,7 +87,8 @@
   width: $width;
   height: $height;
   align-self: center;
-  z-index: -1;
+  z-index: 0;
+  cursor: pointer;
 }
 
 .goal-item-description {

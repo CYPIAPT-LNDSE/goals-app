@@ -2,7 +2,7 @@ $blueBorder: 1px solid #2364AA;
 @import "colors";
 
 .page {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-content: space-between;
   width: 100vw;
@@ -56,6 +56,7 @@ $blueBorder: 1px solid #2364AA;
   &:hover {
     background-color: $blue;
     color: $light;
+    outline: none;
   }
 
   &:active, &:hover, &:focus {
