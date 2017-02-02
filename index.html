@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/normalise.css" />
+    <link rel="stylesheet" href="./public/styles/style.css" />
+    <link rel="stylesheet" href="./public/styles/normalise.css" />
     <title></title>
   </head>
   <body>
@@ -27,7 +27,7 @@
                 <!-- div on top of background to have a green progress bar -->
               </div>
               <div class="goal-item-img-container">
-                <img class="goal-item-img" src="./icons/plant_icn.png" />
+                <img class="goal-item-img" src="./public/icons/landing/plant_icn.png" />
               </div>
               <div class="goal-item-description">
                 <p class="goal-item-title">Eat less pizza.</p>
@@ -43,7 +43,7 @@
                 <!-- div on top of background to have a green progress bar -->
               </div>
               <div class="goal-item-img-container">
-                <img class="goal-item-img" src="./icons/pumpkin_icn.png" />
+                <img class="goal-item-img" src="./public/icons/landing/pumpkin_icn.png" />
               </div>
               <div class="goal-item-description">
                 <p class="goal-item-title">Don't drink too much.</p>
@@ -59,7 +59,7 @@
                 <!-- div on top of background to have a green progress bar -->
               </div>
               <div class="goal-item-img-container">
-                <img class="goal-item-img" src="./icons/pepper_icn.png" />
+                <img class="goal-item-img" src="./public/icons/landing/pepper_icn.png" />
               </div>
               <div class="goal-item-description">
                 <p class="goal-item-title">Stop spending money.</p>
@@ -90,18 +90,18 @@
        <div class="icons">
          <div class="icons-row">
            <div class="goal-icon-container" id="icon1" onclick="selectNewIcon('icon1')">
-             <img class="goal-item-img" src="./icons/add-goal/flower.png" />
+             <img class="goal-item-img" src="./public/icons/add-goal/flower.png" />
            </div>
            <div class="goal-icon-container" id="icon2" onclick="selectNewIcon('icon2')">
-             <img class="goal-item-img" src="./icons/add-goal/sprout.png" />
+             <img class="goal-item-img" src="./public/icons/add-goal/sprout.png" />
            </div>
          </div>
          <div class="icons-row">
            <div class="goal-icon-container" id="icon3" onclick="selectNewIcon('icon3')">
-             <img class="goal-item-img" src="./icons/add-goal/pepper.png" />
+             <img class="goal-item-img" src="./public/icons/add-goal/pepper.png" />
            </div>
            <div class="goal-icon-container" id="icon4" onclick="selectNewIcon('icon4')">
-             <img class="goal-item-img" src="./icons/add-goal/pumpkin.png" />
+             <img class="goal-item-img" src="./public/icons/add-goal/pumpkin.png" />
            </div>
          </div>
         </div>
@@ -125,7 +125,7 @@
         <div class="goal-background">
           <div class="goal-item-box">
             <div class="goal-item-img-container">
-              <img class="goal-item-img" src="./icons/plant_icn.png" />
+              <img class="goal-item-img" src="./public/icons/landing/plant_icn.png" />
             </div>
             <div class="goal-item-description">
               <p class="goal-item-title">Eat less pizza.</p>
@@ -141,12 +141,12 @@
           <h1>How well did you do today?</h1>
         </div>
         <div class="animation-container">
-          <img src="./icons/rate-goal-animation/flower-head.svg" id="flower-head" class="hide-start">
-          <img src="./icons/rate-goal-animation/leaf1.svg" id="leaf1" class="hide-start">
-          <img src="./icons/rate-goal-animation/leaf2.svg" id="leaf2" class="hide-start">
-          <img src="./icons/rate-goal-animation/leaf3.svg" id="leaf3" class="hide-start">
-          <img src="./icons/rate-goal-animation/full_stem.svg" id="stem-full" class="hide-start">
-          <img src="./icons/rate-goal-animation/blue-earth.svg" id="blue-earth-icon" />
+          <img src="./public/icons/rate-goal-animation/flower-head.svg" id="flower-head" class="hide-start">
+          <img src="./public/icons/rate-goal-animation/leaf1.svg" id="leaf1" class="hide-start">
+          <img src="./public/icons/rate-goal-animation/leaf2.svg" id="leaf2" class="hide-start">
+          <img src="./public/icons/rate-goal-animation/leaf3.svg" id="leaf3" class="hide-start">
+          <img src="./public/icons/rate-goal-animation/full_stem.svg" id="stem-full" class="hide-start">
+          <img src="./public/icons/rate-goal-animation/blue-earth.svg" id="blue-earth-icon" />
         </div>
         <div class="slider-container">
           <input type="range" id="slider" min="0" max="10" value="0" step="1" list="slider-range" onInput="updateSliderValue(this.value)" onChange="updateSliderValue(this.value)">
@@ -175,7 +175,7 @@
         <div class="goal-background">
           <div class="goal-item-box">
             <div class="goal-item-img-container">
-              <img class="goal-item-img" src="./icons/plant_icn.png" />
+              <img class="goal-item-img" src="./public/icons/landing/plant_icn.png" />
             </div>
             <div class="goal-item-description">
               <p class="goal-item-title">Eat less pizza.</p>
@@ -224,8 +224,8 @@
     </div>
     <!-- **************************************************************** -->
     <script src="https://use.fontawesome.com/8b2b398755.js"></script>
-  <script type="text/javascript" src="./js/index.js"></script>
-  <script type="text/javascript" src="./js/rate-progress.js"></script>
+  <script type="text/javascript" src="./public/js/index.js"></script>
+  <script type="text/javascript" src="./public/js/rate-progress.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>

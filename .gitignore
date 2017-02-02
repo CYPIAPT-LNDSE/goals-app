@@ -4,3 +4,4 @@
 **.DS_Store
 public/styles/style.css
 public/styles/style.css.map
+.gitignore
