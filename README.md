@@ -35,3 +35,11 @@ If running for the first time:
 Every time:
 
 ```sass --watch public/styles/style.scss:public/styles/style.css```
+
+## Tech stack
+
+- Hapi server
+- Postgres database
+- User authentication (either with a username and password, or a passwordless option via email token)
+- Simple mail server
+- A dynamic frontend with animations, we would like to use React and Redux. If, for whatever reason, we were to ease off on the animations (depends on brower compatibility concerns), we could do it without the React.
