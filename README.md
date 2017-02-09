@@ -42,7 +42,7 @@ Every time:
 - Postgres database
 - User authentication (either with a username and password, or a passwordless option via email token)
 - Simple mail server
-- A dynamic frontend with animations; we would like to use React and Redux. If, for whatever reason, we were to ease off on the animations (depends on brower compatibility concerns), we could do it without the React.
+- A dynamic frontend with animations; we would like to use React and Redux. If, for whatever reason, we were to ease off on the animations and move towards more static content (for instance because of brower compatibility concerns), we could do it without the React.
 - Server-side testing with Tape
 - CI with Travis
 - Deploy to Heroku or AWS
