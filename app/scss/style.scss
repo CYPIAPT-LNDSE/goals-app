@@ -1,9 +1,21 @@
+@import 'colors';
+@import 'mainContainer';
+
+html {
+  font-size: 1em;
+  height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
-  background-color: pink;
+  font-family: sans-serif;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
 }
 
-nav {
+.nav {
   color: green;
+  background-color: #F7F9F9;
 }

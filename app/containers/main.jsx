@@ -1,9 +1,8 @@
 import React from 'react';
-//import './scss/style.scss';
 
 const main = props => {
   return (
-    <div>
+    <div className="main">
       <p>HELLO</p>
     </div>
   );

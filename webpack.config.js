@@ -27,6 +27,10 @@ var config = {
         exclude: /node_modules/,
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.otf$/,
+        loader: 'file?name=public/fonts/leagueSpartan-Bold.otf'
+      },
     ],
   },
 };
