@@ -1,0 +1,29 @@
+{
+  "name": "goals-app",
+  "version": "1.0.0",
+  "description": "You can view the app [here](https://cypiapt-lndse.github.io/goals-app/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CYPIAPT-LNDSE/goals-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CYPIAPT-LNDSE/goals-app/issues"
+  },
+  "homepage": "https://github.com/CYPIAPT-LNDSE/goals-app#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
