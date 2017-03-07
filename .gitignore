@@ -10,3 +10,4 @@ prototype/public/styles/stye.css.map
 prototype/public/styles/style.css
 .gitignore
 node_modules
+npm-debug.log
