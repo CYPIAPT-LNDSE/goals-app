@@ -1,5 +1,15 @@
 @import 'colors';
+
 $itemHeight: 28px;
+
+@mixin navContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  height: $itemHeight;
+  cursor: pointer;
+}
+
 
 .nav {
   position: relative;
@@ -8,19 +18,15 @@ $itemHeight: 28px;
 }
 
 .nav_logoContainer {
-  position: absolute;
-  top: 30px;
-  display: inline-block;
+  @include navContainer;
   left: 50%;
-  margin-left: -125px;
-  height: $itemHeight;
-  width: 200px;
+  margin-left: -50px;
+  width: 100px;
 
   h1 {
     font-size: $itemHeight;
     color: $blue;
     letter-spacing: 2.1px;
-    cursor: pointer;
     margin: 0;
     text-align: center;
   }
@@ -28,12 +34,8 @@ $itemHeight: 28px;
 }
 
 .nav_menuContainer {
-  position: absolute;
-  top: 30px;
-  display: inline-block;
-  height: $itemHeight;
+  @include navContainer;
   right: 15px;
-  cursor: pointer;
 
   img {
     height: $itemHeight;
