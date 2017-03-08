@@ -14,9 +14,9 @@ const tile = props => {
       </div>
       <div className="goalTile_nameContainer">
         <p>{ goal.name }</p>
-        <div className="goalTile_rating">
-          <p>7</p>
-        </div>
+      </div>
+      <div className="goalTile_rating">
+        <p>{ goal.currentRating }</p>
       </div>
     </div>
   );

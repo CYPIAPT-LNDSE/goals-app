@@ -28,23 +28,24 @@
   position: absolute;
   right: 10px;
   width: 75%;
-  height: 96px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  top: 30px;
+  top: 20px;
 }
 
 .goalTile_rating {
+  position: absolute;
+  right: 10px;
+  top: 50px;
   width: 31px;
   height: 31px;
   border-radius: 50%;
   border: $blueBorder;
-  margin-top: 11px;
   background-color: $light;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+
 
   p {
     align-self: center;
