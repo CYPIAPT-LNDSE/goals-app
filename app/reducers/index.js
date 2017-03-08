@@ -6,7 +6,7 @@ const defaultState = {
   goals: [
     {
       id: 0,
-      name: 'Eat more pizza and chips and burgers and döner kebabs',
+      name: 'Eat more pizza',
       created: 1488984810654,
       avatar: 'sprout',
       status: 0,

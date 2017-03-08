@@ -3,12 +3,11 @@
 
 .goalTile {
   position: relative;
-  border: $blueBorder;
   border-radius: 6px;
   display: flex;
   flex-direction: row;
   align-self: center;
-  width: 70%;
+  width: 90%;
   height: 98px;
   z-index: 0;
   cursor: pointer;
@@ -20,7 +19,7 @@
   margin: 5px;
 
   img {
-    height: 100%;
+    max-height: 84px;
   }
 }
 
