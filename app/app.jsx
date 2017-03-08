@@ -12,7 +12,7 @@ class App extends React.Component {
      const store = this.props.store;
 
       return (
-         <div>
+         <div className="page">
            <Nav />
            <Main
              store={ store.getState() }
