@@ -1,11 +1,19 @@
 import React from 'react';
 
+import GoalTile from '../goal-tile.jsx';
+
 const goalsList = props => {
 
   const goals = props.store.goals;
 
   const goalsListItems = goals.map(goal => {
-    return <li key={ goal.id }>{ goal.name }</li>
+    return <li
+      key={ goal.id }
+    >
+      <GoalTile
+        goal={ goal }
+      />
+    </li>
   });
 
   const style = {
