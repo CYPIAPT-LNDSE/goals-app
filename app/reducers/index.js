@@ -12,6 +12,14 @@ const defaultState = {
       status: 0,
       ratings: [],
     },
+    {
+      id: 1,
+      name: 'Drink more champagne',
+      created: 1488984810658,
+      avatar: 'sprout',
+      status: 0,
+      ratings: [],
+    },
   ],
 };
 
