@@ -16,7 +16,8 @@ const Nav = props => {
         <img
           src={ pathLogo }
           alt="Grow"
-          title="Grow logo"/>
+          title="Grow logo"
+        />
       </div>
       <div className="nav_menuContainer">
         <img className="menu" src={ pathMenu } />
