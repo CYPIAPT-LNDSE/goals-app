@@ -13,7 +13,9 @@ class App extends React.Component {
 
       return (
          <div className="page">
-           <Nav />
+           <Nav
+             store={ store.getState() }
+           />
            <Main
              store={ store.getState() }
            />

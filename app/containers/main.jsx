@@ -7,7 +7,9 @@ const main = props => {
   return (
     <div className="main">
       {/* show different views here depending on flow */}
-      <GoalsList />
+      <GoalsList
+        store={ props.store }
+      />
     </div>
   );
 }
