@@ -2,6 +2,11 @@ $blueBorder: 1px solid #2364AA;
 
 @import "colors";
 
+@font-face {
+  font-family: leagueSpartan;
+  src: url('../public/fonts/LeagueSpartan-Bold.otf');
+}
+
 @mixin ctaButton {
   height: 115px;
   display: flex;
@@ -22,6 +27,7 @@ $blueBorder: 1px solid #2364AA;
     border: $blueBorder;
     border-radius: 86px;
     background-color: transparent;
+    font-family: leagueSpartan;
     font-size: 14px;
     letter-spacing: 2.1px;
     font-weight: bolder;

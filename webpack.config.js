@@ -21,15 +21,16 @@ var config = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react']
-        }
-      }, {
+        },
+      },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.otf$/,
-        loader: 'file?name=public/fonts/leagueSpartan-Bold.otf'
+        test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
+        loader: 'file-loader?name=app/public/fonts/[name].[ext]'
       },
     ],
   },
