@@ -2,9 +2,10 @@ import React from 'react';
 
 const Nav = props => {
 
-  const path = "./app/public/icons/";
-  const pathBack = path + "back.svg";
-  const pathMenu = path + "menu.svg";
+  const path = "./app/public/images/";
+  const pathBack = path + "icons/back.svg";
+  const pathLogo = path + "logo_header.png";
+  const pathMenu = path + "icons/menu.svg";
 
   return (
     <nav className="nav">
@@ -12,9 +13,10 @@ const Nav = props => {
         <img className="back" src={ pathBack } />
       </div>
       <div className="nav_logoContainer">
-        <h1>
-          Grow
-        </h1>
+        <img
+          src={ pathLogo }
+          alt="Grow"
+          title="Grow logo"/>
       </div>
       <div className="nav_menuContainer">
         <img className="menu" src={ pathMenu } />
