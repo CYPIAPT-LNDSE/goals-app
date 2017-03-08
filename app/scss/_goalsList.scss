@@ -4,3 +4,26 @@
 .goalsList_buttonContainer {
   @include ctaButton;
 }
+
+.goalsList_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
+  ul {
+    padding: 0;
+    width: 100%;
+  }
+
+  li {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+  }
+}

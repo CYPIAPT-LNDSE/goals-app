@@ -1,0 +1,52 @@
+@import 'general';
+@import 'colors';
+
+.goalTile {
+  position: relative;
+  border: $blueBorder;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  width: 70%;
+  height: 98px;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.goalTile_avatarContainer {
+  height: 83px;
+  width: 68px;
+  margin: 5px;
+
+  img {
+    height: 100%;
+  }
+}
+
+.goalTile_nameContainer {
+  position: absolute;
+  right: 10px;
+  width: 75%;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  top: 30px;
+}
+
+.goalTile_rating {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: $blueBorder;
+  margin-top: 11px;
+  background-color: $light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    align-self: center;
+  }
+}
