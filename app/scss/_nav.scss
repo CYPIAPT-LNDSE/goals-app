@@ -1,18 +1,42 @@
 @import 'colors';
+$itemHeight: 28px;
 
 .nav {
+  position: relative;
   background-color: $light;
   height: 90px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+}
+
+.nav_logoContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  left: 50%;
+  margin-left: -125px;
+  height: $itemHeight;
+  width: 200px;
 
   h1 {
-    font-size: 28px;
+    font-size: $itemHeight;
     color: $blue;
     letter-spacing: 2.1px;
     cursor: pointer;
     margin: 0;
+    text-align: center;
+  }
+
+}
+
+.nav_menuContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  height: $itemHeight;
+  right: 15px;
+  cursor: pointer;
+
+  img {
+    height: $itemHeight;
+    width: $itemHeight;
   }
 }
