@@ -8,13 +8,24 @@ $itemHeight: 28px;
   display: inline-block;
   height: $itemHeight;
   cursor: pointer;
-}
 
+  img {
+    height: $itemHeight;
+  }
+}
 
 .nav {
   position: relative;
   background-color: $light;
   height: 90px;
+}
+
+.nav_backContainer {
+  @include navContainer;
+  left: 14px;
+   img {
+     height: 36px;
+   }
 }
 
 .nav_logoContainer {
@@ -36,9 +47,4 @@ $itemHeight: 28px;
 .nav_menuContainer {
   @include navContainer;
   right: 15px;
-
-  img {
-    height: $itemHeight;
-    width: $itemHeight;
-  }
 }
