@@ -1,7 +1,7 @@
 const env = require('env2');
 const fs = require('fs');
 
-env('../config.env');
+env('./config.env');
 
 const dbConnection = require('./db_connection');
 
