@@ -6,3 +6,4 @@ public/styles/sass/style.css*
 public/styles/style.css*
 node_modules
 *.pem
+config.env
