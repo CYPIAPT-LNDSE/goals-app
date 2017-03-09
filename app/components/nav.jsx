@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Nav = props => {
+const Nav = () => {
 
   const path = "./app/public/images/";
   const pathBack = path + "icons/back.svg";

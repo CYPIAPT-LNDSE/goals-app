@@ -1,8 +1,6 @@
 import React from 'react';
 
-const goalsList = () => {
-
-  const goals = [];
+const goalsList = ({goals}) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id }>{ goal.name }</li>

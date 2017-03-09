@@ -6,13 +6,15 @@ import GoalsList from './../components/goals-list/goals-list.jsx';
 
 // use caps for component names (even if pure)
 // Pls find a better name than main
-let Main = goals => { // props passed from map state to props come in here
+let Main = props => { // props passed from map state to props come in here
+  console.log(props);
+  console.log(props.dispatch);
   return (
     <div
       className="main"
     >
       {/* show different views here depending on flow */}
-      <GoalsList goals = { goals } {/*Need to data on to components*/}/>
+      <GoalsList goals = { props.goals } />{/*Need to data on to components*/}
     </div>
   );
 }
@@ -22,8 +24,7 @@ let Main = goals => { // props passed from map state to props come in here
 // This get the part of the state relevent to the container.
 // It may also transform the state into a form that is more manageable for the
 //   view to consume
-const mapStateToProps = state => state.goals;
+// I get this is kinda redundent atm but should do it like this
+const mapStateToProps = state => ({ goals: state.goals });
 
-main = connect(mapStateToProps)(main);
-
-export default main;
+export default connect(mapStateToProps)(Main);

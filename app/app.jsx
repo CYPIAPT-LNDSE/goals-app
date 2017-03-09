@@ -5,7 +5,7 @@ import 'normalize.css';
 
 /* import components */
 import Main from './containers/main.jsx';
-import Nav from './containers/nav.jsx';
+import Nav from './components/nav.jsx';
 
 let App = () => {
 
