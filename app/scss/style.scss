@@ -1,5 +1,19 @@
+@import 'colors';
+@import 'main-container';
+@import 'nav';
+@import 'goals-list';
+@import 'general';
+
+html {
+  font-size: 1em;
+  height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
-  background-color: pink;
+  font-family: leagueSpartan;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
 }

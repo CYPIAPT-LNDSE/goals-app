@@ -1,0 +1,54 @@
+@import "colors";
+
+$blueBorder: 1px solid #2364AA;
+
+@font-face {
+  font-family: leagueSpartan;
+  src: url('../public/fonts/LeagueSpartan-Bold.otf');
+}
+
+@mixin ctaButton {
+  height: 115px;
+  display: flex;
+  justify-content: center;
+
+  .button-outer {
+    position: relative;
+    align-self: center;
+    text-align: center;
+    outline: none;
+    width: 100%;
+    height: 50%;
+  }
+
+  button {
+    width: 70%;
+    height: 100%;
+    border: $blueBorder;
+    border-radius: 86px;
+    background-color: transparent;
+    font-family: leagueSpartan;
+    font-size: 14px;
+    letter-spacing: 2.1px;
+    font-weight: bolder;
+    color: $blue;
+    cursor: pointer;
+
+    &:active, &:hover, &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: $blue;
+      color: $light;
+    }
+  }
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
