@@ -1,0 +1,17 @@
+@import 'colors';
+@import 'general';
+
+.newGoal_avatarsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+.newGoal_avatarsContainer-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
