@@ -31,25 +31,10 @@ const defaultState = {
       currentRating: 10,
       ratings: [],
     },
-    // {
-    //   id: 3,
-    //   name: 'Be cool',
-    //   created: 1488984810658,
-    //   avatar: 'pepper',
-    //   status: 0,
-    //   currentRating: 10,
-    //   ratings: [],
-    // },
-    // {
-    //   id: 4,
-    //   name: 'Be cool',
-    //   created: 1488984810658,
-    //   avatar: 'pepper',
-    //   status: 0,
-    //   currentRating: 10,
-    //   ratings: [],
-    // },
   ],
+  step: {
+    currentStep: 'GOALS_LIST',
+  },
 };
 
 export default (state = defaultState, action) => {
