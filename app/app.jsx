@@ -1,5 +1,6 @@
 import React from 'react';
 import './scss/style.scss';
+import 'normalize.css';
 
 /* import components */
 import Main from './containers/main.jsx';
