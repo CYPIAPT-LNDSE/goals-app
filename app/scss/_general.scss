@@ -1,6 +1,7 @@
 @import "colors";
 
-$blueBorder: 2px solid #2364AA;
+$blueBorder: 2px solid $blue;
+$blueBorderThin: 1px solid $blue;
 
 @font-face {
   font-family: leagueSpartan;
