@@ -31,15 +31,6 @@ const defaultState = {
       currentRating: 10,
       ratings: [],
     },
-    {
-      id: 3,
-      name: 'Eat all the biscuists',
-      created: 1488984810658,
-      avatar: 'sprout',
-      status: 0,
-      currentRating: 10,
-      ratings: [],
-    },
   ],
 };
 
