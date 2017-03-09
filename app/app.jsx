@@ -7,7 +7,7 @@ import 'normalize.css';
 import MainContainer from './containers/main-container.jsx';
 import Nav from './components/nav.jsx';
 
-let App = () => {
+const App = () => {
 
   return (
     <div className="page">
@@ -16,7 +16,5 @@ let App = () => {
     </div>
   );
 };
-
-App = connect()(App)
 
 export default App;
