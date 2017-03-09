@@ -29,8 +29,12 @@ var config = {
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
-        loader: 'file-loader?name=app/public/fonts/[name].[ext]'
+        loader: 'file-loader?name=app/public/fonts/[name].[ext]',
       },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader',
+     },
     ],
   },
 };
