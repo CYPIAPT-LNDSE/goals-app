@@ -22,3 +22,8 @@ prototype/public/styles/sass/style.css.map
 prototype/public/styles/stye.css.map
 prototype/public/styles/style.css
 .gitignore
+
+public/styles/sass/style.css*
+public/styles/style.css*
+node_modules
+*.pem

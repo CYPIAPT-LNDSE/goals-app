@@ -1,10 +1,11 @@
 @import 'colors';
 @import 'general';
+
+@import 'main-container';
 @import 'nav';
-@import 'mainContainer';
 @import 'goalsList';
 @import 'goalTile';
-
+@import 'goals-list';
 
 html {
   font-size: 1em;
