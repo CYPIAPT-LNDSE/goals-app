@@ -23,9 +23,9 @@ $itemHeight: 28px;
 .nav_backContainer {
   @include navContainer;
   left: 14px;
-   img {
-     height: 36px;
-   }
+  img {
+    height: 36px;
+  }
 }
 
 .nav_logoContainer {

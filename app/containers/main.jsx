@@ -10,7 +10,7 @@ let main = () => {
       className="main"
     >
       {/* show different views here depending on flow */}
-      <GoalsList />      />
+      <GoalsList />
     </div>
   );
 }
