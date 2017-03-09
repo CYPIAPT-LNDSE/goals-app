@@ -14,12 +14,15 @@ const goalsList = ({goals}) => {
     </li>
   });
 
-  const style = {
+  const dynamicStyle = {
     height: Math.max(window.innerHeight - 90, goals.length * 108 + 115),
   };
 
   return (
-    <div className="page goalsList">
+    <div
+      className="page goalsList"
+      style={ dynamicStyle }
+    >
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
           <button type="button" name="button" className="goalsList_button">ADD A GOAL &nbsp;+</button>

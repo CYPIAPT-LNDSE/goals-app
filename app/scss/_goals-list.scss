@@ -5,14 +5,18 @@
   @include ctaButton;
 }
 
+.goalsList {
+  background: url(./../public/images/goals-list/background.png);
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
 .goalsList_list {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  background: url(./../public/images/goals-list/background.png);
-  background-position: bottom center;
-  background-repeat: no-repeat;
+  height: 100%;
 
   ul {
     padding: 0;
