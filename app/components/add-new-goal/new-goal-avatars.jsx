@@ -2,7 +2,7 @@ import React from 'react';
 
 const Avatars = () => {
 
-  const pathToAvatars = `./app/public/images/avatars/`;
+  const pathToAvatars = `./app/public/images/add-new-goal/`;
 
   // could refactor to get avatars from state in case we want to load from DB?
   const availableAvatars = [

@@ -1,12 +1,17 @@
 @import 'colors';
 @import 'general';
 
+.addNewGoal {
+  display: flex;
+  flex-direction: column;
+}
+
 .newGoal_inputContainer-outer {
   padding: 10px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .newGoal_label {
@@ -26,7 +31,7 @@
 }
 
 .newGoal_input {
-  padding: 5px;
+  padding: 10px;
   height: 100%;
   width: 100%;
   background: transparent;

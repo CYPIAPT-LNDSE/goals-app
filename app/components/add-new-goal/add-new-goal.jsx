@@ -1,6 +1,9 @@
 import React from 'react';
 
+import Avatars from './new-goal-avatars.jsx';
+
 const addGoal = () => {
+
   return (
     <div className="addNewGoal">
       <div className="newGoal_inputContainer-outer">
@@ -20,6 +23,8 @@ const addGoal = () => {
           />
         </div>
       </div>
+      <Avatars />
+
     </div>
   )
 }

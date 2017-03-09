@@ -33,7 +33,7 @@ const defaultState = {
     },
   ],
   step: {
-    currentStep: 'GOALS_LIST',
+    currentStep: 'ADD_GOAL',
   },
 };
 
