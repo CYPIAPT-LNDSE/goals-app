@@ -1,17 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 /* components */
 import GoalsList from './../components/goals-list/goals-list.jsx';
 
-const main = props => {
+let main = () => {
   return (
-    <div className="main">
+    <div
+      className="main"
+    >
       {/* show different views here depending on flow */}
-      <GoalsList
-        store={ props.store }
-      />
+      <GoalsList />      />
     </div>
   );
 }
+
+main = connect()(main);
 
 export default main;
