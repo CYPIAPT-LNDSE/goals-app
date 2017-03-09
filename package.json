@@ -4,7 +4,6 @@
   "description": "You can view the app [here](https://cypiapt-lndse.github.io/goals-app/).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "devstart": "./node_modules/.bin/webpack-dev-server --hot"
   },
   "repository": {
@@ -21,9 +20,17 @@
     "babel": "^6.23.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
+    "normalize.css": "^5.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "node-sass": "^4.5.0"
   }
 }
