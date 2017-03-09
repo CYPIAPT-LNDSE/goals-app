@@ -2,10 +2,15 @@
 @import 'general';
 
 .newGoal_inputContainer-outer {
-
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .newGoal_label {
+  font-size: 14px;
   color: $blue;
 }
 
@@ -14,16 +19,21 @@
   width: 95%;
   align-self: center;
   position: relative;
-  border: $blueBorder;
-  border-radius: 6%;
+  margin-top: 10px;
+  border: $blueBorderThin;
+  border-radius: 3px;
   background-color: $light;
 }
 
 .newGoal_input {
+  padding: 5px;
   height: 100%;
   width: 100%;
   background: transparent;
   outline: none;
   border: none;
-  font-size: 1em;
+  font-size: 14px;
+  font-family: leagueSpartan;
+  color: $grey;
+  resize: none;
 }
