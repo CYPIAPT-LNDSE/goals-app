@@ -1,0 +1,29 @@
+@import 'colors';
+@import 'general';
+
+.newGoal_inputContainer-outer {
+
+}
+
+.newGoal_label {
+  color: $blue;
+}
+
+.newGoal_inputContainer-inner {
+  height: 65px;
+  width: 95%;
+  align-self: center;
+  position: relative;
+  border: $blueBorder;
+  border-radius: 6%;
+  background-color: $light;
+}
+
+.newGoal_input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 1em;
+}
