@@ -11,7 +11,11 @@ var tls = {
     cert : fs.readFileSync('./cert.pem')
 };
 
-server.connection({address: '0.0.0.0', port: process.env.PORT || 4000});
+server.connection({
+  address: process.env.IP || '0.0.0.0',
+  port: process.env.PORT || 4000,
+  tls:tls
+});
 
 server.register([Inert, Vision], (err) => {
   if(err) throw err;
