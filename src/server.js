@@ -6,10 +6,6 @@ const fs = require('fs');
 
 const server = new Hapi.Server();
 
-// server.connection({
-//   port: process.env.PORT || 4000
-// });
-
 var tls = {
     key : fs.readFileSync('./key.pem'),
     cert : fs.readFileSync('./cert.pem')
