@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 /* components */
 import GoalsList from './../components/goals-list/goals-list.jsx';
 
-let MainContent = props => {
+const MainContent = props => {
   return (
     <div
       className="MainContent"
