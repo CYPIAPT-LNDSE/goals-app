@@ -20,6 +20,7 @@ const goalsList = props => {
     background: 'url(app/public/images/goals-list/background.png)',
     backgroundPosition: 'bottom center',
     backgroundRepeat: 'no-repeat',
+    height: Math.max(window.innerHeight - 90, goals.length * 108 + 115),
   };
 
   return (

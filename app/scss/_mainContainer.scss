@@ -1,12 +1,9 @@
 @import 'colors';
 
 .main {
-  display: flex;
-  flex-direction: column;
   align-content: space-between;
   width: 100vw;
   max-width: 600px;
-  height: 100%;
 
   p {
     color: $blue;
