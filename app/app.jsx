@@ -4,7 +4,7 @@ import './scss/style.scss';
 import 'normalize.css';
 
 /* import components */
-import Main from './containers/main.jsx';
+import MainContainer from './containers/main-container.jsx';
 import Nav from './components/nav.jsx';
 
 let App = () => {
@@ -12,7 +12,7 @@ let App = () => {
   return (
     <div className="page">
       <Nav />
-      <Main />
+      <MainContainer />
     </div>
   );
 };
