@@ -6,9 +6,7 @@ import GoalsList from './../components/goals-list/goals-list.jsx';
 
 const MainContent = props => {
   return (
-    <div
-      className="MainContent"
-    >
+    <div className="MainContent">
       {/* show different views here depending on flow */}
       <GoalsList goals = { props.goals } />
     </div>
