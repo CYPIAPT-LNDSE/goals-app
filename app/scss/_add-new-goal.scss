@@ -19,11 +19,13 @@ $contentWidth: 95%;
 .newGoal_label {
   @include regularFont;
   width: $contentWidth;
+  align-self: center;
 }
 
 .newGoal_inputContainer-inner {
   height: 65px;
   width: $contentWidth;
+  max-width: 400px;
   align-self: center;
   position: relative;
   margin-top: 10px;
