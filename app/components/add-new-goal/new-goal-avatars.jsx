@@ -22,7 +22,19 @@ const Avatars = () => {
         <img src={`${pathToAvatars}${av}.png`} />
       </div>
     )
-  })
+  });
+
+  const bottomRow = availableAvatars.slice(2).map(av => {
+    return (
+      <div
+        className="newGoal_avatarBox"
+        key={`avatar_${av}`}
+        id={`avatar_${av}`}
+      >
+        <img src={`${pathToAvatars}${av}.png`} />
+      </div>
+    )
+  });
 
 
 
@@ -30,6 +42,9 @@ const Avatars = () => {
     <div className="newGoal_avatarsContainer">
       <div className="newGoal_avatarsContainer-row">
         { topRow }
+      </div>
+      <div className="newGoal_avatarsContainer-row">
+        { bottomRow }
       </div>
     </div>
   )

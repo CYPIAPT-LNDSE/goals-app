@@ -13,12 +13,13 @@
 .newGoal_avatarsContainer-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .newGoal_avatarBox {
   height: 140px;
   width: 143px;
+  margin: 2px;
 
   img {
     height: 100%;
