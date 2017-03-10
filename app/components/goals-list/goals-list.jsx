@@ -15,13 +15,12 @@ const goalsList = ({goals}) => {
   };
 
   return (
-    <div
-      className="page goalsList"
-      style={ dynamicStyle }
-    >
+    <div className="page goalsList" style={ dynamicStyle }>
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
-          <button type="button" name="button" className="goalsList_button">ADD A GOAL &nbsp;+</button>
+          <button type="button" name="button" className="goalsList_button">
+            ADD A GOAL &nbsp;+
+          </button>
         </div>
       </div>
       <div className="goalsList_list">
@@ -30,7 +29,7 @@ const goalsList = ({goals}) => {
         </ul>
       </div>
     </div>
-  )
+  );
 };
 
 export default goalsList;

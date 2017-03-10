@@ -20,6 +20,7 @@ const MainContent = props => {
   return (
     <div className="MainContent">
       { component }
+      {/* show different views here depending on flow */}
     </div>
   );
 }
