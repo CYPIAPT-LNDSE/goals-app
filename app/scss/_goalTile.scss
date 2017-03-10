@@ -1,6 +1,8 @@
 @import 'general';
 @import 'colors';
 
+$imgHeight: 83px;
+
 .goalTile {
   position: relative;
   border-radius: 6px;
@@ -10,17 +12,18 @@
   width: 90%;
   max-width: 400px;
   height: 98px;
-  z-index: 0;
   cursor: pointer;
+  background: url(./../public/images/list_box.png);
+  background-size: 100% 100%;
 }
 
 .goalTile_avatarContainer {
-  height: 83px;
+  height: $imgHeight;
   width: 68px;
   margin: 5px;
 
   img {
-    max-height: 84px;
+    height: $imgHeight;
   }
 }
 
@@ -46,7 +49,6 @@
   background-color: $light;
   display: flex;
   justify-content: center;
-
 
   p {
     align-self: center;

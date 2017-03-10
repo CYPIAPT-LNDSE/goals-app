@@ -6,8 +6,8 @@ const tile = props => {
   const pathAvatar = `./app/public/images/avatars/${goal.avatar}.png`;
 
   const style = {
-    background: 'url(./app/public/images/list_box.png)',
-    backgroundSize: '100% 100%',
+    // background: 'url(./app/public/images/list_box.png)',
+    // backgroundSize: '100% 100%',
   }
 
   return (
