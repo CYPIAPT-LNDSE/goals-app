@@ -12,8 +12,8 @@ const Avatars = () => {
     'flower',
   ];
 
-  const topRow = availableAvatars.slice(0, 2).map(av => {
-    return (
+  const createAvatarRow = arr => {
+    return arr.map(av => (
       <div
         className="newGoal_avatarBox"
         key={`avatar_${av}`}
@@ -22,21 +22,10 @@ const Avatars = () => {
         <img src={`${pathToAvatars}${av}.png`} />
       </div>
     )
-  });
+  };
 
-  const bottomRow = availableAvatars.slice(2).map(av => {
-    return (
-      <div
-        className="newGoal_avatarBox"
-        key={`avatar_${av}`}
-        id={`avatar_${av}`}
-      >
-        <img src={`${pathToAvatars}${av}.png`} />
-      </div>
-    )
-  });
-
-
+  const topRow = createAvatarRow(availableAvatars.slice(0, 2));
+  const bottomRow = createAvatarRow(availableAvatars.slice(2));
 
   return (
     <div className="newGoal_avatarsContainer">
