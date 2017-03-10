@@ -12,7 +12,7 @@ import { createStore } from 'redux';
 const store = createStore(Store);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <App />
   </Provider>,
   document.getElementById('app')

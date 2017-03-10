@@ -18,7 +18,12 @@ const goalsList = ({goals}) => {
     <div className="page goalsList" style={ dynamicStyle }>
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
-          <button type="button" name="button" className="goalsList_button">
+          <button
+            type="button"
+            name="button"
+            className="goalsList_button"
+            onClick={ fn }
+          >
             ADD A GOAL &nbsp;+
           </button>
         </div>

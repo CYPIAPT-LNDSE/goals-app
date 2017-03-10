@@ -24,7 +24,6 @@ const Avatars = () => {
   )
 );
 
-
   const topRow = createAvatarRow(availableAvatars.slice(0, 2));
   const bottomRow = createAvatarRow(availableAvatars.slice(2));
 

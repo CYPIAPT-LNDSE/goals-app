@@ -18,7 +18,11 @@ const MainContent = props => {
   }
 
   return (
-    <div className="MainContent">
+    <div
+      className="MainContent"
+      {/* pass down actions */}
+
+    >
       { component }
       {/* show different views here depending on flow */}
     </div>
@@ -30,4 +34,8 @@ const mapStateToProps = state => ({
   step: state.step,
 });
 
-export default connect(mapStateToProps)(MainContent);
+const mapDispatchToProps = dispatch => ({
+  fn: // import action from actions file
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

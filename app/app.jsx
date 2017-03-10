@@ -12,7 +12,9 @@ const App = () => {
   return (
     <div className="page">
       <Nav />
-      <MainContainer />
+      <MainContainer
+        stepAddGoal={ store.dispatch({ type: 'STEP', step: 'ADD_GOAL', }) }
+      />
     </div>
   );
 };
