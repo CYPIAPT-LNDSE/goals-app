@@ -5,12 +5,8 @@ import GoalTile from '../goal-tile.jsx';
 const goalsList = ({goals}) => {
 
   const goalsListItems = goals.map(goal => {
-    return <li
-      key={ goal.id }
-    >
-      <GoalTile
-        goal={ goal }
-      />
+    return <li key={ goal.id } >
+      <GoalTile goal={ goal } />
     </li>
   });
 

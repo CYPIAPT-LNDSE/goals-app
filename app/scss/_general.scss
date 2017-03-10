@@ -8,6 +8,11 @@ $blueBorderThin: 1px solid $blue;
   src: url('../public/fonts/LeagueSpartan-Bold.otf');
 }
 
+@font-face {
+  font-family: openSans;
+  src: url('../public/fonts/OpenSans-Regular.ttf');
+}
+
 @mixin regularFont {
   font-size: 14px;
   font-family: leagueSpartan;
@@ -50,6 +55,11 @@ $blueBorderThin: 1px solid $blue;
       color: $light;
     }
   }
+}
+
+input, textarea {
+  font-family: openSans;
+  letter-spacing: 2px;
 }
 
 .page {
