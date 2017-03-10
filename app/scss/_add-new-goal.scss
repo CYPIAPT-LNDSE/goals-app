@@ -1,6 +1,8 @@
 @import 'colors';
 @import 'general';
 
+$contentWidth: 95%;
+
 .addNewGoal {
   display: flex;
   flex-direction: column;
@@ -15,13 +17,13 @@
 }
 
 .newGoal_label {
-  font-size: 14px;
-  color: $blue;
+  @include regularFont;
+  width: $contentWidth;
 }
 
 .newGoal_inputContainer-inner {
   height: 65px;
-  width: 95%;
+  width: $contentWidth;
   align-self: center;
   position: relative;
   margin-top: 10px;
@@ -38,7 +40,18 @@
   outline: none;
   border: none;
   font-size: 14px;
-  font-family: leagueSpartan;
   color: $grey;
   resize: none;
+}
+
+.newGoal_avatarsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: $contentWidth;
+}
+
+.newGoal_buttonContainer {
+  @include ctaButton;
 }

@@ -1,14 +1,7 @@
 @import 'colors';
 @import 'general';
 
-.newGoal_avatarsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  width: 90%;
-  max-width: 500px;
-}
+
 
 .newGoal_avatarsContainer-row {
   display: flex;
@@ -17,9 +10,9 @@
 }
 
 .newGoal_avatarBox {
-  height: 140px;
-  width: 143px;
-  margin: 2px;
+  height: 143px;
+  width: 145px;
+  margin: 3px;
 
   img {
     height: 100%;

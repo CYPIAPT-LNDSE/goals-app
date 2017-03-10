@@ -24,6 +24,11 @@ const addGoal = () => {
         </div>
       </div>
       <Avatars />
+      <div className="newGoal_buttonContainer">
+        <div className="button-outer">
+          <button type="button" name="button" className="newGoal_button">ADD</button>
+        </div>
+      </div>
 
     </div>
   )
