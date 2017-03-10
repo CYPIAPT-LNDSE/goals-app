@@ -6,7 +6,7 @@ const tile = props => {
   const pathAvatar = `./app/public/images/avatars/${goal.avatar}.png`;
 
   return (
-    <div className="goalTile" style={ style }> {/* outer div for goal tile */}
+    <div className="goalTile" >{/* outer div for goal tile */}
       <div className="goalTile_progress"> {/* green background showing progress */}
       </div>
       <div className="goalTile_avatarContainer">
