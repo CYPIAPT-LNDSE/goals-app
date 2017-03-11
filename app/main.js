@@ -9,7 +9,7 @@ import App from './app.jsx';
 import Store from './reducers/index.js';
 import { createStore } from 'redux';
 
-const store = createStore(Store);
+const store = createStore(Store, window.devToolsExtension && window.devToolsExtension());
 
 ReactDOM.render(
   <Provider store={ store }>
