@@ -1,3 +1,6 @@
-// define actions here
+import { createAction } from 'redux-actions';
 
-// define action creators here and export
+// define actions here
+const stepAddGoal = createAction('STEP_ADD_GOAL');
+
+export default stepAddGoal;
