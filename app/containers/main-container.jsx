@@ -23,9 +23,14 @@ const MainContent = props => {
         stepAddGoal={ props.stepAddGoal }
       />
   }
+  const navbarHeight = 90;
+
+  const dynamicStyle = {
+    height: window.innerHeight - 90,
+  }
 
   return (
-    <div className="MainContent">
+    <div className="MainContent" style={ dynamicStyle }>
       { component }
     </div>
   );
