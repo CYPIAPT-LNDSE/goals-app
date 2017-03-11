@@ -1,0 +1,41 @@
+@import 'colors';
+
+$itemHeight: 28px;
+
+@mixin navContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  height: $itemHeight;
+  cursor: pointer;
+
+  img {
+    height: $itemHeight;
+  }
+}
+
+.nav {
+  position: relative;
+  background-color: $light;
+  height: 90px;
+}
+
+.nav_backContainer {
+  @include navContainer;
+  left: 14px;
+  img {
+    height: 36px;
+  }
+}
+
+.nav_logoContainer {
+  @include navContainer;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+}
+
+.nav_menuContainer {
+  @include navContainer;
+  right: 15px;
+}
