@@ -1,8 +1,11 @@
 {
-  "name": "goals-app",
+  "name": "grow",
   "version": "1.0.0",
-  "description": "You can view the app [here](https://cypiapt-lndse.github.io/goals-app/).",
+  "description": "An app to set goals and rate progress for them",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
     "devstart": "./node_modules/.bin/webpack-dev-server --hot"
   },
@@ -27,7 +30,13 @@
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "handlebars": "^4.0.6",
+    "hapi": "^16.1.0",
+    "inert": "^4.1.0",
+    "path": "^0.12.7",
+    "tape": "^4.6.3",
+    "vision": "^4.1.1"
   },
   "devDependencies": {
     "babel-loader": "^6.4.0",
