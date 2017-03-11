@@ -6,10 +6,12 @@ $contentWidth: 95%;
 .addNewGoal {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }
 
 .newGoal_inputContainer-outer {
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +25,7 @@ $contentWidth: 95%;
 }
 
 .newGoal_inputContainer-inner {
-  height: 65px;
+  height: 60px;
   width: $contentWidth;
   max-width: 400px;
   align-self: center;
@@ -56,4 +58,9 @@ $contentWidth: 95%;
 
 .newGoal_buttonContainer {
   @include ctaButton;
+  height: 56px;
+
+  .button-outer {
+    height: 50px;
+  }
 }

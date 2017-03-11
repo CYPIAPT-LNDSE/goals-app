@@ -56,15 +56,3 @@ $blueBorderThin: 1px solid $blue;
     }
   }
 }
-
-input, textarea {
-  font-family: openSans;
-  letter-spacing: 2px;
-}
-
-.page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-}
