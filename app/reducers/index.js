@@ -1,5 +1,5 @@
-/* reducers */
-// import reducers here
+// import actions here
+import stepAddGoal from './../actions/goals-list.js';
 
 const defaultState = {
   // app state here
@@ -39,8 +39,13 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch(action.type) {
-    // cases here
+    case 'STEP_ADD_GOAL':
+      return Object.assign({}, state, {
+        step: {
+          currentStep: 'ADD_GOAL',
+        }
+      });
     default:
-    return state;
+      return state;
   }
 };
