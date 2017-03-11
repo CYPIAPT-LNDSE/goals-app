@@ -2,7 +2,7 @@ import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
 
-const goalsList = ({goals}) => {
+const goalsList = ({goals, stepAddGoal,}) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id } >
@@ -22,7 +22,7 @@ const goalsList = ({goals}) => {
             type="button"
             name="button"
             className="goalsList_button"
-            onClick={ fn }
+            onClick={ stepAddGoal }
           >
             ADD A GOAL &nbsp;+
           </button>

@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import GoalsList from './../components/goals-list/goals-list.jsx';
 import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
+/* ations */
+import action_stepAddGoal from './../actions/goals-list.js';
+
+
 const MainContent = props => {
 
   let component;
@@ -14,14 +18,15 @@ const MainContent = props => {
       component = <AddGoal />
       break;
     default:
-      component = <GoalsList goals={ props.goals } />
+      component = <GoalsList
+        goals={ props.goals }
+        stepAddGoal={ props.stepAddGoal }
+      />
   }
 
   return (
     <div
       className="MainContent"
-      {/* pass down actions */}
-
     >
       { component }
       {/* show different views here depending on flow */}
@@ -35,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fn: // import action from actions file
-})
+  stepAddGoal: () => { dispatch(action_stepAddGoal()) },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);
