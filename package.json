@@ -7,20 +7,31 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devstart": "./node_modules/.bin/webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/foundersandcoders/goals-app.git"
+    "url": "git+https://github.com/CYPIAPT-LNDSE/goals-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/foundersandcoders/goals-app/issues"
+    "url": "https://github.com/CYPIAPT-LNDSE/goals-app/issues"
   },
-  "homepage": "https://github.com/foundersandcoders/goals-app#readme",
+  "homepage": "https://github.com/CYPIAPT-LNDSE/goals-app#readme",
   "dependencies": {
     "env2": "^2.1.1",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "file-loader": "^0.10.1",
+    "normalize.css": "^5.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1",
     "handlebars": "^4.0.6",
     "hapi": "^16.1.0",
     "inert": "^4.1.0",
@@ -28,5 +39,16 @@
     "pg": "^6.1.3",
     "tape": "^4.6.3",
     "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.26.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8"
   }
 }
