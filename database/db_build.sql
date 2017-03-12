@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS users, goals, ratings cascade;
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(256)
+  username TEXT
 );
 
 CREATE TABLE goals (
@@ -12,7 +12,7 @@ CREATE TABLE goals (
   user_id INTEGER NOT NULL,
   title TEXT NOT NULL,
   rating INTEGER,
-  icon VARCHAR(100),
+  icon TEXT,
   deleted BOOLEAN DEFAULT FALSE
 );
 

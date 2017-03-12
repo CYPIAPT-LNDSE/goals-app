@@ -7,3 +7,4 @@ public/styles/style.css*
 node_modules
 *.pem
 config.env
+tests/db-tests/*
