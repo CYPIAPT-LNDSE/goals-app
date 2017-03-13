@@ -1,8 +1,13 @@
 import { createAction } from 'redux-actions';
 
 // action types
-import { STEP_ADD_GOAL } from '../action_types.js'
+import * as types from '../action_types.js'
 
-const stepAddGoal = createAction(STEP_ADD_GOAL);
+export const stepAddGoal = createAction(types.STEP_ADD_GOAL);
 
-export default stepAddGoal;
+export const selectGoal = goal => {
+  return {
+    type: types.SELECT_GOAL,
+    goal: goal,
+  }
+}
