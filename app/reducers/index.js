@@ -1,6 +1,9 @@
 // import actions here
 import stepAddGoal from './../actions/goals-list.js';
 
+// steps
+import * as steps from './../steps.js';
+
 const defaultState = {
   // app state here
   goals: [
@@ -32,7 +35,7 @@ const defaultState = {
       ratings: [],
     },
   ],
-  step: 'GOALS_LIST',
+  step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: "",
 };
@@ -41,7 +44,9 @@ export default (state = defaultState, action) => {
   switch(action.type) {
     case 'STEP_ADD_GOAL':
       return {
-        ...state, step: 'ADD_GOAL',
+        ...state,
+        step: steps.ADD_GOAL,
+        previousStep: steps.GOALS_LIST,
       }
     case 'INPUT_GOAL':
       return {

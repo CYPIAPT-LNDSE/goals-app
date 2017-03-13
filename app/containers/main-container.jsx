@@ -5,16 +5,19 @@ import { connect } from 'react-redux'
 import GoalsList from './../components/goals-list/goals-list.jsx';
 import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
-/* ations */
+/* actions */
 import action_stepAddGoal from './../actions/goals-list.js';
 import action_inputGoal from './../actions/add-new-goal.js';
+
+/* steps */
+import * as steps from './../steps.js';
 
 const MainContent = props => {
 
   let component;
 
   switch (props.step) {
-    case 'ADD_GOAL':
+    case steps.ADD_GOAL:
       component = <AddGoal
         newGoal = { props.newGoal }
         onInputGoal={ props.onInputGoal }
