@@ -1,10 +1,24 @@
 @import "colors";
 
-$blueBorder: 2px solid #2364AA;
+$blueBorder: 2px solid $blue;
+$blueBorderThin: 1px solid $blue;
 
 @font-face {
   font-family: leagueSpartan;
   src: url('../public/fonts/LeagueSpartan-Bold.otf');
+}
+
+@font-face {
+  font-family: openSans;
+  src: url('../public/fonts/OpenSans-Regular.ttf');
+}
+
+@mixin regularFont {
+  font-size: 14px;
+  font-family: leagueSpartan;
+  letter-spacing: 2.1px;
+  line-height: 22px;
+  color: $blue;
 }
 
 @mixin ctaButton {
@@ -22,16 +36,13 @@ $blueBorder: 2px solid #2364AA;
   }
 
   button {
+    @include regularFont;
     width: 230px;
     height: 100%;
     border: $blueBorder;
     border-radius: 86px;
     background-color: transparent;
     font-family: leagueSpartan;
-    font-size: 14px;
-    letter-spacing: 2.1px;
-    font-weight: bolder;
-    color: $blue;
     transition: background-color 0.3s ease;
     cursor: pointer;
 
@@ -44,11 +55,4 @@ $blueBorder: 2px solid #2364AA;
       color: $light;
     }
   }
-}
-
-.page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
 }

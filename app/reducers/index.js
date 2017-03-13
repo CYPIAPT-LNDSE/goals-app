@@ -1,5 +1,8 @@
-/* reducers */
-// import reducers here
+// import actions here
+import stepAddGoal from './../actions/goals-list.js';
+
+// steps
+import * as steps from './../steps.js';
 
 const defaultState = {
   // app state here
@@ -31,31 +34,25 @@ const defaultState = {
       currentRating: 10,
       ratings: [],
     },
-    // {
-    //   id: 3,
-    //   name: 'Be cool',
-    //   created: 1488984810658,
-    //   avatar: 'pepper',
-    //   status: 0,
-    //   currentRating: 10,
-    //   ratings: [],
-    // },
-    // {
-    //   id: 4,
-    //   name: 'Be cool',
-    //   created: 1488984810658,
-    //   avatar: 'pepper',
-    //   status: 0,
-    //   currentRating: 10,
-    //   ratings: [],
-    // },
   ],
+  step: steps.GOALS_LIST,
+  previousStep: null,
+  newGoal: "",
 };
 
 export default (state = defaultState, action) => {
   switch(action.type) {
-    // cases here
+    case 'STEP_ADD_GOAL':
+      return {
+        ...state,
+        step: steps.ADD_GOAL,
+        previousStep: steps.GOALS_LIST,
+      }
+    case 'INPUT_GOAL':
+      return {
+        ...state, newGoal: action.input,
+      }
     default:
-    return state;
+      return state;
   }
 };

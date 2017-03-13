@@ -1,0 +1,70 @@
+@import 'colors';
+@import 'general';
+
+$contentWidth: 95%;
+
+.addNewGoal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.newGoal_inputContainer-outer {
+  padding: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.newGoal_label {
+  @include regularFont;
+  width: $contentWidth;
+  align-self: center;
+}
+
+.newGoal_inputContainer-inner {
+  height: 60px;
+  width: $contentWidth;
+  max-width: 400px;
+  align-self: center;
+  position: relative;
+  margin-top: 10px;
+  border: $blueBorderThin;
+  border-radius: 3px;
+  background-color: $light;
+
+  &:active, &:focus {
+    border: $blueBorder;
+  }
+}
+
+.newGoal_input {
+  padding: 5%;
+  height: 80%;
+  width: 80%;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  color: $grey;
+  resize: none;
+}
+
+.newGoal_avatarsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: $contentWidth;
+}
+
+.newGoal_buttonContainer {
+  @include ctaButton;
+  height: 56px;
+
+  .button-outer {
+    height: 50px;
+  }
+}
