@@ -12,7 +12,6 @@ const defaultState = {
       name: 'Eat more pizza',
       created: 1488984810654,
       avatar: 'sprout',
-      status: 0,
       currentRating: 7,
       ratings: [],
     },
@@ -21,7 +20,6 @@ const defaultState = {
       name: 'Drink more champagne',
       created: 1488984810658,
       avatar: 'pumpkin',
-      status: 0,
       currentRating: 8,
       ratings: [],
     },
@@ -30,7 +28,6 @@ const defaultState = {
       name: 'Be cool',
       created: 1488984810658,
       avatar: 'pepper',
-      status: 0,
       currentRating: 10,
       ratings: [],
     },
@@ -62,6 +59,10 @@ export default (state = defaultState, action) => {
         ...state, newGoal: {
           ...state.newGoal, avatar: action.avatar,
         },
+      }
+    case 'SAVE_NEW_GOAL':
+      return {
+        ...state, newGoal: {}, goals: state.goals.concat([action.goal]),
       }
     default:
       return state;

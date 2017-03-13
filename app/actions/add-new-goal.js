@@ -1,15 +1,29 @@
-import { INPUT_GOAL, SELECT_AVATAR } from './../action_types.js';
+import * as types from './../action_types.js';
 
 export const inputGoal = input => {
   return {
-    type: INPUT_GOAL,
+    type: types.INPUT_GOAL,
     input: input,
   };
 };
 
 export const selectAvatar = avatar => {
   return {
-    type: SELECT_AVATAR,
+    type: types.SELECT_AVATAR,
     avatar: avatar,
   }
 };
+
+export const saveNewGoal = (goal) => {
+  return {
+    type: types.SAVE_NEW_GOAL,
+    goal: {
+      id: goal.id,
+      name: goal.name,
+      created: new Date(),
+      avatar: goal.avatar,
+      currentRating: null,
+      ratings: [],
+    },
+  }
+}

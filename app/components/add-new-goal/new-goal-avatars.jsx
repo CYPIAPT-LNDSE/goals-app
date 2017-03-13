@@ -18,6 +18,7 @@ class Avatars extends React.Component {
       'pumpkin',
       'flower',
     ];
+    
     const createAvatarRow = arr =>
       arr.map(av => (
         <div
