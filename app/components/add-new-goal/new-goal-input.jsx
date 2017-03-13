@@ -19,7 +19,7 @@ class NewGoalInput extends React.Component {
           name="new-goal"
           id="newGoalInput"
           maxLength="50"
-          value={ this.props.newGoal }
+          value={ this.props.newGoal.name }
           placeholder="My goal is..."
           className="newGoal_input"
           type="text"

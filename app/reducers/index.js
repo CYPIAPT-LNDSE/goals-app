@@ -37,7 +37,10 @@ const defaultState = {
   ],
   step: steps.GOALS_LIST,
   previousStep: null,
-  newGoal: "",
+  newGoal: {
+    name: '',
+    avatar: ''
+  },
 };
 
 export default (state = defaultState, action) => {
@@ -50,7 +53,9 @@ export default (state = defaultState, action) => {
       }
     case 'INPUT_GOAL':
       return {
-        ...state, newGoal: action.input,
+        ...state, newGoal: {
+          ...state.newGoal, name: action.input,
+        },
       }
     default:
       return state;
