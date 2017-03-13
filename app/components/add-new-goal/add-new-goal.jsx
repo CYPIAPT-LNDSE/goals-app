@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Avatars from './new-goal-avatars.jsx';
+import NewGoalInput from './new-goal-input.jsx';
 
-const addGoal = () => {
+const addGoal = ({ newGoal, onInputGoal }) => {
 
   return (
     <div className="addNewGoal">
@@ -11,17 +12,10 @@ const addGoal = () => {
           htmlFor="newGoalInput"
           className="newGoal_label"
         >Set a goal and choose a plant to grow with it</label>
-        <div className="newGoal_inputContainer-inner">
-          <textarea
-            name="new-goal"
-            id="newGoalInput"
-            maxLength="50"
-            placeholder="My goal is..."
-            className="newGoal_input"
-            type="text"
-            autoFocus
-          />
-        </div>
+      <NewGoalInput
+        newGoal={ newGoal }
+        onInputGoal={ onInputGoal }
+      />
       </div>
       <Avatars />
       <div className="newGoal_buttonContainer">
