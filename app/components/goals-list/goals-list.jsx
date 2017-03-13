@@ -2,7 +2,7 @@ import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
 
-const goalsList = ({goals, stepAddGoal,}) => {
+const GoalsList = ({goals, stepAddGoal,}) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id } >
@@ -37,4 +37,4 @@ const goalsList = ({goals, stepAddGoal,}) => {
   );
 };
 
-export default goalsList;
+export default GoalsList;

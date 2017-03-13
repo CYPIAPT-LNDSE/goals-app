@@ -1,8 +1,8 @@
-import { createAction } from 'redux-actions';
+import { INPUT_GOAL } from './../action_types.js';
 
 const inputGoal = input => {
   return {
-    type: 'INPUT_GOAL',
+    type: INPUT_GOAL,
     input: input,
   };
 }
