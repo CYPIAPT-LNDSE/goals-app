@@ -40,14 +40,13 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch(action.type) {
     case 'STEP_ADD_GOAL':
-      return Object.assign({}, state, {
-        step: 'ADD_GOAL',
-        previousStep: 'GOALS_LIST',
-      });
+      return {
+        ...state, step: 'ADD_GOAL',
+      }
     case 'INPUT_GOAL':
-      return Object.assign({}, state, {
-        newGoal: action.input,
-      });
+      return {
+        ...state, newGoal: action.input,
+      }
     default:
       return state;
   }
