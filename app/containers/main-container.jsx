@@ -7,7 +7,7 @@ import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
 /* actions */
 import action_stepAddGoal from './../actions/goals-list.js';
-import action_inputGoal from './../actions/add-new-goal.js';
+import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 
 /* steps */
 import * as steps from './../steps.js';
@@ -21,6 +21,7 @@ const MainContent = props => {
       component = <AddGoal
         newGoal = { props.newGoal }
         onInputGoal={ props.onInputGoal }
+        onSelectAvatar={ props.onSelectAvatar }
       />
       break;
     default:
@@ -50,7 +51,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   stepAddGoal: () => { dispatch(action_stepAddGoal()) },
-  onInputGoal: (text) => { dispatch(action_inputGoal(text)) },
+  onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)) },
+  onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

@@ -57,6 +57,12 @@ export default (state = defaultState, action) => {
           ...state.newGoal, name: action.input,
         },
       }
+    case 'SELECT_AVATAR':
+      return {
+        ...state, newGoal: {
+          ...state.newGoal, avatar: action.avatar,
+        },
+      }
     default:
       return state;
   }

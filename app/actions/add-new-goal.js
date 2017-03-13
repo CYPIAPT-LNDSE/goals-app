@@ -1,10 +1,15 @@
-import { INPUT_GOAL } from './../action_types.js';
+import { INPUT_GOAL, SELECT_AVATAR } from './../action_types.js';
 
-const inputGoal = input => {
+export const inputGoal = input => {
   return {
     type: INPUT_GOAL,
     input: input,
   };
-}
+};
 
-export default inputGoal;
+export const selectAvatar = avatar => {
+  return {
+    type: SELECT_AVATAR,
+    avatar: avatar,
+  }
+};

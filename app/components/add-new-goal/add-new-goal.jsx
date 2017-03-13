@@ -3,7 +3,7 @@ import React from 'react';
 import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 
-const addGoal = ({ newGoal, onInputGoal }) => {
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar }) => {
 
   return (
     <div className="addNewGoal">
@@ -17,7 +17,7 @@ const addGoal = ({ newGoal, onInputGoal }) => {
         onInputGoal={ onInputGoal }
       />
       </div>
-      <Avatars />
+      <Avatars onSelectAvatar={ onSelectAvatar }/>
       <div className="newGoal_buttonContainer">
         <div className="button-outer">
           <button type="button" name="button" className="newGoal_button">ADD</button>

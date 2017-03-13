@@ -1,41 +1,51 @@
 import React from 'react';
 
-const Avatars = () => {
+class Avatars extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  const pathToAvatars = avatar => `./app/public/images/add-new-goal/${avatar}.png`;
+  handleChange(event) {
+    this.props.onSelectAvatar(event.target.value)
+  }
 
-  // could refactor to get avatars from state in case we want to load from DB?
-  const availableAvatars = [
-    'sprout',
-    'pepper',
-    'pumpkin',
-    'flower',
-  ];
-
-  const createAvatarRow = arr =>
-  arr.map(av => (
-    <div className="newGoal_avatarBox" key={`avatar_${av}`}>
-      <label id={`avatar_${av}`}>
-        <input type="radio" name="avatar"/>
-        <img src={ pathToAvatars(av) } />
-      </label>
-    </div>
-  )
-);
-
-  const topRow = createAvatarRow(availableAvatars.slice(0, 2));
-  const bottomRow = createAvatarRow(availableAvatars.slice(2));
-
-  return (
-    <div className="newGoal_avatarsContainer">
-      <div className="newGoal_avatarsContainer-row">
-        { topRow }
+  render() {
+    const pathToAvatars = avatar => `./app/public/images/add-new-goal/${avatar}.png`;
+    const availableAvatars = [
+      'sprout',
+      'pepper',
+      'pumpkin',
+      'flower',
+    ];
+    const createAvatarRow = arr =>
+      arr.map(av => (
+        <div
+          className="newGoal_avatarBox"
+          key={`avatar_${av}`}
+          onClick={ this.handleChange }
+        >
+        <label id={`avatar_${av}`}>
+          <input type="radio" name="avatar" value={ av }/>
+          <img src={ pathToAvatars(av) } />
+        </label>
       </div>
-      <div className="newGoal_avatarsContainer-row">
-        { bottomRow }
+      )
+    );
+    const topRow = createAvatarRow(availableAvatars.slice(0, 2));
+    const bottomRow = createAvatarRow(availableAvatars.slice(2));
+
+    return (
+      <div className="newGoal_avatarsContainer">
+        <div className="newGoal_avatarsContainer-row">
+          { topRow }
+        </div>
+        <div className="newGoal_avatarsContainer-row">
+          { bottomRow }
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 };
 
 export default Avatars;
