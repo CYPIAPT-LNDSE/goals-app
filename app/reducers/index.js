@@ -32,18 +32,16 @@ const defaultState = {
       ratings: [],
     },
   ],
-  step: {
-    currentStep: 'GOALS_LIST',
-  },
+  step: 'GOALS_LIST',
+  previousStep: null,
 };
 
 export default (state = defaultState, action) => {
   switch(action.type) {
     case 'STEP_ADD_GOAL':
       return Object.assign({}, state, {
-        step: {
-          currentStep: 'ADD_GOAL',
-        }
+        step: 'ADD_GOAL',
+        previousStep: 'GOALS_LIST',
       });
     default:
       return state;

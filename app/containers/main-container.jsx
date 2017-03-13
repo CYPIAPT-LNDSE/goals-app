@@ -13,7 +13,7 @@ const MainContent = props => {
 
   let component;
 
-  switch (props.step.currentStep) {
+  switch (props.step) {
     case 'ADD_GOAL':
       component = <AddGoal />
       break;
