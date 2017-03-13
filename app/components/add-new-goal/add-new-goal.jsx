@@ -21,13 +21,17 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
         onInputGoal={ onInputGoal }
       />
       </div>
-      <Avatars onSelectAvatar={ onSelectAvatar }/>
+      <Avatars
+        onSelectAvatar={ onSelectAvatar }
+        newGoal={ newGoal }
+      />
       <div className="newGoal_buttonContainer">
         <div className="button-outer">
           <button
             type="button"
             name="button"
             className="newGoal_button"
+            disabled={ newGoal.name === '' }
             onClick={ () => saveNewGoal(goal) }
           >ADD</button>
         </div>

@@ -62,7 +62,10 @@ export default (state = defaultState, action) => {
       }
     case 'SAVE_NEW_GOAL':
       return {
-        ...state, newGoal: {}, goals: state.goals.concat([action.goal]),
+        ...state,
+        newGoal: {},
+        goals: state.goals.concat([action.goal]),
+        step: steps.GOALS_LIST,
       }
     default:
       return state;

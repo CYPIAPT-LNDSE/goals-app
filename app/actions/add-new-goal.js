@@ -1,4 +1,5 @@
 import * as types from './../action_types.js';
+import avatars from './../avatars.js';
 
 export const inputGoal = input => {
   return {
@@ -21,7 +22,7 @@ export const saveNewGoal = (goal) => {
       id: goal.id,
       name: goal.name,
       created: new Date(),
-      avatar: goal.avatar,
+      avatar: (goal.avatar || avatars[0]),
       currentRating: null,
       ratings: [],
     },

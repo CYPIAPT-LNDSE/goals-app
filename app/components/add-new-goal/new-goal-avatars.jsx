@@ -1,5 +1,7 @@
 import React from 'react';
 
+import availableAvatars from './../../avatars.js';
+
 class Avatars extends React.Component {
   constructor(props) {
     super(props);
@@ -12,13 +14,7 @@ class Avatars extends React.Component {
 
   render() {
     const pathToAvatars = avatar => `./app/public/images/add-new-goal/${avatar}.png`;
-    const availableAvatars = [
-      'sprout',
-      'pepper',
-      'pumpkin',
-      'flower',
-    ];
-    
+
     const createAvatarRow = arr =>
       arr.map(av => (
         <div
@@ -27,7 +23,11 @@ class Avatars extends React.Component {
           onClick={ this.handleChange }
         >
         <label id={`avatar_${av}`}>
-          <input type="radio" name="avatar" value={ av }/>
+          <input
+            type="radio"
+            name="avatar"
+            value={ av }
+          />
           <img src={ pathToAvatars(av) } />
         </label>
       </div>
