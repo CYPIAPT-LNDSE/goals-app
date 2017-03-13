@@ -6,32 +6,7 @@ import * as steps from './../steps.js';
 
 const defaultState = {
   // app state here
-  goals: [
-    {
-      id: 0,
-      name: 'Eat more pizza',
-      created: 1488984810654,
-      avatar: 'sprout',
-      currentRating: 7,
-      ratings: [],
-    },
-    {
-      id: 1,
-      name: 'Drink more champagne',
-      created: 1488984810658,
-      avatar: 'pumpkin',
-      currentRating: 8,
-      ratings: [],
-    },
-    {
-      id: 2,
-      name: 'Be cool',
-      created: 1488984810658,
-      avatar: 'pepper',
-      currentRating: 10,
-      ratings: [],
-    },
-  ],
+  goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: {
@@ -63,9 +38,10 @@ export default (state = defaultState, action) => {
     case 'SAVE_NEW_GOAL':
       return {
         ...state,
-        newGoal: {},
         goals: state.goals.concat([action.goal]),
         step: steps.GOALS_LIST,
+        previousStep: null,
+        newGoal: {},
       }
     default:
       return state;

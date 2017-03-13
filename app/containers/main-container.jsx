@@ -16,7 +16,7 @@ const MainContent = props => {
 
   let component;
 
-  const newGoalId = props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1;
+  const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
 
   switch (props.step) {
     case steps.ADD_GOAL:
