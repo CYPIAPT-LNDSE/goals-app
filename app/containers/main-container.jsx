@@ -7,7 +7,7 @@ import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
 /* ations */
 import action_stepAddGoal from './../actions/goals-list.js';
-
+import action_inputGoal from './../actions/add-new-goal.js';
 
 const MainContent = props => {
 
@@ -15,7 +15,10 @@ const MainContent = props => {
 
   switch (props.step) {
     case 'ADD_GOAL':
-      component = <AddGoal />
+      component = <AddGoal
+        newGoal = { props.newGoal }
+        onInputGoal={ props.onInputGoal }
+      />
       break;
     default:
       component = <GoalsList
@@ -39,10 +42,12 @@ const MainContent = props => {
 const mapStateToProps = state => ({
   goals: state.goals,
   step: state.step,
+  newGoal: state.newGoal,
 });
 
 const mapDispatchToProps = dispatch => ({
   stepAddGoal: () => { dispatch(action_stepAddGoal()) },
+  onInputGoal: (text) => { dispatch(action_inputGoal(text)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

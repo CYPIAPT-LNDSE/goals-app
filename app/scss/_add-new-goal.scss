@@ -34,6 +34,10 @@ $contentWidth: 95%;
   border: $blueBorderThin;
   border-radius: 3px;
   background-color: $light;
+
+  &:active, &:focus {
+    border: $blueBorder;
+  }
 }
 
 .newGoal_input {
