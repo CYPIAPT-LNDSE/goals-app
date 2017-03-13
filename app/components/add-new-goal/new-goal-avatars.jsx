@@ -14,12 +14,11 @@ const Avatars = () => {
 
   const createAvatarRow = arr =>
   arr.map(av => (
-    <div
-      className="newGoal_avatarBox"
-      key={`avatar_${av}`}
-      id={`avatar_${av}`}
-    >
-      <img src={ pathToAvatars(av) } />
+    <div className="newGoal_avatarBox" key={`avatar_${av}`}>
+      <label id={`avatar_${av}`}>
+        <input type="radio" name="avatar"/>
+        <img src={ pathToAvatars(av) } />
+      </label>
     </div>
   )
 );
