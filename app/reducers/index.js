@@ -34,6 +34,7 @@ const defaultState = {
   ],
   step: 'GOALS_LIST',
   previousStep: null,
+  newGoal: "",
 };
 
 export default (state = defaultState, action) => {
@@ -42,6 +43,10 @@ export default (state = defaultState, action) => {
       return Object.assign({}, state, {
         step: 'ADD_GOAL',
         previousStep: 'GOALS_LIST',
+      });
+    case 'INPUT_GOAL':
+      return Object.assign({}, state, {
+        newGoal: action.input,
       });
     default:
       return state;
