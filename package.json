@@ -4,7 +4,7 @@
   "description": "An app to set goals and rate progress for them",
   "main": "index.js",
   "directories": {
-    "test": "tests"
+    "test": "node tests/server-test.js"
   },
   "scripts": {
     "devstart": "./node_modules/.bin/webpack-dev-server --hot"
