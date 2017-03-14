@@ -13,7 +13,7 @@ class Avatars extends React.Component {
   }
 
   render() {
-    const pathToAvatars = avatar => `./app/public/images/add-new-goal/${avatar}.png`;
+    const pathToAvatars = avatar => `images/add-new-goal/${avatar}.png`;
 
     const createAvatarRow = arr =>
       arr.map(av => (

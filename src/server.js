@@ -33,7 +33,18 @@ server.register([Inert], (err) => {
     handler: (_, reply) => {
       reply.file('bundle.js');
     }
-  }]);
+  },
+  {
+    path: '/{file*}',
+    method: 'GET',
+    handler: {
+      directory: {
+        path: 'app/public/',
+      }
+    }
+  },
+
+]);
 });
 
 module.exports = server;
