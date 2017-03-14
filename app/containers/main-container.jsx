@@ -6,8 +6,8 @@ import GoalsList from './../components/goals-list/goals-list.jsx';
 import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
 /* actions */
-import action_stepAddGoal from './../actions/goals-list.js';
-import * as actionsAddNewGoal from './../actions/add-new-goal.js';
+import addStepGoal from './../actions/goals-list.js';
+import * as addNewGoalActions from './../actions/add-new-goal.js';
 
 /* steps */
 import * as steps from './../steps.js';
@@ -53,11 +53,8 @@ const mapStateToProps = state => ({
   newGoal: state.newGoal,
 });
 
-const mapDispatchToProps = dispatch => ({
-  stepAddGoal: () => { dispatch(action_stepAddGoal()) },
-  onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)) },
-  onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
-  saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
-});
+const actionCreators = { ...addNewGoalActions, addStepGoal };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContent);
+export default connect(mapStateToProps, actionCreators)(MainContent);
+// Now we should have these functions as props
+// inputGoal, selectAvatar, saveNewGoal, addStepGoal
