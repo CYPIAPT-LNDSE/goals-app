@@ -7,8 +7,8 @@ const fs = require('fs');
 const server = new Hapi.Server();
 
 var tls = {
-    key : fs.readFileSync('./key.pem'),
-    cert : fs.readFileSync('./cert.pem')
+  key : fs.readFileSync('./key.pem'),
+  cert : fs.readFileSync('./cert.pem')
 };
 
 server.connection({
@@ -17,34 +17,23 @@ server.connection({
   tls:tls
 });
 
-server.register([Inert, Vision], (err) => {
+server.register([Inert], (err) => {
   if(err) throw err;
 
-  server.route({
-    path: '/{param*}',
+  server.route([{
+    path: '/',
     method: 'GET',
-    handler: {
-      directory: {
-        path: 'public'
-      }
+    handler: (request, reply) => {
+      reply.file('index.html');
     }
-  });
-});
-
-server.views({
-  engines: {
-    html: Handlebars
   },
-  path: 'public/html',
-
-});
-
-server.route({
-  path: '/',
-  method: 'GET',
-  handler: (request, reply) => {
-    reply.view('landing-page');
-  }
+  {
+    path: '/bundle.js',
+    method: 'GET',
+    handler: (_, reply) => {
+      reply.file('bundle.js');
+    }
+  }]);
 });
 
 module.exports = server;
