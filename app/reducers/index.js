@@ -13,6 +13,7 @@ const defaultState = {
     name: '',
     avatar: ''
   },
+  currentGoal: {},
 };
 
 export default (state = defaultState, action) => {
@@ -38,10 +39,17 @@ export default (state = defaultState, action) => {
     case 'SAVE_NEW_GOAL':
       return {
         ...state,
-        goals: state.goals.concat([action.goal]),
+         goals: state.goals.concat([action.goal]),
         step: steps.GOALS_LIST,
         previousStep: null,
         newGoal: {},
+      }
+    case 'SELECT_GOAL':
+      return {
+        ...state,
+        step: steps.VIEW_GOAL,
+        previousStep: steps.GOALS_LIST,
+        currentGoal: action.goal,
       }
     default:
       return state;

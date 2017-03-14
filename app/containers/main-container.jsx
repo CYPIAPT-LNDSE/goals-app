@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 /* components */
 import GoalsList from './../components/goals-list/goals-list.jsx';
 import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
+import ViewGoal from './../components/view-goal/view-goal.jsx';
 
 /* actions */
-import action_stepAddGoal from './../actions/goals-list.js';
+import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 
 /* steps */
@@ -28,10 +29,14 @@ const MainContent = props => {
         newGoalId= { newGoalId }
       />
       break;
+    case steps.VIEW_GOAL:
+      component = <ViewGoal />
+      break;
     default:
       component = <GoalsList
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
+        onSelectGoal={ props.onSelectGoal }
       />
   }
 
@@ -54,10 +59,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  stepAddGoal: () => { dispatch(action_stepAddGoal()) },
+  stepAddGoal: () => { dispatch(actionsGoalsList.stepAddGoal()) },
   onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)) },
   onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
   saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
+  onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

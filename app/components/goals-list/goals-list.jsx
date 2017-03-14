@@ -2,11 +2,17 @@ import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
 
-const GoalsList = ({goals, stepAddGoal,}) => {
+import * as steps from './../../steps.js';
+
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal }) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id } >
-      <GoalTile goal={ goal } />
+      <GoalTile
+        goal={ goal }
+        step={ steps.GOALS_LIST }
+        onSelectGoal={ onSelectGoal }
+      />
     </li>
   });
 

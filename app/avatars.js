@@ -1,5 +1,5 @@
 export default [
-  'sprout',
+  'cactus',
   'pepper',
   'pumpkin',
   'flower',
