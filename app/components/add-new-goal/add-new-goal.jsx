@@ -31,7 +31,7 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
             type="button"
             name="button"
             className="newGoal_button"
-            disabled={ newGoal.name === '' }
+            disabled={ !newGoal.name }
             onClick={ () => saveNewGoal(goal) }
           >ADD</button>
         </div>
