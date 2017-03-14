@@ -7,7 +7,8 @@
     "test": "node tests/server-test.js"
   },
   "scripts": {
-    "devstart": "./node_modules/.bin/webpack-dev-server --hot"
+    "devstart": "./node_modules/.bin/webpack-dev-server --hot",
+    "build": "webpack --config ./webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
