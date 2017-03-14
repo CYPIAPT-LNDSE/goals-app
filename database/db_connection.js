@@ -3,7 +3,8 @@ const url = require('url');
 
 require('env2')('./config.env');
 
-if(!process.env.GROW_DB_URL) throw new Error('Environment variable GROW_DB_URL must be set');
+if(!process.env.GROW_DB_URL) throw new Error('Environment variable GROW_DB_URL\
+ must be set');
 
 const params = url.parse(process.env.GROW_DB_URL);
 console.log(params);
