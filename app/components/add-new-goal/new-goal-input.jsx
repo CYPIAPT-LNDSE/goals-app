@@ -3,8 +3,6 @@ import React from 'react';
 class NewGoalInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -19,12 +17,12 @@ class NewGoalInput extends React.Component {
           name="new-goal"
           id="newGoalInput"
           maxLength="50"
-          value={ this.props.newGoal }
+          value={ this.props.newGoal.name }
           placeholder="My goal is..."
           className="newGoal_input"
           type="text"
-          onChange={ this.handleChange }
           onKeyUp={ this.handleChange }
+          onChange={ this.handleChange }
           autoFocus
         />
       </div>

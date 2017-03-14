@@ -54,5 +54,12 @@ $blueBorderThin: 1px solid $blue;
       background-color: $blue;
       color: $light;
     }
+
+    &:disabled {
+      opacity: 0.5;
+      background-color: transparent;
+      color: $blue;
+      outline: none;
+    }
   }
 }

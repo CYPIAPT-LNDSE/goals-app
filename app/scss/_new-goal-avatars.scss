@@ -19,3 +19,13 @@
     width: 100%;
   }
 }
+
+input {
+  visibility: hidden;
+  position: absolute;
+}
+
+label > input:checked + img {
+  border: $blueBorder;
+  border-radius: 8px;
+}

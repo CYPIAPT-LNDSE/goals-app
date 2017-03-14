@@ -7,7 +7,7 @@ import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
 
 /* actions */
 import action_stepAddGoal from './../actions/goals-list.js';
-import action_inputGoal from './../actions/add-new-goal.js';
+import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 
 /* steps */
 import * as steps from './../steps.js';
@@ -16,11 +16,16 @@ const MainContent = props => {
 
   let component;
 
+  const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
+
   switch (props.step) {
     case steps.ADD_GOAL:
       component = <AddGoal
         newGoal = { props.newGoal }
         onInputGoal={ props.onInputGoal }
+        onSelectAvatar={ props.onSelectAvatar }
+        saveNewGoal= { props.saveNewGoal }
+        newGoalId= { newGoalId }
       />
       break;
     default:
@@ -29,10 +34,10 @@ const MainContent = props => {
         stepAddGoal={ props.stepAddGoal }
       />
   }
-  const navbarHeight = 90;
 
+  const navbarHeight = 90;
   const dynamicStyle = {
-    height: window.innerHeight - 90,
+    height: window.innerHeight - navbarHeight,
   }
 
   return (
@@ -50,7 +55,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   stepAddGoal: () => { dispatch(action_stepAddGoal()) },
-  onInputGoal: (text) => { dispatch(action_inputGoal(text)) },
+  onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)) },
+  onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
+  saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);
