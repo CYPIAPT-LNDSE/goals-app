@@ -1,7 +1,5 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, goals, ratings cascade;
-
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   username TEXT,
