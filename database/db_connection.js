@@ -7,7 +7,6 @@ if(!process.env.GROW_DB_URL) throw new Error('Environment variable GROW_DB_URL\
  must be set');
 
 const params = url.parse(process.env.GROW_DB_URL);
-console.log(params);
 const [username, password] = params.auth.split(':');
 
 const options = {
