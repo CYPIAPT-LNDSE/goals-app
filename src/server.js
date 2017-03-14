@@ -35,6 +35,15 @@ server.register([Inert], (err) => {
     }
   },
   {
+    path: '/app/public/fonts/{font}',
+    method: 'GET',
+    handler: {
+      directory: {
+        path: 'app/public/fonts/',
+      }
+    },
+  },
+  {
     path: '/{file*}',
     method: 'GET',
     handler: {

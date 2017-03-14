@@ -2,7 +2,7 @@ import React from 'react';
 
 const Nav = () => {
 
-  const path = "./app/public/images/";
+  const path = "./images/";
   const pathBack = path + "icons/back.svg";
   const pathLogo = path + "logo_header.png";
   const pathMenu = path + "icons/menu.svg";
