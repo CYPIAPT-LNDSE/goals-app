@@ -1,8 +1,7 @@
 const { Pool } = require('pg');
 const url = require('url');
 
-const env = require('env2');
-env('./config.env');
+require('env2')('./config.env');
 
 if(!process.env.GROW_DB_URL) throw new Error('Environment variable GROW_DB_URL must be set');
 
