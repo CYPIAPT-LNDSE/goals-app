@@ -4,8 +4,9 @@ var config = {
   entry: './app/main.js',
 
   output: {
-    filename: 'bundle.js',
-    path: __dirname
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
   },
 
   devServer: {
