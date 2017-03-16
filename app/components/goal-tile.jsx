@@ -5,7 +5,7 @@ import * as steps from './../steps.js';
 const tile = props => {
 
   const goal = props.goal;
-  const pathAvatar = `./app/public/images/avatars/${goal.avatar}.png`;
+  const pathAvatar = `./images/avatars/${goal.avatar}.png`;
 
   return (
     <div

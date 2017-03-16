@@ -1,50 +1,40 @@
 const Hapi = require('hapi');
 const Inert = require('inert');
-const Vision = require('vision');
-const Handlebars = require('handlebars');
 const fs = require('fs');
+const path = require('path');
 
 const server = new Hapi.Server();
-
-var tls = {
-    key : fs.readFileSync('./key.pem'),
-    cert : fs.readFileSync('./cert.pem')
-};
 
 server.connection({
   address: process.env.IP || '0.0.0.0',
   port: process.env.PORT || 4000,
-  tls:tls
+  tls: process.env.NODE_ENV !== 'production' && {
+    key : fs.readFileSync('./key.pem'),
+    cert : fs.readFileSync('./cert.pem')
+  }
 });
 
-server.register([Inert, Vision], (err) => {
+server.register([Inert], (err) => {
   if(err) throw err;
 
-  server.route({
-    path: '/{param*}',
+  server.route([{
+    path: '/',
+    method: 'GET',
+    handler: (request, reply) => {
+      reply.file('public/index.html');
+    }
+  },
+  {
+    path: '/{file*}',
     method: 'GET',
     handler: {
       directory: {
-        path: 'public'
+        path: path.join(__dirname, '../public')
       }
     }
-  });
-});
-
-server.views({
-  engines: {
-    html: Handlebars
   },
-  path: 'public/html',
 
-});
-
-server.route({
-  path: '/',
-  method: 'GET',
-  handler: (request, reply) => {
-    reply.view('landing-page');
-  }
+]);
 });
 
 module.exports = server;

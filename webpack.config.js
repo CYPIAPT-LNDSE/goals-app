@@ -1,11 +1,12 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var config = {
+const config = {
   entry: './app/main.js',
 
   output: {
-    filename: 'bundle.js',
-    path: __dirname
+    path: __dirname,
+    publicPath: '/public/',
+    filename: 'public/[name].js'
   },
 
   devServer: {
@@ -29,7 +30,7 @@ var config = {
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
-        loader: 'file-loader?name=app/public/fonts/[name].[ext]',
+        loader: 'file-loader?publicPath=/fonts/&outputPath=/public/fonts/&name=[name].[ext]',
       },
       {
         test: /\.(png|jpg)$/,

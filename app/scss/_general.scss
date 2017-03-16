@@ -5,12 +5,12 @@ $blueBorderThin: 1px solid $blue;
 
 @font-face {
   font-family: leagueSpartan;
-  src: url('../public/fonts/LeagueSpartan-Bold.otf');
+  src: url('../assets/fonts/LeagueSpartan-Bold.otf');
 }
 
 @font-face {
   font-family: openSans;
-  src: url('../public/fonts/OpenSans-Regular.ttf');
+  src: url('../assets/fonts/OpenSans-Regular.ttf');
 }
 
 @mixin regularFont {

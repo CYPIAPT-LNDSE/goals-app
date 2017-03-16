@@ -10,8 +10,6 @@ style.css.map
 
 # build
 
-bundle.js
-
 # prototype stuff
 
 prototype/public/.sass-cache/*
@@ -29,3 +27,6 @@ node_modules
 tests/db-tests/*
 
 config.env
+
+public/fonts
+public/main.js
