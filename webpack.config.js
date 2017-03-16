@@ -5,8 +5,8 @@ const config = {
 
   output: {
     path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    publicPath: '/public/',
+    filename: 'public/[name].js'
   },
 
   devServer: {
@@ -30,7 +30,7 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
-        loader: 'file-loader?name=app/public/fonts/[name].[ext]',
+        loader: 'file-loader?publicPath=/fonts/&name=[name].[ext]',
       },
       {
         test: /\.(png|jpg)$/,

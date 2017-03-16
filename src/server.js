@@ -1,20 +1,17 @@
 const Hapi = require('hapi');
 const Inert = require('inert');
-const Vision = require('vision');
-const Handlebars = require('handlebars');
 const fs = require('fs');
+const path = require('path');
 
 const server = new Hapi.Server();
-
-var tls = {
-  key : fs.readFileSync('./key.pem'),
-  cert : fs.readFileSync('./cert.pem')
-};
 
 server.connection({
   address: process.env.IP || '0.0.0.0',
   port: process.env.PORT || 4000,
-  tls:tls
+  tls: process.env.NODE_ENV !== 'production' && {
+    key : fs.readFileSync('./key.pem'),
+    cert : fs.readFileSync('./cert.pem')
+  }
 });
 
 server.register([Inert], (err) => {
@@ -24,31 +21,15 @@ server.register([Inert], (err) => {
     path: '/',
     method: 'GET',
     handler: (request, reply) => {
-      reply.file('index.html');
+      reply.file('public/index.html');
     }
-  },
-  {
-    path: '/bundle.js',
-    method: 'GET',
-    handler: (_, reply) => {
-      reply.file('bundle.js');
-    }
-  },
-  {
-    path: '/app/public/fonts/{font}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: 'app/public/fonts/',
-      }
-    },
   },
   {
     path: '/{file*}',
     method: 'GET',
     handler: {
       directory: {
-        path: 'app/public/',
+        path: path.join(__dirname, '../public')
       }
     }
   },

@@ -8,7 +8,8 @@
   },
   "scripts": {
     "devstart": "./node_modules/.bin/webpack-dev-server --hot",
-    "build": "webpack --config ./webpack.config.js --progress --colors"
+    "build": "webpack --config ./webpack.config.js --progress --colors",
+    "start": "npm run build && node src/start-server.js"
   },
   "repository": {
     "type": "git",
