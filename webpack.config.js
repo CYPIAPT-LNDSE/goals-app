@@ -30,7 +30,7 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
-        loader: 'file-loader?publicPath=/fonts/&name=[name].[ext]',
+        loader: 'file-loader?publicPath=/fonts/&outputPath=/public/fonts/&name=[name].[ext]',
       },
       {
         test: /\.(png|jpg)$/,
