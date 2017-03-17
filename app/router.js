@@ -1,20 +1,18 @@
-import * as steps from './steps.js';
 import React from 'react';
+
+import * as steps from './steps.js';
 
 /* components */
 import GoalsList from './components/goals-list/goals-list.jsx';
 import AddGoal from './components/add-new-goal/add-new-goal.jsx';
 import ViewGoal from './components/view-goal/view-goal.jsx';
 
-const router = (props) => {
-
-  let view;
-
-  const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
+export default (props) => {
 
   switch (props.step) {
     case steps.ADD_GOAL:
-      view = <AddGoal
+      const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
+      return <AddGoal
         newGoal = { props.newGoal }
         onInputGoal={ props.onInputGoal }
         onSelectAvatar={ props.onSelectAvatar }
@@ -23,16 +21,13 @@ const router = (props) => {
       />
       break;
     case steps.VIEW_GOAL:
-      view = <ViewGoal />
+      return <ViewGoal />
       break;
     default:
-      view = <GoalsList
+      return <GoalsList
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
       />
   }
-  return view;
-}
-
-export default router;
+};
