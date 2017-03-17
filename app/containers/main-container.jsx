@@ -1,44 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-/* components */
-import GoalsList from './../components/goals-list/goals-list.jsx';
-import AddGoal from './../components/add-new-goal/add-new-goal.jsx';
-import ViewGoal from './../components/view-goal/view-goal.jsx';
-
 /* actions */
 import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 
 /* steps */
-import * as steps from './../steps.js';
+//import * as steps from './../steps.js';
+import router from './../router.js';
 
 const MainContent = props => {
 
-  let component;
-
-  const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
-
-  switch (props.step) {
-    case steps.ADD_GOAL:
-      component = <AddGoal
-        newGoal = { props.newGoal }
-        onInputGoal={ props.onInputGoal }
-        onSelectAvatar={ props.onSelectAvatar }
-        saveNewGoal= { props.saveNewGoal }
-        newGoalId= { newGoalId }
-      />
-      break;
-    case steps.VIEW_GOAL:
-      component = <ViewGoal />
-      break;
-    default:
-      component = <GoalsList
-        goals={ props.goals }
-        stepAddGoal={ props.stepAddGoal }
-        onSelectGoal={ props.onSelectGoal }
-      />
-  }
+  const view = router(props);
 
   const navbarHeight = 90;
   const dynamicStyle = {
@@ -47,7 +20,7 @@ const MainContent = props => {
 
   return (
     <div className="MainContent" style={ dynamicStyle }>
-      { component }
+      { view }
     </div>
   );
 }
