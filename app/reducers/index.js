@@ -1,6 +1,3 @@
-// import actions here
-import stepAddGoal from './../actions/goals-list.js';
-
 // steps
 import * as steps from './../steps.js';
 
@@ -39,7 +36,7 @@ export default (state = defaultState, action) => {
     case 'SAVE_NEW_GOAL':
       return {
         ...state,
-         goals: state.goals.concat([action.goal]),
+        goals: state.goals.concat([action.goal]),
         step: steps.GOALS_LIST,
         previousStep: null,
         newGoal: {},

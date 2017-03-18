@@ -54,6 +54,6 @@
     "url-loader": "^0.5.8"
   },
   "devDependencies": {
-
+    "babel-tape-runner": "^2.0.1"
   }
 }
