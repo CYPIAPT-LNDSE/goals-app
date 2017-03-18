@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 
-/* steps */
-//import * as steps from './../steps.js';
 import router from './../router.js';
 
 const MainContent = props => {
@@ -16,7 +14,7 @@ const MainContent = props => {
   const navbarHeight = 90;
   const dynamicStyle = {
     height: window.innerHeight - navbarHeight,
-  }
+  };
 
   return (
     <div className="MainContent" style={ dynamicStyle }>

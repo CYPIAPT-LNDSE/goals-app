@@ -1,15 +1,10 @@
-// steps
 import * as steps from './../steps.js';
 
 const defaultState = {
-  // app state here
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
-  newGoal: {
-    name: '',
-    avatar: ''
-  },
+  newGoal: {},
   currentGoal: {},
 };
 
