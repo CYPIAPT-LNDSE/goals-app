@@ -10,7 +10,8 @@
     "devstart": "./node_modules/.bin/webpack-dev-server --hot",
     "watch": "webpack --config ./webpack.config.js --progress --colors --watch",
     "build": "webpack --config ./webpack.config.js --progress --colors",
-    "start": "npm run build && node src/start-server.js"
+    "start": "npm run build && node src/start-server.js",
+    "test": "babel-tape-runner tests/reducer-test.js"
   },
   "repository": {
     "type": "git",
