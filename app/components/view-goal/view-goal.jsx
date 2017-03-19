@@ -1,17 +1,23 @@
 import React from 'react';
+import GoalTileComponent from '../goal-tile.jsx'
+import ProgressBarComponent from './progress-bar.jsx'
 
 const viewGoal = ( { currentGoal } ) => {
+  const rating = [5, 6, 7];
+  const progressBars = rating.map( rating =>
+     <ProgressBarComponent key={rating} rating={rating} time={"today"} />
+   ); {/* Change the key to id */}
+
   return (
-    <div>{currentGoal.name}
-
-    {/* goal tile component */}
-
-    {/* progress bars */}
-
+    <div>
+    <GoalTileComponent goal={currentGoal} className="viewGoal" />
+    <div>
+      {progressBars}
     {/* line chart */}
 
     {/* button to rate process */}
     </div>
+  </div>
   )
 }
 
