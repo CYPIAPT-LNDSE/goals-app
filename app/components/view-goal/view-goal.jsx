@@ -2,10 +2,8 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx'
 import ProgressBarComponent from './progress-bar.jsx'
 
-const viewGoal = ( { currentGoal } ) => {
-  const rateGoal = (goal) => {
-    console.log("hello");
-  };
+const viewGoal = ( { currentGoal, rateGoal } ) => {
+
   const rating = [5, 6, 7];
   const progressBars = rating.map( rating =>
      <ProgressBarComponent

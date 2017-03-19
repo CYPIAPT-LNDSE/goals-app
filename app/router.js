@@ -24,6 +24,7 @@ export default (props) => {
     case steps.VIEW_GOAL:
       return <ViewGoal
         currentGoal = { props.currentGoal }
+        rateGoal = { props.stepRateGoal }
       />
       break;
     case steps.RATE_GOAL:
