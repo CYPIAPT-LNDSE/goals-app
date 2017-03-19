@@ -15,8 +15,8 @@ const viewGoal = ( { currentGoal } ) => {
    ); {/* TODO: Change the key to id */}
 
   return (
-    <div className="view-goal">
-      <div className="view-goal-goal-tile-container">
+    <div className="view-goal goal-detail-page">
+      <div className="goal-detail-goal-tile-container">
         <GoalTileComponent goal={currentGoal} />
       </div>
       <div className="view-goal-progress-container">
