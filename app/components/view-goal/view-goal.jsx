@@ -13,10 +13,12 @@ const viewGoal = ( { currentGoal } ) => {
     <GoalTileComponent goal={currentGoal} className="viewGoal" />
     <div>
       {progressBars}
-    {/* line chart */}
+    </div>
+    <div className="line-chart-container">
+      {/* Line chart placeholder*/}
+    </div>
 
     {/* button to rate process */}
-    </div>
   </div>
   )
 }
