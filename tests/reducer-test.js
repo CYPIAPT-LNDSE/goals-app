@@ -57,6 +57,7 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
     type: types.SELECT_AVATAR,
     avatar: avatar,
   };
+
   t.equal(
     reducer(initialState, actionSelectAvatar).newGoal.avatar,
     avatar,
