@@ -1,0 +1,114 @@
+$positionStart: 0%;
+$position1 : 10%;
+$position2 : 20%;
+$position3 : 30%;
+$position4 : 40%;
+$position5 : 50%;
+$position6 : 60%;
+$position7 : 70%;
+$position8 : 80%;
+$position9 : 90%;
+$position10 : 100%;
+$slideOffset: 6;
+
+@keyframes slideRight1 {
+  from {left: $positionStart;}
+  to {left: $position1 - $slideOffset;}
+}
+
+@keyframes stretchRight1 {
+  from {width: 0;}
+  to {width: $position1;}
+}
+
+@keyframes slideRight2 {
+  from {left: $positionStart;}
+  to {left: $position2 - $slideOffset;}
+}
+
+@keyframes stretchRight2 {
+  from {width: 0;}
+  to {width: $position2;}
+}
+
+@keyframes slideRight3 {
+  from {left: $positionStart;}
+  to {left: $position3 - $slideOffset;}
+}
+
+@keyframes stretchRight3 {
+  from {width: 0;}
+  to {width: $position3;}
+}
+
+@keyframes slideRight4 {
+  from {left: $positionStart;}
+  to {left: $position4 - $slideOffset;}
+}
+
+@keyframes stretchRight4 {
+  from {width: 0;}
+  to {width: $position4;}
+}
+
+
+@keyframes slideRight5 {
+  from {left: $positionStart;}
+  to {left: $position5 - $slideOffset;}
+}
+
+@keyframes stretchRight5 {
+  from {width: 0;}
+  to {width: $position5;}
+}
+
+@keyframes slideRight6 {
+  from {left: $positionStart;}
+  to {left: $position6 - $slideOffset;}
+}
+
+@keyframes stretchRight6 {
+  from {width: 0;}
+  to {width: $position6;}
+}
+
+@keyframes slideRight7 {
+  from {left: $positionStart;}
+  to {left: $position7 - $slideOffset;}
+}
+
+@keyframes stretchRight7 {
+  from {width: 0;}
+  to {width: $position7;}
+}
+
+@keyframes slideRight8 {
+  from {left: $positionStart;}
+  to {left: $position8 - $slideOffset;}
+}
+
+@keyframes stretchRight8 {
+  from {width: 0;}
+  to {width: $position8;}
+}
+
+
+@keyframes slideRight9 {
+  from {left: $positionStart;}
+  to {left: $position9 - $slideOffset;}
+}
+
+@keyframes stretchRight9 {
+  from {width: 0;}
+  to {width: $position9;}
+}
+
+@keyframes slideRight10 {
+  from {left: $positionStart;}
+  to {left: $position10 - $slideOffset;}
+}
+
+@keyframes stretchRight10 {
+  from {width: 0;}
+  to {width: $position10;}
+}
