@@ -3,8 +3,8 @@ import GoalTileComponent from '../goal-tile.jsx'
 import ProgressBarComponent from './progress-bar.jsx'
 
 const viewGoal = ( { currentGoal } ) => {
-  const rating = [5, 6, 7];
-  const progressBars = rating.map( rating =>
+  const ratings = [5, 6, 7];
+  const progressBars = ratings.map( rating =>
      <ProgressBarComponent
        key={rating}
        rating={rating}
