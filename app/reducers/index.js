@@ -43,7 +43,7 @@ export default (state = defaultState, action) => {
         previousStep: steps.GOALS_LIST,
         currentGoal: action.goal,
       }
-    case 'RATE_GOAL':
+    case 'STEP_RATE_GOAL':
       return {
         ...state,
         step: steps.RATE_GOAL,

@@ -62,7 +62,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
     goal: newGoal,
   };
   const newState = reducer(initialState, actionSaveGoal);
-  
+
   t.equal(newState.goals.length, 1, 'one object in the goals array');
   t.deepEqual(newState.goals[0], newGoal, 'correct goal in goals array');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
@@ -81,5 +81,17 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
   };
 
   t.deepEqual(reducer(initialState, actionSelectGoal).currentGoal, myGoal, 'current goal is set to myGoal');
+  t.end();
+});
+
+tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
+
+  const initialState = defaultState;
+  const actionStepRateGoal = {
+    type: types.STEP_RATE_GOAL,
+  };
+
+  t.equal(reducer(initialState, actionStepRateGoal).step, steps.RATE_GOAL, "step rate goal sets correct step");
+  t.equal(reducer(initialState, actionStepRateGoal).previousStep, steps.VIEW_GOAL, "step add goal sets correct step");
   t.end();
 });
