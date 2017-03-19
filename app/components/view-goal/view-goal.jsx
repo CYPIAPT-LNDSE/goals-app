@@ -3,6 +3,9 @@ import GoalTileComponent from '../goal-tile.jsx'
 import ProgressBarComponent from './progress-bar.jsx'
 
 const viewGoal = ( { currentGoal } ) => {
+  const rateGoal = (goal) => {
+    console.log("hello");
+  };
   const rating = [5, 6, 7];
   const progressBars = rating.map( rating =>
      <ProgressBarComponent key={rating} rating={rating} time={"today"} />
@@ -18,7 +21,17 @@ const viewGoal = ( { currentGoal } ) => {
       {/* Line chart placeholder*/}
     </div>
 
-    {/* button to rate process */}
+    <div className="view-goal-buttonContainer">
+      <div className="button-outer">
+        <button
+          type="button"
+          name="button"
+          className="new-rating-button"
+          onClick={ () => rateGoal(currentGoal) }
+        >ADD</button>
+      </div>
+    </div>
+
   </div>
   )
 }
