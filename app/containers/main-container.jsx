@@ -29,6 +29,7 @@ const mapStateToProps = state => ({
   goals: state.goals,
   step: state.step,
   newGoal: state.newGoal,
+  currentGoal: state.currentGoal
 });
 
 const mapDispatchToProps = dispatch => ({

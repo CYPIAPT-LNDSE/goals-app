@@ -21,7 +21,9 @@ export default (props) => {
       />
       break;
     case steps.VIEW_GOAL:
-      return <ViewGoal />
+      return <ViewGoal
+        currentGoal = { props.currentGoal }
+      />
       break;
     default:
       return <GoalsList

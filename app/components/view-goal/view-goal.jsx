@@ -1,8 +1,9 @@
 import React from 'react';
 
-const viewGoal = ( /* pass in details of this goal */ ) => {
+const viewGoal = ( { currentGoal } ) => {
   return (
-    <div>Hello</div>
+    <div>{currentGoal.name}
+
     {/* goal tile component */}
 
     {/* progress bars */}
@@ -10,6 +11,7 @@ const viewGoal = ( /* pass in details of this goal */ ) => {
     {/* line chart */}
 
     {/* button to rate process */}
+    </div>
   )
 }
 
