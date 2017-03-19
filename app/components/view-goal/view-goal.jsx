@@ -38,7 +38,7 @@ const viewGoal = ( { currentGoal } ) => {
           >New Rating</button>
         </div>
       </div>
-  </div>
+    </div>
   )
 }
 
