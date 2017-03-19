@@ -18,6 +18,7 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
   const actionStepAddGoal = {
     type: types.STEP_ADD_GOAL,
   };
+
   t.equal(
     reducer(initialState, actionStepAddGoal).step,
     steps.ADD_GOAL,
@@ -27,7 +28,8 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
     reducer(initialState, actionStepAddGoal).previousStep,
     steps.GOALS_LIST,
     "step add goal sets correct step"
-  );s
+  );
+
   t.end();
 });
 
@@ -39,6 +41,7 @@ tape('test reducer case input_goal: input value is added to state', (t) => {
     type: types.INPUT_GOAL,
     input: input,
   };
+
   t.equal(
     reducer(initialState, actionInputGoal).newGoal.name,
     input,
@@ -55,6 +58,7 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
     type: types.SELECT_AVATAR,
     avatar: avatar,
   };
+  
   t.equal(
     reducer(initialState, actionSelectAvatar).newGoal.avatar,
     avatar,
