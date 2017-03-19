@@ -9,7 +9,7 @@ const viewGoal = ( { currentGoal } ) => {
        key={rating}
        rating={rating}
        time={"today"} />
-   ); {/* TODO: Change the key to id */}
+   );
 
   return (
     <div className="view-goal">
