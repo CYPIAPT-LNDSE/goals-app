@@ -1,18 +1,20 @@
 import React from 'react';
 
 const ProgressBarComponent = ({ rating, time }) => {
+  const style = {width: `${(rating*10)}%`};
+  const left = {left: `${(rating*10)-6}%`};
   return (
-    <div>
+    <div className="progress-bar-container">
       <div className="progress-bar-background">
 
       </div>
-      <div className="progress-bar-forground">
+      <div className="progress-bar-forground" style={style}>
 
       </div>
-      <div className="progress-bar-rating">
-        {rating}
+      <div className="progress-bar-rating" style={left}>
+        <p>{rating}</p>
       </div>
-      // time
+
       <div className="progress-bar-time">
         <p>
           {time}
