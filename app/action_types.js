@@ -9,3 +9,9 @@ export const SAVE_NEW_GOAL = 'SAVE_NEW_GOAL';
 
 /* view goal actions */
 export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
+
+/* socket sync stuff */
+export const SET_PENDING_SYNC_OPEN = 'SET_PENDING_SYNC_OPEN';
+export const UPDATE_SYNC_SUCCESS = 'UPDATE_SYNC_SUCCESS';
+export const UPDATE_SYNC_FAILURE = 'UPDATE_SYNC_FAILURE';
+export const RESET_UPDATE_COUNT = 'RESET_UPDATE_COUNT';
