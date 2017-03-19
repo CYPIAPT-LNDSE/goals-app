@@ -18,11 +18,6 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
   const actionStepAddGoal = {
     type: types.STEP_ADD_GOAL,
   };
-
-<<<<<<< HEAD
-  t.equal(reducer(initialState, actionStepAddGoal).step, steps.ADD_GOAL, "step add goal sets correct step");
-  t.equal(reducer(initialState, actionStepAddGoal).previousStep, steps.GOALS_LIST, "step add goal sets correct step");
-=======
   t.equal(
     reducer(initialState, actionStepAddGoal).step,
     steps.ADD_GOAL,
@@ -32,8 +27,7 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
     reducer(initialState, actionStepAddGoal).previousStep,
     steps.GOALS_LIST,
     "step add goal sets correct step"
-  );
->>>>>>> master
+  );s
   t.end();
 });
 
@@ -45,16 +39,11 @@ tape('test reducer case input_goal: input value is added to state', (t) => {
     type: types.INPUT_GOAL,
     input: input,
   };
-
-<<<<<<< HEAD
-  t.equal(reducer(initialState, actionInputGoal).newGoal.name, input, 'input value added to state');
-=======
   t.equal(
     reducer(initialState, actionInputGoal).newGoal.name,
     input,
     'input value added to state'
   );
->>>>>>> master
   t.end();
 });
 
@@ -66,16 +55,11 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
     type: types.SELECT_AVATAR,
     avatar: avatar,
   };
-
-<<<<<<< HEAD
-  t.equal(reducer(initialState, actionSelectAvatar).newGoal.avatar, avatar, 'avatar value updated');
-=======
   t.equal(
     reducer(initialState, actionSelectAvatar).newGoal.avatar,
     avatar,
     'avatar value updated'
   );
->>>>>>> master
   t.end();
 });
 
@@ -91,11 +75,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
     goal: newGoal,
   };
   const newState = reducer(initialState, actionSaveGoal);
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> master
   t.equal(newState.goals.length, 1, 'one object in the goals array');
   t.deepEqual(newState.goals[0], newGoal, 'correct goal in goals array');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
@@ -113,14 +93,10 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
     goal: myGoal,
   };
 
-<<<<<<< HEAD
-  t.deepEqual(reducer(initialState, actionSelectGoal).currentGoal, myGoal, 'current goal is set to myGoal');
-=======
   t.deepEqual(
     reducer(initialState, actionSelectGoal).currentGoal,
     myGoal,
     'current goal is set to myGoal'
   );
->>>>>>> master
   t.end();
 });
