@@ -19,8 +19,16 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
     type: types.STEP_ADD_GOAL,
   };
 
-  t.equal(reducer(initialState, actionStepAddGoal).step, steps.ADD_GOAL, "step add goal sets correct step");
-  t.equal(reducer(initialState, actionStepAddGoal).previousStep, steps.GOALS_LIST, "step add goal sets correct step");
+  t.equal(
+    reducer(initialState, actionStepAddGoal).step,
+    steps.ADD_GOAL,
+    "step add goal sets correct step"
+  );
+  t.equal(
+    reducer(initialState, actionStepAddGoal).previousStep,
+    steps.GOALS_LIST,
+    "step add goal sets correct step"
+  );
   t.end();
 });
 
@@ -33,7 +41,11 @@ tape('test reducer case input_goal: input value is added to state', (t) => {
     input: input,
   };
 
-  t.equal(reducer(initialState, actionInputGoal).newGoal.name, input, 'input value added to state');
+  t.equal(
+    reducer(initialState, actionInputGoal).newGoal.name,
+    input,
+    'input value added to state'
+  );
   t.end();
 });
 
@@ -46,7 +58,11 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
     avatar: avatar,
   };
 
-  t.equal(reducer(initialState, actionSelectAvatar).newGoal.avatar, avatar, 'avatar value updated');
+  t.equal(
+    reducer(initialState, actionSelectAvatar).newGoal.avatar,
+    avatar,
+    'avatar value updated'
+  );
   t.end();
 });
 
@@ -62,7 +78,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
     goal: newGoal,
   };
   const newState = reducer(initialState, actionSaveGoal);
-  
+
   t.equal(newState.goals.length, 1, 'one object in the goals array');
   t.deepEqual(newState.goals[0], newGoal, 'correct goal in goals array');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
@@ -80,6 +96,10 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
     goal: myGoal,
   };
 
-  t.deepEqual(reducer(initialState, actionSelectGoal).currentGoal, myGoal, 'current goal is set to myGoal');
+  t.deepEqual(
+    reducer(initialState, actionSelectGoal).currentGoal,
+    myGoal,
+    'current goal is set to myGoal'
+  );
   t.end();
 });
