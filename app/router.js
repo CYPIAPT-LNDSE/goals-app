@@ -28,7 +28,7 @@ export default (props) => {
       />
       break;
     case steps.RATE_GOAL:
-      return <RateGoal />
+      return <RateGoal currentGoal={ props.currentGoal }/>
       break;
     default:
       return <GoalsList

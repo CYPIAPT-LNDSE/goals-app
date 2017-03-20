@@ -59,12 +59,16 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
   const initialState = { ...defaultState, newGoal: newGoal, };
   const actionSaveGoal = {
     type: types.SAVE_NEW_GOAL,
-    goal: newGoal,
+    goal: {
+      ...newGoal,
+      updateCount: 1,
+    }
   };
   const newState = reducer(initialState, actionSaveGoal);
 
   t.equal(newState.goals.length, 1, 'one object in the goals array');
-  t.deepEqual(newState.goals[0], newGoal, 'correct goal in goals array');
+  t.equal(newState.goals[0].name, newGoal.name, 'correct goal in goals array');
+  t.equal(newState.goals[0].updateCount, 1, 'update count set to 1');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
   t.equal(newState.previousStep, null, 'previous step is null');
   t.deepEqual(newState.newGoal, {}, 'newGoal property is an empty object');
@@ -93,5 +97,73 @@ tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
 
   t.equal(reducer(initialState, actionStepRateGoal).step, steps.RATE_GOAL, "step rate goal sets correct step");
   t.equal(reducer(initialState, actionStepRateGoal).previousStep, steps.VIEW_GOAL, "step add goal sets correct step");
+  t.end();
+});
+
+tape('test reducer set pending sync open: pending sync set to open', (t) => {
+
+  const initialState = {
+    goals: [{id: 1, pendingSync: {open: false}}]
+  };
+  const newState = {
+    goals: [{id: 1, pendingSync: {open: true}}]
+  };
+  const actionSetPendingSyncOpen = {
+    type: types.SET_PENDING_SYNC_OPEN,
+    id: 1
+  };
+
+  t.deepEqual(reducer(initialState, actionSetPendingSyncOpen), newState, "Sets pending to true");
+  t.end();
+});
+
+tape('test reducer UPDATE_SYNC_SUCCESS: sync set to 1 and pending sync set to false', (t) => {
+
+  const initialState = {
+    goals: [{id: 1, syncDBCount: 0, pendingSync: {open: true}}]
+  };
+  const newState = {
+    goals: [{id: 1, syncDBCount: 1, pendingSync: {open: false}}]
+  };
+  const actionUpdateSyncSuccess = {
+    type: types.UPDATE_SYNC_SUCCESS,
+    id: 1
+  };
+
+  t.deepEqual(reducer(initialState, actionUpdateSyncSuccess), newState, "Sets pending to false and syncDBCount to 1");
+  t.end();
+});
+
+tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
+
+  const initialState = {
+    goals: [{id: 1, pendingSync: {open: true}}]
+  };
+  const newState = {
+    goals: [{id: 1, pendingSync: {open: false}}]
+  };
+  const actionUpdateSyncFailure = {
+    type: types.UPDATE_SYNC_FAILURE,
+    id: 1
+  };
+
+  t.deepEqual(reducer(initialState, actionUpdateSyncFailure), newState, "Sets pending to false");
+  t.end();
+});
+
+tape('test reducer RESET_UPDATE_COUNT: updateCount and syncDBCount set to 0', (t) => {
+
+  const initialState = {
+    goals: [{id: 1, updateCount: 1, syncDBCount: 2}]
+  };
+  const newState = {
+    goals: [{id: 1, updateCount:0, syncDBCount: 0}]
+  };
+  const actionResetUpdateCount = {
+    type: types.RESET_UPDATE_COUNT,
+    id: 1
+  };
+
+  t.deepEqual(reducer(initialState, actionResetUpdateCount), newState, "Sets updateCount and syncDBCount to 0");
   t.end();
 });

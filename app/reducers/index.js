@@ -49,6 +49,35 @@ export default (state = defaultState, action) => {
         step: steps.RATE_GOAL,
         previousStep: steps.VIEW_GOAL
       }
+    case 'SET_PENDING_SYNC_OPEN':
+      return {
+        ...state,
+        goals: state.goals.map((goal) => {
+          return action.id === goal.id ? { ...goal, pendingSync: {open: true} } : goal;
+        })
+      }
+    case 'UPDATE_SYNC_SUCCESS':
+      return {
+        ...state,
+        goals: state.goals.map((goal) => {
+          const syncDBCount = goal.syncDBCount + 1;
+          return action.id === goal.id ? { ...goal, syncDBCount: syncDBCount, pendingSync: {open: false} } : goal;
+        })
+      }
+      case 'UPDATE_SYNC_FAILURE':
+        return {
+          ...state,
+          goals: state.goals.map((goal) => {
+            return action.id === goal.id ? { ...goal, pendingSync: {open: false} } : goal;
+          })
+        }
+    case 'RESET_UPDATE_COUNT':
+      return {
+        ...state,
+        goals: state.goals.map((goal) => {
+          return action.id === goal.id ? { ...goal, updateCount:0, syncDBCount: 0 } : goal;
+        })
+      }
     default:
       return state;
   }
