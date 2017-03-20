@@ -11,7 +11,27 @@ const defaultState = {
   previousStep: null,
   newGoal: {},
   currentGoal: {},
-  comment: "",
+};
+
+export const saveRating = (state, time) => {
+  const newRating = {
+    score: state.currentGoal.newRating.score,
+    id: 0,
+    time: time,
+    comment: state.currentGoal.newRating.comment,
+  };
+  const currentGoal = {
+    ...state.currentGoal,
+    ratings: (state.currentGoal.ratings || []).concat(newRating),
+    newRating: {},
+  }
+  const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
+    currentGoal : goal);
+  return {
+    ...state,
+    goals: goals,
+    currentGoal: currentGoal,
+  }
 };
 
 export default (state = defaultState, action) => {
@@ -85,6 +105,12 @@ export default (state = defaultState, action) => {
             comment: action.input,
           }
         }
+      }
+    case 'SAVE_RATING':
+      return {
+        ...saveRating(state, action.time),
+        step: steps.VIEW_GOAL,
+        previousStep: steps.FEEDBACK,
       }
     case 'SET_PENDING_SYNC_OPEN':
       return {

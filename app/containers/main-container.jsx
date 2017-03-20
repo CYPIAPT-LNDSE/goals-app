@@ -43,6 +43,7 @@ const mapDispatchToProps = dispatch => ({
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating))},
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback())},
   onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input))},
+  saveRating: (time) => {dispatch(actionsFeedback.saveRating(time))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

@@ -16,6 +16,7 @@ export const MOVE_SLIDER = 'MOVE_SLIDER';
 
 /* feedback actions */
 export const INPUT_FEEDBACK = 'INPUT_FEEDBACK';
+export const SAVE_RATING = 'SAVE_RATING';
 
 /* socket sync stuff */
 export const SET_PENDING_SYNC_OPEN = 'SET_PENDING_SYNC_OPEN';
