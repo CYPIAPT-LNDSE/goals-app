@@ -14,6 +14,9 @@ export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
 export const STEP_FEEDBACK = 'STEP_FEEDBACK';
 export const MOVE_SLIDER = 'MOVE_SLIDER';
 
+/* feedback actions */
+export const INPUT_FEEDBACK = 'INPUT_FEEDBACK';
+
 /* socket sync stuff */
 export const SET_PENDING_SYNC_OPEN = 'SET_PENDING_SYNC_OPEN';
 export const UPDATE_SYNC_SUCCESS = 'UPDATE_SYNC_SUCCESS';

@@ -38,4 +38,10 @@
   border: $blueBorderThin;
   border-radius: 6px;
   margin-left: 15.5px;
+  textarea {
+    height: 100%;
+    border: none;
+    padding: 8px;
+    outline: none;
+  }
 }

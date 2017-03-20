@@ -6,6 +6,7 @@ import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 import * as actionsViewGoal from './../actions/view-goal.js';
 import * as actionsRateGoal from './../actions/rate-goal.js';
+import * as actionsFeedback from './../actions/feedback.js';
 
 import router from './../router.js';
 
@@ -39,8 +40,9 @@ const mapDispatchToProps = dispatch => ({
   saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
   onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)) },
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal())},
-  stepFeedback: (goal) => { dispatch(actionsRateGoal.stepFeedback(goal))}
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating))},
+  stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback())},
+  onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

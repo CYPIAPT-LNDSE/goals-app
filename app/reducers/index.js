@@ -47,7 +47,10 @@ export default (state = defaultState, action) => {
         ...state,
         step: steps.VIEW_GOAL,
         previousStep: steps.GOALS_LIST,
-        currentGoal: action.goal,
+        currentGoal: {
+          ...action.goal,
+          newRating: {},
+        }
       }
     case 'STEP_RATE_GOAL':
       return {
@@ -56,17 +59,32 @@ export default (state = defaultState, action) => {
         previousStep: steps.VIEW_GOAL
       }
 
+    case 'MOVE_SLIDER':
+      return {
+        ...state,
+        currentGoal: { ...state.currentGoal,
+          newRating: {
+            ...state.currentGoal.newRating,
+            score: action.rating,
+          }
+        }
+      }
+
     case 'STEP_FEEDBACK':
       return {
         ...state,
         step: steps.FEEDBACK,
         previousStep: steps.RATE_GOAL
-      };
-    case 'MOVE_SLIDER':
-    console.log("move slider", action);
+      }
+    case 'INPUT_FEEDBACK':
       return {
         ...state,
-        currentGoal: { ...state.currentGoal, newRating: action.rating, }
+        currentGoal: { ...state.currentGoal,
+          newRating: {
+            ...state.currentGoal.newRating,
+            comment: action.input,
+          }
+        }
       }
     case 'SET_PENDING_SYNC_OPEN':
       return {

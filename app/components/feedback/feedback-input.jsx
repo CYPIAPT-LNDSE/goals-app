@@ -1,16 +1,16 @@
-import { Component } from 'react';
+import React from 'react';
 
-class FeedbackInput extends Component {
+class FeedbackInput extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  const handleChange = (event) => {
-    this.props.onInputFeedback(event.target.value);
-  };
+  handleChange(event) {
+     this.props.onInputFeedback(event.target.value);
+  }
 
-  const render = () => {
+  render() {
     return (
       <div className="feedback-input-container">
         <textarea
@@ -27,7 +27,7 @@ class FeedbackInput extends Component {
         />
       </div>
     );
-  };
+  }
 }
 
 export default FeedbackInput;

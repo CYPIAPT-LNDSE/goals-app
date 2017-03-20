@@ -36,7 +36,10 @@ export default (props) => {
       />
       break;
     case steps.FEEDBACK:
-      return <Feedback currentGoal={ props.currentGoal } />
+      return <Feedback
+        currentGoal={ props.currentGoal }
+        onInputFeedback= { props.onInputFeedback }
+        />
       break;
     default:
       return <GoalsList

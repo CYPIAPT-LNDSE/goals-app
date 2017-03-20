@@ -93,7 +93,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
 
 tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) => {
 
-  const myGoal = { name: 'this is my goal', };
+  const myGoal = { name: 'this is my goal'};
   const initialState = { ...defaultState, goals: [ myGoal, ] };
   const actionSelectGoal = {
     type: types.SELECT_GOAL,
@@ -102,7 +102,7 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
 
   t.deepEqual(
     reducer(initialState, actionSelectGoal).currentGoal,
-    myGoal,
+    {...myGoal, newRating : {} },
     'current goal is set to myGoal'
   );
   t.end();
@@ -134,7 +134,7 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
 
 tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
 
-  const myGoal = { name: 'this is my goal', };
+  const myGoal = { name: 'this is my goal', newRating: {}};
   const initialState = {
     ...defaultState,
     goals: [ myGoal, ],
@@ -144,7 +144,7 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     ...initialState,
     currentGoal: {
       ...initialState.currentGoal,
-      newRating: 5,
+      newRating: {score: 5},
     }
   };
   const actionMoveSlider = {

@@ -13,7 +13,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
         <p>Rate your latest progress out of 10</p>
         <div className="animation-container-rating">
           <div className="rating-bubble">
-            <p>{ (currentGoal.newRating || 0) }</p>
+            <p>{ (currentGoal.newRating.score || 0) }</p>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
             type="button"
             name="button"
             className="new-rating-button"
-            onClick={ () => feedback(currentGoal) }
+            onClick={ () => feedback() }
           >Rate</button>
         </div>
       </div>

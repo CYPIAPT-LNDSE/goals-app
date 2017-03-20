@@ -20,7 +20,7 @@ class RateGoalSlider extends React.Component {
           type="range"
           min="0"
           max="10"
-          value={ (this.props.goal.newRating || 0) }
+          value={ (this.props.goal.newRating.score || 0) }
           step="1"
           onInput={ this.handleChange }
         />
