@@ -15,3 +15,16 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.feedback-question-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 289px;
+  height: 44px;
+  margin-left: 16px;
+  p {
+    color: $blue;
+    font-size: 14px;
+  }
+}
