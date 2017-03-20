@@ -2,17 +2,40 @@
 @import 'general';
 
 $contentWidth: 90%;
+$ratingBubbleSize: 30px;
 
 .rate-goal-animation-container {
-  height: 200px;
+  height: 215px;
   width: $contentWidth;
   max-width: 300px;
-  border: 1px solid hotpink;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.animation-container-rating {
+  height: $ratingBubbleSize;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.rating-bubble {
+  height: 100%;
+  width: $ratingBubbleSize;
+  border-radius: 50%;
+  border: $blueBorderThin;
+  background-color: $light;
+
+  p {
+    line-height: $ratingBubbleSize;
+    text-align: center;
+  }
 }
 
 .rate-goal-slider-container {
-  height: 60px;
+  height: 45px;
   width: $contentWidth;
   max-width: 500px;
   align-self: center;
