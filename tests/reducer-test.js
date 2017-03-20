@@ -100,6 +100,30 @@ tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
   t.end();
 });
 
+tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
+
+  const myGoal = { name: 'this is my goal', };
+  const initialState = {
+    ...defaultState,
+    goals: [ myGoal, ],
+    currentGoal: myGoal,
+  };
+  const newState = {
+    ...initialState,
+    currentGoal: {
+      ...initialState.currentGoal,
+      newRating: 5,
+    }
+  };
+  const actionMoveSlider = {
+    type: types.MOVE_SLIDER,
+    rating: 5,
+  };
+
+  t.deepEqual(reducer(initialState, actionMoveSlider), newState, 'rating of 5 added to current state');
+  t.end();
+});
+
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {

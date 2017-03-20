@@ -1,7 +1,11 @@
 import * as steps from './../steps.js';
 
 const defaultState = {
-  goals: [],
+  goals: [{
+    name: "my test goal",
+    id: 10,
+    avatar: "pepper",
+  }],
   step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: {},
@@ -48,6 +52,11 @@ export default (state = defaultState, action) => {
         ...state,
         step: steps.RATE_GOAL,
         previousStep: steps.VIEW_GOAL
+      }
+    case 'MOVE_SLIDER':
+      return {
+        ...state,
+        currentGoal: { ...state.currentGoal, newRating: action.rating, }
       }
     case 'SET_PENDING_SYNC_OPEN':
       return {
