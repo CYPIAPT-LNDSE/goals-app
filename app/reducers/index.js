@@ -1,7 +1,12 @@
 import * as steps from './../steps.js';
 
 const defaultState = {
-  goals: [],
+  goals: [{name: "Helloo", avatar: "pepper", id: 1,
+    ratings: [{score: 6, time:"today", id: 3},
+    {score: 5, time:"two days ago", id: 4},
+    {score: 8, time:"last week", id: 5},
+    {score: 9, time:"last week", id: 5}]
+  }],
   step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: {},
