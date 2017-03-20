@@ -2,22 +2,23 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx'
 import ProgressBarComponent from './progress-bar.jsx'
 
-
-const viewGoal = ( { currentGoal, rateGoal } ) => {
-  const progressBars = currentGoal.ratings.slice(0, 3).map( rating =>
+const viewGoal = ( { currentGoal, rateGoal, } ) => {
+  const progressBars = currentGoal.ratings.slice(0, 3)
+  .map(rating =>
      <ProgressBarComponent
-       key={rating.id}
-       progress={rating.score}
-       time={rating.time} />
+       key={ rating.id }
+       progress={ rating.score }
+       time={ rating.time }
+      />
    );
 
   return (
     <div className="view-goal goal-detail-page">
       <div className="goal-detail-goal-tile-container">
-        <GoalTileComponent goal={currentGoal} />
+        <GoalTileComponent goal={ currentGoal } />
       </div>
       <div className="view-goal-progress-container">
-        {progressBars}
+        { progressBars }
       </div>
       <div className="line-chart-container">
         <div className="line-chart-title">
@@ -35,7 +36,7 @@ const viewGoal = ( { currentGoal, rateGoal } ) => {
             type="button"
             name="button"
             className="new-rating-button"
-            onClick = {() => rateGoal()}
+            onClick = { () => rateGoal() }
           >New Rating</button>
         </div>
       </div>
