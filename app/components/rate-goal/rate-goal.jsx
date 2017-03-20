@@ -1,15 +1,22 @@
 import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 
-const RateGoal = ({ currentGoal, }) => {
+const RateGoal = ({ currentGoal, feedback }) => {
   return (
     <div className="rate-goal goal-detail-page">
       <div className="goal-detail-goal-tile-container">
         <GoalTileComponent goal={ currentGoal } />
       </div>
-      {/* container with animation */}
-      {/* slider */}
-      {/* button - transition to comments page */}
+      <div className="view-goal-buttonContainer">
+        <div className="button-outer">
+          <button
+            type="button"
+            name="button"
+            className="new-rating-button"
+            onClick={ () => feedback(currentGoal) }
+          >Rate</button>
+        </div>
+      </div>
     </div>
   );
 }

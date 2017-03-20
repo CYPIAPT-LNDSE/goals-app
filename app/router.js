@@ -7,6 +7,7 @@ import GoalsList from './components/goals-list/goals-list.jsx';
 import AddGoal from './components/add-new-goal/add-new-goal.jsx';
 import ViewGoal from './components/view-goal/view-goal.jsx';
 import RateGoal from './components/rate-goal/rate-goal.jsx';
+import Feedback from './components/feedback/feedback.jsx';
 
 export default (props) => {
 
@@ -28,7 +29,13 @@ export default (props) => {
       />
       break;
     case steps.RATE_GOAL:
-      return <RateGoal currentGoal={ props.currentGoal }/>
+      return <RateGoal
+        currentGoal={ props.currentGoal }
+        feedback={ props.stepFeedback }
+      />
+      break;
+    case steps.FEEDBACK:
+      return <Feedback currentGoal={ props.currentGoal } />
       break;
     default:
       return <GoalsList

@@ -100,6 +100,18 @@ tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
   t.end();
 });
 
+tape('test reducer step_feedback: step and previousStep changed', (t) => {
+
+  const initialState = defaultState;
+  const actionStepFeedback = {
+    type: types.STEP_FEEDBACK,
+  };
+
+  t.equal(reducer(initialState, actionStepFeedback).step, steps.FEEDBACK, "step feedback sets correct step");
+  t.equal(reducer(initialState, actionStepFeedback).previousStep, steps.RATE_GOAL, "step feedback sets correct step");
+  t.end();
+});
+
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {
