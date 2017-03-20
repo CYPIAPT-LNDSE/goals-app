@@ -11,7 +11,7 @@
     "watch": "webpack --config ./webpack.config.js --progress --colors --watch",
     "build": "webpack --config ./webpack.config.js --progress --colors",
     "start": "npm run build && node src/start-server.js",
-    "test": "babel-tape-runner  tests/reducer-test.js"
+    "test": "babel-tape-runner tests/reducer-test.js"
   },
   "repository": {
     "type": "git",

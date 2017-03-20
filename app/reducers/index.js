@@ -73,7 +73,8 @@ export default (state = defaultState, action) => {
     case 'INPUT_FEEDBACK':
       return {
         ...state,
-        currentGoal: { ...state.currentGoal,
+        currentGoal: {
+          ...state.currentGoal,
           newRating: {
             ...state.currentGoal.newRating,
             comment: action.input,
@@ -84,7 +85,9 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         goals: state.goals.map((goal) => {
-          return action.id === goal.id ? { ...goal, pendingSync: {open: true} } : goal;
+          return action.id === goal.id
+            ? { ...goal, pendingSync: {open: true} }
+            : goal;
         })
       }
     case 'UPDATE_SYNC_SUCCESS':
@@ -92,21 +95,27 @@ export default (state = defaultState, action) => {
         ...state,
         goals: state.goals.map((goal) => {
           const syncDBCount = goal.syncDBCount + 1;
-          return action.id === goal.id ? { ...goal, syncDBCount: syncDBCount, pendingSync: {open: false} } : goal;
+          return action.id === goal.id
+            ? { ...goal, syncDBCount: syncDBCount, pendingSync: {open: false} }
+            : goal;
         })
       }
       case 'UPDATE_SYNC_FAILURE':
         return {
           ...state,
           goals: state.goals.map((goal) => {
-            return action.id === goal.id ? { ...goal, pendingSync: {open: false} } : goal;
+            return action.id === goal.id
+              ? { ...goal, pendingSync: {open: false} }
+              : goal;
           })
         }
     case 'RESET_UPDATE_COUNT':
       return {
         ...state,
         goals: state.goals.map((goal) => {
-          return action.id === goal.id ? { ...goal, updateCount:0, syncDBCount: 0 } : goal;
+          return action.id === goal.id
+            ? { ...goal, updateCount:0, syncDBCount: 0 }
+            : goal;
         })
       }
     default:
