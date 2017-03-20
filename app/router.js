@@ -25,13 +25,14 @@ export default (props) => {
     case steps.VIEW_GOAL:
       return <ViewGoal
         currentGoal = { props.currentGoal }
-        rateGoal = { props.stepRateGoal }
+        rateGoal={ props.stepRateGoal }
       />
       break;
     case steps.RATE_GOAL:
       return <RateGoal
         currentGoal={ props.currentGoal }
         feedback={ props.stepFeedback }
+        onMoveSlider={ props.onMoveSlider }
       />
       break;
     case steps.FEEDBACK:

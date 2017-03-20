@@ -29,7 +29,7 @@ const mapStateToProps = state => ({
   goals: state.goals,
   step: state.step,
   newGoal: state.newGoal,
-  currentGoal: state.currentGoal
+  currentGoal: state.currentGoal,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -40,6 +40,7 @@ const mapDispatchToProps = dispatch => ({
   onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)) },
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal())},
   stepFeedback: (goal) => { dispatch(actionsRateGoal.stepFeedback(goal))}
+  onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

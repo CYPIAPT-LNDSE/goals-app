@@ -28,7 +28,7 @@ const viewGoal = ( { currentGoal } ) => {
         </div>
       </div>
 
-      <div className="view-goal-buttonContainer">
+      <div className="view-goal-buttonContainer goal-detail-buttonContainer">
         <div className="button-outer">
           <button
             type="button"

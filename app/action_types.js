@@ -12,6 +12,7 @@ export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
 
 /* rate goal actions */
 export const STEP_FEEDBACK = 'STEP_FEEDBACK';
+export const MOVE_SLIDER = 'MOVE_SLIDER';
 
 /* socket sync stuff */
 export const SET_PENDING_SYNC_OPEN = 'SET_PENDING_SYNC_OPEN';

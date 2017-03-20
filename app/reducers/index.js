@@ -55,11 +55,18 @@ export default (state = defaultState, action) => {
         step: steps.RATE_GOAL,
         previousStep: steps.VIEW_GOAL
       }
+
     case 'STEP_FEEDBACK':
       return {
         ...state,
         step: steps.FEEDBACK,
         previousStep: steps.RATE_GOAL
+      };
+    case 'MOVE_SLIDER':
+    console.log("move slider", action);
+      return {
+        ...state,
+        currentGoal: { ...state.currentGoal, newRating: action.rating, }
       }
     case 'SET_PENDING_SYNC_OPEN':
       return {
