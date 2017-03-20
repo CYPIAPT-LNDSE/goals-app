@@ -6,6 +6,7 @@ const defaultState = {
   previousStep: null,
   newGoal: {},
   currentGoal: {},
+  comment: "",
 };
 
 export default (state = defaultState, action) => {

@@ -1,5 +1,7 @@
 import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
+import FeedbackInput from './feedback-input.jsx';
+
 const Feedback = ({ currentGoal }) => {
   return (
     <div className='feedback-page'>
@@ -9,6 +11,10 @@ const Feedback = ({ currentGoal }) => {
       <div className='feedback-question-container'>
         <p>Would you like to explain why?</p>
       </div>
+      <FeedbackInput
+        onInputFeedback= {onInputFeedback}
+        comment= {comment}
+        />
     </div>
   );
 };
