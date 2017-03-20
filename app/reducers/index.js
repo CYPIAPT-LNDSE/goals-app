@@ -1,11 +1,7 @@
 import * as steps from './../steps.js';
 
 const defaultState = {
-  goals: [{
-    name: "my test goal",
-    id: 10,
-    avatar: "pepper",
-  }],
+  goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: {},
@@ -54,7 +50,6 @@ export default (state = defaultState, action) => {
         previousStep: steps.VIEW_GOAL
       }
     case 'MOVE_SLIDER':
-    console.log("move slider", action);
       return {
         ...state,
         currentGoal: { ...state.currentGoal, newRating: action.rating, }
