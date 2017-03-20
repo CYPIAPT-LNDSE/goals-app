@@ -1,0 +1,34 @@
+@import 'colors';
+@import 'general';
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  visibility: visible;
+  width: 90%;
+  background-color: transparent;
+  align-self: center;
+
+  &:active, &:hover, &:focus  {
+    outline: none;
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 50px;
+  width: 15px;
+  background: #fff;
+  background-image: url('./../assets/images/pepper_slider.svg');
+  cursor: pointer;
+  margin-top: -20px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  background: url('./../assets/images/pepper_slider.svg') no-repeat center;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: $light;
+  border: $blueBorder;
+  border-radius: 3px;
+}

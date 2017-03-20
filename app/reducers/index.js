@@ -54,6 +54,7 @@ export default (state = defaultState, action) => {
         previousStep: steps.VIEW_GOAL
       }
     case 'MOVE_SLIDER':
+    console.log("move slider", action);
       return {
         ...state,
         currentGoal: { ...state.currentGoal, newRating: action.rating, }
