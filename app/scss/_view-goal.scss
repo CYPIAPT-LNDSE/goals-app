@@ -92,11 +92,3 @@ $titleHeight: 25px;
     height: 100%;
   }
 }
-
-.view-goal-buttonContainer {
-  @include ctaButton;
-  .new-rating-button {
-    width: 156px;
-    height: 50px;
-  }
-}

@@ -8,15 +8,24 @@ const RateGoal = ({ currentGoal, onMoveSlider, }) => {
       <div className="goal-detail-goal-tile-container">
         <GoalTileComponent goal={ currentGoal } />
       </div>
-      {/* container with animation */}
-      {/* slider */}
+      <div className="rate-goal-animation-container">
+        <p>Rate your latest progress out of 10</p>
+      </div>
       <div className="rate-goal-slider-container">
         <RateGoalSlider
           goal={ currentGoal }
           onMoveSlider={ onMoveSlider }
         />
-      </div>}
-      {/* button - transition to comments page */}
+      </div>
+      <div className="rate-goal-buttonContainer goal-detail-buttonContainer">
+        <div className="button-outer">
+          <button
+            type="button"
+            name="button"
+            className="new-rating-button"
+          >Rate</button>
+        </div>
+      </div>
     </div>
   );
 }
