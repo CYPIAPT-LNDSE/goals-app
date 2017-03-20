@@ -60,7 +60,7 @@ export default (state = defaultState, action) => {
     case 'SELECT_GOAL':
       return {
         ...state,
-        step: steps.VIEW_GOAL,
+        step: action.goal.ratings && action.goal.ratings.length ? steps.VIEW_GOAL : steps.RATE_GOAL,
         previousStep: steps.GOALS_LIST,
         currentGoal: {
           ...action.goal,
