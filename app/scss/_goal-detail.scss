@@ -19,7 +19,7 @@
 .goal-detail-buttonContainer {
   @include ctaButton;
   height: 100px;
-  .new-rating-button {
+  button {
     width: 156px;
     height: 50px;
   }

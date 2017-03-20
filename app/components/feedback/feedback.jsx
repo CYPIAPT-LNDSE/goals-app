@@ -14,7 +14,16 @@ const Feedback = ({ currentGoal, onInputFeedback }) => {
       <FeedbackInput
         onInputFeedback= {onInputFeedback}
         comment= {currentGoal.newRating.comment}
-        />
+      />
+    <div className="feedback-buttonContainer goal-detail-buttonContainer">
+        <div className="button-outer">
+          <button
+            type="button"
+            name="button"
+            className="new-feedback-button"
+          >Save</button>
+        </div>
+      </div>
     </div>
   );
 };

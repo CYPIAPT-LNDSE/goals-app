@@ -38,10 +38,17 @@
   border: $blueBorderThin;
   border-radius: 6px;
   margin-left: 15.5px;
+  background-color: $light;
+
   textarea {
     height: 100%;
     border: none;
-    padding: 8px;
+    padding: 13px;
     outline: none;
+    background-color: transparent;
+    color: $grey;
+    font-family: openSans;
+    font-size: 14px;
+    resize: none;
   }
 }
