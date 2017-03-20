@@ -10,9 +10,10 @@ export const inputFeedback = input => {
   };
 };
 
-export const saveRating = (time) => {
+export const saveRating = (time, id) => {
   return {
     type: types.SAVE_RATING,
     time: time,
+    id: id,
   }
 };

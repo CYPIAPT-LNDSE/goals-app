@@ -162,20 +162,22 @@ tape("test saveRating function for reducer save rating", t => {
   const initialState = {
     ...defaultState,
     currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
-      ratings: [{score: 6, time:"today", id: 3, comment: "comment"},],
-      newRating: { score: 5, comment: "comment2", }
-    },
-  }
-  const newState = {
-    ...defaultState,
-    currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
-      ratings: [{score: 6, time:"today", id: 3, comment: "comment"},
-      { score: 5, comment: "comment2", id: 0, time: "today", }],
-      newRating: {}
-    },
-  }
-  t.deepEqual(saveRating(initialState, "today"), newState, 'adds new rating to ratings array');
-  t.end();
+    ratings: [{score: 6, time:"today", id: 3, comment: "comment"},],
+    newRating: { score: 5, comment: "comment2", }
+  },
+}
+const newState = {
+  ...defaultState,
+  currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
+  ratings: [
+    { score: 5, comment: "comment2", id: 0, time: "today", },
+    { score: 6, time:"today", id: 3, comment: "comment", }
+  ],
+  newRating: {}
+},
+}
+t.deepEqual(saveRating(initialState, "today", 0), newState, 'adds new rating to ratings array');
+t.end();
 });
 
 tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
@@ -212,6 +214,7 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
   const actionsSaveRating = {
     type: types.SAVE_RATING,
     time: "yesterday",
+    id: 0,
   }
 
   t.deepEqual(reducer(initialState, actionsSaveRating), newState, 'Adds new rating to goals ratings');

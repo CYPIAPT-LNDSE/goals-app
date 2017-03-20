@@ -39,6 +39,7 @@ export default (props) => {
       return <Feedback
         currentGoal={ props.currentGoal }
         onInputFeedback= { props.onInputFeedback }
+        saveRating= { props.saveRating }
         />
       break;
     default:

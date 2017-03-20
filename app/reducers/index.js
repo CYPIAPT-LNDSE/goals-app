@@ -1,28 +1,23 @@
 import * as steps from './../steps.js';
 
 const defaultState = {
-  goals: [{name: "Helloo", avatar: "pepper", id: 1,
-    ratings: [{score: 6, time:"today", id: 3},
-    {score: 5, time:"two days ago", id: 4},
-    {score: 8, time:"last week", id: 5},
-    {score: 9, time:"last week", id: 5}]
-  }],
+  goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   newGoal: {},
   currentGoal: {},
 };
 
-export const saveRating = (state, time) => {
+export const saveRating = (state, time, id) => {
   const newRating = {
     score: state.currentGoal.newRating.score,
-    id: 0,
+    id: id,
     time: time,
     comment: state.currentGoal.newRating.comment,
   };
   const currentGoal = {
     ...state.currentGoal,
-    ratings: (state.currentGoal.ratings || []).concat(newRating),
+    ratings: [newRating].concat((state.currentGoal.ratings || [])),
     newRating: {},
   }
   const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
@@ -108,7 +103,7 @@ export default (state = defaultState, action) => {
       }
     case 'SAVE_RATING':
       return {
-        ...saveRating(state, action.time),
+        ...saveRating(state, action.time, action.id),
         step: steps.VIEW_GOAL,
         previousStep: steps.FEEDBACK,
       }

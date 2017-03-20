@@ -6,18 +6,18 @@ import ProgressBarComponent from './progress-bar.jsx'
 const viewGoal = ( { currentGoal, rateGoal } ) => {
   const progressBars = currentGoal.ratings.slice(0, 3).map( rating =>
      <ProgressBarComponent
-       key={rating.id}
-       progress={rating.score}
-       time={rating.time} />
+       rating={ rating }
+       key={ rating.id }
+     />
    );
 
   return (
     <div className="view-goal goal-detail-page">
       <div className="goal-detail-goal-tile-container">
-        <GoalTileComponent goal={currentGoal} />
+        <GoalTileComponent goal={ currentGoal } />
       </div>
       <div className="view-goal-progress-container">
-        {progressBars}
+        { progressBars }
       </div>
       <div className="line-chart-container">
         <div className="line-chart-title">
