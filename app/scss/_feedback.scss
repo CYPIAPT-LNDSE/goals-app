@@ -1,0 +1,17 @@
+@import 'general';
+@import 'colors';
+
+.feedback-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.feedback-goal-tile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
