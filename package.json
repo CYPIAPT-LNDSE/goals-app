@@ -55,6 +55,6 @@
   "devDependencies": {
     "babel-tape-runner": "^2.0.1",
     "tape": "^4.6.3",
-    "webpack-dev-server": "^2.4.2",
+    "webpack-dev-server": "^2.4.2"
   }
 }
