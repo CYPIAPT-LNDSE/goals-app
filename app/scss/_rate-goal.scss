@@ -81,3 +81,8 @@ input[type=range]::-webkit-slider-runnable-track {
   border: $blueBorderThin;
   border-radius: 2.5px;
 }
+
+.cactus {
+  width: 0;
+  visibility: hidden;
+}

@@ -2,8 +2,12 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import RateGoalSlider from './rate-goal-slider.jsx';
 
+import Cactus from './animations/cactus.jsx';
 
 const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
+
+  const animation = <Cactus />;
+
   return (
     <div className="rate-goal goal-detail-page">
       <div className="goal-detail-goal-tile-container">
@@ -11,6 +15,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
       </div>
       <div className="rate-goal-animation-container">
         <p>Rate your latest progress out of 10</p>
+          { animation }
         <div className="animation-container-rating">
           <div className="rating-bubble">
             <p>{ (currentGoal.newRating.score || 0) }</p>

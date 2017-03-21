@@ -1,4 +1,5 @@
 import React from 'react';
+import { TweenMax, TimeLineMax, } from 'gsap';
 
 class RateGoalSlider extends React.Component {
   constructor(props) {
