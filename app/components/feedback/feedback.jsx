@@ -25,10 +25,10 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating }) => {
               () => { saveRating(new Date(), Math.random() * 100); }
             }
           >Save</button>
-        </div>
       </div>
     </div>
+  </div>
   );
-};
+}
 
 export default Feedback;
