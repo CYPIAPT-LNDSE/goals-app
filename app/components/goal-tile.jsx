@@ -6,6 +6,7 @@ const tile = props => {
 
   const goal = props.goal;
   const pathAvatar = `./images/avatars/${goal.avatar}.png`;
+  const score = goal.ratings && goal.ratings.length ? goal.ratings[0].score : undefined;
 
   return (
     <div
@@ -25,7 +26,7 @@ const tile = props => {
         <p>{ goal.name }</p>
       </div>
       <div className="goalTile_rating">
-        <p>{ goal.currentRating }</p>
+        <p>{ score }</p>
       </div>
     </div>
   );
