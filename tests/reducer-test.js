@@ -93,7 +93,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
 
 tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) => {
 
-  const myGoal = { name: 'this is my goal'};
+  const myGoal = { name: 'this is my goal', };
   const initialState = { ...defaultState, goals: [ myGoal, ] };
   const actionSelectGoal = {
     type: types.SELECT_GOAL,
