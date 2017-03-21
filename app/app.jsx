@@ -5,13 +5,13 @@ import 'normalize.css';
 
 /* import components */
 import MainContainer from './containers/main-container.jsx';
-import Nav from './components/nav.jsx';
+import NavContainer from './containers/nav-container.jsx';
 
 const App = () => {
 
   return (
     <div className="page">
-      <Nav />
+      <NavContainer />
       <MainContainer/>
     </div>
   );
