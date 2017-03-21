@@ -12,6 +12,7 @@ $ratingBubbleSize: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .animation-container-rating {
@@ -83,6 +84,12 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .cactus {
-  width: 0;
-  visibility: hidden;
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  left: 37%;
+}
+
+#img0 {
+  display: inline;
 }
