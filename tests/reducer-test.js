@@ -12,6 +12,32 @@ const defaultState = {
   currentGoal: null,
 };
 
+tape(`test reducer nav click: step and previousStep changed, current goal
+  is set to null`, (t) => {
+
+  const initialState = defaultState;
+  const actionOnNavClick = {
+    type: types.NAV_CLICK,
+  };
+
+  t.equal(
+    reducer(initialState, actionOnNavClick).step,
+    steps.GOALS_LIST,
+    "sets step to goals list"
+  );
+  t.equal(
+    reducer(initialState, actionOnNavClick).previousStep,
+    null,
+    "previous step set to null"
+  );
+  t.deepEqual(
+    reducer(initialState, actionOnNavClick).currentGoal,
+    {},
+    "current goal is now an empty object"
+  );
+  t.end();
+});
+
 tape('test reducer step_add_goal: step and previousStep changed', (t) => {
 
   const initialState = defaultState;
