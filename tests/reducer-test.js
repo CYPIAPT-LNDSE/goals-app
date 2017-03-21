@@ -153,7 +153,7 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
 
 tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
 
-  const myGoal = { name: 'this is my goal', newRating: {}};
+  const myGoal = { name: 'this is my goal', newRating: {}, };
   const initialState = {
     ...defaultState,
     goals: [ myGoal, ],
@@ -163,7 +163,7 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     ...initialState,
     currentGoal: {
       ...initialState.currentGoal,
-      newRating: {score: 5},
+      newRating: { score: 5, },
     }
   };
   const actionMoveSlider = {
@@ -247,14 +247,14 @@ tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
 tape('test reducer RESET_UPDATE_COUNT: updateCount and syncDBCount set to 0', (t) => {
 
   const initialState = {
-    goals: [{id: 1, updateCount: 1, syncDBCount: 2}]
+    goals: [ {id: 1, updateCount: 1, syncDBCount: 2}, ],
   };
   const newState = {
-    goals: [{id: 1, updateCount:0, syncDBCount: 0}]
+    goals: [ {id: 1, updateCount:0, syncDBCount: 0}, ],
   };
   const actionResetUpdateCount = {
     type: types.RESET_UPDATE_COUNT,
-    id: 1
+    id: 1,
   };
 
   t.deepEqual(
