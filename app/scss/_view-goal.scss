@@ -90,11 +90,19 @@ $titleHeight: 25px;
   width: 100%;
   height: $titleHeight;
   background-color: $blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
   p {
     color: $light;
     line-height: $titleHeight;
     font-size: 13px;
     margin-left: 5px;
+  }
+
+  img {
+    margin-right: 5px;
   }
 }
 

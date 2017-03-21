@@ -21,7 +21,7 @@ const viewGoal = ( { currentGoal } ) => {
       <div className="line-chart-container">
         <div className="line-chart-title">
           <p>Line chart</p>
-          <img src="" className="line-chart-arrow" />
+          <img src="./images/icons/arrow_right.svg" className="line-chart-arrow" />
         </div>
         <div className="line-chart-img">
           <img src="images/line-chart-placeholder.png" />
