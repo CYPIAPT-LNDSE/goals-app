@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProgressBarComponent = ({ rating, }) => {
-  console.log("Rating is: ", rating);
   const score = parseInt(rating.score);
   const style = {
     width: `${(score * 10)}%`,
