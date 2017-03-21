@@ -8,7 +8,8 @@ const NavContent = props => {
   return (
     <Nav
       step= { props.step }
-      onNavClick= { props.onNavClick } />
+      onNavClick= { props.onNavClick }
+      onBackButtonClick= { props.onBackButtonClick } />
   );
 }
 

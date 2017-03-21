@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Nav = ({ onNavClick }) => {
+const Nav = ({ onNavClick, onBackButtonClick }) => {
 
   const path = "./images/";
   const pathBack = path + "icons/back.svg";
@@ -10,7 +10,8 @@ const Nav = ({ onNavClick }) => {
   return (
     <nav className="nav">
       <div className="nav_backContainer">
-        <img className="back" src={ pathBack } />
+        <img className="back" src={ pathBack }
+          onClick = { onBackButtonClick } />
       </div>
       <div className="nav_logoContainer">
         <img
