@@ -4,7 +4,6 @@ import Nav from '../components/nav.jsx';
 import * as actionsNav from './../actions/nav.js';
 
 const NavContent = props => {
-  console.log(props);
   return (
     <Nav
       step= { props.step }

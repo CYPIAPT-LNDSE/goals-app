@@ -4,7 +4,6 @@ import ProgressBarComponent from './progress-bar.jsx'
 
 
 const viewGoal = ( { currentGoal, rateGoal, } ) => {
-  console.log("currentGoal: ", currentGoal.ratings[0]);
   const progressBars = currentGoal.ratings.slice(0, 3)
     .map(rating =>
       <ProgressBarComponent
