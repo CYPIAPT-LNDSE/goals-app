@@ -1,22 +1,24 @@
 import React from 'react';
 
-const ProgressBarComponent = ({ progress, time }) => {
+const ProgressBarComponent = ({ rating, }) => {
+  console.log("Rating is: ", rating);
+  const score = parseInt(rating.score);
   const style = {
-    width: `${(progress*10)}%`,
-    animation: `stretchRight${progress} 2s ease-out`};
+    width: `${(score * 10)}%`,
+    animation: `stretchRight${score} 2s ease-out`};
   const left = {
-    left: `${(progress*10)-6}%`,
-    animation: `slideRight${progress} 2s ease-out`};
+    left: `${(score*10)-6}%`,
+    animation: `slideRight${score} 2s ease-out`};
   return (
     <div className="progress-bar-container">
       <div className="progress-bar-background" />
       <div className="progress-bar-foreground" style={style} />
       <div className="progress-bar-rating" style={left}>
-        <p>{progress}</p>
+        <p>{ score }</p>
       </div>
       <div className="progress-bar-time">
         <p>
-          {time}
+          { rating.time.toString() }
         </p>
       </div>
     </div>
