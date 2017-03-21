@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 /* actions */
 import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
+import * as actionsViewGoal from './../actions/view-goal.js';
+import * as actionsRateGoal from './../actions/rate-goal.js';
+import * as actionsFeedback from './../actions/feedback.js';
 
 import router from './../router.js';
 
@@ -27,7 +30,7 @@ const mapStateToProps = state => ({
   goals: state.goals,
   step: state.step,
   newGoal: state.newGoal,
-  currentGoal: state.currentGoal
+  currentGoal: state.currentGoal,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -36,6 +39,10 @@ const mapDispatchToProps = dispatch => ({
   onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
   saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
   onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)) },
+  stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal())},
+  onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating))},
+  stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback())},
+  onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

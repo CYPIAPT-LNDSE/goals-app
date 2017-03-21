@@ -4,21 +4,6 @@
 
 $titleHeight: 25px;
 
-.view-goal {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-}
-
-.view-goal-goal-tile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .view-goal-progress-container {
   display: flex;
   flex-direction: column;
@@ -105,13 +90,5 @@ $titleHeight: 25px;
   img {
     width: 100%;
     height: 100%;
-  }
-}
-
-.view-goal-buttonContainer {
-  @include ctaButton;
-  .new-rating-button {
-    width: 156px;
-    height: 50px;
   }
 }
