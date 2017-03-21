@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNavClick: () => { dispatch(actionsNav.onNavClick()) },
+  onBackButtonClick: () => { dispatch(actionsNav.onBackButtonClick()) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavContent);
