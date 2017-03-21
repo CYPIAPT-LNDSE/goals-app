@@ -15,6 +15,7 @@ currentGoal: {},
 };
 
 export default (state = defaultState, action) => {
+  console.log("action, ", action.type);
   switch(action.type) {
     case types.NAV_CLICK:
     return {

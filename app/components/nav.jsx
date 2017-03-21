@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Nav = () => {
+const Nav = ({ onNavClick }) => {
 
   const path = "./images/";
   const pathBack = path + "icons/back.svg";
@@ -17,6 +17,7 @@ const Nav = () => {
           src={ pathLogo }
           alt="Grow"
           title="Grow logo"
+          onClick = { onNavClick }
         />
       </div>
       <div className="nav_menuContainer">
