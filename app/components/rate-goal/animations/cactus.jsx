@@ -15,8 +15,9 @@ const createAnimation = ({target, options}) => {
     .to(cactus3, 1, { bottom: '75px', height: '65px', })
     .to(arms, 1, { visibility: 'visible', }, "-=1")
     .to(cactus3, 1, { bottom: '75px', height: '70px', })
-    .seek(1)
     .play(4)
+    .addPause(2)
+    .reverse()
 
 }
 
