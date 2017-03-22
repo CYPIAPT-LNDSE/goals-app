@@ -7,7 +7,8 @@ const NavContent = props => {
   return (
     <Nav
       step= { props.step }
-      onNavClick= { props.onNavClick } />
+      onNavClick= { props.onNavClick }
+      onBackButtonClick= { props.onBackButtonClick } />
   );
 }
 
@@ -17,6 +18,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNavClick: () => { dispatch(actionsNav.onNavClick()) },
+  onBackButtonClick: () => { dispatch(actionsNav.onBackButtonClick()) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavContent);

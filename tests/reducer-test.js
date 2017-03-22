@@ -5,6 +5,7 @@ const types = require('./../app/action_types.js');
 const steps = require('./../app/steps.js');
 
 const saveRating = require('./../app/reducers/index.js').saveRating;
+const backStep = require('./../app/reducers/index.js').backStep;
 
 const defaultState = {
   goals: [],
@@ -13,6 +14,65 @@ const defaultState = {
   newGoal: {},
   currentGoal: null,
 };
+
+tape("back button goes back to previous step", (t) => {
+
+  const stateGoalsList = {
+    ...defaultState,
+    step: steps.GOALS_LIST,
+  };
+  const stateAddGoal = {
+    ...defaultState,
+    step: steps.ADD_GOAL,
+    previousStep: steps.GOALS_LIST,
+  }
+  const stateViewGoal = {
+    ...defaultState,
+    step: steps.VIEW_GOAL,
+    previousStep: steps.GOALS_LIST,
+  }
+  const stateRateGoalFromViewGoal = {
+    ...defaultState,
+    step: steps.RATE_GOAL,
+    previousStep: steps.VIEW_GOAL,
+  }
+  const stateRateGoalFromGoalsList = {
+    ...defaultState,
+    step: steps.RATE_GOAL,
+    previousStep: steps.GOALS_LIST,
+  }
+  const stateFeedback = {
+    ...defaultState,
+    step: steps.FEEDBACK,
+    previousStep: steps.RATE_GOAL,
+  }
+
+  t.equal(backStep(stateGoalsList).step, steps.GOALS_LIST, `stays on same step
+    by default`);
+  t.equal(backStep(stateGoalsList).previousStep, null, `previous step should
+    stay null`);
+  t.equal(backStep(stateAddGoal).step, steps.GOALS_LIST, `goes back to goals
+    list`);
+  t.equal(backStep(stateAddGoal).previousStep, null, `sets previous step to
+    null`);
+  t.equal(backStep(stateViewGoal).step, steps.GOALS_LIST, `goes back to goals
+    list`);
+  t.equal(backStep(stateViewGoal).previousStep, null, `sets previous step to
+    null`);
+  t.equal(backStep(stateRateGoalFromViewGoal).step, steps.VIEW_GOAL, `goes
+    back to view goal`);
+  t.equal(backStep(stateRateGoalFromViewGoal).previousStep, null, `sets
+    previous step to null`);
+  t.equal(backStep(stateRateGoalFromGoalsList).step, steps.GOALS_LIST, `goes
+    back to goals list`);
+  t.equal(backStep(stateRateGoalFromGoalsList).previousStep, null, `sets
+    previous step to null`);
+  t.equal(backStep(stateFeedback).step, steps.RATE_GOAL, `goes
+    back to rate goal`);
+  t.equal(backStep(stateFeedback).previousStep, steps.RATE_GOAL, `sets
+    previous step rate goal`);
+  t.end();
+})
 
 tape(`test reducer nav click: step and previousStep changed, current goal
   is set to null`, (t) => {
@@ -173,7 +233,7 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
   );
   t.equal(
     reducer(initialState, actionStepFeedback).previousStep,
-    steps.RATE_GOAL,
+    null,
     "step feedback sets correct step"
   );
   t.end();
