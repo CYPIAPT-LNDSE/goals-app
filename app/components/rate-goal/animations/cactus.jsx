@@ -85,7 +85,6 @@ class Cactus extends React.Component {
       ...this.state,
       setPreviousScore: this.props.setPreviousScore,
     };
-    console.log(options);
 
     if (options.score === options.previousScore) {
       return;
