@@ -1,40 +1,85 @@
 import React from 'react';
 import GSAP from 'react-gsap-enhancer';
-import { TweenMax, TimelineMax, TweenLite, Power2 } from 'gsap';
+import { TweenMax, TimelineMax, } from 'gsap';
 
 const createAnimation = ({target, options}) => {
 
+  const frames = [
+    { bottom: '50px', height: '0px', },
+    { bottom: '54px', height: '50px', },
+    { bottom: '66px', height: '50px', },
+    { bottom: '70px', height: '60px', },
+    { bottom: '75px', height: '65px', }
+  ]
   const vase = target.find({ id: 'vase' });
   const cactus3 = target.find({ id: 'cactus3' });
   const arms = target.find({ id: 'arms' });
 
-  let t1 = new TimelineMax()
-    .to(cactus3, 1, { bottom: '54px', height: '50px', })
-    .to(cactus3, 1, { bottom: '66px', height: '50px', })
-    .to(cactus3, 1, { bottom: '70px', height: '60px', })
-    .to(cactus3, 1, { bottom: '75px', height: '65px', })
-    .to(arms, 1, { visibility: 'visible', }, "-=1")
-    .to(cactus3, 1, { bottom: '75px', height: '70px', })
-    .play(options.previousScore)
-    .addPause(options.score);
-
-    if (options.previousScore > options.score) {
-      t1.reverse();
+  let t1 = new TimelineMax();
+    // .to(cactus3, 1, { bottom: '54px', height: '50px', })
+    // .to(cactus3, 1, { bottom: '66px', height: '50px', })
+    // .to(cactus3, 1, { bottom: '70px', height: '60px', })
+    // .to(cactus3, 1, { bottom: '75px', height: '65px', })
+    // .to(arms, 1, { visibility: 'visible', }, "-=1")
+    // .to(cactus3, 1, { bottom: '75px', height: '70px', })
+    //
+    // if (options.previousScore < options.score) {
+    //   t1.play(options.previousScore)
+    //   .addPause(options.score);
+    //
+    // } else {
+    //   t1.reverse(options.previousScore)
+    //   .addPause(options.previousScore)
+    // }
+    if ( options.score > options.previousScore) {
+        frames.slice(options.previousScore, options.score + 1).forEach((frame, index) => {
+        t1.to(cactus3, 1, frame, );
+      });
+    } else {
+      frames.slice(options.score, options.previousScore + 1).reverse().forEach((frame, index) => {
+        t1.to(cactus3, 1, frame, );
+      });
     }
+
+    t1.eventCallback("onComplete", options.setPreviousScore());
 
     return t1;
 
 }
 
 class Cactus extends React.Component {
+
   constructor(props) {
     super(props)
-  }
-
-  componentDidMount() {
-    const options = {
+    this.state = {
       previousScore: this.props.previousScore,
       score: this.props.score,
+    };
+  };
+
+  componentWillMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      previousScore: this.props.previousScore,
+      score: this.props.score,
+    });
+    const options = {
+      ...this.state,
+      setPreviousScore: this.props.setPreviousScore,
+    };
+    console.log(options);
+
+    if (options.score === options.previousScore) {
+      return;
     }
     this.animation = this.addAnimation(createAnimation, options);
   }

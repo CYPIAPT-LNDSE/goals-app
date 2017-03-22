@@ -44,6 +44,7 @@ const mapDispatchToProps = dispatch => ({
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback())},
   onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input))},
   saveRating: (time, id) => {dispatch(actionsFeedback.saveRating(time, id))},
+  setPreviousScore: () => { dispatch((actionsRateGoal.setPreviousScore()))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

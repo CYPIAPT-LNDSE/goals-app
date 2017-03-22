@@ -97,9 +97,21 @@ export default (state = defaultState, action) => {
         newRating: {
           ...state.currentGoal.newRating,
           score: action.rating,
+          previousScore: state.currentGoal.newRating.score,
         },
       },
     }
+    case types.SET_PREVIOUS_SCORE:
+      return {
+        ...state,
+        currentGoal: {
+          ...state.currentGoal,
+          newRating: {
+            ...state.currentGoal.newRating,
+            previousScore: state.currentGoal.newRating.score,
+          }
+        }
+      }
     case types.STEP_FEEDBACK:
     return {
       ...state,

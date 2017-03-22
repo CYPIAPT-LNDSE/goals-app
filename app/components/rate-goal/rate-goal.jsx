@@ -4,9 +4,13 @@ import RateGoalSlider from './rate-goal-slider.jsx';
 
 import Cactus from './animations/cactus.jsx';
 
-const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
+const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) => {
 
-  const animation = <Cactus score="0" previousScore="4" />;
+  const animation = <Cactus
+    score={ parseInt(currentGoal.newRating.score, 10) || 0 }
+    previousScore={ parseInt(currentGoal.newRating.previousScore, 10) || 0 }
+    setPreviousScore={ setPreviousScore }
+  />;
 
   return (
     <div className="rate-goal goal-detail-page">

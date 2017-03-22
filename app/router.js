@@ -33,6 +33,7 @@ export default (props) => {
         currentGoal={ props.currentGoal }
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
+        setPreviousScore={ props.setPreviousScore }
       />
       break;
     case steps.FEEDBACK:

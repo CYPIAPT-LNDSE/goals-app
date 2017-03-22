@@ -16,6 +16,7 @@ export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
 /* rate goal actions */
 export const STEP_FEEDBACK = 'STEP_FEEDBACK';
 export const MOVE_SLIDER = 'MOVE_SLIDER';
+export const SET_PREVIOUS_SCORE = 'SET_PREVIOUS_SCORE';
 
 /* feedback actions */
 export const INPUT_FEEDBACK = 'INPUT_FEEDBACK';
