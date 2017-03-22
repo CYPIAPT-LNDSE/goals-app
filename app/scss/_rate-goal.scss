@@ -6,8 +6,7 @@ $ratingBubbleSize: 30px;
 
 .rate-goal-animation-container {
   height: 215px;
-  width: $contentWidth;
-  max-width: 300px;
+  width: 300px;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -81,15 +80,4 @@ input[type=range]::-webkit-slider-runnable-track {
   background: $light;
   border: $blueBorderThin;
   border-radius: 2.5px;
-}
-
-.cactus {
-  display: none;
-  position: absolute;
-  bottom: 50px;
-  left: 37%;
-}
-
-#img0 {
-  display: inline;
 }
