@@ -4,13 +4,18 @@ import { TweenMax, TimelineMax, } from 'gsap';
 
 const createAnimation = ({target, options, }) => {
 
-  const frames = [
+  const bodyFrames = [
     { bottom: '50px', height: '0px', },
     { bottom: '54px', height: '50px', },
     { bottom: '66px', height: '50px', },
     { bottom: '70px', height: '60px', },
     { bottom: '75px', height: '65px', },
     { bottom: '75px', height: '70px', },
+    { bottom: '80px', height: '70px', },
+    { bottom: '85px', height: '70px', },
+    { bottom: '90px', height: '72px', },
+    { bottom: '95px', height: '77px', },
+    { bottom: '97px', height: '81px', },
   ];
 
   const armFrames = [
@@ -25,7 +30,7 @@ const createAnimation = ({target, options, }) => {
     { visibility: 'visible' },
     { visibility: 'visible' },
     { visibility: 'visible' },
-  ]
+  ];
 
   const vase = target.find({ id: 'vase' });
   const cactus3 = target.find({ id: 'cactus3' });
@@ -34,15 +39,15 @@ const createAnimation = ({target, options, }) => {
   let t1 = new TimelineMax();
 
     const sequence = options.score > options.previousScore
-      ? frames.slice(options.previousScore, options.score + 1)
-      : frames.slice(options.score, options.previousScore + 1).reverse();
+      ? bodyFrames.slice(options.previousScore, options.score + 1)
+      : bodyFrames.slice(options.score, options.previousScore + 1).reverse();
 
       const armSequence = options.score > options.previousScore
         ? armFrames.slice(options.previousScore, options.score + 1)
         : armFrames.slice(options.score, options.previousScore + 1).reverse();
 
     sequence.forEach((frame, index) => {
-      t1.to(cactus3, 0.5, frame, )
+      t1.to(cactus3, 0.3, frame, )
         .to(arms, 0.5, armSequence[index], "-=0.5")
     });
 
@@ -62,9 +67,9 @@ class Cactus extends React.Component {
   };
 
   componentWillMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      100);
+      this.timerID = setInterval(
+        () => this.tick(),
+        100);
   }
 
   componentWillUnmount() {
