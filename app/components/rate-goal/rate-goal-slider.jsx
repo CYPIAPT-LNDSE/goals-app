@@ -13,6 +13,9 @@ class RateGoalSlider extends React.Component {
   }
 
   render() {
+    const avatar = this.props.goal.avatar;
+
+
     return (
       <div className="rate-goal-slider-inner">
         <input
