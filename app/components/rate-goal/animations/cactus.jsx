@@ -2,49 +2,53 @@ import React from 'react';
 import GSAP from 'react-gsap-enhancer';
 import { TweenMax, TimelineMax, } from 'gsap';
 
-const createAnimation = ({target, options}) => {
+const createAnimation = ({target, options, }) => {
 
   const frames = [
     { bottom: '50px', height: '0px', },
     { bottom: '54px', height: '50px', },
     { bottom: '66px', height: '50px', },
     { bottom: '70px', height: '60px', },
-    { bottom: '75px', height: '65px', }
+    { bottom: '75px', height: '65px', },
+    { bottom: '75px', height: '70px', },
+  ];
+
+  const armFrames = [
+    { visibility: 'hidden' },
+    { visibility: 'hidden' },
+    { visibility: 'hidden' },
+    { visibility: 'hidden' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
+    { visibility: 'visible' },
   ]
+
   const vase = target.find({ id: 'vase' });
   const cactus3 = target.find({ id: 'cactus3' });
   const arms = target.find({ id: 'arms' });
 
   let t1 = new TimelineMax();
-    // .to(cactus3, 1, { bottom: '54px', height: '50px', })
-    // .to(cactus3, 1, { bottom: '66px', height: '50px', })
-    // .to(cactus3, 1, { bottom: '70px', height: '60px', })
-    // .to(cactus3, 1, { bottom: '75px', height: '65px', })
-    // .to(arms, 1, { visibility: 'visible', }, "-=1")
-    // .to(cactus3, 1, { bottom: '75px', height: '70px', })
-    //
-    // if (options.previousScore < options.score) {
-    //   t1.play(options.previousScore)
-    //   .addPause(options.score);
-    //
-    // } else {
-    //   t1.reverse(options.previousScore)
-    //   .addPause(options.previousScore)
-    // }
-    if ( options.score > options.previousScore) {
-        frames.slice(options.previousScore, options.score + 1).forEach((frame, index) => {
-        t1.to(cactus3, 1, frame, );
-      });
-    } else {
-      frames.slice(options.score, options.previousScore + 1).reverse().forEach((frame, index) => {
-        t1.to(cactus3, 1, frame, );
-      });
-    }
+
+    const sequence = options.score > options.previousScore
+      ? frames.slice(options.previousScore, options.score + 1)
+      : frames.slice(options.score, options.previousScore + 1).reverse();
+
+      const armSequence = options.score > options.previousScore
+        ? armFrames.slice(options.previousScore, options.score + 1)
+        : armFrames.slice(options.score, options.previousScore + 1).reverse();
+
+    sequence.forEach((frame, index) => {
+      t1.to(cactus3, 0.5, frame, )
+        .to(arms, 0.5, armSequence[index], "-=0.5")
+    });
 
     t1.eventCallback("onComplete", options.setPreviousScore());
 
     return t1;
-
 }
 
 class Cactus extends React.Component {
@@ -60,7 +64,7 @@ class Cactus extends React.Component {
   componentWillMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      1000);
+      100);
   }
 
   componentWillUnmount() {
