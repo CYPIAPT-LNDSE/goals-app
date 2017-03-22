@@ -163,7 +163,8 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
   t.end();
 });
 
-tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and clears newGoal', (t) => {
+tape(`test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and
+  clears newGoal`, (t) => {
 
   const newGoal = {
     name: 'I will write such great tests',
@@ -274,12 +275,38 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
   t.equal(nextState.currentGoal.newRating.score,
     expectedState.currentGoal.newRating.score
   );
+
   t.equal(nextState.currentGoal.newRating.previousScore,
     expectedState.currentGoal.newRating.previousScore
   );
 
   t.end();
 });
+
+tape(`test reducer set previousScore: previous score set to equal current
+  score`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    currentGoal: {
+      newRating: {
+        score: 5
+      }
+    }
+  };
+
+  const actionSetPreviousScore = {
+    type: types.SET_PREVIOUS_SCORE,
+  }
+
+  t.equal(
+    reducer(initialState, actionSetPreviousScore)
+      .currentGoal.newRating.previousScore,
+    5,
+    'previous score set to 5'
+  );
+  t.end();
+})
 
 tape("test saveRating function for reducer save rating", t => {
   const initialState = {
