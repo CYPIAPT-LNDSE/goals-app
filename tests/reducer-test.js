@@ -40,11 +40,17 @@ tape("back button goes back to previous step", (t) => {
     ...defaultState,
     step: steps.RATE_GOAL,
     previousStep: steps.GOALS_LIST,
+    currentGoal: {
+      newRating: {},
+    }
   }
   const stateFeedback = {
     ...defaultState,
     step: steps.FEEDBACK,
     previousStep: steps.RATE_GOAL,
+    currentGoal: {
+      newRating: {},
+    }
   }
 
   t.equal(backStep(stateGoalsList).step, steps.GOALS_LIST, `stays on same step
@@ -63,10 +69,13 @@ tape("back button goes back to previous step", (t) => {
     back to view goal`);
   t.equal(backStep(stateRateGoalFromViewGoal).previousStep, null, `sets
     previous step to null`);
-  t.equal(backStep(stateRateGoalFromGoalsList).step, steps.GOALS_LIST, `goes
+
+  const nextStateRateGoalFromGoalsList = backStep(stateRateGoalFromGoalsList);
+  t.equal(nextStateRateGoalFromGoalsList.step, steps.GOALS_LIST, `goes
     back to goals list`);
-  t.equal(backStep(stateRateGoalFromGoalsList).previousStep, null, `sets
+  t.equal(nextStateRateGoalFromGoalsList.previousStep, null, `sets
     previous step to null`);
+
   t.equal(backStep(stateFeedback).step, steps.RATE_GOAL, `goes
     back to rate goal`);
   t.equal(backStep(stateFeedback).previousStep, steps.RATE_GOAL, `sets
@@ -247,11 +256,12 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     goals: [ myGoal, ],
     currentGoal: myGoal,
   };
-  const newState = {
+
+  const expectedState = {
     ...initialState,
     currentGoal: {
       ...initialState.currentGoal,
-      newRating: { score: 5, },
+      newRating: { score: 5, previousScore: undefined },
     }
   };
   const actionMoveSlider = {
@@ -259,11 +269,15 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     rating: 5,
   };
 
-  t.deepEqual(
-    reducer(initialState, actionMoveSlider),
-    newState,
-    'rating of 5 added to current state'
+  const nextState = reducer(initialState, actionMoveSlider);
+
+  t.equal(nextState.currentGoal.newRating.score,
+    expectedState.currentGoal.newRating.score
   );
+  t.equal(nextState.currentGoal.newRating.previousScore,
+    expectedState.currentGoal.newRating.previousScore
+  );
+
   t.end();
 });
 
