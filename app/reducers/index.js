@@ -38,6 +38,13 @@ export const backStep = (state) => {
       ...state,
       step: steps.RATE_GOAL,
       previousStep: previousStep,
+      currentGoal: {
+        ...state.currentGoal,
+        newRating: {
+          ...state.currentGoal.newRating,
+          previousScore: 0,
+        }
+      }
     }
     default:
     return state;
