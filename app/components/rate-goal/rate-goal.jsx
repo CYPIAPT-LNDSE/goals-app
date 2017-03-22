@@ -6,7 +6,7 @@ import Cactus from './animations/cactus.jsx';
 
 const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
 
-  const animation = <Cactus />;
+  const animation = <Cactus score="0" previousScore="4" />;
 
   return (
     <div className="rate-goal goal-detail-page">

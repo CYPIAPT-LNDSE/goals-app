@@ -8,16 +8,21 @@ const createAnimation = ({target, options}) => {
   const cactus3 = target.find({ id: 'cactus3' });
   const arms = target.find({ id: 'arms' });
 
-  return new TimelineMax()
+  let t1 = new TimelineMax()
     .to(cactus3, 1, { bottom: '54px', height: '50px', })
     .to(cactus3, 1, { bottom: '66px', height: '50px', })
     .to(cactus3, 1, { bottom: '70px', height: '60px', })
     .to(cactus3, 1, { bottom: '75px', height: '65px', })
     .to(arms, 1, { visibility: 'visible', }, "-=1")
     .to(cactus3, 1, { bottom: '75px', height: '70px', })
-    .play(4)
-    .addPause(2)
-    .reverse()
+    .play(options.previousScore)
+    .addPause(options.score);
+
+    if (options.previousScore > options.score) {
+      t1.reverse();
+    }
+
+    return t1;
 
 }
 
@@ -28,7 +33,8 @@ class Cactus extends React.Component {
 
   componentDidMount() {
     const options = {
-      number: 3,
+      previousScore: this.props.previousScore,
+      score: this.props.score,
     }
     this.animation = this.addAnimation(createAnimation, options);
   }
