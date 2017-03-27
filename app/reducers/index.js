@@ -38,7 +38,7 @@ export default (state = defaultState, action) => {
   case types.SAVE_NEW_GOAL:
     return {
       ...state,
-      goals: state.goals.concat([action.goal]),
+      goals: state.goals.concat([action.goal,]),
       step: steps.GOALS_LIST,
       previousStep: null,
       newGoal: {},
@@ -51,13 +51,13 @@ export default (state = defaultState, action) => {
       currentGoal: {
         ...action.goal,
         newRating: {},
-      }
+      },
     };
   case types.STEP_RATE_GOAL:
     return {
       ...state,
       step: steps.RATE_GOAL,
-      previousStep: steps.VIEW_GOAL
+      previousStep: steps.VIEW_GOAL,
     };
 
   case types.MOVE_SLIDER:
@@ -75,7 +75,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.FEEDBACK,
-      previousStep: steps.RATE_GOAL
+      previousStep: steps.RATE_GOAL,
     };
   case types.INPUT_FEEDBACK:
     return {
@@ -93,9 +93,9 @@ export default (state = defaultState, action) => {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-            ? { ...goal, pendingSync: {open: true} }
+            ? { ...goal, pendingSync: {open: true,}, }
             : goal;
-      })
+      }),
     };
   case types.UPDATE_SYNC_SUCCESS:
     return {
@@ -120,7 +120,7 @@ export default (state = defaultState, action) => {
       ...state,
       goals: mapWithId(state.goals, action.id, (goal) => {
         return { ...goal, updateCount:0, syncDBCount: 0, };
-      })
+      }),
     };
   default:
     return state;

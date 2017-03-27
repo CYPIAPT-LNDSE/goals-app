@@ -10,25 +10,25 @@ server.connection({
   port: process.env.PORT || 4000,
   tls: process.env.NODE_ENV !== 'production' && {
     key : fs.readFileSync('./key.pem'),
-    cert : fs.readFileSync('./cert.pem')
-  }
+    cert : fs.readFileSync('./cert.pem'),
+  },
 });
 
-server.register([Inert], (err) => {
+server.register([Inert,], (err) => {
   if(err) throw err;
 
   server.route([{
     path: '/',
     method: 'GET',
-    handler: (request, reply) => { reply.file('public/index.html'); }
+    handler: (request, reply) => { reply.file('public/index.html'); },
   },
   {
     path: '/{file*}',
     method: 'GET',
     handler: {
-      directory: { path: path.join(__dirname, '../public') }
-    }
-  }]);
+      directory: { path: path.join(__dirname, '../public'), },
+    },
+  },]);
 });
 
 module.exports = server;

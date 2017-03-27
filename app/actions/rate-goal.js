@@ -1,4 +1,4 @@
-import { createAction } from 'redux-actions';
+import { createAction, } from 'redux-actions';
 
 // action types
 import * as types from '../action_types.js';

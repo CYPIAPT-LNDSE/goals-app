@@ -4,7 +4,7 @@ import GoalTile from '../goal-tile.jsx';
 
 import * as steps from './../../steps.js';
 
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal }) => {
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id } >

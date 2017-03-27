@@ -19,7 +19,7 @@ tape('Is the server running', (t) => {
 tape('Check the / route', (t) => {
   const options = {
     method: 'GET',
-    url: '/'
+    url: '/',
   };
   server.inject(options, (response) => {
     t.equals(response.statusCode, 200, 'status code is 200');

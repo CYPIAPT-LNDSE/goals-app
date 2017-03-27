@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, } from 'react-redux';
 
 /* actions */
 import * as actionsGoalsList from './../actions/goals-list.js';

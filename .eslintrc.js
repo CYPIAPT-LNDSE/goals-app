@@ -5,10 +5,8 @@ module.exports = {
   },
   "extends": ["eslint:recommended", "plugin:react/recommended" ],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": [ "error", 2, ],
+    "comma-dangle" : [ "error", "always" ],
     "linebreak-style": [
       "error",
       "unix"

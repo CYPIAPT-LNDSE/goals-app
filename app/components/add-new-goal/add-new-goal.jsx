@@ -45,7 +45,7 @@ addGoal.propTypes = {
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,
   saveNewGoal: React.PropTypes.func,
-  newGoalId: React.PropTypes.number
+  newGoalId: React.PropTypes.number,
 };
 
 export default addGoal;

@@ -2,7 +2,7 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import FeedbackInput from './feedback-input.jsx';
 
-const Feedback = ({ currentGoal, onInputFeedback }) => (
+const Feedback = ({ currentGoal, onInputFeedback, }) => (
   <div className='feedback-page'>
     <div className='feedback-goal-tile-container'>
       <GoalTileComponent goal={ currentGoal } />

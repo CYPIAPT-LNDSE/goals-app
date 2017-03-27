@@ -10,11 +10,7 @@ const tile = props => {
   return (
     <div
       className="goalTile"
-      onClick={ () => {
-        if (props.step === steps.GOALS_LIST) {
-          props.onSelectGoal(goal);
-        }
-      }}
+      onClick={ () => { if (props.step === steps.GOALS_LIST) { props.onSelectGoal(goal); }}}
     >{/* outer div for goal tile */}
       <div className="goalTile_progress"> {/* green background showing progress */}
       </div>
@@ -34,6 +30,7 @@ const tile = props => {
 tile.propTypes = {
   goal: React.PropTypes.object,
   step: React.PropTypes.string,
+  onSelectGoal: React.PropTypes.func,
 };
 
 export default tile;
