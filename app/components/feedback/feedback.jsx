@@ -26,4 +26,9 @@ const Feedback = ({ currentGoal, onInputFeedback }) => (
   </div>
 );
 
+Feedback.propTypes = {
+  currentGoal: React.PropTypes.object,
+  onInputFeedback: React.PropTypes.object,
+};
+
 export default Feedback;

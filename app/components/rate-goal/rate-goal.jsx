@@ -35,6 +35,12 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
       </div>
     </div>
   );
-}
+};
+
+RateGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  onMoveSlider: React.PropTypes.func,
+  feedback: React.PropTypes.string,
+};
 
 export default RateGoal;

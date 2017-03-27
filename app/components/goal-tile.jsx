@@ -31,4 +31,9 @@ const tile = props => {
   );
 };
 
+tile.propTypes = {
+  goal: React.PropTypes.object,
+  step: React.PropTypes.string,
+};
+
 export default tile;

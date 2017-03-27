@@ -37,7 +37,15 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+addGoal.propTypes = {
+  newGoal: React.PropTypes.Object,
+  onInputGoal: React.PropTypes.func,
+  onSelectAvatar: React.PropTypes.func,
+  saveNewGoal: React.PropTypes.func,
+  newGoalId: React.PropTypes.number
+};
 
 export default addGoal;

@@ -20,21 +20,15 @@ server.register([Inert], (err) => {
   server.route([{
     path: '/',
     method: 'GET',
-    handler: (request, reply) => {
-      reply.file('public/index.html');
-    }
+    handler: (request, reply) => { reply.file('public/index.html'); }
   },
   {
     path: '/{file*}',
     method: 'GET',
     handler: {
-      directory: {
-        path: path.join(__dirname, '../public')
-      }
+      directory: { path: path.join(__dirname, '../public') }
     }
-  },
-
-]);
+  }]);
 });
 
 module.exports = server;
