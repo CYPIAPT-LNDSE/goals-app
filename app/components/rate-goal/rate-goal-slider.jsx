@@ -24,8 +24,13 @@ class RateGoalSlider extends React.Component {
           onInput={ this.handleChange }
         />
       </div>
-    )
-  };
+    );
+  }
 }
+
+RateGoalSlider.propTypes = {
+  onMoveSlider: React.PropTypes.func,
+  goal: React.PropTypes.object,
+};
 
 export default RateGoalSlider;

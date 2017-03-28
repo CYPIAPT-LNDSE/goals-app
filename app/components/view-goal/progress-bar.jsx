@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ProgressBarComponent = ({ progress, time }) => {
+const ProgressBarComponent = ({ progress, time, }) => {
   const style = {
     width: `${(progress*10)}%`,
-    animation: `stretchRight${progress} 2s ease-out`};
+    animation: `stretchRight${progress} 2s ease-out`,};
   const left = {
     left: `${(progress*10)-6}%`,
-    animation: `slideRight${progress} 2s ease-out`};
+    animation: `slideRight${progress} 2s ease-out`,};
   return (
     <div className="progress-bar-container">
       <div className="progress-bar-background" />
@@ -21,6 +21,6 @@ const ProgressBarComponent = ({ progress, time }) => {
       </div>
     </div>
   );
-}
+};
 
 export default ProgressBarComponent;

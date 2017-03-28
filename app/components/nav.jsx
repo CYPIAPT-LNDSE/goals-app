@@ -2,10 +2,10 @@ import React from 'react';
 
 const Nav = () => {
 
-  const path = "./images/";
-  const pathBack = path + "icons/back.svg";
-  const pathLogo = path + "logo_header.svg";
-  const pathMenu = path + "icons/menu.svg";
+  const path = './images/';
+  const pathBack = path + 'icons/back.svg';
+  const pathLogo = path + 'logo_header.svg';
+  const pathMenu = path + 'icons/menu.svg';
 
   return (
     <nav className="nav">
