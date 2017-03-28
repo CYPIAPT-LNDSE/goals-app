@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProgressBarComponent = ({ rating, }) => {
-  const score = parseInt(rating.score);
+  const score = parseInt(rating.score, 10);
   const style = {
     width: `${(score * 10)}%`,
     animation: `stretchRight${score} 2s ease-out`};

@@ -19,10 +19,9 @@ export const saveRating = (state, time, id) => {
   const currentGoal = {
     ...state.currentGoal,
     ratings: [newRating].concat((state.currentGoal.ratings || [])),
-    newRating: {},
   }
   const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
-    currentGoal : goal);
+    increaseUpdateCount(currentGoal) : goal);
   return {
     ...state,
     goals: goals,
@@ -36,6 +35,10 @@ const mapWithId = (arr, id, fn) =>
       ? fn(elem)
       : elem
   )
+
+const increaseUpdateCount = goal => {
+  return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
+}
 
 export default (state = defaultState, action) => {
   switch(action.type) {
@@ -60,7 +63,7 @@ export default (state = defaultState, action) => {
     case types.SAVE_NEW_GOAL:
       return {
         ...state,
-        goals: state.goals.concat([action.goal]),
+        goals: state.goals.concat([ increaseUpdateCount(action.goal) ]),
         step: steps.GOALS_LIST,
         previousStep: null,
         newGoal: {},
