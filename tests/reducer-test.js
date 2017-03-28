@@ -86,7 +86,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
 
   t.equal(newState.goals.length, 1, 'one object in the goals array');
   t.equal(newState.goals[0].name, newGoal.name, 'correct goal in goals array');
-  t.equal(newState.goals[0].updateCount, 1, 'update count set to 1');
+  t.equal(newState.goals[0].updateCount, 2, 'update count set to 2');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
   t.equal(newState.previousStep, null, 'previous step is null');
   t.deepEqual(newState.newGoal, {}, 'newGoal property is an empty object');
@@ -223,12 +223,13 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
     currentGoal: {
       ...initialState.currentGoal,
       newRating: {},
-      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday",}, ],
+      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
     },
     goals: [{
       ...myGoal,
-      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday",}, ],
+      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
       newRating: {},
+      updateCount: 1,
     }],
     step: steps.VIEW_GOAL,
     previousStep: steps.FEEDBACK,

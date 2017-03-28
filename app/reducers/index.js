@@ -19,6 +19,7 @@ export const saveRating = (state, time, id) => {
   const currentGoal = {
     ...state.currentGoal,
     ratings: [newRating].concat((state.currentGoal.ratings || [])),
+    newRating: {},
   }
   const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
     increaseUpdateCount(currentGoal) : goal);
