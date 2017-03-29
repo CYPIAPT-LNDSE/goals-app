@@ -24,10 +24,9 @@ tape(`increaseUpdateCount function takes an object and increments the
     const goal2 = {
       name: 'my new goal',
     };
-
+    
     t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
     t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
-
     t.end();
   });
 
@@ -39,13 +38,13 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
   t.equal(
     reducer(initialState, actionStepAddGoal).step,
     steps.ADD_GOAL,
-    "step add goal sets correct step"
+    'step add goal sets correct step'
   );
 
   t.equal(
     reducer(initialState, actionStepAddGoal).previousStep,
     steps.GOALS_LIST,
-    "step add goal sets correct step"
+    'step add goal sets correct step'
   );
 
   t.end();
@@ -140,13 +139,13 @@ tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
   t.equal(
     reducer(initialState, actionStepRateGoal).step,
     steps.RATE_GOAL,
-    "step rate goal sets correct step"
+    'step rate goal sets correct step'
   );
 
   t.equal(
     reducer(initialState, actionStepRateGoal).previousStep,
     steps.VIEW_GOAL,
-    "step add goal sets correct step"
+    'step add goal sets correct step'
   );
 
   t.end();
@@ -162,12 +161,12 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
   t.equal(
     reducer(initialState, actionStepFeedback).step,
     steps.FEEDBACK,
-    "step feedback sets correct step"
+    'step feedback sets correct step'
   );
   t.equal(
     reducer(initialState, actionStepFeedback).previousStep,
     steps.RATE_GOAL,
-    "step feedback sets correct step"
+    'step feedback sets correct step'
   );
   t.end();
 });
@@ -186,38 +185,29 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     rating: 5,
   };
 
-  t.equal(
-    reducer(initialState, actionMoveSlider).currentGoal.newRating.score,
-    5,
-    'rating of 5 added to current state'
-  );
+  const nextState = reducer(initialState, actionMoveSlider);
 
+  t.equal(nextState.currentGoal.newRating.score, 5, 'rating 5 added to current state');
   t.end();
-
 });
 
-tape("test saveRating function for reducer save rating", t => {
+tape('test saveRating function for reducer save rating', t => {
   const initialState = {
     ...defaultState,
     currentGoal: {
-      name: "Helloo",
-      avatar: "pepper",
+      name: 'Helloo',
+      avatar: 'pepper',
       id: 1,
-      ratings: [ { score: 6, time:"today", id: 3, comment: "comment" }, ],
-      newRating: { score: 5, comment: "comment2", }
+      ratings: [ { score: 6, time: 'today', id: 3, comment: 'comment' }, ],
+      newRating: { score: 5, comment: 'comment2', }
     },
   };
 
   const time = 'today';
   const id = 0;
+  const savedRating = saveRating(initialState, time, id);
 
-  t.equal(
-    saveRating(newState, time, id).currentGoal.ratings.length,
-    2,
-    `new rating added to array`
-  );
-
-  //t.deepEqual(saveRating(initialState, "today", 0), newState, 'adds new rating to ratings array');
+  t.equal(savedRating.currentGoal.ratings.length, 2,`new rating added to array`);
   t.end();
 });
 
@@ -228,38 +218,31 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
     ratings: [],
     newRating: {
       score: 5,
-      comment: "hello"
+      comment: 'hello'
     }
   };
+
   const initialState = {
     ...defaultState,
     goals: [ myGoal, ],
     currentGoal: myGoal,
   };
-  const newState = {
-    ...initialState,
-    currentGoal: {
-      ...initialState.currentGoal,
-      newRating: {},
-      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
-    },
-    goals: [{
-      ...myGoal,
-      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
-      newRating: {},
-      updateCount: 1,
-    }],
-    step: steps.VIEW_GOAL,
-    previousStep: steps.FEEDBACK,
-  };
 
   const actionsSaveRating = {
     type: types.SAVE_RATING,
-    time: "yesterday",
+    time: 'yesterday',
     id: 0,
   }
 
-  t.deepEqual(reducer(initialState, actionsSaveRating), newState, 'Adds new rating to goals ratings');
+  const nextState = reducer(initialState, actionsSaveRating);
+
+  t.deepEqual(nextState.currentGoal.newRating, {}, 'new rating is an empty object');
+  t.equal(nextState.currentGoal.ratings.length, 1, 'one rating in ratings array');
+  t.equal(nextState.goals[0].name, myGoal.name, 'correct goal added to goals array');
+  t.equal(nextState.goals[0].ratings.length, 1, 'new goal has one rating');
+  t.equal(nextState.step, steps.VIEW_GOAL, 'step changed to view-goal view');
+  t.equal(nextState.previousStep, steps.FEEDBACK, 'step changed to feedback view');
+
   t.end();
 });
 
@@ -268,63 +251,44 @@ tape('test reducer set pending sync open: pending sync set to open', (t) => {
   const initialState = {
     goals: [{id: 1, pendingSync: {open: false}}]
   };
-  const newState = {
-    goals: [{id: 1, pendingSync: {open: true}}]
-  };
   const actionSetPendingSyncOpen = {
     type: types.SET_PENDING_SYNC_OPEN,
     id: 1
   };
+  const nextState = reducer(initialState, actionSetPendingSyncOpen);
 
-  t.deepEqual(
-    reducer(initialState, actionSetPendingSyncOpen),
-    newState,
-    "Sets pending to true"
-  );
-
+  t.equal(nextState.goals[0].pendingSync.open, true, 'pending sync set to open');
   t.end();
 });
 
 tape('test reducer UPDATE_SYNC_SUCCESS: sync set to 1 and pending sync set to false', (t) => {
 
   const initialState = {
-    goals: [{id: 1, syncDBCount: 0, pendingSync: {open: true}}]
-  };
-  const newState = {
-    goals: [{id: 1, syncDBCount: 1, pendingSync: {open: false}}]
+    goals: [ {id: 1, syncDBCount: 0, pendingSync: { open: true, }, }, ],
   };
   const actionUpdateSyncSuccess = {
     type: types.UPDATE_SYNC_SUCCESS,
     id: 1
   };
+  const nextState = reducer(initialState, actionUpdateSyncSuccess);
 
-  t.deepEqual(
-    reducer(initialState, actionUpdateSyncSuccess),
-    newState,
-    "Sets pending to false and syncDBCount to 1");
-
+  t.equal(nextState.goals[0].pendingSync.open, false, 'pending sync set to false');
+  t.equal(nextState.goals[0].syncDBCount, 1, 'syncDBCount set to 1');
   t.end();
 });
 
 tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
 
   const initialState = {
-    goals: [{id: 1, pendingSync: {open: true}}]
-  };
-  const newState = {
-    goals: [{id: 1, pendingSync: {open: false}}]
+    goals: [ { id: 1, pendingSync: { open: true, } }, ],
   };
   const actionUpdateSyncFailure = {
     type: types.UPDATE_SYNC_FAILURE,
-    id: 1
+    id: 1,
   };
+  const nextState = reducer(initialState, actionUpdateSyncFailure);
 
-  t.deepEqual(
-    reducer(initialState, actionUpdateSyncFailure),
-    newState,
-    "Sets pending to false"
-  );
-
+  t.equal(nextState.goals[0].pendingSync.open, false, 'pendingSync set to false');
   t.end();
 });
 
@@ -340,12 +304,8 @@ tape('test reducer RESET_UPDATE_COUNT: updateCount and syncDBCount set to 0', (t
     type: types.RESET_UPDATE_COUNT,
     id: 1,
   };
-
-  t.deepEqual(
-    reducer(initialState, actionResetUpdateCount),
-    newState,
-    "Sets updateCount and syncDBCount to 0"
-  );
-
+  const nextState = reducer(initialState, actionResetUpdateCount);
+  t.equal(nextState.goals[0].updateCount, 0, 'update count set to 0');
+  t.equal(nextState.goals[0].syncDBCount, 0, 'sync db count set to 0');
   t.end();
 });
