@@ -26,8 +26,13 @@ class NewGoalInput extends React.Component {
           autoFocus
         />
       </div>
-    )
-  };
+    );
+  }
 }
+
+NewGoalInput.propTypes = {
+  onInputGoal: React.PropTypes.func,
+  newGoal: React.PropTypes.object,
+};
 
 export default NewGoalInput;
