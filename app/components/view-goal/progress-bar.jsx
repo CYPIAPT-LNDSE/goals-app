@@ -12,15 +12,20 @@ const ProgressBarComponent = ({ progress, time, }) => {
       <div className="progress-bar-background" />
       <div className="progress-bar-foreground" style={style} />
       <div className="progress-bar-rating" style={left}>
-        <p>{progress}</p>
+        <p>{ score }</p>
       </div>
       <div className="progress-bar-time">
         <p>
-          {time}
+          { rating.time.toString() }
         </p>
       </div>
     </div>
   );
+};
+
+ProgressBarComponent.propTypes = {
+  progress: React.PropTypes.integer,
+  time: React.PropTypes.integer,
 };
 
 export default ProgressBarComponent;

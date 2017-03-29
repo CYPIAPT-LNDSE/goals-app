@@ -4,6 +4,8 @@ const reducer = require('./../app/reducers/index.js').default;
 const types = require('./../app/action_types.js');
 const steps = require('./../app/steps.js');
 
+const saveRating = require('./../app/reducers/index.js').saveRating;
+
 const defaultState = {
   goals: [],
   step: steps.GOALS_LIST,
@@ -84,7 +86,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
 
   t.equal(newState.goals.length, 1, 'one object in the goals array');
   t.equal(newState.goals[0].name, newGoal.name, 'correct goal in goals array');
-  t.equal(newState.goals[0].updateCount, 1, 'update count set to 1');
+  t.equal(newState.goals[0].updateCount, 2, 'update count set to 2');
   t.equal(newState.step, steps.GOALS_LIST, 'current step is goals list');
   t.equal(newState.previousStep, null, 'previous step is null');
   t.deepEqual(newState.newGoal, {}, 'newGoal property is an empty object');
@@ -176,6 +178,70 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     newState,
     'rating of 5 added to current state'
   );
+  t.end();
+});
+
+tape("test saveRating function for reducer save rating", t => {
+  const initialState = {
+    ...defaultState,
+    currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
+    ratings: [{score: 6, time:"today", id: 3, comment: "comment"},],
+    newRating: { score: 5, comment: "comment2", }
+  },
+}
+const newState = {
+  ...defaultState,
+  currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
+  ratings: [
+    { score: 5, comment: "comment2", id: 0, time: "today", },
+    { score: 6, time:"today", id: 3, comment: "comment", }
+  ],
+  newRating: {}
+},
+}
+t.deepEqual(saveRating(initialState, "today", 0), newState, 'adds new rating to ratings array');
+t.end();
+});
+
+tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
+
+  const myGoal = {
+    name: 'this is my goal',
+    ratings: [],
+    newRating: {
+      score: 5,
+      comment: "hello"
+    }
+  };
+  const initialState = {
+    ...defaultState,
+    goals: [ myGoal, ],
+    currentGoal: myGoal,
+  };
+  const newState = {
+    ...initialState,
+    currentGoal: {
+      ...initialState.currentGoal,
+      newRating: {},
+      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
+    },
+    goals: [{
+      ...myGoal,
+      ratings: [ {score: 5, comment: "hello", id: 0, time: "yesterday", }, ],
+      newRating: {},
+      updateCount: 1,
+    }],
+    step: steps.VIEW_GOAL,
+    previousStep: steps.FEEDBACK,
+  };
+
+  const actionsSaveRating = {
+    type: types.SAVE_RATING,
+    time: "yesterday",
+    id: 0,
+  }
+
+  t.deepEqual(reducer(initialState, actionsSaveRating), newState, 'Adds new rating to goals ratings');
   t.end();
 });
 

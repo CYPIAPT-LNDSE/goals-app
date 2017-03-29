@@ -2,7 +2,7 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import FeedbackInput from './feedback-input.jsx';
 
-const Feedback = ({ currentGoal, onInputFeedback, }) => (
+const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => (
   <div className='feedback-page'>
     <div className='feedback-goal-tile-container'>
       <GoalTileComponent goal={ currentGoal } />
@@ -20,7 +20,8 @@ const Feedback = ({ currentGoal, onInputFeedback, }) => (
           type="button"
           name="button"
           className="new-feedback-button"
-          >Save</button>
+          onClick = { () => { saveRating(new Date(), Math.random() * 100); }}
+        >Save</button>
       </div>
     </div>
   </div>
@@ -29,6 +30,7 @@ const Feedback = ({ currentGoal, onInputFeedback, }) => (
 Feedback.propTypes = {
   currentGoal: React.PropTypes.object,
   onInputFeedback: React.PropTypes.object,
+  saveRating: React.PropTypes.func,
 };
 
 export default Feedback;

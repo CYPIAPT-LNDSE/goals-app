@@ -9,11 +9,36 @@ const defaultState = {
   currentGoal: {},
 };
 
+export const saveRating = (state, time, id) => {
+  const newRating = {
+    score: state.currentGoal.newRating.score,
+    id: id,
+    time: time,
+    comment: state.currentGoal.newRating.comment,
+  };
+  const currentGoal = {
+    ...state.currentGoal,
+    ratings: [newRating,].concat((state.currentGoal.ratings || [])),
+    newRating: {},
+  };
+  const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
+    increaseUpdateCount(currentGoal) : goal);
+  return {
+    ...state,
+    goals: goals,
+    currentGoal: currentGoal,
+  };
+};
+
 const mapWithId = (arr, id, fn) =>
   arr.map(elem =>
     elem.id === id
       ? fn(elem)
       : elem );
+
+const increaseUpdateCount = goal => {
+  return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
+};
 
 export default (state = defaultState, action) => {
   switch(action.type) {
@@ -38,7 +63,7 @@ export default (state = defaultState, action) => {
   case types.SAVE_NEW_GOAL:
     return {
       ...state,
-      goals: state.goals.concat([action.goal,]),
+      goals: state.goals.concat([ increaseUpdateCount(action.goal), ]),
       step: steps.GOALS_LIST,
       previousStep: null,
       newGoal: {},
@@ -59,7 +84,6 @@ export default (state = defaultState, action) => {
       step: steps.RATE_GOAL,
       previousStep: steps.VIEW_GOAL,
     };
-
   case types.MOVE_SLIDER:
     return {
       ...state,
@@ -87,6 +111,12 @@ export default (state = defaultState, action) => {
           comment: action.input,
         },
       },
+    };
+  case types.SAVE_RATING:
+    return {
+      ...saveRating(state, action.time, action.id),
+      step: steps.VIEW_GOAL,
+      previousStep: steps.FEEDBACK,
     };
   case types.SET_PENDING_SYNC_OPEN:
     return {

@@ -24,6 +24,7 @@ const MainContent = props => {
       { view }
     </div>
   );
+  
 };
 
 const mapStateToProps = state => ({
@@ -34,15 +35,21 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  /* goals list actions */
   stepAddGoal: () => { dispatch(actionsGoalsList.stepAddGoal()); },
+  onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)); },
+  /* add goal actions */
   onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)); },
   onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)); },
   saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)); },
-  onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)); },
+  /*view goal actions*/
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal());},
+  /* rate goal actions */
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating));},
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback());},
+  /* goal feedback actions */
   onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input));},
+  saveRating: (time, id) => {dispatch(actionsFeedback.saveRating(time, id));},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

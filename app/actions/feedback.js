@@ -6,3 +6,11 @@ export const inputFeedback = input => {
     input: input,
   };
 };
+
+export const saveRating = (time, id) => {
+  return {
+    type: types.SAVE_RATING,
+    time: time,
+    id: id,
+  }
+};
