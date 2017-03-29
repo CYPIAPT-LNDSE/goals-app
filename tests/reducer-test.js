@@ -8,6 +8,8 @@ const reducer = require('./../app/reducers/index.js').default;
 const saveRating = require('./../app/reducers/index.js').saveRating;
 const increaseUpdateCount = require('./../app/reducers/index.js').increaseUpdateCount;
 const addGoalToArray = require('./../app/reducers/index.js').addGoalToArray;
+const addRatingToCurrentGoal = require('./../app/reducers/index.js').addRatingToCurrentGoal;
+const constructNewRating = require('./../app/reducers/index.js').constructNewRating;
 
 const defaultState = {
   goals: [],
@@ -19,18 +21,35 @@ const defaultState = {
 
 tape(`increaseUpdateCount function takes an object and increments the
   updateCount value by one`, (t) => {
-    const goal1 = {
-      name: 'my best goal',
-      updateCount: 0,
-    };
-    const goal2 = {
-      name: 'my new goal',
-    };
+  const goal1 = {
+    name: 'my best goal',
+    updateCount: 0,
+  };
+  const goal2 = {
+    name: 'my new goal',
+  };
 
-    t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
-    t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
-    t.end();
-  });
+  t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
+  t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
+  t.end();
+});
+
+tape('constructNewRating makes a new rating object', (t) => {
+  const initialState = {
+    ...defaultState,
+    currentGoal: {
+      newRating: {
+        score: 8,
+        comment: 'amazing',
+      },
+    },
+  };
+
+  const newRating = constructNewRating(initialState, 'today', 0);
+  t.equal(Object.keys(newRating).length, 4, 'new object has 4 properties');
+  t.equal(newRating.score, 8, 'score is 8');
+  t.end();
+});
 
 tape(`addGoalToArray takes the state and an action with a goal and
   concatenates the goals`, (t) => {
@@ -62,6 +81,27 @@ tape(`addGoalToArray takes the state and an action with a goal and
     );
     t.end();
   });
+
+tape('addRatingToCurrentGoal concatenates ratings and sets newRating to empty obj', (t) => {
+  const initialState = {
+    ...defaultState,
+    currentGoal: {
+      name: 'my best goal',
+      ratings: [],
+    },
+  };
+  const newRating = {
+    score: 0,
+    id: 0,
+    time: 'today',
+    comment: 'cool comment',
+  };
+
+  const updatedGoal = addRatingToCurrentGoal(initialState, newRating);
+  t.equal(updatedGoal.ratings.length, 1, 'one rating in new ratings array');
+  t.deepEqual(updatedGoal.newRating, {}, 'newRating is empty obj');
+  t.end();
+});
 
 tape('test reducer step_add_goal: step and previousStep changed', (t) => {
 

@@ -8,48 +8,56 @@ const defaultState = {
   newGoal: {},
   currentGoal: {},
 };
-//
-// currentGoal = currentGoalState = ({
-//   ...currentGoalState,
-//
-// })
 
-export const saveRating = (state, { time, id }) => {
-//   withNewRation = newRating(state {})
-
-  const newRating = {
-    score: state.currentGoal.newRating.score,
-    id: id,
-    time: time,
-    comment: state.currentGoal.newRating.comment,
-  };
-  const currentGoal = {
-    ...state.currentGoal,
-    ratings: [newRating].concat((state.currentGoal.ratings || [])),
-    newRating: {},
-  }
-  const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
-    increaseUpdateCount(currentGoal) : goal);
-  return {
-    ...state,
-    goals: goals,//increaseUpdateCount(goals, { id }),
-    currentGoal: currentGoal,//addRating(currentGoal, { newRating })
-  }
-};
-
-const mapWithId = ({ goals }, { id }, fn) =>
+export const mapWithId = ({ goals }, { id }, fn) =>
   goals.map(elem =>
     elem.id === id
       ? fn(elem)
       : elem
-  )
+  );
+
+export const saveRating = (state, time, id) => {
+
+  const newRating = constructNewRating(state, time, id);
+  const currentGoal = addRatingToCurrentGoal(state, newRating);
+  const goals = state.goals.map((goal) =>
+    goal.id === currentGoal.id
+      ? increaseUpdateCount(currentGoal)
+      : goal
+  );
+
+  return {
+    ...state,
+    goals: goals,
+    currentGoal: currentGoal,
+  };
+};
 
 export const increaseUpdateCount = goal => {
   return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
 }
 
-export const addGoalToArray = (state, { goal }, fn = (goal) => { return goal; }) =>
-  state.goals.concat([ fn(goal), ]);
+export const constructNewRating = ({ currentGoal, }, time, id) => {
+  console.log(currentGoal);
+  return {
+    score: currentGoal.newRating.score,
+    id: id,
+    time: time,
+    comment: currentGoal. newRating.comment,
+  };
+};
+
+export const addGoalToArray = (state, { goal }, fn = (goal) => { return goal; }) => {
+  return state.goals.concat([ fn(goal), ]);
+}
+
+export const addRatingToCurrentGoal = ({ currentGoal }, newRating) => {
+  return {
+    ...currentGoal,
+    ratings: [ newRating, ].concat(currentGoal.ratings),
+    newRating: {},
+  };
+}
 
 export default (state = defaultState, action) => {
   switch(action.type) {
