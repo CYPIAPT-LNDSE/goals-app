@@ -9,22 +9,19 @@ const defaultState = {
   currentGoal: {},
 };
 
-export const mapWithId = ({ goals, }, { id, }, fn) =>
-goals.map(elem =>
+export const mapWithId = ({ goals, }, { id, }, fn) => {
+  return goals.map(elem =>
   elem.id === id
   ? fn(elem)
   : elem
-);
+);};
 
 export const saveRating = (state, time, id) => {
 
   const newRating = constructNewRating(state, time, id);
   const currentGoal = addRatingToCurrentGoal(state, newRating);
-  const goals = state.goals.map((goal) =>
-    goal.id === currentGoal.id
-    ? increaseUpdateCount(currentGoal)
-    : goal
-  );
+  const goals = mapWithId(state, currentGoal, () => increaseUpdateCount(currentGoal));
+
   return {
     ...state,
     goals: goals,
