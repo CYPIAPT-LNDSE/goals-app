@@ -1,13 +1,16 @@
 import React from 'react';
 
 const ProgressBarComponent = ({ rating, time, }) => {
-  const score = parseInt(rating, 10);
+
+  const score = rating.score;
   const style = {
-    width: `${(score*10)}%`,
-    animation: `stretchRight${score} 2s ease-out`,};
+    width: `${(score * 10)}%`,
+    animation: `stretchRight${score} 2s ease-out`,
+  };
   const left = {
-    left: `${(score*10)-6}%`,
-    animation: `slideRight${score} 2s ease-out`,};
+    left: `${(score * 10) - 6}%`,
+    animation: `slideRight${score} 2s ease-out`,
+  };
   return (
     <div className="progress-bar-container">
       <div className="progress-bar-background" />
@@ -16,16 +19,14 @@ const ProgressBarComponent = ({ rating, time, }) => {
         <p>{ score }</p>
       </div>
       <div className="progress-bar-time">
-        <p>
-          { time.toString() }
-        </p>
+        <p>{ time }</p>
       </div>
     </div>
   );
 };
 
 ProgressBarComponent.propTypes = {
-  rating: React.PropTypes.string,
+  rating: React.PropTypes.object,
   time: React.PropTypes.string,
 };
 

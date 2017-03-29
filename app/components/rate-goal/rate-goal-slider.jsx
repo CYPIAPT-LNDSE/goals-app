@@ -8,7 +8,7 @@ class RateGoalSlider extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    this.props.onMoveSlider(event.target.value);
+    this.props.onMoveSlider(parseInt(event.target.value, 10));
   }
 
   render() {

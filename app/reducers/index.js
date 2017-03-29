@@ -13,8 +13,8 @@ export const mapWithId = ({ goals, }, { id, }, fn) => {
   return goals.map(elem =>
   elem.id === id
   ? fn(elem)
-  : elem
-);};
+  : elem);
+};
 
 export const saveRating = (state, time, id) => {
 
