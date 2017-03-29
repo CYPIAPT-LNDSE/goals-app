@@ -2,7 +2,7 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import FeedbackInput from './feedback-input.jsx';
 
-const Feedback = ({ currentGoal, onInputFeedback, saveRating }) => (
+const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => (
   <div className='feedback-page'>
     <div className='feedback-goal-tile-container'>
       <GoalTileComponent goal={ currentGoal } />
@@ -26,5 +26,10 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating }) => (
     </div>
   </div>
 );
+
+Feedback.propTypes = {
+  currentGoal: React.PropTypes.object,
+  onInputFeedback: React.PropTypes.object,
+};
 
 export default Feedback;

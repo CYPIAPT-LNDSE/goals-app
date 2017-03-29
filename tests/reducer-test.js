@@ -29,8 +29,8 @@ tape(`increaseUpdateCount function takes an object and increments the
     name: 'my new goal',
   };
 
-  t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
-  t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
+  t.equal(increaseUpdateCount(goal1).updateCount, 1, 'count increased by 1');
+  t.equal(increaseUpdateCount(goal2).updateCount, 1, 'count set to 1 if undefined');
   t.end();
 });
 
@@ -53,34 +53,34 @@ tape('constructNewRating makes a new rating object', (t) => {
 
 tape(`addGoalToArray takes the state and an action with a goal and
   concatenates the goals`, (t) => {
-    const goal1 = {
-      name: 'my best goal',
-      updateCount: 0,
+  const goal1 = {
+    name: 'my best goal',
+    updateCount: 0,
+  };
+  const goal2 = {
+    name: 'my new goal',
+  };
+  const initialState = {
+    ...defaultState,
+    goals: [ goal1, ],
+  };
+  const fn = goal => {
+    return {
+      ...goal,
+      updateCount: 3,
     };
-    const goal2 = {
-      name: 'my new goal',
-    };
-    const initialState = {
-      ...defaultState,
-      goals: [ goal1, ],
-    };
-    const fn = goal => {
-      return {
-        ...goal,
-        updateCount: 3,
-      }
-    };
-    const action = { goal: goal2, };
+  };
+  const action = { goal: goal2, };
 
-    t.equal(addGoalToArray(initialState, action).length, 2, '2 goals in array');
-    t.equal(addGoalToArray(initialState, action, fn).length, 2,
+  t.equal(addGoalToArray(initialState, action).length, 2, '2 goals in array');
+  t.equal(addGoalToArray(initialState, action, fn).length, 2,
       'still 2 goals in array'
     );
-    t.equal(addGoalToArray(initialState, action, fn).pop().updateCount, 3,
+  t.equal(addGoalToArray(initialState, action, fn).pop().updateCount, 3,
       'optional function applied'
     );
-    t.end();
-  });
+  t.end();
+});
 
 tape('addRatingToCurrentGoal concatenates ratings and sets newRating to empty obj', (t) => {
   const initialState = {
@@ -127,7 +127,7 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
 tape('test reducer case input_goal: input value is added to state', (t) => {
 
   const initialState = { ...defaultState, step: steps.ADD_GOAL, };
-  const input = 'I will test test t'
+  const input = 'I will test test t';
   const actionInputGoal = {
     type: types.INPUT_GOAL,
     input: input,
@@ -171,7 +171,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
     goal: {
       ...newGoal,
       updateCount: 1,
-    }
+    },
   };
   const newState = reducer(initialState, actionSaveGoal);
 
@@ -187,7 +187,7 @@ tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and c
 tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) => {
 
   const myGoal = { name: 'this is my goal', };
-  const initialState = { ...defaultState, goals: [ myGoal, ] };
+  const initialState = { ...defaultState, goals: [ myGoal, ], };
   const actionSelectGoal = {
     type: types.SELECT_GOAL,
     goal: myGoal,
@@ -198,7 +198,6 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
     { ...myGoal, newRating : {}, },
     'current goal is set to myGoal'
   );
-
   t.end();
 });
 
@@ -271,8 +270,8 @@ tape('test saveRating function for reducer save rating', t => {
       name: 'Helloo',
       avatar: 'pepper',
       id: 1,
-      ratings: [ { score: 6, time: 'today', id: 3, comment: 'comment' }, ],
-      newRating: { score: 5, comment: 'comment2', }
+      ratings: [ { score: 6, time: 'today', id: 3, comment: 'comment', }, ],
+      newRating: { score: 5, comment: 'comment2', },
     },
   };
 
@@ -280,7 +279,7 @@ tape('test saveRating function for reducer save rating', t => {
   const id = 0;
   const savedRating = saveRating(initialState, time, id);
 
-  t.equal(savedRating.currentGoal.ratings.length, 2,`new rating added to array`);
+  t.equal(savedRating.currentGoal.ratings.length, 2,'new rating added to array');
   t.end();
 });
 
@@ -291,8 +290,8 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
     ratings: [],
     newRating: {
       score: 5,
-      comment: 'hello'
-    }
+      comment: 'hello',
+    },
   };
 
   const initialState = {
@@ -305,7 +304,7 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
     type: types.SAVE_RATING,
     time: 'yesterday',
     id: 0,
-  }
+  };
 
   const nextState = reducer(initialState, actionsSaveRating);
 
@@ -322,11 +321,12 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {
-    goals: [{id: 1, pendingSync: {open: false}}]
+    goals: [{id: 1, pendingSync: {open: false,},},],
   };
+
   const actionSetPendingSyncOpen = {
     type: types.SET_PENDING_SYNC_OPEN,
-    id: 1
+    id: 1,
   };
   const nextState = reducer(initialState, actionSetPendingSyncOpen);
 
@@ -339,9 +339,10 @@ tape('test reducer UPDATE_SYNC_SUCCESS: sync set to 1 and pending sync set to fa
   const initialState = {
     goals: [ {id: 1, syncDBCount: 0, pendingSync: { open: true, }, }, ],
   };
+
   const actionUpdateSyncSuccess = {
     type: types.UPDATE_SYNC_SUCCESS,
-    id: 1
+    id: 1,
   };
   const nextState = reducer(initialState, actionUpdateSyncSuccess);
 
@@ -353,8 +354,9 @@ tape('test reducer UPDATE_SYNC_SUCCESS: sync set to 1 and pending sync set to fa
 tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
 
   const initialState = {
-    goals: [ { id: 1, pendingSync: { open: true, } }, ],
+    goals: [ { id: 1, pendingSync: { open: true, }, }, ],
   };
+
   const actionUpdateSyncFailure = {
     type: types.UPDATE_SYNC_FAILURE,
     id: 1,
@@ -368,10 +370,7 @@ tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
 tape('test reducer RESET_UPDATE_COUNT: updateCount and syncDBCount set to 0', (t) => {
 
   const initialState = {
-    goals: [ {id: 1, updateCount: 1, syncDBCount: 2}, ],
-  };
-  const newState = {
-    goals: [ {id: 1, updateCount:0, syncDBCount: 0}, ],
+    goals: [ {id: 1, updateCount: 1, syncDBCount: 2,}, ],
   };
   const actionResetUpdateCount = {
     type: types.RESET_UPDATE_COUNT,

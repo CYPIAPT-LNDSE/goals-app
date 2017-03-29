@@ -1,6 +1,6 @@
 import React from 'react';
-import GoalTileComponent from '../goal-tile.jsx'
-import ProgressBarComponent from './progress-bar.jsx'
+import GoalTileComponent from '../goal-tile.jsx';
+import ProgressBarComponent from './progress-bar.jsx';
 
 const viewGoal = ( { currentGoal, rateGoal } ) => {
   const progressBars = currentGoal.ratings.slice(0, 3).map( rating =>
@@ -38,7 +38,12 @@ const viewGoal = ( { currentGoal, rateGoal } ) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+viewGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  rateGoal: React.PropTypes.func,
+};
 
 export default viewGoal;
