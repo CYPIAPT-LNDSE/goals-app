@@ -29,7 +29,7 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => (
 
 Feedback.propTypes = {
   currentGoal: React.PropTypes.object,
-  onInputFeedback: React.PropTypes.object,
+  onInputFeedback: React.PropTypes.func,
   saveRating: React.PropTypes.func,
 };
 

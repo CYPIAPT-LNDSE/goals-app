@@ -9,20 +9,19 @@ const defaultState = {
   currentGoal: {},
 };
 
+export const mapWithId = ({ goals, }, { id, }, fn) => {
+  return goals.map(elem =>
+  elem.id === id
+    ? fn(elem)
+    : elem);
+};
+
 export const saveRating = (state, time, id) => {
-  const newRating = {
-    score: state.currentGoal.newRating.score,
-    id: id,
-    time: time,
-    comment: state.currentGoal.newRating.comment,
-  };
-  const currentGoal = {
-    ...state.currentGoal,
-    ratings: [newRating,].concat((state.currentGoal.ratings || [])),
-    newRating: {},
-  };
-  const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
-    increaseUpdateCount(currentGoal) : goal);
+
+  const newRating = constructNewRating(state, time, id);
+  const currentGoal = addRatingToCurrentGoal(state, newRating);
+  const goals = mapWithId(state, currentGoal, () => increaseUpdateCount(currentGoal));
+
   return {
     ...state,
     goals: goals,
@@ -30,14 +29,29 @@ export const saveRating = (state, time, id) => {
   };
 };
 
-const mapWithId = (arr, id, fn) =>
-  arr.map(elem =>
-    elem.id === id
-      ? fn(elem)
-      : elem );
-
-const increaseUpdateCount = goal => {
+export const increaseUpdateCount = goal => {
   return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
+};
+
+export const constructNewRating = ({ currentGoal, }, time, id) => {
+  return {
+    score: currentGoal.newRating.score,
+    id: id,
+    time: time,
+    comment: currentGoal.newRating.comment,
+  };
+};
+
+export const addGoalToArray = (state, { goal, }, fn = goal => goal) => {
+  return state.goals.concat([ fn(goal), ]);
+};
+
+export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
+  return {
+    ...currentGoal,
+    ratings: [ newRating, ].concat(currentGoal.ratings),
+    newRating: {},
+  };
 };
 
 export default (state = defaultState, action) => {
@@ -63,7 +77,7 @@ export default (state = defaultState, action) => {
   case types.SAVE_NEW_GOAL:
     return {
       ...state,
-      goals: state.goals.concat([ increaseUpdateCount(action.goal), ]),
+      goals: addGoalToArray(state, action, increaseUpdateCount),
       step: steps.GOALS_LIST,
       previousStep: null,
       newGoal: {},
@@ -121,16 +135,14 @@ export default (state = defaultState, action) => {
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
-      goals: state.goals.map((goal) => {
-        return action.id === goal.id
-            ? { ...goal, pendingSync: {open: true,}, }
-            : goal;
+      goals: mapWithId(state, action, (goal) => {
+        return { ...goal, pendingSync: { open: true, }, };
       }),
     };
   case types.UPDATE_SYNC_SUCCESS:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return {
           ...goal,
           syncDBCount: goal.syncDBCount + 1,
@@ -141,14 +153,14 @@ export default (state = defaultState, action) => {
   case types.UPDATE_SYNC_FAILURE:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return { ...goal, pendingSync: { open: false, }, };
       }),
     };
   case types.RESET_UPDATE_COUNT:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return { ...goal, updateCount:0, syncDBCount: 0, };
       }),
     };

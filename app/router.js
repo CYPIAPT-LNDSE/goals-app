@@ -36,8 +36,8 @@ const router = (props) => {
   case steps.FEEDBACK:
     return <Feedback
         currentGoal={ props.currentGoal }
-        onInputFeedback={ props.onInputFeedback }
-        saveRating={ props.saveRating }
+        onInputFeedback= { props.onInputFeedback }
+        saveRating= { props.saveRating }
       />;
   default:
     return <GoalsList
