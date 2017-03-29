@@ -3,9 +3,11 @@ const tape = require('tape');
 const types = require('./../app/action_types.js');
 const steps = require('./../app/steps.js');
 
+/* functions to be tested */
 const reducer = require('./../app/reducers/index.js').default;
 const saveRating = require('./../app/reducers/index.js').saveRating;
 const increaseUpdateCount = require('./../app/reducers/index.js').increaseUpdateCount;
+const addGoalToArray = require('./../app/reducers/index.js').addGoalToArray;
 
 const defaultState = {
   goals: [],
@@ -24,9 +26,40 @@ tape(`increaseUpdateCount function takes an object and increments the
     const goal2 = {
       name: 'my new goal',
     };
-    
+
     t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
     t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
+    t.end();
+  });
+
+tape(`addGoalToArray takes the state and an action with a goal and
+  concatenates the goals`, (t) => {
+    const goal1 = {
+      name: 'my best goal',
+      updateCount: 0,
+    };
+    const goal2 = {
+      name: 'my new goal',
+    };
+    const initialState = {
+      ...defaultState,
+      goals: [ goal1, ],
+    };
+    const fn = goal => {
+      return {
+        ...goal,
+        updateCount: 3,
+      }
+    };
+    const action = { goal: goal2, };
+
+    t.equal(addGoalToArray(initialState, action).length, 2, '2 goals in array');
+    t.equal(addGoalToArray(initialState, action, fn).length, 2,
+      'still 2 goals in array'
+    );
+    t.equal(addGoalToArray(initialState, action, fn).pop().updateCount, 3,
+      'optional function applied'
+    );
     t.end();
   });
 

@@ -37,8 +37,8 @@ export const saveRating = (state, { time, id }) => {
   }
 };
 
-const mapWithId = (arr, id, fn) =>
-  arr.map(elem =>
+const mapWithId = ({ goals }, { id }, fn) =>
+  goals.map(elem =>
     elem.id === id
       ? fn(elem)
       : elem
@@ -47,6 +47,9 @@ const mapWithId = (arr, id, fn) =>
 export const increaseUpdateCount = goal => {
   return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
 }
+
+export const addGoalToArray = (state, { goal }, fn = (goal) => { return goal; }) =>
+  state.goals.concat([ fn(goal), ]);
 
 export default (state = defaultState, action) => {
   switch(action.type) {
@@ -71,7 +74,7 @@ export default (state = defaultState, action) => {
     case types.SAVE_NEW_GOAL:
       return {
         ...state,
-        goals: state.goals.concat([ increaseUpdateCount(action.goal) ]),
+        goals: addGoalToArray(state, action, increaseUpdateCount),
         step: steps.GOALS_LIST,
         previousStep: null,
         newGoal: {},
@@ -130,16 +133,14 @@ export default (state = defaultState, action) => {
     case types.SET_PENDING_SYNC_OPEN:
       return {
         ...state,
-        goals: state.goals.map((goal) => {
-          return action.id === goal.id
-            ? { ...goal, pendingSync: {open: true} }
-            : goal;
+        goals: mapWithId(state, action, (goal) => {
+          return { ...goal, pendingSync: { open: true, }, };
         })
       }
     case types.UPDATE_SYNC_SUCCESS:
       return {
         ...state,
-        goals: mapWithId(state.goals, action.id, (goal) => {
+        goals: mapWithId(state, action, (goal) => {
             return {
               ...goal,
               syncDBCount: goal.syncDBCount + 1,
@@ -150,14 +151,14 @@ export default (state = defaultState, action) => {
       case types.UPDATE_SYNC_FAILURE:
         return {
           ...state,
-          goals: mapWithId(state.goals, action.id, (goal) => {
+          goals: mapWithId(state, action, (goal) => {
             return { ...goal, pendingSync: { open: false, }, };
           }),
         }
     case types.RESET_UPDATE_COUNT:
       return {
         ...state,
-        goals: mapWithId(state.goals, action.id, (goal) => {
+        goals: mapWithId(state, action, (goal) => {
           return { ...goal, updateCount:0, syncDBCount: 0, };
         })
       }
