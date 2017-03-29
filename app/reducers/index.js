@@ -38,7 +38,7 @@ export const constructNewRating = ({ currentGoal, }, time, id) => {
     score: currentGoal.newRating.score,
     id: id,
     time: time,
-    comment: currentGoal. newRating.comment,
+    comment: currentGoal.newRating.comment,
   };
 };
 
