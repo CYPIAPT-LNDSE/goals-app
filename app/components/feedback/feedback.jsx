@@ -30,6 +30,7 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => (
 Feedback.propTypes = {
   currentGoal: React.PropTypes.object,
   onInputFeedback: React.PropTypes.object,
+  saveRating: React.PropTypes.func,
 };
 
 export default Feedback;

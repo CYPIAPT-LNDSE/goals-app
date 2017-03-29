@@ -25,7 +25,6 @@ export const saveRating = (state, time, id) => {
     ? increaseUpdateCount(currentGoal)
     : goal
   );
-
   return {
     ...state,
     goals: goals,

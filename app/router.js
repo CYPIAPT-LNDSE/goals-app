@@ -38,7 +38,7 @@ const router = (props) => {
         currentGoal={ props.currentGoal }
         onInputFeedback= { props.onInputFeedback }
         saveRating= { props.saveRating }
-        />;
+      />;
   default:
     return <GoalsList
         goals={ props.goals }
@@ -62,7 +62,7 @@ router.propTypes = {
   stepRateGoal: React.PropTypes.func,
   newGoal: React.PropTypes.object,
   saveNewGoal: React.PropTypes.func,
-  saveRating: React.PropTypes.fun,
+  saveRating: React.PropTypes.func,
 };
 
 export default router;
