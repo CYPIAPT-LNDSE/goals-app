@@ -12,8 +12,8 @@ const defaultState = {
 export const mapWithId = ({ goals, }, { id, }, fn) => {
   return goals.map(elem =>
   elem.id === id
-  ? fn(elem)
-  : elem);
+    ? fn(elem)
+    : elem);
 };
 
 export const saveRating = (state, time, id) => {
@@ -42,7 +42,7 @@ export const constructNewRating = ({ currentGoal, }, time, id) => {
   };
 };
 
-export const addGoalToArray = (state, { goal, }, fn = (goal) => { return goal; }) => {
+export const addGoalToArray = (state, { goal, }, fn = goal => goal) => {
   return state.goals.concat([ fn(goal), ]);
 };
 
