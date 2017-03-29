@@ -1,10 +1,11 @@
 const tape = require('tape');
 
-const reducer = require('./../app/reducers/index.js').default;
 const types = require('./../app/action_types.js');
 const steps = require('./../app/steps.js');
 
+const reducer = require('./../app/reducers/index.js').default;
 const saveRating = require('./../app/reducers/index.js').saveRating;
+const increaseUpdateCount = require('./../app/reducers/index.js').increaseUpdateCount;
 
 const defaultState = {
   goals: [],
@@ -14,24 +15,41 @@ const defaultState = {
   currentGoal: null,
 };
 
+tape(`increaseUpdateCount function takes an object and increments the
+  updateCount value by one`, (t) => {
+    const goal1 = {
+      name: 'my best goal',
+      updateCount: 0,
+    };
+    const goal2 = {
+      name: 'my new goal',
+    };
+
+    t.equal(increaseUpdateCount(goal1).updateCount, 1, `count increased by 1`);
+    t.equal(increaseUpdateCount(goal2).updateCount, 1, `count set to 1 if undefined`);
+
+    t.end();
+  });
+
 tape('test reducer step_add_goal: step and previousStep changed', (t) => {
 
   const initialState = defaultState;
-  const actionStepAddGoal = {
-    type: types.STEP_ADD_GOAL,
-  };
+  const actionStepAddGoal = { type: types.STEP_ADD_GOAL, };
 
   t.equal(
     reducer(initialState, actionStepAddGoal).step,
     steps.ADD_GOAL,
     "step add goal sets correct step"
   );
+
   t.equal(
     reducer(initialState, actionStepAddGoal).previousStep,
     steps.GOALS_LIST,
     "step add goal sets correct step"
   );
+
   t.end();
+
 });
 
 tape('test reducer case input_goal: input value is added to state', (t) => {
@@ -48,6 +66,7 @@ tape('test reducer case input_goal: input value is added to state', (t) => {
     input,
     'input value added to state'
   );
+
   t.end();
 });
 
@@ -104,7 +123,7 @@ tape('test reducer case SELECT_GOAL: current goal is set to selected goal', (t) 
 
   t.deepEqual(
     reducer(initialState, actionSelectGoal).currentGoal,
-    {...myGoal, newRating : {} },
+    { ...myGoal, newRating : {}, },
     'current goal is set to myGoal'
   );
 
@@ -161,46 +180,45 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     goals: [ myGoal, ],
     currentGoal: myGoal,
   };
-  const newState = {
-    ...initialState,
-    currentGoal: {
-      ...initialState.currentGoal,
-      newRating: { score: 5, },
-    }
-  };
+
   const actionMoveSlider = {
     type: types.MOVE_SLIDER,
     rating: 5,
   };
 
-  t.deepEqual(
-    reducer(initialState, actionMoveSlider),
-    newState,
+  t.equal(
+    reducer(initialState, actionMoveSlider).currentGoal.newRating.score,
+    5,
     'rating of 5 added to current state'
   );
+
   t.end();
+
 });
 
 tape("test saveRating function for reducer save rating", t => {
   const initialState = {
     ...defaultState,
-    currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
-    ratings: [{score: 6, time:"today", id: 3, comment: "comment"},],
-    newRating: { score: 5, comment: "comment2", }
-  },
-}
-const newState = {
-  ...defaultState,
-  currentGoal: {name: "Helloo", avatar: "pepper", id: 1,
-  ratings: [
-    { score: 5, comment: "comment2", id: 0, time: "today", },
-    { score: 6, time:"today", id: 3, comment: "comment", }
-  ],
-  newRating: {}
-},
-}
-t.deepEqual(saveRating(initialState, "today", 0), newState, 'adds new rating to ratings array');
-t.end();
+    currentGoal: {
+      name: "Helloo",
+      avatar: "pepper",
+      id: 1,
+      ratings: [ { score: 6, time:"today", id: 3, comment: "comment" }, ],
+      newRating: { score: 5, comment: "comment2", }
+    },
+  };
+
+  const time = 'today';
+  const id = 0;
+
+  t.equal(
+    saveRating(newState, time, id).currentGoal.ratings.length,
+    2,
+    `new rating added to array`
+  );
+
+  //t.deepEqual(saveRating(initialState, "today", 0), newState, 'adds new rating to ratings array');
+  t.end();
 });
 
 tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {

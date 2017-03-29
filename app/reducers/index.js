@@ -8,8 +8,15 @@ const defaultState = {
   newGoal: {},
   currentGoal: {},
 };
+//
+// currentGoal = currentGoalState = ({
+//   ...currentGoalState,
+//
+// })
 
-export const saveRating = (state, time, id) => {
+export const saveRating = (state, { time, id }) => {
+//   withNewRation = newRating(state {})
+
   const newRating = {
     score: state.currentGoal.newRating.score,
     id: id,
@@ -25,8 +32,8 @@ export const saveRating = (state, time, id) => {
     increaseUpdateCount(currentGoal) : goal);
   return {
     ...state,
-    goals: goals,
-    currentGoal: currentGoal,
+    goals: goals,//increaseUpdateCount(goals, { id }),
+    currentGoal: currentGoal,//addRating(currentGoal, { newRating })
   }
 };
 
@@ -37,7 +44,7 @@ const mapWithId = (arr, id, fn) =>
       : elem
   )
 
-const increaseUpdateCount = goal => {
+export const increaseUpdateCount = goal => {
   return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
 }
 
