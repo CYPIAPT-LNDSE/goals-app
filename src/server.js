@@ -2,6 +2,7 @@ const Hapi = require('hapi');
 const Inert = require('inert');
 const fs = require('fs');
 const path = require('path');
+const socket = require('./sockets.js');
 
 const server = new Hapi.Server();
 
@@ -30,5 +31,7 @@ server.register([Inert,], (err) => {
     },
   },]);
 });
+
+socket(server.listener);
 
 module.exports = server;
