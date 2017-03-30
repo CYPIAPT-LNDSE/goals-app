@@ -4,21 +4,6 @@
 
 $titleHeight: 25px;
 
-.view-goal {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-}
-
-.view-goal-goal-tile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .view-goal-progress-container {
   display: flex;
   flex-direction: column;
@@ -90,11 +75,19 @@ $titleHeight: 25px;
   width: 100%;
   height: $titleHeight;
   background-color: $blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
   p {
     color: $light;
     line-height: $titleHeight;
     font-size: 13px;
     margin-left: 5px;
+  }
+
+  img {
+    margin-right: 5px;
   }
 }
 
@@ -105,13 +98,5 @@ $titleHeight: 25px;
   img {
     width: 100%;
     height: 100%;
-  }
-}
-
-.view-goal-buttonContainer {
-  @include ctaButton;
-  .new-rating-button {
-    width: 156px;
-    height: 50px;
   }
 }
