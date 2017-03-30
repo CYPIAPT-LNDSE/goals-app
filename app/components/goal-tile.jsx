@@ -5,16 +5,12 @@ import * as steps from './../steps.js';
 const tile = props => {
 
   const goal = props.goal;
-  const pathAvatar = `./images/avatars/${goal.avatar}.png`;
+  const pathAvatar = `./images/avatars/${goal.avatar}.svg`;
 
   return (
     <div
       className="goalTile"
-      onClick={ () => {
-        if (props.step === steps.GOALS_LIST) {
-          props.onSelectGoal(goal);
-        }
-      }}
+      onClick={ () => { if (props.step === steps.GOALS_LIST) { props.onSelectGoal(goal); }}}
     >{/* outer div for goal tile */}
       <div className="goalTile_progress"> {/* green background showing progress */}
       </div>
@@ -29,6 +25,12 @@ const tile = props => {
       </div>
     </div>
   );
+};
+
+tile.propTypes = {
+  goal: React.PropTypes.object,
+  step: React.PropTypes.string,
+  onSelectGoal: React.PropTypes.func,
 };
 
 export default tile;
