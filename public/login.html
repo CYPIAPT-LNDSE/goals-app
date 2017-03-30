@@ -92,7 +92,8 @@
           window.location = 'https://localhost:4000/';
         }
       };
-      myRequest.send(authResponse);
+      console.log(authResponse);
+      myRequest.send(JSON.stringify(authResponse));
     }
   </script>
 
