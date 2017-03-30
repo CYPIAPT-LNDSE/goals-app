@@ -21,7 +21,7 @@
       // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        testAPI();
+        makeRequest(response.authResponse);
       } else {
         // The person is not logged into your app or we are unable to tell.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -76,13 +76,23 @@
 
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
-    function testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-      });
+    // function testAPI() {
+    //   console.log('Welcome!  Fetching your information.... ');
+    //   FB.api('/me', function(response) {
+    //     console.log('Successful login for: ' + response.name);
+    //     document.getElementById('status').innerHTML =
+    //       'Thanks for logging in, ' + response.name + '!';
+    //   });
+    // }
+    function makeRequest(authResponse) {
+      var myRequest = new XMLHttpRequest();
+      myRequest.open("POST", '/success', true);
+      myRequest.onreadystatechange = function() {
+        if(myRequest.readyState === 4 && myRequest.status === 200) {
+          window.location = 'https://localhost:4000/';
+        }
+      };
+      myRequest.send(authResponse);
     }
   </script>
 

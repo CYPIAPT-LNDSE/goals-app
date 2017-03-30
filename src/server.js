@@ -29,6 +29,14 @@ server.register([Inert,], (err) => {
     handler: (request,reply) => { reply.file('public/login.html'); },
   },
   {
+    path: '/success',
+    method: 'POST',
+    handler: (request, reply) => {
+      console.log("success route");
+      reply.redirect('/');
+    },
+  },
+  {
     path: '/{file*}',
     method: 'GET',
     handler: {
