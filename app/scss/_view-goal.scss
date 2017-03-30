@@ -1,0 +1,117 @@
+@import 'general';
+@import 'colors';
+@import 'progress-animation';
+
+$titleHeight: 25px;
+
+.view-goal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.view-goal-goal-tile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.view-goal-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  width: 90%;
+  position: relative;
+  height: 135px;
+}
+
+.progress-bar-container {
+    height: 45px;
+    position: relative;
+}
+
+@mixin progress-bar {
+  width: 100%;
+  height: 10px;
+  border: $blueBorderThin;
+  position: absolute;
+  top: 30%;
+  border-radius: 6%;
+}
+
+.progress-bar-background {
+  @include progress-bar;
+  background: transparent;
+}
+
+.progress-bar-foreground {
+  @include progress-bar;
+  background-color: $blue;
+}
+
+.progress-bar-rating {
+  @include regularFont;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: $light;
+  border: $blueBorderThin;
+  margin-top: -14px;
+  top: 48%;
+  p {
+    top: -20%;
+    text-align: center;
+    line-height: 20px;
+    width: 100%;
+  }
+}
+
+.progress-bar-time {
+    p {
+      font-size: 9px;
+    }
+}
+
+.line-chart-container {
+  width: 290px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.line-chart-title {
+  width: 100%;
+  height: $titleHeight;
+  background-color: $blue;
+  p {
+    color: $light;
+    line-height: $titleHeight;
+    font-size: 13px;
+    margin-left: 5px;
+  }
+}
+
+.line-chart-img {
+  width: 100%;
+  height: 95px;
+  border-radius: 0 0 6px 6px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.view-goal-buttonContainer {
+  @include ctaButton;
+  .new-rating-button {
+    width: 156px;
+    height: 50px;
+  }
+}
