@@ -30,7 +30,14 @@ server.register([Inert,], (err) => {
   server.route([{
     path: '/',
     method: 'GET',
-    handler: (request, reply) => { reply.file('public/index.html'); },
+    handler: (request, reply) => {
+      const userCookie = request.state.userCookie || '';
+      if(userCookie) {
+        reply.file('public/index.html');
+      } else {
+        reply.redirect('/login');
+      }
+    },
   },
   {
     path: '/login',
@@ -42,8 +49,8 @@ server.register([Inert,], (err) => {
     method: 'POST',
     handler: (request, reply) => {
       const body = JSON.parse(request.payload);
+      console.log("setting cookie");
       reply("Welcome").state('userCookie', { user: body.userID} );
-
     },
   },
   {
