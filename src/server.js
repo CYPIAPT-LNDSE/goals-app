@@ -24,6 +24,11 @@ server.register([Inert,], (err) => {
     handler: (request, reply) => { reply.file('public/index.html'); },
   },
   {
+    path: '/login',
+    method: 'GET',
+    handler: (request,reply) => { reply.file('public/login.html'); },
+  },
+  {
     path: '/{file*}',
     method: 'GET',
     handler: {
