@@ -12,7 +12,7 @@ export const selectAvatar = avatar => {
   return {
     type: types.SELECT_AVATAR,
     avatar: avatar,
-  }
+  };
 };
 
 export const saveNewGoal = (goal) => {
