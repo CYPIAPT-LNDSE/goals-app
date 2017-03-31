@@ -5,6 +5,7 @@ const defaultState = {
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
+  menu: false,
   newGoal: {},
   currentGoal: {},
 };
@@ -56,6 +57,11 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 
 export default (state = defaultState, action) => {
   switch(action.type) {
+  case types.TOGGLE_MENU:
+    return {
+      ...state,
+      menu: !state.menu,
+    };
   case types.STEP_ADD_GOAL:
     return {
       ...state,
