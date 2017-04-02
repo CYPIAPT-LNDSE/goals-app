@@ -1,6 +1,9 @@
 /* general actions */
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 
+/* nav bar action */
+export const NAV_CLICK = 'NAV_CLICK';
+
 /* goals list actions */
 export const STEP_ADD_GOAL = 'STEP_ADD_GOAL';
 export const SELECT_GOAL = 'SELECT_GOAL';
