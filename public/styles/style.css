@@ -19,6 +19,10 @@
   border: 0;
   position: absolute;
   top: 64.5%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   color: #fff;
   font-size: 18px;
   font-weight: 300;
