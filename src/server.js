@@ -19,26 +19,10 @@ server.connection({
 server.register([ Inert, ], (err) => {
   if(err) throw err;
 
-  server.state('userCookie', {
-    ttl: 360000,
-    isSecure: true,
-    isHttpOnly: false,
-    encoding: 'base64json',
-    clearInvalid: true,
-    strictHeader: true,
-  });
-
   server.route([{
     path: '/',
     method: 'GET',
-    handler: (request, reply) => {
-      const userCookie = request.state.userCookie || '';
-      if(userCookie) {
-        reply.file('public/index.html');
-      } else {
-        reply.redirect('/login');
-      }
-    },
+    handler: (request, reply) => { reply.file('public/index.html'); },
   },
   {
     path: '/login',
