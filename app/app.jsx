@@ -10,8 +10,9 @@ const App = () => {
 
   return (
     <div className="page">
+
       <NavContainer />
-      <MainContainer/>
+      <MainContainer />
     </div>
   );
 };

@@ -2,6 +2,19 @@
 
 $blueBorder: 2px solid $blue;
 $blueBorderThin: 1px solid $blue;
+$navItemHeight: 28px;
+
+@mixin navContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  height: $navItemHeight;
+  cursor: pointer;
+
+  img {
+    height: $navItemHeight;
+  }
+}
 
 @font-face {
   font-family: leagueSpartan;

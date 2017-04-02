@@ -129,6 +129,26 @@ tape('addRatingToCurrentGoal concatenates ratings and sets newRating to empty ob
   t.end();
 });
 
+tape('toggleMenu shows and hides menu', (t) => {
+  const stateVisible = {
+    ...defaultState,
+    menu: true,
+  };
+
+  const stateHidden = {
+    ...defaultState,
+    menu: false,
+  };
+
+  const actionToggle = {
+    type: types.TOGGLE_MENU,
+  };
+
+  t.equal(reducer(stateVisible, actionToggle).menu, false, 'menu hidden if already showing');
+  t.equal(reducer(stateHidden, actionToggle).menu, true, 'menu hidden if already showing');
+  t.end();
+});
+
 tape('test reducer step_add_goal: step and previousStep changed', (t) => {
 
   const initialState = defaultState;

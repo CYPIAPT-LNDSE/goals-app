@@ -20,7 +20,7 @@ const MainContent = props => {
   };
 
   return (
-    <div className="MainContent" style={ dynamicStyle }>
+  <div className="MainContent" style={ dynamicStyle }>
       { view }
     </div>
   );

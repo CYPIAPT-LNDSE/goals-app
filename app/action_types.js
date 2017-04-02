@@ -1,3 +1,6 @@
+/* general actions */
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+
 /* nav bar action */
 export const NAV_CLICK = 'NAV_CLICK';
 
