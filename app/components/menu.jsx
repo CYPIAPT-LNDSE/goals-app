@@ -1,19 +1,32 @@
 import React from 'react';
 
-const menu = () => {
+const Menu = ({ menu, toggleMenu, }) => {
+
+  const style = {
+    visibility: menu ? 'visible' : 'hidden',
+  };
+
   return (
-    <div className='menu-modal'>
+    <div className='menu-modal' style={ style }>
       <div className='close-button-container'>
-        <button>
+        <button onClick={ toggleMenu }>
           <img src='/images/icons/close-menu.svg' />
         </button>
       </div>
       <div className='menu-links-container'>
-        <a>About Grow</a>
-        <a>Log out</a>
+        <a
+          href="https://github.com/CYPIAPT-LNDSE/goals-app"
+          target="blank">
+          About Grow
+        </a>
+        <a href="/logout">Log out</a>
       </div>
     </div>
   );
 };
 
-export default menu;
+Menu.proptypes = {
+  menu: React.PropTypes.bool,
+};
+
+export default Menu;
