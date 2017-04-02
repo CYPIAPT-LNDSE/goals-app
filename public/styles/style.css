@@ -12,27 +12,34 @@
   margin: 0;
 }
 
-.login-facebook-icon-container {
-  display: inline;
-}
-
 .login-button {
   background-color: #3C5193;
   border-radius: 8px;
-  height: 39px;
   width: 259px;
   border: 0;
-  outline: none;
   position: absolute;
   top: 64.5%;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 24px;
+  font-family: helvetica;
+  height: 39px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.login-facebook-icon {
+  height: 80%;
+  margin: 10% 10px;
+}
+
+.button-inner {
+  height: 39px;
 }
 
 p {
-  display: inline;
-  height: 23.58px;
-  width: 193.88px;
+  margin: 0;
+  line-height: 39px;
+  margin-right: 10px;
 }
