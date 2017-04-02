@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import './scss/style.scss';
 import 'normalize.css';
 
@@ -11,8 +10,9 @@ const App = () => {
 
   return (
     <div className="page">
+
       <NavContainer />
-      <MainContainer/>
+      <MainContainer />
     </div>
   );
 };

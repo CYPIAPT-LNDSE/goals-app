@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect, } from 'react-redux';
 
 /* actions */
 import * as actionsGoalsList from './../actions/goals-list.js';
@@ -20,11 +20,12 @@ const MainContent = props => {
   };
 
   return (
-    <div className="MainContent" style={ dynamicStyle }>
+  <div className="MainContent" style={ dynamicStyle }>
       { view }
     </div>
   );
-}
+
+};
 
 const mapStateToProps = state => ({
   goals: state.goals,
@@ -34,16 +35,21 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  stepAddGoal: () => { dispatch(actionsGoalsList.stepAddGoal()) },
-  onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)) },
-  onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)) },
-  saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)) },
-  onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)) },
-  stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal())},
-  onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating))},
-  stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback())},
-  onInputFeedback: (input) => {dispatch(actionsFeedback.inputFeedback(input))},
-  saveRating: (time, id) => {dispatch(actionsFeedback.saveRating(time, id))},
+  /* goals list actions */
+  stepAddGoal: () => { dispatch(actionsGoalsList.stepAddGoal()); },
+  onSelectGoal: (goal) => { dispatch(actionsGoalsList.selectGoal(goal)); },
+  /* add goal actions */
+  onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)); },
+  onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)); },
+  saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)); },
+  /*view goal actions*/
+  stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal()); },
+  /* rate goal actions */
+  onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating)); },
+  stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback()); },
+  /* goal feedback actions */
+  onInputFeedback: (input) => { dispatch(actionsFeedback.inputFeedback(input)); },
+  saveRating: (time, id) => { dispatch(actionsFeedback.saveRating(time, id)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

@@ -3,7 +3,7 @@ import GoalTileComponent from '../goal-tile.jsx';
 import RateGoalSlider from './rate-goal-slider.jsx';
 
 
-const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
+const RateGoal = ({ currentGoal, onMoveSlider, feedback, }) => {
   return (
     <div className="rate-goal goal-detail-page">
       <div className="goal-detail-goal-tile-container">
@@ -29,12 +29,18 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback }) => {
             type="button"
             name="button"
             className="new-rating-button"
-            onClick={ () => feedback() }
+            onClick={ feedback }
           >Rate</button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+RateGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  onMoveSlider: React.PropTypes.func,
+  feedback: React.PropTypes.func,
+};
 
 export default RateGoal;

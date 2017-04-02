@@ -4,7 +4,7 @@ import GoalTile from '../goal-tile.jsx';
 
 import * as steps from './../../steps.js';
 
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal }) => {
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
 
   const goalsListItems = goals.map(goal => {
     return <li key={ goal.id } >
@@ -13,7 +13,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal }) => {
         step={ steps.GOALS_LIST }
         onSelectGoal={ onSelectGoal }
       />
-    </li>
+    </li>;
   });
 
   const dynamicStyle = {
@@ -41,6 +41,10 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal }) => {
       </div>
     </div>
   );
+};
+
+GoalsList.propTypes = {
+  goals: React.PropTypes.array,
 };
 
 export default GoalsList;
