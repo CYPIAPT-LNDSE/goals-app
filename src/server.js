@@ -3,7 +3,6 @@ const Inert = require('inert');
 const fs = require('fs');
 const path = require('path');
 const socket = require('./sockets.js');
-const Request = require('request');
 require('env2')('./config.env');
 
 const server = new Hapi.Server();
@@ -17,16 +16,16 @@ server.connection({
   },
 });
 
-server.register([Inert,], (err) => {
+server.register([ Inert, ], (err) => {
   if(err) throw err;
 
   server.state('userCookie', {
-      ttl: 360000,
-      isSecure: true,
-      isHttpOnly: false,
-      encoding: 'base64json',
-      clearInvalid: true,
-      strictHeader: true,
+    ttl: 360000,
+    isSecure: true,
+    isHttpOnly: false,
+    encoding: 'base64json',
+    clearInvalid: true,
+    strictHeader: true,
   });
 
   server.route([{
@@ -45,30 +44,6 @@ server.register([Inert,], (err) => {
     path: '/login',
     method: 'GET',
     handler: (request,reply) => { reply.file('public/login.html'); },
-  },
-  {
-    path: '/success',
-    method: 'POST',
-    handler: (request, reply) => {
-      const body = JSON.parse(request.payload);
-      let appAccessToken = '';
-      console.log(body.accessToken);
-      console.log('requesting token');
-      Request(`https://graph.facebook.com/v2.8/debug_token?input_token=${body.accessToken}`,
-        (error, response, body) => {
-        // console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
-      });
-      reply("Welcome").state('userCookie', { user: body.userID} );
-    },
-  },
-  {
-    path: '/verify',
-    method: 'GET',
-    handler: (request, reply) => {
-
-    },
   },
   {
     path: '/{file*}',
