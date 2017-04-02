@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Nav = ({ onNavClick }) => {
+const Nav = ({ onNavClick, }) => {
 
-  const path = "./images/";
-  const pathBack = path + "icons/back.svg";
-  const pathLogo = path + "logo_header.png";
-  const pathMenu = path + "icons/menu.svg";
+  const path = './images/';
+  const pathBack = path + 'icons/back.svg';
+  const pathLogo = path + 'logo_header.svg';
+  const pathMenu = path + 'icons/menu.svg';
 
   return (
     <nav className="nav">
@@ -25,6 +25,10 @@ const Nav = ({ onNavClick }) => {
       </div>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  onNavClick: React.PropTypes.func,
 };
 
 export default Nav;
