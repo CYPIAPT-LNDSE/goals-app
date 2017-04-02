@@ -1,0 +1,38 @@
+.login-container {
+  background-image: url(./../images/login-background.svg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-color: #F7F9F9;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+}
+
+.login-facebook-icon-container {
+  display: inline;
+}
+
+.login-button {
+  background-color: #3C5193;
+  border-radius: 8px;
+  height: 39px;
+  width: 259px;
+  border: 0;
+  outline: none;
+  position: absolute;
+  top: 64.5%;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+p {
+  display: inline;
+  height: 23.58px;
+  width: 193.88px;
+}
