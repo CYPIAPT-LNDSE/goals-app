@@ -3,6 +3,8 @@ const Inert = require('inert');
 const fs = require('fs');
 const path = require('path');
 const socket = require('./sockets.js');
+const Request = require('request');
+require('env2')('./config.env');
 
 const server = new Hapi.Server();
 
@@ -49,8 +51,23 @@ server.register([Inert,], (err) => {
     method: 'POST',
     handler: (request, reply) => {
       const body = JSON.parse(request.payload);
-      console.log("setting cookie");
+      let appAccessToken = '';
+      console.log(body.accessToken);
+      console.log('requesting token');
+      Request(`https://graph.facebook.com/v2.8/debug_token?input_token=${body.accessToken}`,
+        (error, response, body) => {
+        // console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); // Print the HTML for the Google homepage.
+      });
       reply("Welcome").state('userCookie', { user: body.userID} );
+    },
+  },
+  {
+    path: '/verify',
+    method: 'GET',
+    handler: (request, reply) => {
+
     },
   },
   {
