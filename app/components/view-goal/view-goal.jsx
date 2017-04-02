@@ -2,7 +2,8 @@ import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import ProgressBarComponent from './progress-bar.jsx';
 
-const viewGoal = ( { currentGoal, rateGoal, } ) => {
+const viewGoal = ({ currentGoal, rateGoal, }) => {
+
   const time = new Date().toString();
   const progressBars = currentGoal.ratings.slice(0, 3)
     .map(rating =>

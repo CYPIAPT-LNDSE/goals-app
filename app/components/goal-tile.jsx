@@ -5,15 +5,15 @@ import * as steps from './../steps.js';
 const tile = props => {
 
   const goal = props.goal;
+  const score = goal.ratings && goal.ratings.length ? goal.ratings[0].score : undefined;
   const pathAvatar = `./images/avatars/${goal.avatar}.svg`;
 
   return (
     <div
       className="goalTile"
       onClick={ () => { if (props.step === steps.GOALS_LIST) { props.onSelectGoal(goal); }}}
-    >{/* outer div for goal tile */}
-      <div className="goalTile_progress"> {/* green background showing progress */}
-      </div>
+    >
+      <div className="goalTile_progress"></div>
       <div className="goalTile_avatarContainer">
         <img className="goalTile_img" src={ pathAvatar } />
       </div>
@@ -21,7 +21,7 @@ const tile = props => {
         <p>{ goal.name }</p>
       </div>
       <div className="goalTile_rating">
-        <p>{ goal.currentRating }</p>
+        <p>{ score }</p>
       </div>
     </div>
   );
