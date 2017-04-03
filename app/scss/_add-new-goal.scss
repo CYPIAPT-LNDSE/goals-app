@@ -68,3 +68,22 @@ $contentWidth: 95%;
     height: 50px;
   }
 }
+
+.confirmation-modal {
+  @include modal;
+}
+
+.path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.confirmation-tick {
+  height: 170px;
+  width: 170px;
+  align-self: center;
+  margin-top: 30px;
+}

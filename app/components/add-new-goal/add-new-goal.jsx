@@ -2,6 +2,7 @@ import React from 'react';
 
 import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
+import ConfirmationModal from './confirmation.jsx';
 
 const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, }) => {
 
@@ -11,6 +12,7 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
 
   return (
     <div className="addNewGoal">
+      <ConfirmationModal />
       <div className="newGoal_inputContainer-outer">
         <label
           htmlFor="newGoalInput"
