@@ -30,18 +30,6 @@ server.register([ Inert, ], (err) => {
         },
       },
     },
-  // {
-  //   path: '/login',
-  //   method: 'GET',
-  //   handler: (request,reply) => { reply.file('public/login.html'); },
-  // },
-    // {
-    //   path: '/{file*}',
-    //   method: 'GET',
-    //   handler: {
-    //     directory: { path: path.join(__dirname, '../public'), },
-    //   },
-    // },
   ]);
 });
 
