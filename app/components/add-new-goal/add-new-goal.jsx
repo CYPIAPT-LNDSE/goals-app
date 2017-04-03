@@ -4,15 +4,15 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, }) => {
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
 
-  const goal = {
-    ...newGoal, id: newGoalId,
-  };
+  const modal = newGoal.confirmation
+    ? <ConfirmationModal />
+    : '';
 
   return (
     <div className="addNewGoal">
-      <ConfirmationModal />
+      { modal }
       <div className="newGoal_inputContainer-outer">
         <label
           htmlFor="newGoalInput"
@@ -34,7 +34,7 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
             name="button"
             className="newGoal_button"
             disabled={ !newGoal.name }
-            onClick={ () => saveNewGoal(goal) }
+            onClick={ triggerConfirmation }
           >ADD</button>
         </div>
       </div>
@@ -48,6 +48,7 @@ addGoal.propTypes = {
   onSelectAvatar: React.PropTypes.func,
   saveNewGoal: React.PropTypes.func,
   newGoalId: React.PropTypes.number,
+  triggerConfirmation: React.PropTypes.func,
 };
 
 export default addGoal;

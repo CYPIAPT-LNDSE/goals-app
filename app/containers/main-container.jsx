@@ -42,6 +42,7 @@ const mapDispatchToProps = dispatch => ({
   onInputGoal: (text) => { dispatch(actionsAddNewGoal.inputGoal(text)); },
   onSelectAvatar: (avatar) => { dispatch(actionsAddNewGoal.selectAvatar(avatar)); },
   saveNewGoal: (goal) => { dispatch(actionsAddNewGoal.saveNewGoal(goal)); },
+  triggerConfirmation: () => { dispatch(actionsAddNewGoal.triggerConfirmation()); },
   /*view goal actions*/
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal()); },
   /* rate goal actions */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ConfirmationModal = ({ confirmation, }) => {
+const ConfirmationModal = () => {
   return (
     <div className="confirmation-modal">
       <p className="modal-text">Hooray!</p>
