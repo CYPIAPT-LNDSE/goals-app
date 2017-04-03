@@ -49,7 +49,7 @@ RateGoal.propTypes = {
   currentGoal: React.PropTypes.object,
   onMoveSlider: React.PropTypes.func,
   feedback: React.PropTypes.func,
-  setPreviousScore: React.PropTypes.fun,
+  setPreviousScore: React.PropTypes.func,
 };
 
 export default RateGoal;

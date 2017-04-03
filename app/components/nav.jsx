@@ -10,7 +10,7 @@ const Nav = ({ onNavClick, toggleMenu, menu, onBackButtonClick, step, }) => {
   const pathLogo = path + 'logo_header.svg';
   const pathMenu = path + 'icons/menu.svg';
 
-  const style = (step === steps.GOALS_LIST) ? {visibility: 'hidden',} : {};
+  const style = (step === steps.GOALS_LIST) ? { visibility: 'hidden', } : {};
 
   return (
     <div>
@@ -29,10 +29,14 @@ const Nav = ({ onNavClick, toggleMenu, menu, onBackButtonClick, step, }) => {
             alt="Grow"
             title="Grow logo"
             onClick = { onNavClick }
-            />
+          />
         </div>
         <div className="nav_menuContainer">
-          <img className="menu" src={ pathMenu } />
+          <img
+            className="menu"
+            src={ pathMenu }
+            onClick={ toggleMenu }
+          />
         </div>
       </nav>
       <Menu menu={ menu } toggleMenu={ toggleMenu }/>

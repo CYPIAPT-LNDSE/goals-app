@@ -2,13 +2,13 @@
 @import "general";
 
 .menu-modal {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
-  max-width: 600px;
+  max-width: $maxPageWidth;
   z-index: 1;
   background-color: hsla(211, 66%, 40%, 0.9);
   color: #fff;
@@ -16,6 +16,7 @@
   font-size: 22px;
   line-height: 30px;
   text-align: center;
+  top: 0;
 
   a, a:hover, a:active, a:visited {
     cursor: pointer;
@@ -42,6 +43,12 @@
     outline: none;
     border: 0;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: hsla(0, 0, 100%, 0.5);
+    }
   }
 
   img {
@@ -58,4 +65,13 @@
   width: 100vw;
   height: 100px;
   max-width: 600px;
+
+  a {
+    transition: background-color 0.1s ease;
+  }
+
+  a:hover {
+    color: $light;
+    font-weight: bolder;
+  }
 }
