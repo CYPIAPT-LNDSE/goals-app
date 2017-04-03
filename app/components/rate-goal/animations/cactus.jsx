@@ -1,6 +1,6 @@
 import React from 'react';
 import GSAP from 'react-gsap-enhancer';
-import { TweenMax, TimelineMax, } from 'gsap';
+import { TimelineMax, } from 'gsap';
 
 const createAnimation = ({target, options, }) => {
 
@@ -89,7 +89,9 @@ class Cactus extends React.Component {
     if (options.score === options.previousScore) {
       return;
     }
+
     this.animation = this.addAnimation(createAnimation, options);
+
   }
 
   render() {
