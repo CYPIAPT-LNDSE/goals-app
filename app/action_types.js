@@ -3,6 +3,7 @@ export const TOGGLE_MENU = 'TOGGLE_MENU';
 
 /* nav bar action */
 export const NAV_CLICK = 'NAV_CLICK';
+export const BACK_BUTTON_CLICK = 'BACK_BUTTON_CLICK';
 
 /* goals list actions */
 export const STEP_ADD_GOAL = 'STEP_ADD_GOAL';
@@ -19,6 +20,7 @@ export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
 /* rate goal actions */
 export const STEP_FEEDBACK = 'STEP_FEEDBACK';
 export const MOVE_SLIDER = 'MOVE_SLIDER';
+export const SET_PREVIOUS_SCORE = 'SET_PREVIOUS_SCORE';
 
 /* feedback actions */
 export const INPUT_FEEDBACK = 'INPUT_FEEDBACK';

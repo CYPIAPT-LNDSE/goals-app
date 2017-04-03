@@ -6,12 +6,12 @@ $ratingBubbleSize: 30px;
 
 .rate-goal-animation-container {
   height: 215px;
-  width: $contentWidth;
-  max-width: 300px;
+  width: 300px;
   align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .animation-container-rating {
