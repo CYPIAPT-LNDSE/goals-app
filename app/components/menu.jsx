@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Menu = ({ menu, toggleMenu, }) => {
+const MenuComponent = ({ menu, toggleMenu, }) => {
 
   const style = {
-    visibility: menu ? 'visible' : 'hidden',
+    transition: 'opacity 0.2s',
+    opacity: menu ? 1 : 0,
   };
 
   return (
@@ -16,17 +17,17 @@ const Menu = ({ menu, toggleMenu, }) => {
       <div className='menu-links-container'>
         <a
           href="https://github.com/CYPIAPT-LNDSE/goals-app"
-          target="blank">
-          About Grow
-        </a>
+          target="blank"
+        >About Grow</a>
         <a href="/logout">Log out</a>
       </div>
     </div>
   );
 };
 
-Menu.proptypes = {
+MenuComponent.proptypes = {
   menu: React.PropTypes.bool,
+  toggleMenu: React.PropTypes.func,
 };
 
-export default Menu;
+export default MenuComponent;
