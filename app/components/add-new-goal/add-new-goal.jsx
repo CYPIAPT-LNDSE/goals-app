@@ -4,11 +4,23 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, triggerConfirmation, }) => {
+
+  const goal = {
+    ...newGoal,
+    id: newGoalId,
+  };
+
+  const saveGoal = () => {
+    saveNewGoal(goal);
+  };
 
   const modal = newGoal.confirmation
-    ? <ConfirmationModal />
-    : '';
+    ? <ConfirmationModal
+      triggerConfirmation={ triggerConfirmation }
+      saveGoal={ saveGoal }
+    />
+    : null;
 
   return (
     <div className="addNewGoal">
