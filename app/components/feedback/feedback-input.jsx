@@ -7,7 +7,7 @@ class FeedbackInput extends React.Component {
   }
 
   handleChange(event) {
-     this.props.onInputFeedback(event.target.value);
+    this.props.onInputFeedback(event.target.value);
   }
 
   render() {
@@ -29,5 +29,10 @@ class FeedbackInput extends React.Component {
     );
   }
 }
+
+FeedbackInput.propTypes = {
+  onInputFeedback: React.PropTypes.func,
+  comment: React.PropTypes.string,
+};
 
 export default FeedbackInput;

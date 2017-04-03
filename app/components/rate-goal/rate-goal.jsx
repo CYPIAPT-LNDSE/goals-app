@@ -38,12 +38,19 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) =>
             type="button"
             name="button"
             className="new-rating-button"
-            onClick={ () => feedback() }
+            onClick={ feedback }
           >Rate</button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+RateGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  onMoveSlider: React.PropTypes.func,
+  feedback: React.PropTypes.func,
+  setPreviousScore: React.PropTypes.fun,
+};
 
 export default RateGoal;

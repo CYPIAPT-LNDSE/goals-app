@@ -3,13 +3,14 @@ import React from 'react';
 import availableAvatars from './../../avatars.js';
 
 class Avatars extends React.Component {
+
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.props.onSelectAvatar(event.target.value)
+    this.props.onSelectAvatar(event.target.value);
   }
 
   render() {
@@ -45,8 +46,12 @@ class Avatars extends React.Component {
           { bottomRow }
         </div>
       </div>
-    )
+    );
   }
+}
+
+Avatars.propTypes = {
+  onSelectAvatar: React.PropTypes.func,
 };
 
 export default Avatars;

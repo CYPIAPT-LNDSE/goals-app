@@ -1,7 +1,6 @@
 @import 'colors';
 @import 'general';
 
-@import 'main-container';
 @import 'nav';
 @import 'goalTile';
 @import 'goals-list';
@@ -12,6 +11,7 @@
 @import 'feedback';
 @import 'rate-goal';
 @import 'slider-animation';
+@import 'menu';
 
 html {
   font-size: 1em;
@@ -24,6 +24,19 @@ body {
   justify-content: center;
   display: flex;
   min-height: 100vh;
+}
+
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: 600px;
+
+  p {
+    color: $blue;
+    letter-spacing: 2.1px;
+  }
 }
 
 p {
