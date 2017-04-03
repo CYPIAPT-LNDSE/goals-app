@@ -3,6 +3,7 @@ export const TOGGLE_MENU = 'TOGGLE_MENU';
 
 /* nav bar action */
 export const NAV_CLICK = 'NAV_CLICK';
+export const BACK_BUTTON_CLICK = 'BACK_BUTTON_CLICK';
 
 /* goals list actions */
 export const STEP_ADD_GOAL = 'STEP_ADD_GOAL';

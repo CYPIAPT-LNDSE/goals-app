@@ -10,6 +10,40 @@ const defaultState = {
   currentGoal: {},
 };
 
+export const backStep = (state) => {
+  const step = state.step;
+  const previousStep = state.previousStep;
+
+  switch(step) {
+  case steps.ADD_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+    };
+  case steps.VIEW_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+      currentGoal: {},
+    };
+  case steps.RATE_GOAL:
+    return {
+      ...state,
+      step: previousStep,
+      previousStep: null,
+    };
+  case steps.FEEDBACK:
+    return {
+      ...state,
+      step: steps.RATE_GOAL,
+    };
+  default:
+    return state;
+  }
+};
+
 export const saveRating = (state, time, id) => {
 
   const newRating = constructNewRating(state, time, id);
@@ -69,6 +103,8 @@ export default (state = defaultState, action) => {
       previousStep: null,
       currentGoal: {},
     };
+  case types.BACK_BUTTON_CLICK:
+    return backStep(state);
   case types.STEP_ADD_GOAL:
     return {
       ...state,
@@ -126,7 +162,6 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.FEEDBACK,
-      previousStep: steps.RATE_GOAL,
     };
   case types.INPUT_FEEDBACK:
     return {

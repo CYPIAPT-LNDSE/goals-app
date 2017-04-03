@@ -6,6 +6,7 @@ const steps = require('./../app/steps.js');
 /* functions to be tested */
 const reducer = require('./../app/reducers/index.js').default;
 const saveRating = require('./../app/reducers/index.js').saveRating;
+const backStep = require('./../app/reducers/index.js').backStep;
 const increaseUpdateCount = require('./../app/reducers/index.js').increaseUpdateCount;
 const addGoalToArray = require('./../app/reducers/index.js').addGoalToArray;
 const addRatingToCurrentGoal = require('./../app/reducers/index.js').addRatingToCurrentGoal;
@@ -18,6 +19,77 @@ const defaultState = {
   newGoal: {},
   currentGoal: null,
 };
+
+tape(`backstep function switches step property to last step in
+  user journey, and switches previousStep to the step before`, (t) => {
+
+  const stateGoalsList = {
+    ...defaultState,
+    step: steps.GOALS_LIST,
+  };
+  const stateAddGoal = {
+    ...defaultState,
+    step: steps.ADD_GOAL,
+    previousStep: steps.GOALS_LIST,
+  };
+  const stateViewGoal = {
+    ...defaultState,
+    step: steps.VIEW_GOAL,
+    previousStep: steps.GOALS_LIST,
+  };
+  const stateRateGoalFromViewGoal = {
+    ...defaultState,
+    step: steps.RATE_GOAL,
+    previousStep: steps.VIEW_GOAL,
+  };
+  const stateRateGoalFromGoalsList = {
+    ...defaultState,
+    step: steps.RATE_GOAL,
+    previousStep: steps.GOALS_LIST,
+  };
+  const stateFeedback = {
+    ...defaultState,
+    step: steps.FEEDBACK,
+    previousStep: steps.RATE_GOAL,
+  };
+  
+  /* default */
+  t.equal(backStep(stateGoalsList).previousStep, null, `default case: previous
+    step not changed`);
+  /* add goal page */
+  t.equal(backStep(stateAddGoal).step, steps.GOALS_LIST, `step switched from
+    add-goal page to goals list`);
+  t.equal(backStep(stateAddGoal).previousStep, null, `when on add-goal page,
+    previousStep set to null`);
+  /* view goal page */
+  t.equal(backStep(stateViewGoal).step, steps.GOALS_LIST, `when on view-goal
+    page, step set to goals list`
+  );
+  t.equal(backStep(stateViewGoal).previousStep, null, `when going from view
+    goal page to goals list, previous step set to null`
+  );
+  /* rate goal page */
+  t.equal(backStep(stateRateGoalFromViewGoal).step, steps.VIEW_GOAL, `when on
+    rate goal page, step back switched to view goal page`
+  );
+  t.equal(backStep(stateRateGoalFromViewGoal).previousStep, null, `when
+    switching from rate-goal page to view goal page, previousStep is set to
+    goals list`
+  );
+  t.equal(backStep(stateRateGoalFromGoalsList).step, steps.GOALS_LIST, `when
+    step is rate-goal and user has come from goals list, step is switched
+    back to goals list`
+  );
+  t.equal(backStep(stateRateGoalFromGoalsList).previousStep, null, `when
+    switching from rate-goal page to goals list, previousStep is set to null`
+  );
+  /* feedback page */
+  t.equal(backStep(stateFeedback).step, steps.RATE_GOAL, `step back from
+    feedback page sets step to rate-goal page`);
+  t.equal(backStep(stateFeedback).previousStep, steps.RATE_GOAL, `previous step
+    not changed on step back from feedback page`);
+  t.end();
+});
 
 tape(`test reducer nav click: step and previousStep changed, current goal
   is set to null`, (t) => {
@@ -283,7 +355,7 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
   );
   t.equal(
     reducer(initialState, actionStepFeedback).previousStep,
-    steps.RATE_GOAL,
+    null,
     'step feedback sets correct step'
   );
   t.end();

@@ -8,6 +8,7 @@ const NavContent = props => {
     <Nav
       step= { props.step }
       onNavClick= { props.onNavClick }
+      onBackButtonClick= { props.onBackButtonClick }
       menu={ props.menu }
       toggleMenu = { props.toggleMenu }
     />
@@ -18,6 +19,7 @@ NavContent.propTypes = {
   step: React.PropTypes.string,
   onNavClick: React.PropTypes.func,
   toggleMenu: React.PropTypes.func,
+  onBackButtonClick: React.PropTypes.func,
   menu: React.PropTypes.bool,
 };
 
@@ -28,6 +30,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNavClick: () => { dispatch(actionsNav.onNavClick()); },
+  onBackButtonClick: () => { dispatch(actionsNav.onBackButtonClick()); },
   toggleMenu: () => { dispatch(actionsNav.toggleMenu()); },
 });
 
