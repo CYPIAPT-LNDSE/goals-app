@@ -5,11 +5,14 @@ import * as steps from './../steps.js';
 const tile = props => {
 
   const goal = props.goal;
-  const pathAvatar = `./images/avatars/${goal.avatar}.png`;
-  const score = goal.ratings && goal.ratings.length ? goal.ratings[0].score :
-    undefined;
-  const style = (score === undefined) ? {width: 0} :
-    {width: `${score*10}%`};
+  const pathAvatar = `./images/avatars/${goal.avatar}.svg`;
+  const score = goal.ratings && goal.ratings.length
+    ? goal.ratings[0].score
+    : undefined;
+
+  const style = {
+    width: (score === undefined) ? 0 : `${score*10}%`,
+  };
 
   return (
     <div
@@ -19,10 +22,12 @@ const tile = props => {
           props.onSelectGoal(goal);
         }
       }}
-    >{/* outer div for goal tile */}
-      <div className="goalTile_progress goal-tile-rating-green-background0"
-        style={style}> {/* green background showing progress */}
-      </div>
+    >
+      <div
+        className="goalTile_progress goal-tile-rating-green-background0"
+        style={ style }
+      ></div>
+      <div className="goalTile_progress"></div>
       <div className="goalTile_avatarContainer">
         <img className="goalTile_img" src={ pathAvatar } />
       </div>
@@ -34,6 +39,12 @@ const tile = props => {
       </div>
     </div>
   );
+};
+
+tile.propTypes = {
+  goal: React.PropTypes.object,
+  step: React.PropTypes.string,
+  onSelectGoal: React.PropTypes.func,
 };
 
 export default tile;

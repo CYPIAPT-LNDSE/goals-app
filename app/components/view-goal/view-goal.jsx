@@ -1,14 +1,16 @@
 import React from 'react';
-import GoalTileComponent from '../goal-tile.jsx'
-import ProgressBarComponent from './progress-bar.jsx'
+import GoalTileComponent from '../goal-tile.jsx';
+import ProgressBarComponent from './progress-bar.jsx';
 
+const viewGoal = ({ currentGoal, rateGoal, }) => {
 
-const viewGoal = ( { currentGoal, rateGoal, } ) => {
+  const time = new Date().toString();
   const progressBars = currentGoal.ratings.slice(0, 3)
     .map(rating =>
       <ProgressBarComponent
         key={ rating.id }
         rating={ rating }
+        time={ time }
       />
    );
 
@@ -23,7 +25,7 @@ const viewGoal = ( { currentGoal, rateGoal, } ) => {
       <div className="line-chart-container">
         <div className="line-chart-title">
           <p>Line chart</p>
-          <img src="" className="line-chart-arrow" />
+          <img src="./images/icons/arrow_right.svg" className="line-chart-arrow" />
         </div>
         <div className="line-chart-img">
           <img src="images/line-chart-placeholder.png" />
@@ -40,7 +42,12 @@ const viewGoal = ( { currentGoal, rateGoal, } ) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+viewGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  rateGoal: React.PropTypes.func,
+};
 
 export default viewGoal;

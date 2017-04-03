@@ -9,44 +9,60 @@ import ViewGoal from './components/view-goal/view-goal.jsx';
 import RateGoal from './components/rate-goal/rate-goal.jsx';
 import Feedback from './components/feedback/feedback.jsx';
 
-export default (props) => {
+const router = (props) => {
 
   switch (props.step) {
-    case steps.ADD_GOAL:
-      const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
-      return <AddGoal
-        newGoal = { props.newGoal }
+  case steps.ADD_GOAL: {
+    const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
+    return <AddGoal
+        newGoal={ props.newGoal }
         onInputGoal={ props.onInputGoal }
         onSelectAvatar={ props.onSelectAvatar }
-        saveNewGoal= { props.saveNewGoal }
-        newGoalId= { newGoalId }
-      />
-      break;
-    case steps.VIEW_GOAL:
-      return <ViewGoal
+        saveNewGoal={ props.saveNewGoal }
+        newGoalId={ newGoalId }
+      />;
+  }
+  case steps.VIEW_GOAL:
+    return <ViewGoal
         currentGoal = { props.currentGoal }
         rateGoal={ props.stepRateGoal }
-      />
-      break;
-    case steps.RATE_GOAL:
-      return <RateGoal
+      />;
+  case steps.RATE_GOAL:
+    return <RateGoal
         currentGoal={ props.currentGoal }
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
-      />
-      break;
-    case steps.FEEDBACK:
-      return <Feedback
+      />;
+  case steps.FEEDBACK:
+    return <Feedback
         currentGoal={ props.currentGoal }
         onInputFeedback= { props.onInputFeedback }
         saveRating= { props.saveRating }
-        />
-      break;
-    default:
-      return <GoalsList
+      />;
+  default:
+    return <GoalsList
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
-      />
+      />;
   }
 };
+
+router.propTypes = {
+  step: React.PropTypes.string,
+  goals: React.PropTypes.array,
+  stepAddGoal: React.PropTypes.func,
+  onSelectGoal: React.PropTypes.func,
+  currentGoal: React.PropTypes.object,
+  onInputGoal: React.PropTypes.func,
+  onSelectAvatar: React.PropTypes.func,
+  onMoveSlider: React.PropTypes.func,
+  onInputFeedback: React.PropTypes.func,
+  stepFeedback: React.PropTypes.func,
+  stepRateGoal: React.PropTypes.func,
+  newGoal: React.PropTypes.object,
+  saveNewGoal: React.PropTypes.func,
+  saveRating: React.PropTypes.func,
+};
+
+export default router;
