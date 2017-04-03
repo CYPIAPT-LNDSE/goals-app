@@ -5,15 +5,9 @@ const defaultState = {
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
+  menu: false,
   newGoal: {},
   currentGoal: {},
-};
-
-export const mapWithId = ({ goals, }, { id, }, fn) => {
-  return goals.map(elem =>
-  elem.id === id
-    ? fn(elem)
-    : elem);
 };
 
 export const saveRating = (state, time, id) => {
@@ -27,6 +21,13 @@ export const saveRating = (state, time, id) => {
     goals: goals,
     currentGoal: currentGoal,
   };
+};
+
+export const mapWithId = ({ goals, }, { id, }, fn) => {
+  return goals.map(elem =>
+  elem.id === id
+    ? fn(elem)
+    : elem);
 };
 
 export const increaseUpdateCount = goal => {
@@ -56,6 +57,18 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 
 export default (state = defaultState, action) => {
   switch(action.type) {
+  case types.TOGGLE_MENU:
+    return {
+      ...state,
+      menu: !state.menu,
+    };
+  case types.NAV_CLICK:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+      currentGoal: {},
+    };
   case types.STEP_ADD_GOAL:
     return {
       ...state,
@@ -135,8 +148,10 @@ export default (state = defaultState, action) => {
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
-      goals: mapWithId(state, action, (goal) => {
-        return { ...goal, pendingSync: { open: true, }, };
+      goals: state.goals.map((goal) => {
+        return action.id === goal.id
+        ? { ...goal, pendingSync: {open: true,}, }
+        : goal;
       }),
     };
   case types.UPDATE_SYNC_SUCCESS:

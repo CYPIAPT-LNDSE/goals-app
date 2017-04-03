@@ -19,6 +19,32 @@ const defaultState = {
   currentGoal: null,
 };
 
+tape(`test reducer nav click: step and previousStep changed, current goal
+  is set to null`, (t) => {
+
+  const initialState = defaultState;
+  const actionOnNavClick = {
+    type: types.NAV_CLICK,
+  };
+
+  t.equal(
+    reducer(initialState, actionOnNavClick).step,
+    steps.GOALS_LIST,
+    'sets step to goals list'
+  );
+  t.equal(
+    reducer(initialState, actionOnNavClick).previousStep,
+    null,
+    'previous step set to null'
+  );
+  t.deepEqual(
+    reducer(initialState, actionOnNavClick).currentGoal,
+    {},
+    'current goal is now an empty object'
+  );
+  t.end();
+});
+
 tape(`increaseUpdateCount function takes an object and increments the
   updateCount value by one`, (t) => {
   const goal1 = {
@@ -100,6 +126,26 @@ tape('addRatingToCurrentGoal concatenates ratings and sets newRating to empty ob
   const updatedGoal = addRatingToCurrentGoal(initialState, newRating);
   t.equal(updatedGoal.ratings.length, 1, 'one rating in new ratings array');
   t.deepEqual(updatedGoal.newRating, {}, 'newRating is empty obj');
+  t.end();
+});
+
+tape('toggleMenu shows and hides menu', (t) => {
+  const stateVisible = {
+    ...defaultState,
+    menu: true,
+  };
+
+  const stateHidden = {
+    ...defaultState,
+    menu: false,
+  };
+
+  const actionToggle = {
+    type: types.TOGGLE_MENU,
+  };
+
+  t.equal(reducer(stateVisible, actionToggle).menu, false, 'menu hidden if already showing');
+  t.equal(reducer(stateHidden, actionToggle).menu, true, 'menu hidden if already showing');
   t.end();
 });
 
@@ -314,7 +360,6 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
   t.equal(nextState.goals[0].ratings.length, 1, 'new goal has one rating');
   t.equal(nextState.step, steps.VIEW_GOAL, 'step changed to view-goal view');
   t.equal(nextState.previousStep, steps.FEEDBACK, 'step changed to feedback view');
-
   t.end();
 });
 
