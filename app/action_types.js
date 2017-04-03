@@ -12,6 +12,7 @@ export const SELECT_GOAL = 'SELECT_GOAL';
 export const INPUT_GOAL = 'INPUT_GOAL';
 export const SELECT_AVATAR = 'SELECT_AVATAR';
 export const SAVE_NEW_GOAL = 'SAVE_NEW_GOAL';
+export const TRIGGER_CONFIRMATION = 'TRIGGER_CONFIRMATION';
 
 /* view goal actions */
 export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';

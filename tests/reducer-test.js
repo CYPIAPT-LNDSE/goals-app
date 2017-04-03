@@ -205,6 +205,25 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
   t.end();
 });
 
+tape(`test reducer case TRIGGER_CONFIRMATION: sets confirmation property of
+  newGoal object to true`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    newGoal: {
+      name: 'my new goal',
+    },
+  };
+
+  const actionTriggerConfirmation = {
+    type: types.TRIGGER_CONFIRMATION,
+  };
+
+  t.equal(reducer(initialState, actionTriggerConfirmation).newGoal.confirmation, true);
+  t.end();
+
+});
+
 tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and clears newGoal', (t) => {
 
   const newGoal = {

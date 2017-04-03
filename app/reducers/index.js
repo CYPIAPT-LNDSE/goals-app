@@ -87,6 +87,14 @@ export default (state = defaultState, action) => {
         ...state.newGoal, avatar: action.avatar,
       },
     };
+  case types.TRIGGER_CONFIRMATION:
+    return {
+      ...state,
+      newGoal: {
+        ...state.newGoal,
+        confirmation: true,
+      },
+    };
   case types.SAVE_NEW_GOAL:
     return {
       ...state,
