@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .login-facebook-icon {
@@ -46,4 +47,9 @@ p {
   margin: 0;
   line-height: 39px;
   margin-right: 10px;
+}
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+  color: #fff;
 }
