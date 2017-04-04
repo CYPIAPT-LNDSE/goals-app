@@ -1,6 +1,7 @@
 import React from 'react';
 import GoalTileComponent from '../goal-tile.jsx';
 import ProgressBarComponent from './progress-bar.jsx';
+import LineChart from './line-chart.jsx';
 
 const viewGoal = ({ currentGoal, rateGoal, }) => {
 
@@ -27,9 +28,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
           <p>Line chart</p>
           <img src="./images/icons/arrow_right.svg" className="line-chart-arrow" />
         </div>
-        <div className="line-chart-img">
-          <img src="images/line-chart-placeholder.png" />
-        </div>
+        <LineChart ratings={ currentGoal.ratings }/>
       </div>
       <div className="view-goal-buttonContainer goal-detail-buttonContainer">
         <div className="button-outer">
