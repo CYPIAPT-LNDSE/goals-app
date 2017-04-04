@@ -2,6 +2,7 @@ const Hapi = require('hapi');
 const Inert = require('inert');
 const fs = require('fs');
 const path = require('path');
+const socket = require('./sockets.js');
 
 const server = new Hapi.Server();
 
@@ -14,21 +15,24 @@ server.connection({
   },
 });
 
-server.register([Inert,], (err) => {
+server.register([ Inert, ], (err) => {
   if(err) throw err;
 
-  server.route([{
-    path: '/',
-    method: 'GET',
-    handler: (request, reply) => { reply.file('public/index.html'); },
-  },
-  {
-    path: '/{file*}',
-    method: 'GET',
-    handler: {
-      directory: { path: path.join(__dirname, '../public'), },
+  server.route([
+    {
+      path: '/{param*}',
+      method: 'GET',
+      handler: {
+        directory: {
+          path: path.join(__dirname, '../public'),
+          index: true,
+          defaultExtension: 'html',
+        },
+      },
     },
-  },]);
+  ]);
 });
+
+socket(server.listener);
 
 module.exports = server;

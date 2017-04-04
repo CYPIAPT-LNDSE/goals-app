@@ -51,13 +51,15 @@
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
     "sass-loader": "^6.0.2",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.1",
     "babel-tape-runner": "^2.0.1",
+    "babel-eslint": "^7.2.1",
     "eslint": "^3.18.0",
     "eslint-config-semistandard": "^7.0.0",
     "eslint-config-standard": "^6.2.1",

@@ -15,6 +15,7 @@ $imgHeight: 83px;
   cursor: pointer;
   background: url(./../assets/images/list_box.png);
   background-size: 100% 100%;
+  z-index: 0;
 }
 
 .goalTile_avatarContainer {
@@ -53,4 +54,14 @@ $imgHeight: 83px;
   p {
     align-self: center;
   }
+}
+
+.goal-tile-rating-green-background0 {
+  background-color: $green;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
 }
