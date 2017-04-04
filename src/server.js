@@ -1,8 +1,13 @@
 const Hapi = require('hapi');
 const Inert = require('inert');
 const fs = require('fs');
-const path = require('path');
 const socket = require('./sockets.js');
+const Request = require('request');
+const routes = require('./index.js');
+const cookieAuth = require('hapi-auth-cookie');
+const Bell = require('bell');
+
+require('env2')('./config.env');
 
 const server = new Hapi.Server();
 
@@ -15,22 +20,35 @@ server.connection({
   },
 });
 
-server.register([ Inert, ], (err) => {
+const cookieOptions = {
+  password: 'thi£siVVs&Rgro1ww$MjmakingthisLON7pkassword',
+  cookie: 'grow-cookie',
+  isSecure: process.env.NODE_ENV === 'PRODUCTION',
+  ttl: 24 * 60 * 60 * 1000
+};
+
+const fbOptions = {
+  provider: 'facebook',
+  password: 'cookie_encryption_password_secure',
+  clientId: process.env.APP_FACEBOOK_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  isSecure: process.env.NODE_ENV === 'PRODUCTION',
+};
+
+server.register([Bell], (err) => {
+  if (err) {
+    console.log(err);
+    throw new Error(err);
+  }
+
+  server.auth.strategy('facebook', 'bell', fbOptions);
+});
+
+server.register([ Inert, cookieAuth], (err) => {
   if(err) throw err;
 
-  server.route([
-    {
-      path: '/{param*}',
-      method: 'GET',
-      handler: {
-        directory: {
-          path: path.join(__dirname, '../public'),
-          index: true,
-          defaultExtension: 'html',
-        },
-      },
-    },
-  ]);
+  server.auth.strategy('session', 'cookie', 'optional', cookieOptions);
+  server.route(routes);
 });
 
 socket(server.listener);
