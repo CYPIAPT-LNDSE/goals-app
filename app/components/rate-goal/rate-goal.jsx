@@ -7,8 +7,8 @@ import Cactus from './animations/cactus.jsx';
 const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) => {
 
   const animation = <Cactus
-    score={ parseInt(currentGoal.newRating.score, 10) || 0 }
-    previousScore={ parseInt(currentGoal.newRating.previousScore, 10) || 0 }
+    score={ currentGoal.newRating.score || 0 }
+    previousScore={ currentGoal.newRating.previousScore || 0 }
     setPreviousScore={ setPreviousScore }
   />;
 
