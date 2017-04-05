@@ -29,7 +29,7 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
             />
         </div>
         <div className="nav_menuContainer">
-          <img className="menu" src={ pathMenu } />
+          <img className="menu" src={ pathMenu } onClick={ toggleMenu }/>
         </div>
       </nav>
     </div>
