@@ -1,4 +1,4 @@
-const server = require(`../src/server.js`);
+const server = require('../src/server.js');
 const tape = require('tape');
 const fs = require('fs');
 const path = require('path');
@@ -6,13 +6,12 @@ const path = require('path');
 tape('Is the server running', (t) => {
   server.start( (err) => {
     if (err) {
-      console.log(err);
       t.error('failed test', err);
     } else {
       t.pass();
     }
     server.stop(() => {
-      t.end()
+      t.end();
     });
   });
 });
@@ -20,8 +19,8 @@ tape('Is the server running', (t) => {
 tape('Check the / route', (t) => {
   const options = {
     method: 'GET',
-    url: '/'
-  }
+    url: '/',
+  };
   server.inject(options, (response) => {
     t.equals(response.statusCode, 200, 'status code is 200');
     const servedFile = response.result.toString();

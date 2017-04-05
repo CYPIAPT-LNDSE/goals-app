@@ -5,91 +5,157 @@ const defaultState = {
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
+  menu: false,
   newGoal: {},
   currentGoal: {},
 };
 
-export const saveRating = (state, time, id) => {
-  const newRating = {
-    score: state.currentGoal.newRating.score,
-    id: id,
-    time: time,
-    comment: state.currentGoal.newRating.comment,
-  };
-  const currentGoal = {
-    ...state.currentGoal,
-    ratings: [newRating].concat((state.currentGoal.ratings || [])),
-    newRating: {},
-  }
-  const goals = state.goals.map((goal) => goal.id === currentGoal.id ?
-  currentGoal : goal);
-  return {
-    ...state,
-    goals: goals,
-    currentGoal: currentGoal,
-  }
-};
+export const backStep = (state) => {
+  const step = state.step;
+  const previousStep = state.previousStep;
 
-const mapWithId = (arr, id, fn) =>
-arr.map(elem =>
-  elem.id === id
-  ? fn(elem)
-  : elem
-)
-
-export default (state = defaultState, action) => {
-  switch(action.type) {
-    case types.NAV_CLICK:
+  switch(step) {
+  case steps.ADD_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+    };
+  case steps.VIEW_GOAL:
     return {
       ...state,
       step: steps.GOALS_LIST,
       previousStep: null,
       currentGoal: {},
-    }
-    case types.STEP_ADD_GOAL:
+    };
+  case steps.RATE_GOAL:
+    return {
+      ...state,
+      step: previousStep,
+      previousStep: null,
+    };
+  case steps.FEEDBACK:
+    return {
+      ...state,
+      step: steps.RATE_GOAL,
+    };
+  default:
+    return state;
+  }
+};
+
+export const saveRating = (state, time, id) => {
+
+  const newRating = constructNewRating(state, time, id);
+  const currentGoal = addRatingToCurrentGoal(state, newRating);
+  const goals = mapWithId(state, currentGoal, () => increaseUpdateCount(currentGoal));
+
+  return {
+    ...state,
+    goals: goals,
+    currentGoal: currentGoal,
+  };
+};
+
+export const mapWithId = ({ goals, }, { id, }, fn) => {
+  return goals.map(elem =>
+  elem.id === id
+    ? fn(elem)
+    : elem);
+};
+
+export const increaseUpdateCount = goal => {
+  return { ...goal, updateCount: (goal.updateCount + 1 || 1), };
+};
+
+export const constructNewRating = ({ currentGoal, }, time, id) => {
+  return {
+    score: currentGoal.newRating.score,
+    id: id,
+    time: time,
+    comment: currentGoal.newRating.comment,
+  };
+};
+
+export const addGoalToArray = (state, { goal, }, fn = goal => goal) => {
+  return state.goals.concat([ fn(goal), ]);
+};
+
+export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
+  return {
+    ...currentGoal,
+    ratings: [ newRating, ].concat(currentGoal.ratings),
+    newRating: {},
+  };
+};
+
+export default (state = defaultState, action) => {
+  switch(action.type) {
+  case types.TOGGLE_MENU:
+    return {
+      ...state,
+      menu: !state.menu,
+    };
+  case types.NAV_CLICK:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+      currentGoal: {},
+    };
+  case types.BACK_BUTTON_CLICK:
+    return backStep(state);
+  case types.STEP_ADD_GOAL:
     return {
       ...state,
       step: steps.ADD_GOAL,
       previousStep: steps.GOALS_LIST,
-    }
-    case types.INPUT_GOAL:
+    };
+  case types.INPUT_GOAL:
     return {
       ...state, newGoal: {
         ...state.newGoal, name: action.input,
       },
-    }
-    case types.SELECT_AVATAR:
+    };
+  case types.SELECT_AVATAR:
     return {
       ...state, newGoal: {
         ...state.newGoal, avatar: action.avatar,
       },
-    }
-    case types.SAVE_NEW_GOAL:
+    };
+  case types.TRIGGER_CONFIRMATION:
     return {
       ...state,
-      goals: state.goals.concat([action.goal]),
+      newGoal: {
+        ...state.newGoal,
+        confirmation: true,
+      },
+    };
+  case types.SAVE_NEW_GOAL:
+    return {
+      ...state,
+      goals: addGoalToArray(state, action, increaseUpdateCount),
       step: steps.GOALS_LIST,
       previousStep: null,
       newGoal: {},
-    }
-    case types.SELECT_GOAL:
+    };
+  case types.SELECT_GOAL:
     return {
       ...state,
-      step: action.goal.ratings && action.goal.ratings.length ? steps.VIEW_GOAL : steps.RATE_GOAL,
+      step: steps.VIEW_GOAL,
       previousStep: steps.GOALS_LIST,
       currentGoal: {
         ...action.goal,
         newRating: {},
-      }
-    }
-    case types.STEP_RATE_GOAL:
+      },
+    };
+  case types.STEP_RATE_GOAL:
     return {
       ...state,
       step: steps.RATE_GOAL,
-      previousStep: steps.VIEW_GOAL
-    }
-
-    case types.MOVE_SLIDER:
+      previousStep: steps.VIEW_GOAL,
+    };
+  case types.MOVE_SLIDER:
     return {
       ...state,
       currentGoal: {
@@ -99,14 +165,13 @@ export default (state = defaultState, action) => {
           score: action.rating,
         },
       },
-    }
-    case types.STEP_FEEDBACK:
+    };
+  case types.STEP_FEEDBACK:
     return {
       ...state,
       step: steps.FEEDBACK,
-      previousStep: steps.RATE_GOAL
-    }
-    case types.INPUT_FEEDBACK:
+    };
+  case types.INPUT_FEEDBACK:
     return {
       ...state,
       currentGoal: {
@@ -116,51 +181,48 @@ export default (state = defaultState, action) => {
           comment: action.input,
         },
       },
-    }
-
-    case types.SAVE_RATING:
+    };
+  case types.SAVE_RATING:
     return {
       ...saveRating(state, action.time, action.id),
       step: steps.VIEW_GOAL,
       previousStep: steps.FEEDBACK,
-    }
-
-    case types.SET_PENDING_SYNC_OPEN:
+    };
+  case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-        ? { ...goal, pendingSync: {open: true} }
+        ? { ...goal, pendingSync: {open: true,}, }
         : goal;
-      })
-    }
-
-    case types.UPDATE_SYNC_SUCCESS:
+      }),
+    };
+  case types.UPDATE_SYNC_SUCCESS:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return {
           ...goal,
           syncDBCount: goal.syncDBCount + 1,
           pendingSync: { open: false, },
         };
       }),
-    }
-    case types.UPDATE_SYNC_FAILURE:
+    };
+  case types.UPDATE_SYNC_FAILURE:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return { ...goal, pendingSync: { open: false, }, };
       }),
-    }
-    case types.RESET_UPDATE_COUNT:
+    };
+  case types.RESET_UPDATE_COUNT:
     return {
       ...state,
-      goals: mapWithId(state.goals, action.id, (goal) => {
+      goals: mapWithId(state, action, (goal) => {
         return { ...goal, updateCount:0, syncDBCount: 0, };
-      })
-    }
-    default:
+      }),
+    };
+  default:
     return state;
   }
 };

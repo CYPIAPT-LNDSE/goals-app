@@ -1,5 +1,9 @@
+/* general actions */
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+
 /* nav bar action */
 export const NAV_CLICK = 'NAV_CLICK';
+export const BACK_BUTTON_CLICK = 'BACK_BUTTON_CLICK';
 
 /* goals list actions */
 export const STEP_ADD_GOAL = 'STEP_ADD_GOAL';
@@ -9,6 +13,7 @@ export const SELECT_GOAL = 'SELECT_GOAL';
 export const INPUT_GOAL = 'INPUT_GOAL';
 export const SELECT_AVATAR = 'SELECT_AVATAR';
 export const SAVE_NEW_GOAL = 'SAVE_NEW_GOAL';
+export const TRIGGER_CONFIRMATION = 'TRIGGER_CONFIRMATION';
 
 /* view goal actions */
 export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';

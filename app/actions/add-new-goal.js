@@ -1,6 +1,9 @@
 import * as types from './../action_types.js';
 import avatars from './../avatars.js';
 
+import { createAction, } from 'redux-actions';
+
+
 export const inputGoal = input => {
   return {
     type: types.INPUT_GOAL,
@@ -12,7 +15,7 @@ export const selectAvatar = avatar => {
   return {
     type: types.SELECT_AVATAR,
     avatar: avatar,
-  }
+  };
 };
 
 export const saveNewGoal = (goal) => {
@@ -33,3 +36,5 @@ export const saveNewGoal = (goal) => {
   };
   return newGoal;
 };
+
+export const triggerConfirmation = createAction(types.TRIGGER_CONFIRMATION);
