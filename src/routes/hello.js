@@ -1,7 +1,7 @@
 module.exports = [
   {
     path: '/hello',
-    method: ['GET', 'POST',],
+    method: ['GET',],
     config: {
       auth: {
         strategy: 'facebook',
