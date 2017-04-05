@@ -11,3 +11,5 @@ export const moveSlider = value => {
     rating: value,
   };
 };
+
+export const setPreviousScore = createAction(types.SET_PREVIOUS_SCORE);

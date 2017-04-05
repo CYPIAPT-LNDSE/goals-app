@@ -33,6 +33,7 @@ const router = (props) => {
         currentGoal={ props.currentGoal }
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
+        setPreviousScore={ props.setPreviousScore }
       />;
   case steps.FEEDBACK:
     return <Feedback

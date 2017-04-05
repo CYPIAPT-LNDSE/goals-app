@@ -48,6 +48,7 @@ const mapDispatchToProps = dispatch => ({
   /* rate goal actions */
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating)); },
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback()); },
+  setPreviousScore: () => { dispatch((actionsRateGoal.setPreviousScore()));},
   /* goal feedback actions */
   onInputFeedback: (input) => { dispatch(actionsFeedback.inputFeedback(input)); },
   saveRating: (time, id) => { dispatch(actionsFeedback.saveRating(time, id)); },

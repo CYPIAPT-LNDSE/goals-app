@@ -38,6 +38,14 @@ export const backStep = (state) => {
     return {
       ...state,
       step: steps.RATE_GOAL,
+      previousStep: previousStep,
+      currentGoal: {
+        ...state.currentGoal,
+        newRating: {
+          ...state.currentGoal.newRating,
+          previousScore: 0,
+        },
+      },
     };
   default:
     return state;
@@ -163,6 +171,18 @@ export default (state = defaultState, action) => {
         newRating: {
           ...state.currentGoal.newRating,
           score: action.rating,
+          previousScore: state.currentGoal.newRating.score,
+        },
+      },
+    };
+  case types.SET_PREVIOUS_SCORE:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        newRating: {
+          ...state.currentGoal.newRating,
+          previousScore: state.currentGoal.newRating.score,
         },
       },
     };
@@ -170,6 +190,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.FEEDBACK,
+      previousStep: steps.RATE_GOAL,
     };
   case types.INPUT_FEEDBACK:
     return {
