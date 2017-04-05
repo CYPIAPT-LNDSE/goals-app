@@ -128,4 +128,9 @@ class Cactus extends React.Component {
   }
 }
 
+Cactus.proptypes = {
+  previousScore: React.PropTypes.int,
+  score: React.PropTypes.int,
+};
+
 export default GSAP()(Cactus);
