@@ -1,5 +1,10 @@
-const socket = require('./sockets.js');
+const socket = require('./server.js').socket;
+const mockData = require('../database/mock.js');
 
 module.exports = (id) => {
-  return socket.emit('newUser', { data: data, });
+  console.log(socket);
+  const goals = mockData.goals;
+  console.log('get user data');
+  //socket.emit('userdata', JSON.stringify(goals));
+  return;
 };

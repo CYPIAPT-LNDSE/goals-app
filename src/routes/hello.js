@@ -1,4 +1,4 @@
-const getUserData = '../getUserData.js';
+const getUserData = require('../getUserData.js');
 
 module.exports = [
   {
@@ -15,7 +15,7 @@ module.exports = [
         } else {
           const id = request.auth.credentials.profile.id;
           request.cookieAuth.set({ user: id, });
-          // getUserData(id);
+          getUserData(id);
           reply.file('public/index.html');
         }
       },
