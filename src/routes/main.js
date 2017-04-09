@@ -4,7 +4,7 @@ module.exports = [
     method: 'GET',
     config: {
       auth: {
-        strategy: 'facebook',
+        strategy: 'session',
         mode: 'try',
       },
     },
