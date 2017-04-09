@@ -46,13 +46,18 @@ tape(`backstep function switches step property to last step in
     ...defaultState,
     step: steps.RATE_GOAL,
     previousStep: steps.GOALS_LIST,
+    currentGoal: {
+      newRating: {},
+    },
   };
   const stateFeedback = {
     ...defaultState,
     step: steps.FEEDBACK,
     previousStep: steps.RATE_GOAL,
+    currentGoal: {
+      newRating: {},
+    },
   };
-  
   /* default */
   t.equal(backStep(stateGoalsList).previousStep, null, `default case: previous
     step not changed`);
@@ -239,7 +244,6 @@ tape('test reducer step_add_goal: step and previousStep changed', (t) => {
   );
 
   t.end();
-
 });
 
 tape('test reducer case input_goal: input value is added to state', (t) => {
@@ -275,6 +279,25 @@ tape('test reducer case SELECT_AVATAR: newgoal.avatar value is updated', (t) => 
     'avatar value updated'
   );
   t.end();
+});
+
+tape(`test reducer case TRIGGER_CONFIRMATION: sets confirmation property of
+  newGoal object to true`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    newGoal: {
+      name: 'my new goal',
+    },
+  };
+
+  const actionTriggerConfirmation = {
+    type: types.TRIGGER_CONFIRMATION,
+  };
+
+  t.equal(reducer(initialState, actionTriggerConfirmation).newGoal.confirmation, true);
+  t.end();
+
 });
 
 tape('test reducer case SAVE_NEW_GOAL: adds new goal object to goals array and clears newGoal', (t) => {
@@ -344,9 +367,7 @@ tape('test reducer step_rate_goal: step and previousStep changed', (t) => {
 tape('test reducer step_feedback: step and previousStep changed', (t) => {
 
   const initialState = defaultState;
-  const actionStepFeedback = {
-    type: types.STEP_FEEDBACK,
-  };
+  const actionStepFeedback = { type: types.STEP_FEEDBACK, };
 
   t.equal(
     reducer(initialState, actionStepFeedback).step,
@@ -355,8 +376,8 @@ tape('test reducer step_feedback: step and previousStep changed', (t) => {
   );
   t.equal(
     reducer(initialState, actionStepFeedback).previousStep,
-    null,
-    'step feedback sets correct step'
+    steps.RATE_GOAL,
+    'step feedback sets correct previous step'
   );
   t.end();
 });
@@ -370,6 +391,14 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
     currentGoal: myGoal,
   };
 
+  const expectedState = {
+    ...initialState,
+    currentGoal: {
+      ...initialState.currentGoal,
+      newRating: { score: 5, previousScore: undefined, },
+    },
+  };
+
   const actionMoveSlider = {
     type: types.MOVE_SLIDER,
     rating: 5,
@@ -377,7 +406,41 @@ tape('test reducer MOVE_SLIDER: new rating added to currentGoal obj', (t) => {
 
   const nextState = reducer(initialState, actionMoveSlider);
 
-  t.equal(nextState.currentGoal.newRating.score, 5, 'rating 5 added to current state');
+  t.equal(
+    nextState.currentGoal.newRating.score,
+    expectedState.currentGoal.newRating.score
+  );
+
+  t.equal(
+    nextState.currentGoal.newRating.previousScore,
+    expectedState.currentGoal.newRating.previousScore
+  );
+
+  t.end();
+});
+
+tape(`test reducer set previousScore: previous score set to equal current
+  score`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    currentGoal: {
+      newRating: {
+        score: 5,
+      },
+    },
+  };
+
+  const actionSetPreviousScore = {
+    type: types.SET_PREVIOUS_SCORE,
+  };
+
+  t.equal(
+    reducer(initialState, actionSetPreviousScore)
+      .currentGoal.newRating.previousScore,
+    5,
+    'previous score set to 5'
+  );
   t.end();
 });
 

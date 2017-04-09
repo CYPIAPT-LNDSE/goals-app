@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as steps from '../steps.js';
 import Menu from './../components/menu.jsx';
 
@@ -8,7 +9,6 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
   const pathBack = path + 'icons/back.svg';
   const pathLogo = path + 'logo_header.svg';
   const pathMenu = path + 'icons/menu.svg';
-
   const backButtonStyle = (step === steps.GOALS_LIST) ? { visibility: 'hidden', } : {};
 
   return (
@@ -16,7 +16,8 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
       <Menu menu={ menu } toggleMenu={ toggleMenu }/>
       <nav className="nav">
         <div className="nav_backContainer">
-          <img className="back"
+          <img
+            className="back"
             src={ pathBack }
             onClick = { onBackButtonClick }
             style={ backButtonStyle }
@@ -31,7 +32,11 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
           />
         </div>
         <div className="nav_menuContainer">
-          <img className="menu" src={ pathMenu } onClick={ toggleMenu }/>
+          <img
+            className="menu"
+            src={ pathMenu }
+            onClick={ toggleMenu }
+          />
         </div>
       </nav>
     </div>

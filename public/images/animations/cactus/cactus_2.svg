@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="81px" height="121px" viewBox="15 17 55 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>cactus_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="cactus_animation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cactus_2" transform="translate(-121.000000, -150.000000)">
+            <g transform="translate(122.000000, 151.000000)">
+                <g id="cactus" transform="translate(25.000000, 0.000000)">
+                    <path d="M0.211015162,15.3246684 C0.211015162,6.86108774 7.06816371,0 15.5310403,0 L15.5310403,0 C23.9920566,0 30.8510655,6.85772422 30.8510655,15.3206982 L30.8510655,52.6627842 L0.211015162,52.5549516 L0.211015162,15.3246684 Z" id="Combined-Shape" stroke="#2364AA"></path>
+                    <path d="M2.31212821,15.6725507 C2.31212821,7.01683997 9.32751865,0 17.9856924,0 L17.9856924,0 C26.6419629,0 33.6592566,7.02025108 33.6592566,15.6805803 L33.6592566,52.5594213 L2.31212821,52.7117652 L2.31212821,15.6725507 Z" id="Combined-Shape" fill="#8FD094" opacity="0.55"></path>
+                    <path d="M5.49548186,10.587852 C5.49548186,4.74034281 10.2331995,0 16.0803413,0 L16.0803413,0 C21.9261977,0 26.6652007,4.7430612 26.6652007,10.5937509 L26.6652007,52.6627842 L5.49548186,52.5549516 L5.49548186,10.587852 Z" id="Combined-Shape" stroke="#8FD094" opacity="0.693953804"></path>
+                    <path d="M16.4954338,0 L16.4954338,52.4589063" id="Path-20" stroke="#8FD094" opacity="0.69"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

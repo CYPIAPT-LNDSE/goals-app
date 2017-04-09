@@ -1,15 +1,14 @@
-const Hapi = require('hapi');
-const Inert = require('inert');
+const hapi = require('hapi');
+const inert = require('inert');
 const fs = require('fs');
-const Request = require('request');
 const cookieAuth = require('hapi-auth-cookie');
-const Bell = require('bell');
+const bell = require('bell');
 
 require('env2')('./config.env');
 
 const routes = require('./index.js');
 const socket = require('./sockets.js');
-const server = new Hapi.Server();
+const server = new hapi.Server();
 
 server.connection({
   address: process.env.IP || '0.0.0.0',
@@ -21,7 +20,7 @@ server.connection({
 });
 
 const cookieOptions = {
-  password: 'thi£siVVs&Rgro1ww$MjmakingthisLON7pkassword',
+  password: process.env.COOKIE_PASSWORD,
   cookie: 'grow-cookie',
   isSecure: process.env.NODE_ENV === 'PRODUCTION',
   ttl: 24 * 60 * 60 * 1000,
@@ -35,16 +34,16 @@ const fbOptions = {
   isSecure: process.env.NODE_ENV === 'PRODUCTION',
 };
 
-server.register([ Bell, ], (err) => {
+server.register([ bell, ], (err) => {
   if (err) { throw new Error (err); }
 
   server.auth.strategy('facebook', 'bell', fbOptions);
 });
 
-server.register([ Inert, cookieAuth,], (err) => {
+server.register([ inert, cookieAuth,], (err) => {
   if (err) { throw new Error (err); }
 
-  server.auth.strategy('session', 'cookie', 'optional', cookieOptions);
+  server.auth.strategy('session', 'cookie', 'required', cookieOptions);
   server.route(routes);
 });
 

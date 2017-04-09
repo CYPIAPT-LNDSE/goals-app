@@ -21,6 +21,7 @@ NavContent.propTypes = {
   toggleMenu: React.PropTypes.func,
   onBackButtonClick: React.PropTypes.func,
   menu: React.PropTypes.bool,
+  onBackButtonClick: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({
