@@ -17,7 +17,6 @@ const MainContent = props => {
 
   socket.on('userdata', (data) => {
     props.onReceiveData(data);
-
   });
 
   const view = router(props);
@@ -27,9 +26,7 @@ const MainContent = props => {
   };
 
   return (
-  <div className="MainContent" style={ dynamicStyle }>
-      { view }
-    </div>
+    <div className="MainContent" style={ dynamicStyle }>{ view }</div>
   );
 
 };

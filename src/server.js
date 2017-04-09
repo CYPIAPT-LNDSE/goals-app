@@ -7,7 +7,7 @@ const bell = require('bell');
 require('env2')('./config.env');
 
 const routes = require('./index.js');
-const socket = require('./sockets.js');
+const createSocket = require('./sockets.js');
 const server = new hapi.Server();
 
 server.connection({
@@ -47,6 +47,9 @@ server.register([ inert, cookieAuth,], (err) => {
   server.route(routes);
 });
 
-socket(server.listener);
+const socket = createSocket(server.listener);
 
-module.exports = server;
+module.exports = {
+  server: server,
+  socket: socket,
+};
