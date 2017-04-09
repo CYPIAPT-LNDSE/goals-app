@@ -20,6 +20,7 @@ const router = (props) => {
         onSelectAvatar={ props.onSelectAvatar }
         saveNewGoal={ props.saveNewGoal }
         newGoalId={ newGoalId }
+        triggerConfirmation= { props.triggerConfirmation }
       />;
   }
   case steps.VIEW_GOAL:
@@ -64,6 +65,7 @@ router.propTypes = {
   newGoal: React.PropTypes.object,
   saveNewGoal: React.PropTypes.func,
   saveRating: React.PropTypes.func,
+  triggerConfirmation: React.PropTypes.func,
 };
 
 export default router;

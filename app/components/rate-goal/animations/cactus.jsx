@@ -32,23 +32,25 @@ const createAnimation = ({target, options, }) => {
     { visibility: 'visible', },
   ];
 
+<<<<<<< HEAD
   const vase = target.find({ id: 'vase', });
   const cactus3 = target.find({ id: 'cactus3', });
   const arms = target.find({ id: 'arms', });
 
   let t1 = new TimelineMax();
 
-  const sequence = options.score > options.previousScore
-      ? bodyFrames.slice(options.previousScore, options.score + 1)
-      : bodyFrames.slice(options.score, options.previousScore + 1).reverse();
+  const getFrames = (frames, score, previousScore) => {
+    return score > previousScore
+      ? frames.slice(previousScore, score + 1)
+      : frames.slice(score, previousScore + 1).reverse();
+  };
 
-  const armSequence = options.score > options.previousScore
-        ? armFrames.slice(options.previousScore, options.score + 1)
-        : armFrames.slice(options.score, options.previousScore + 1).reverse();
+  const bodySequence = getFrames(bodyFrames, options.score, options.previousScore);
+  const armsSequence = getFrames(armFrames, options.score, options.previousScore);
 
-  sequence.forEach((frame, index) => {
+  bodySequence.forEach((frame, index) => {
     t1.to(cactus3, 0.3, frame, )
-        .to(arms, 0.5, armSequence[index], '-=0.5');
+        .to(arms, 0.5, armsSequence[index], '-=0.5');
   });
 
   t1.eventCallback('onComplete', options.setPreviousScore());
@@ -77,10 +79,12 @@ class Cactus extends React.Component {
   }
 
   tick() {
+
     this.setState({
       previousScore: this.props.previousScore,
       score: this.props.score,
     });
+
     const options = {
       ...this.state,
       setPreviousScore: this.props.setPreviousScore,
@@ -126,5 +130,10 @@ class Cactus extends React.Component {
     );
   }
 }
+
+Cactus.proptypes = {
+  previousScore: React.PropTypes.int,
+  score: React.PropTypes.int,
+};
 
 export default GSAP()(Cactus);
