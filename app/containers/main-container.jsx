@@ -9,6 +9,9 @@ import * as actionsRateGoal from './../actions/rate-goal.js';
 import * as actionsFeedback from './../actions/feedback.js';
 
 import router from './../router.js';
+import socket from '../sockets.js';
+
+socket(9);
 
 const MainContent = props => {
 

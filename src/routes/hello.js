@@ -1,3 +1,5 @@
+const getUserData = '../getUserData.js';
+
 module.exports = [
   {
     path: '/hello',
@@ -11,7 +13,9 @@ module.exports = [
         if (!request.auth.isAuthenticated) {
           return reply('Auth failed due to: ' + request.auth.error.message).code(401);
         } else {
-          request.cookieAuth.set({user: request.auth.credentials.profile.id, });
+          const id = request.auth.credentials.profile.id;
+          request.cookieAuth.set({user: id, });
+          getUserData(id);
           reply.file('public/index.html');
         }
       },
