@@ -3,7 +3,7 @@ import React from 'react';
 import * as steps from '../steps.js';
 import Menu from './../components/menu.jsx';
 
-const Nav = ({ onNavClick, toggleMenu, menu, onBackButtonClick, step, }) => {
+const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
 
   const path = './images/';
   const pathBack = path + 'icons/back.svg';
@@ -14,6 +14,7 @@ const Nav = ({ onNavClick, toggleMenu, menu, onBackButtonClick, step, }) => {
 
   return (
     <div>
+      <Menu menu={ menu } toggleMenu={ toggleMenu }/>
       <nav className="nav">
         <div className="nav_backContainer">
           <img
@@ -30,6 +31,7 @@ const Nav = ({ onNavClick, toggleMenu, menu, onBackButtonClick, step, }) => {
             title="Grow logo"
             onClick = { onNavClick }
           />
+
         </div>
         <div className="nav_menuContainer">
           <img
