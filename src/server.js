@@ -46,11 +46,9 @@ server.register([ inert, cookieAuth,], (err) => {
   server.auth.strategy('session', 'cookie', 'required', cookieOptions);
   server.route(routes);
 
-  const socket = createSocket(server.listener);
-  console.log(socket);
 });
 
-
+const socket = createSocket(server.listener);
 
 module.exports = {
   server: server,
