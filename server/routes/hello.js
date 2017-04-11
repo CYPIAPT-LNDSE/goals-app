@@ -1,5 +1,6 @@
 const querystring = require('querystring');
 const Request = require('request');
+const mockData = require('./../mock.js');
 
 module.exports = {
   path: '/hello',
@@ -25,12 +26,20 @@ module.exports = {
         if (graphErr) throw new Error (graphErr);
 
         const userData = JSON.parse(graphBody);
-        const fb_id = graphBody.id;
-        // check if user exists in DB
-        // if user exists, get data from DB and redirect to home route
-        // set cookie containing the user ID from DB
-        // if new user, create a new user in DB, generate new ID, set cookie, redirect 
-        reply(graphBody);
+        const fb_id = userData.id;
+
+        const user = mockData.users.filter(user => user.fb_id === fb_id)[0];
+
+        if (user) {
+          const user_id = user.id;
+          reply.redirect('/');
+        } else {
+          console.log('user not found');
+          // create a new user in DB,
+          // generate new ID
+          // set cookie
+          // redirect
+        }
       });
     });
   },
