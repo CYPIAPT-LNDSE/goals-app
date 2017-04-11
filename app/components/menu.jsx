@@ -17,7 +17,7 @@ const MenuComponent = ({ menu, toggleMenu, }) => {
       <div className='menu-links-container'>
         <a
           href="https://github.com/CYPIAPT-LNDSE/goals-app"
-          target="blank"
+          target="_blank"
         >About Grow</a>
         <a href="/logout">Log out</a>
       </div>
