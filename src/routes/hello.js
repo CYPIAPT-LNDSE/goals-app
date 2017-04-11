@@ -15,7 +15,7 @@ module.exports = [
         } else {
           const id = request.auth.credentials.profile.id;
           request.cookieAuth.set({ user: id, });
-          getUserData(id);
+          // getUserData(id);
           reply.file('public/index.html');
         }
       },

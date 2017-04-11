@@ -3,11 +3,11 @@ const inert = require('inert');
 const fs = require('fs');
 const cookieAuth = require('hapi-auth-cookie');
 const bell = require('bell');
+const { createSocket } = require('./sockets.js');
 
 require('env2')('./config.env');
 
 const routes = require('./index.js');
-const createSocket = require('./sockets.js');
 const server = new hapi.Server();
 
 server.connection({
@@ -48,9 +48,9 @@ server.register([ inert, cookieAuth,], (err) => {
 
 });
 
-const socket = createSocket(server.listener);
+createSocket(server.listener);
+// const getUserData = require('./getUserData')(io);
 
 module.exports = {
   server: server,
-  //socket: socket,
 };

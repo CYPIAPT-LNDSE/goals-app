@@ -2,12 +2,13 @@ const socketio = require('socket.io');
 const socketManager = require('./socket-manager.js');
 
 const createSocket = (listener) => {
-  const io = socketio.listen(listener)
+  const io = socketio.listen(listener);
   io.on('connection', socketManager);
 };
 
-
-module.exports = createSocket;
+module.exports = {
+  createSocket: createSocket,
+};
 
 // (socket) => {
 //   // replace mock data with function to get actual user's data from DB
