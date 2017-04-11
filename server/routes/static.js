@@ -6,11 +6,11 @@ module.exports = [
     method: 'GET',
     config: {
       auth: false,
-    },
-    handler: {
-      directory: {
-        path: path.join(__dirname, '../../public'),
-        defaultExtension: 'html',
+      handler: {
+        directory: {
+          path: path.join(__dirname, '../../public'),
+          defaultExtension: 'html',
+        },
       },
     },
   },

@@ -1,6 +1,7 @@
 const hapi = require('hapi');
 const inert = require('inert');
 const fs = require('fs');
+const auth = require('hapi-auth-cookie');
 
 require('env2')('./config.env');
 
@@ -17,8 +18,16 @@ server.connection({
   },
 });
 
-server.register([ inert, ], (err) => {
+server.register([ inert, auth, ], (err) => {
   if (err) { throw new Error (err); }
+
+  server.auth.strategy('session', 'cookie', true, {
+    password: process.env.COOKIE_PASSWORD,
+    cookie: 'grow-user',
+    isSecure: process.env.NODE_ENV === 'PRODUCTION',
+    ttl: 30 * 24 * 60 * 60 * 1000,
+    redirectTo: '/login',
+  });
 
   server.route(routes);
 });
