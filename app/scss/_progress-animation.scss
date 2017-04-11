@@ -11,6 +11,16 @@ $position9 : 90%;
 $position10 : 100%;
 $slideOffset: 6;
 
+@keyframes slideRight0 {
+  from {left: $positionStart;}
+  to {left: $positionStart;}
+}
+
+@keyframes stretchRight0 {
+  from {width: 0;}
+  to {width: 0;}
+}
+
 @keyframes slideRight1 {
   from {left: $positionStart;}
   to {left: $position1 - $slideOffset;}

@@ -10,6 +10,48 @@ const defaultState = {
   currentGoal: {},
 };
 
+export const backStep = (state) => {
+  const step = state.step;
+  const previousStep = state.previousStep;
+
+  switch(step) {
+  case steps.ADD_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+    };
+  case steps.VIEW_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+      currentGoal: {},
+    };
+  case steps.RATE_GOAL:
+    return {
+      ...state,
+      step: previousStep,
+      previousStep: null,
+    };
+  case steps.FEEDBACK:
+    return {
+      ...state,
+      step: steps.RATE_GOAL,
+      previousStep: previousStep,
+      currentGoal: {
+        ...state.currentGoal,
+        newRating: {
+          ...state.currentGoal.newRating,
+          previousScore: 0,
+        },
+      },
+    };
+  default:
+    return state;
+  }
+};
+
 export const saveRating = (state, time, id) => {
 
   const newRating = constructNewRating(state, time, id);
@@ -69,6 +111,8 @@ export default (state = defaultState, action) => {
       previousStep: null,
       currentGoal: {},
     };
+  case types.BACK_BUTTON_CLICK:
+    return backStep(state);
   case types.STEP_ADD_GOAL:
     return {
       ...state,
@@ -85,6 +129,14 @@ export default (state = defaultState, action) => {
     return {
       ...state, newGoal: {
         ...state.newGoal, avatar: action.avatar,
+      },
+    };
+  case types.TRIGGER_CONFIRMATION:
+    return {
+      ...state,
+      newGoal: {
+        ...state.newGoal,
+        confirmation: true,
       },
     };
   case types.SAVE_NEW_GOAL:
@@ -119,6 +171,18 @@ export default (state = defaultState, action) => {
         newRating: {
           ...state.currentGoal.newRating,
           score: action.rating,
+          previousScore: state.currentGoal.newRating.score,
+        },
+      },
+    };
+  case types.SET_PREVIOUS_SCORE:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        newRating: {
+          ...state.currentGoal.newRating,
+          previousScore: state.currentGoal.newRating.score,
         },
       },
     };
