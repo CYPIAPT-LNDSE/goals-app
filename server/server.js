@@ -17,7 +17,7 @@ server.connection({
   },
 });
 
-server.register([ inert,], (err) => {
+server.register([ inert, ], (err) => {
   if (err) { throw new Error (err); }
 
   server.route(routes);
