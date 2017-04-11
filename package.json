@@ -6,12 +6,11 @@
   "directories": {
     "test": "node tests/server-test.js"
   },
-  "jshintConfig": ".jshintrc",
   "scripts": {
     "devstart": "./node_modules/.bin/webpack-dev-server --hot",
     "watch": "webpack --config ./webpack.config.js --progress --colors --watch",
     "build": "webpack --config ./webpack.config.js --progress --colors",
-    "start": "npm run build && node src/start-server.js",
+    "start": "npm run build && node server/start-server.js",
     "test": "babel-tape-runner tests/reducer-test.js"
   },
   "repository": {
@@ -42,6 +41,7 @@
     "hapi": "^16.1.0",
     "hapi-auth-cookie": "^7.0.0",
     "inert": "^4.1.0",
+    "moment": "^2.18.0",
     "node-sass": "^4.5.0",
     "normalize.css": "^5.0.0",
     "path": "^0.12.7",
