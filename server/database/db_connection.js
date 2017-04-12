@@ -9,6 +9,8 @@ pg.defaults.ssl = true;
 if(!process.env.GROW_DB_URL) throw new Error('Environment variable GROW_DB_URL\
  must be set');
 
+var client = new pg.Client(process.env.GROW_DB_URL);
+
 const params = url.parse(process.env.GROW_DB_URL);
 const [username, password] = params.auth.split(':');
 
@@ -23,4 +25,7 @@ options.username = username;
 options.password = password;
 options.ssl = (options.host !== 'localhost');
 
-module.exports = new Pool(options);
+module.exports = {
+  client: client,
+  pool: new Pool(options),
+};
