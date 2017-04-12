@@ -11,7 +11,7 @@ const tickOptions = {
 };
 
 const axesOptions = {
-  display: true,
+  display: false,
   ticks: tickOptions,
   gridLines: {
     color: '#fff',
@@ -32,8 +32,8 @@ const chartOptions = {
   maintainAspectRatio: false,
   onClick: onClickNode,
   scales: {
-    yAxes: [ { ...axesOptions,  }, ],
-    xAxes: [ { ...axesOptions, display: false, }, ],
+    yAxes: [ axesOptions, ],
+    xAxes: [ axesOptions, ],
   },
   legend: {
     display: false,
@@ -50,13 +50,12 @@ const LineChart = React.createClass({
     const icon = new Image ();
     icon.src = pepper;
 
-    const ratings = this.props.ratings.slice(0).reverse();
-
+    const latestRatings = this.props.ratings.slice(0, 3).reverse();
     const chartData = {
-      labels: Array(ratings.length).fill(''),
+      labels: Array(latestRatings.length).fill(''),
       datasets: [
         {
-          data: getScores(ratings),
+          data: getScores(latestRatings),
           lineTension: 0.3,
           borderColor: 'hotpink',
           fill: false,

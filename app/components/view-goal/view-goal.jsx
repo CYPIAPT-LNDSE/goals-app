@@ -8,7 +8,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
   const ratings = currentGoal.ratings;
 
   const chartPadding = 10;
-  const chartWidth = Math.max(50 * ratings.length, 290);
+  const chartWidth = Math.max(50 * ratings.length, 260);
   const containerStyle = {
     width: `${chartWidth}px`,
     padding: `${chartPadding}px`,
@@ -37,7 +37,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
       </div>
       <div className="line-chart-container">
         <div className="line-chart-title" style={ titleStyle }>
-          <p id="line-chart-title-text">Line chart&nbsp;>></p>
+          <p id="line-chart-title-text">Your progress so far&nbsp;>></p>
         </div>
         <div className="line-chart-inner" style={ containerStyle }>
           <LineChart ratings={ ratings }/>
