@@ -3,6 +3,7 @@
 @import 'progress-animation';
 
 $titleHeight: 25px;
+$chartHeight: 200px;
 
 .view-goal-progress-container {
   display: flex;
@@ -64,31 +65,36 @@ $titleHeight: 25px;
 
 .line-chart-container {
   width: 290px;
-  height: 120px;
+  height: $titleHeight + $chartHeight + 20;
   display: flex;
   flex-direction: column;
   align-self: center;
   justify-content: center;
+  overflow-x: scroll;
+}
+
+.line-chart-inner {
+  height: $chartHeight;
+  background: turquoise;
+  cursor: pointer;
 }
 
 .line-chart-title {
   width: 100%;
   height: $titleHeight;
   background-color: $blue;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  cursor: pointer;
+}
 
-  p {
-    color: $light;
-    line-height: $titleHeight;
-    font-size: 13px;
-    margin-left: 5px;
-  }
+#line-chart-title-text {
+  color: $light;
+  line-height: $titleHeight;
+  font-size: 13px;
+  margin-left: 5px;
+}
 
-  img {
-    margin-right: 5px;
-  }
+canvas {
+  z-index: 10;
 }
 
 .line-chart-img {
@@ -99,4 +105,8 @@ $titleHeight: 25px;
     width: 100%;
     height: 100%;
   }
+}
+
+.view-goal-buttonContainer {
+  height: 80px;
 }

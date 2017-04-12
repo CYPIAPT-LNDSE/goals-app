@@ -1,52 +1,54 @@
 import React from 'react';
 import  { Line, } from 'react-chartjs-2';
+import { pepper, } from './icons.js';
 
 const tickOptions = {
   beginAtZero: true,
   stepSize: 1,
   fontColor: '#fff',
+  suggestedMin: 0,
+  suggestedMax: 10,
 };
 
-const gridLinesOptions = {
-  color: '#fff',
+const axesOptions = {
+  display: true,
+  ticks: tickOptions,
+  gridLines: {
+    color: '#fff',
+  },
+  barThickness: 10,
 };
+
+const onClickNode = (e, a) => {
+  if (a.length) {
+    console.log('You clicked on node ' + a[0]._index);
+  }
+};
+
+const getScores = arr => arr.map(rating => rating.score);
 
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
-  onClick: function(e, a) {
-    if (a.length) {
-      // replace with function for displaying actual details
-      document.getElementById('show-message').innerHTML = 'You clicked on node ' + a[0]._index;
-    }
-  },
+  onClick: onClickNode,
   scales: {
-    yAxes: [
-      {
-        display: true,
-        ticks: tickOptions,
-        gridLines: gridLinesOptions,
-      },
-    ],
-    xAxes: [
-      {
-        display: false,
-        ticks: tickOptions,
-        gridLines: gridLinesOptions,
-      },
-    ],
+    yAxes: [ { ...axesOptions,  }, ],
+    xAxes: [ { ...axesOptions, display: false, }, ],
   },
   legend: {
     display: false,
   },
 };
 
-
-const getScores = arr => arr.map(rating => rating.score);
+const chartHeight = 300;
+const chartWidth = 1000;
 
 const LineChart = React.createClass({
 
   render() {
+
+    const icon = new Image ();
+    icon.src = pepper;
 
     const ratings = this.props.ratings.slice(0).reverse();
 
@@ -55,17 +57,22 @@ const LineChart = React.createClass({
       datasets: [
         {
           data: getScores(ratings),
-          pointStyle: 'circle',
           lineTension: 0.3,
           borderColor: 'hotpink',
           fill: false,
+          pointStyle: icon,
           radius: 20,
         },
       ],
       backgroundColor: 'blue',
     };
 
-    return <Line data={ chartData } options={ chartOptions }/>;
+    return <Line
+      data={ chartData }
+      options={ chartOptions }
+      height={ chartHeight }
+      width={ chartWidth }
+    />;
   },
 });
 
