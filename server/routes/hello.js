@@ -35,7 +35,6 @@ module.exports = {
         }
 
         const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
-
         fetch(graphUrl, (graphErr, _, graphBody) => {
           if (graphErr) throw new Error (graphErr);
 
