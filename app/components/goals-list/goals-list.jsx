@@ -29,7 +29,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
             type="button"
             name="button"
             className="goalsList_button"
-            onClick={ () => { console.log('button click'); } }
+            onClick={ stepAddGoal }
           >ADD A GOAL &nbsp;+</button>
         </div>
       </div>
