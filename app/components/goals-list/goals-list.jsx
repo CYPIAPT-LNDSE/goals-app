@@ -7,13 +7,14 @@ import * as steps from './../../steps.js';
 const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
 
   const goalsListItems = goals.map(goal => {
-    return <li key={ goal.id } >
-      <GoalTile
-        goal={ goal }
-        step={ steps.GOALS_LIST }
-        onSelectGoal={ onSelectGoal }
-      />
-    </li>;
+    return (
+      <li key={ goal.id } >
+        <GoalTile
+          goal={ goal }
+          step={ steps.GOALS_LIST }
+          onSelectGoal={ onSelectGoal }
+        />
+      </li>);
   });
 
   const dynamicStyle = {
@@ -28,16 +29,12 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
             type="button"
             name="button"
             className="goalsList_button"
-            onClick={ stepAddGoal }
-          >
-            ADD A GOAL &nbsp;+
-          </button>
+            onClick={ () => { console.log('button click'); } }
+          >ADD A GOAL &nbsp;+</button>
         </div>
       </div>
       <div className="goalsList_list">
-        <ul>
-          { goalsListItems }
-        </ul>
+        <ul>{ goalsListItems }</ul>
       </div>
     </div>
   );
@@ -45,6 +42,8 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
 
 GoalsList.propTypes = {
   goals: React.PropTypes.array,
+  stepAddGoal: React.PropTypes.func,
+  onSelectGoal: React.PropTypes.func,
 };
 
 export default GoalsList;

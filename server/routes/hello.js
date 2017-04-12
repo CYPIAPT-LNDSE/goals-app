@@ -20,11 +20,16 @@ module.exports = {
       };
 
       Request(remoteUrl + querystring.stringify(params), (err, response, body) => {
-        if (err) throw new Error (err);
-        const accessToken = JSON.parse(body).access_token;
-        const graphUrl = 'https://graph.facebook.com/me?access_token=';
+        if (err) { throw new Error(err); }
 
-        Request(graphUrl + accessToken, (graphErr, _, graphBody) => {
+        const accessToken = JSON.parse(body).access_token;
+        if (!accessToken) {
+          reply('problem verifying user with Facebook');
+        }
+
+        const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
+
+        Request(graphUrl, (graphErr, _, graphBody) => {
           if (graphErr) throw new Error (graphErr);
 
           const userData = JSON.parse(graphBody);

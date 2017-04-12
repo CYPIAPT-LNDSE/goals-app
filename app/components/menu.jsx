@@ -25,8 +25,9 @@ const Menu = ({ menu, toggleMenu, }) => {
   );
 };
 
-Menu.proptypes = {
+Menu.propTypes = {
   menu: React.PropTypes.bool,
+  toggleMenu: React.PropTypes.func,
 };
 
 export default Menu;

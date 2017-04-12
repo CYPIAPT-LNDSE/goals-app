@@ -66,6 +66,7 @@ router.propTypes = {
   saveNewGoal: React.PropTypes.func,
   saveRating: React.PropTypes.func,
   triggerConfirmation: React.PropTypes.func,
+  setPreviousScore: React.PropTypes.func,
 };
 
 export default router;
