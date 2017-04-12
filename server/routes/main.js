@@ -3,16 +3,10 @@ module.exports = [
     path: '/',
     method: 'GET',
     config: {
-      auth: {
-        strategy: 'facebook',
-        mode: 'try',
+      auth: 'session',
+      handler: (request, reply) => {
+        reply.file('public/index.html');
       },
-    },
-    handler: (request, reply) => {
-      if (!request.auth.isAuthenticated) {
-        return reply.redirect('/login');
-      }
-      reply.file('public/index.html');
     },
   },
 ];
