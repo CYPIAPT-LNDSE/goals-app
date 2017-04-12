@@ -1,5 +1,6 @@
 const querystring = require('querystring');
-const Request = require('request');
+const url = require('url');
+const fetch = require('request');
 const mockData = require('./../mock.js');
 
 module.exports = {
@@ -9,7 +10,6 @@ module.exports = {
     auth: false,
     handler: (request, reply) => {
 
-      const remoteUrl = 'https://graph.facebook.com/v2.8/oauth/access_token?';
       const requestParams = request.url.path.split('?')[1];
       const code = querystring.parse(requestParams).code;
       const params = {
@@ -19,7 +19,14 @@ module.exports = {
         code: code,
       };
 
-      Request(remoteUrl + querystring.stringify(params), (err, response, body) => {
+      const remoteUrl = url.format({
+        protocol: 'https:',
+        hostname: 'graph.facebook.com',
+        pathname: 'v2.8/oauth/access_token',
+        search: querystring.stringify(params),
+      });
+
+      fetch(remoteUrl, (err, response, body) => {
         if (err) { throw new Error(err); }
 
         const accessToken = JSON.parse(body).access_token;
@@ -29,7 +36,7 @@ module.exports = {
 
         const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
 
-        Request(graphUrl, (graphErr, _, graphBody) => {
+        fetch(graphUrl, (graphErr, _, graphBody) => {
           if (graphErr) throw new Error (graphErr);
 
           const userData = JSON.parse(graphBody);
