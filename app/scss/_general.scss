@@ -1,5 +1,6 @@
 @import "colors";
 
+$maxPageWidth: 600px;
 $blueBorder: 2px solid $blue;
 $blueBorderThin: 1px solid $blue;
 $navItemHeight: 28px;
@@ -13,6 +14,35 @@ $navItemHeight: 28px;
 
   img {
     height: $navItemHeight;
+  }
+}
+
+@mixin modal {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  z-index: 1;
+  background-color: $transparentBlue;
+  color: #fff;
+  font-family: openSans;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+
+  a, a:hover, a:active, a:visited {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .modal-text {
+    color: #fff;
+    font-size: 22px;
   }
 }
 
