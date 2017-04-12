@@ -34,7 +34,7 @@ module.exports = {
 
           const userData = JSON.parse(graphBody);
           const fb_id = userData.id;
-
+          console.log(fb_id);
           // check if user exists in DB
           const user = mockData.users.find(user => user.fb_id === fb_id);
 
