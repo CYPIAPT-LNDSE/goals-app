@@ -3,11 +3,10 @@ const dbClient = require('./db_connection.js');
 const query = `
 INSERT INTO users (username)
 VALUES ($1)
-RETURNING user_id`;
+RETURNING user_id;`;
 
 module.exports = (facebookId, callback) => {
   dbClient.connect((connectionErr) => {
-    console.log('connecting');
     if (connectionErr) {
       throw new Error (connectionErr);
     }
