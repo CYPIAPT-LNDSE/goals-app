@@ -7,8 +7,10 @@ import Cactus from './animations/cactus.jsx';
 
 const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) => {
 
+  const score = currentGoal.newRating.score || 0;
+
   const animation = <Cactus
-    score={ currentGoal.newRating.score || 0 }
+    score={ score }
     previousScore={ currentGoal.newRating.previousScore || 0 }
     setPreviousScore={ setPreviousScore }
   />;
@@ -38,6 +40,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) =>
             name="button"
             className="new-rating-button"
             onClick={ feedback }
+            disabled={ score < 1 }
           >Rate</button>
         </div>
       </div>
