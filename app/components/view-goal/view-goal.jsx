@@ -31,7 +31,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
           <p id="line-chart-title-text">Your progress so far&nbsp;>></p>
         </div>
         <div className="line-chart-inner">
-          <LineChart ratings={ latestRatings }/>
+          <LineChart ratings={ latestRatings } avatar={ currentGoal.avatar }/>
         </div>
       </div>
       <div className="view-goal-buttonContainer goal-detail-buttonContainer">
