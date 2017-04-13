@@ -1,4 +1,4 @@
-const mockData = require('../database/mock.js');
+const mockData = require('./mock.js');
 
 const goals = mockData.goals;
 const socketManager = (socket) => {
