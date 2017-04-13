@@ -2,9 +2,13 @@ import React from 'react';
 
 const MenuComponent = ({ menu, toggleMenu, }) => {
 
+  const fadeIn = 'z-index 0.1s, opacity 0.4s ease 0.1s';
+  const fadeOut = 'opacity 0.4s, z-index 0.1s ease 0.4s';
+
   const style = {
-    transition: 'opacity 0.2s',
+    transition: menu ? fadeIn : fadeOut,
     opacity: menu ? 1 : 0,
+    zIndex: menu ? 3 : -1,
   };
 
   return (
@@ -25,7 +29,7 @@ const MenuComponent = ({ menu, toggleMenu, }) => {
   );
 };
 
-MenuComponent.proptypes = {
+MenuComponent.propTypes = {
   menu: React.PropTypes.bool,
   toggleMenu: React.PropTypes.func,
 };
