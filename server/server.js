@@ -27,6 +27,7 @@ server.register([ inert, auth, ], (err) => {
     isSecure: process.env.NODE_ENV === 'PRODUCTION',
     ttl: 30 * 24 * 60 * 60 * 1000,
     redirectTo: '/login',
+    isSameSite: false,
   });
 
   server.route(routes);
