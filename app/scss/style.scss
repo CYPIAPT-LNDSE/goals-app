@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   align-content: space-between;
   width: 100vw;
-  max-width: 600px;
+  max-width: $maxPageWidth;
 
   p {
     color: $blue;

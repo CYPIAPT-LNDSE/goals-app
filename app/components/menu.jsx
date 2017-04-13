@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Menu = ({ menu, toggleMenu, }) => {
+const MenuComponent = ({ menu, toggleMenu, }) => {
+
+  const fadeIn = 'z-index 0.1s, opacity 0.4s ease 0.1s';
+  const fadeOut = 'opacity 0.4s, z-index 0.1s ease 0.4s';
 
   const style = {
-    visibility: menu ? 'visible' : 'hidden',
+    transition: menu ? fadeIn : fadeOut,
+    opacity: menu ? 1 : 0,
+    zIndex: menu ? 3 : -1,
   };
 
   return (
@@ -16,17 +21,17 @@ const Menu = ({ menu, toggleMenu, }) => {
       <div className='menu-links-container'>
         <a
           href="https://github.com/CYPIAPT-LNDSE/goals-app"
-          target="blank">
-          About Grow
-        </a>
+          target="_blank"
+        >About Grow</a>
         <a href="/logout">Log out</a>
       </div>
     </div>
   );
 };
 
-Menu.proptypes = {
+MenuComponent.propTypes = {
   menu: React.PropTypes.bool,
+  toggleMenu: React.PropTypes.func,
 };
 
-export default Menu;
+export default MenuComponent;
