@@ -15,23 +15,13 @@ const axesOptions = {
   ticks: tickOptions,
   gridLines: {
     color: '#fff',
-    tickMarkLength: 1,
   },
   barThickness: 10,
 };
 
-const onClickNode = (e, a) => {
-  if (a.length) {
-    console.log('You clicked on node ' + a[0]._index);
-  }
-};
-
-const getScores = arr => arr.map(rating => rating.score);
-
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
-  onClick: onClickNode,
   scales: {
     yAxes: [ axesOptions, ],
     xAxes: [ axesOptions, ],
@@ -44,28 +34,33 @@ const chartOptions = {
 const chartHeight = 300;
 const chartWidth = 1000;
 
+const getScores = arr => arr.map(rating => rating.score);
+const compileData = arr => arr.length
+  ? [0,].concat(getScores(arr)).concat(arr[arr.length - 1].score)
+  : [];
+
+const getStyles = (arr, avatar) =>
+  ['circle',].concat(Array(arr.length).fill(avatar));
+
+const getLabels = arr => Array(arr.length + 2).fill('');
+
 const LineChart = React.createClass({
 
   render() {
     const latestRatings = this.props.ratings;
-    const data = latestRatings.length
-      ? [0,].concat(getScores(latestRatings).concat([6,]))
-      : [];
     const icon = new Image ();
     icon.src = pepper;
-    const pointStyle = ['circle',].concat(Array(latestRatings.length).fill(icon));
-
 
     const chartData = {
-      labels: Array(latestRatings.length + 2).fill(''),
+      labels: getLabels(latestRatings),
       datasets: [
         {
-          data: data,
+          data: compileData(latestRatings),
           lineTension: 0.3,
           borderColor: 'hotpink',
           fill: false,
           pointBorderColor: 'transparent',
-          pointStyle: pointStyle,
+          pointStyle: getStyles(latestRatings, icon),
           radius: 0,
         },
       ],
