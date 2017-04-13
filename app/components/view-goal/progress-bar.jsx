@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const ProgressBarComponent = ({ rating, time, }) => {
 
@@ -19,7 +20,7 @@ const ProgressBarComponent = ({ rating, time, }) => {
         <p>{ score }</p>
       </div>
       <div className="progress-bar-time">
-        <p>{ time }</p>
+        <p>{ moment(time).format('LLLL') }</p>
       </div>
     </div>
   );
