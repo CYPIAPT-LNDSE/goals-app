@@ -11,10 +11,9 @@ module.exports = (facebookId, callback) => {
       if (err) {
         callback('database error while retrieving user details');
       }
-      
-      callback(null, result.rows);
       dbClient.end((err) => {
         if (err) throw err;
+        callback(null, result.rows);
       });
     });
   });

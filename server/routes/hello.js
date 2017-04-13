@@ -2,6 +2,7 @@ const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
 const getUser = require('./../database/get-user.js');
+const createUser = require('./../database/create-user.js');
 
 module.exports = {
   path: '/hello',
@@ -42,14 +43,23 @@ module.exports = {
           const fb_id = userData.id;
 
           // check if user exists in DB
-          getUser(fb_id, (err, users) => {
-            if (err) reply(err);
+          getUser(fb_id, (getUserErr, users) => {
+            if (getUserErr) reply('error getting user from database');
 
-            if (users) {
-              request.cookieAuth.set({ id: users.id, });
+            if (users.length) {
+              request.cookieAuth.set({ id: users[0].id, });
               reply.redirect('/');
             } else {
-              reply('user not found');
+              console.log('new user');
+              createUser(fb_id, (createUserErr, user_id) => {
+                if (createUserErr) {
+                  console.log(createUserErr);
+                  reply('error generating new user');
+                } else {
+                  request.cookieAuth.set({ id: user_id, });
+                  reply.redirect('/');
+                }
+              });
             }
           });
         });
