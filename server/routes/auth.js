@@ -1,4 +1,5 @@
 const querystring = require('querystring');
+const url = require('url');
 
 module.exports = {
   path: '/auth',
@@ -7,15 +8,19 @@ module.exports = {
     auth: false,
     handler: (request, reply) => {
 
-      console.log('auth handler');
-
-      const remoteUrl = 'https://www.facebook.com/v2.8/dialog/oauth?';
       const params = {
         client_id: process.env.FB_APP_ID,
         redirect_uri: process.env.BASE_URL + '/hello',
       };
 
-      return reply.redirect(remoteUrl + querystring.stringify(params));
+      const remoteUrl = url.format({
+        protocol: 'https:',
+        hostname: 'www.facebook.com',
+        pathname: 'v2.8/dialog/oauth',
+        search: querystring.stringify(params),
+      });
+
+      return reply.redirect(remoteUrl);
     },
   },
 };

@@ -11,7 +11,6 @@ const App = () => {
 
   return (
     <div className="page">
-
       <NavContainer />
       <MainContainer />
     </div>
