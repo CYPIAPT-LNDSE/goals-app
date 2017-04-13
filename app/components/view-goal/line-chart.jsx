@@ -1,6 +1,6 @@
 import React from 'react';
 import  { Line, } from 'react-chartjs-2';
-import icons from './icons.js';
+import icons from './../../avatars.js';
 
 const tickOptions = {
   beginAtZero: true,
@@ -39,6 +39,8 @@ const getStyles = (arr, avatar) =>
   ['circle',].concat(Array(arr.length).fill(avatar));
 
 const getLabels = arr => Array(arr.length + 2).fill('');
+const getIconSrc = (icons, avatar) =>
+  icons.find(icon => icon.avatar === avatar).image;
 
 const LineChart = React.createClass({
 
@@ -46,7 +48,7 @@ const LineChart = React.createClass({
     const avatar = this.props.avatar;
     const latestRatings = this.props.ratings;
     const icon = new Image ();
-    icon.src = icons.find(icon => icon.avatar === avatar).image;
+    icon.src = getIconSrc(icons, avatar);
 
     const chartData = {
       labels: getLabels(latestRatings),
