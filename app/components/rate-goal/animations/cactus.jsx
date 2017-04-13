@@ -5,17 +5,17 @@ import { TimelineMax, } from 'gsap';
 const createAnimation = ({target, options, }) => {
 
   const bodyFrames = [
-    { bottom: '50px', height: '0px', },
-    { bottom: '54px', height: '50px', },
-    { bottom: '66px', height: '50px', },
-    { bottom: '70px', height: '60px', },
-    { bottom: '75px', height: '65px', },
-    { bottom: '75px', height: '70px', },
-    { bottom: '80px', height: '70px', },
-    { bottom: '85px', height: '70px', },
-    { bottom: '90px', height: '72px', },
-    { bottom: '95px', height: '77px', },
-    { bottom: '97px', height: '81px', },
+    { bottom: '5px', height: '0px', },
+    { bottom: '15px', height: '50px', },
+    { bottom: '20px', height: '50px', },
+    { bottom: '25px', height: '60px', },
+    { bottom: '30px', height: '65px', },
+    { bottom: '30px', height: '70px', },
+    { bottom: '35px', height: '70px', },
+    { bottom: '40px', height: '70px', },
+    { bottom: '45px', height: '72px', },
+    { bottom: '50px', height: '77px', },
+    { bottom: '52px', height: '81px', },
   ];
 
   const armFrames = [
@@ -93,6 +93,7 @@ class Cactus extends React.Component {
     }
 
     this.animation = this.addAnimation(createAnimation, options);
+
   }
 
   render() {
@@ -128,9 +129,10 @@ class Cactus extends React.Component {
   }
 }
 
-Cactus.proptypes = {
+Cactus.propTypes = {
   previousScore: React.PropTypes.int,
   score: React.PropTypes.int,
+  setPreviousScore: React.PropTypes.func,
 };
 
 export default GSAP()(Cactus);

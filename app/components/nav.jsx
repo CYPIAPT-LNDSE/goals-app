@@ -9,7 +9,9 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
   const pathBack = path + 'icons/back.svg';
   const pathLogo = path + 'logo_header.svg';
   const pathMenu = path + 'icons/menu.svg';
-  const backButtonStyle = (step === steps.GOALS_LIST) ? { visibility: 'hidden', } : {};
+  const backButtonStyle = (step === steps.GOALS_LIST)
+    ? { visibility: 'hidden', }
+    : {};
 
   return (
     <div>
@@ -39,6 +41,7 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
           />
         </div>
       </nav>
+      <Menu menu={ menu } toggleMenu={ toggleMenu }/>
     </div>
   );
 };
