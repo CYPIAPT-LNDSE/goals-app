@@ -8,17 +8,6 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
   const ratings = currentGoal.ratings;
   const latestRatings = ratings.slice(0, 3).reverse();
 
-  // fix this!
-  const chartPadding = 10;
-  const chartWidth = Math.max(50 * latestRatings.length, 260);
-  const containerStyle = {
-    width: `${chartWidth}px`,
-    padding: `${chartPadding}px`,
-  };
-  const titleStyle = {
-    width: `${chartWidth + chartPadding * 2}px`,
-  };
-
   const time = new Date().toString();
   const progressBars = latestRatings
     .map(rating =>
@@ -38,10 +27,10 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
         { progressBars }
       </div>
       <div className="line-chart-container">
-        <div className="line-chart-title" style={ titleStyle }>
+        <div className="line-chart-title">
           <p id="line-chart-title-text">Your progress so far&nbsp;>></p>
         </div>
-        <div className="line-chart-inner" style={ containerStyle }>
+        <div className="line-chart-inner">
           <LineChart ratings={ latestRatings }/>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { pepper, } from './icons.js';
 const tickOptions = {
   beginAtZero: true,
   stepSize: 1,
-  fontColor: '#fff',
   suggestedMin: -3,
   suggestedMax: 13,
 };
@@ -13,10 +12,7 @@ const tickOptions = {
 const axesOptions = {
   display: false,
   ticks: tickOptions,
-  gridLines: {
-    color: '#fff',
-  },
-  barThickness: 10,
+  barThickness: 5,
 };
 
 const chartOptions = {
@@ -57,7 +53,7 @@ const LineChart = React.createClass({
         {
           data: compileData(latestRatings),
           lineTension: 0.3,
-          borderColor: 'hotpink',
+          borderColor: '#fff',
           fill: false,
           pointBorderColor: 'transparent',
           pointStyle: getStyles(latestRatings, icon),
