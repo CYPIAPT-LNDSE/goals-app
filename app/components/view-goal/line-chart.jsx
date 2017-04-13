@@ -6,8 +6,8 @@ const tickOptions = {
   beginAtZero: true,
   stepSize: 1,
   fontColor: '#fff',
-  suggestedMin: 0,
-  suggestedMax: 10,
+  suggestedMin: -3,
+  suggestedMax: 13,
 };
 
 const axesOptions = {
@@ -15,6 +15,7 @@ const axesOptions = {
   ticks: tickOptions,
   gridLines: {
     color: '#fff',
+    tickMarkLength: 1,
   },
   barThickness: 10,
 };
@@ -46,24 +47,28 @@ const chartWidth = 1000;
 const LineChart = React.createClass({
 
   render() {
-
+    const latestRatings = this.props.ratings;
+    const data = latestRatings.length
+      ? [0,].concat(getScores(latestRatings).concat([6,]))
+      : [];
     const icon = new Image ();
     icon.src = pepper;
+    const pointStyle = ['circle',].concat(Array(latestRatings.length).fill(icon));
 
-    const latestRatings = this.props.ratings.slice(0, 3).reverse();
+
     const chartData = {
-      labels: Array(latestRatings.length).fill(''),
+      labels: Array(latestRatings.length + 2).fill(''),
       datasets: [
         {
-          data: getScores(latestRatings),
+          data: data,
           lineTension: 0.3,
           borderColor: 'hotpink',
           fill: false,
-          pointStyle: icon,
-          radius: 20,
+          pointBorderColor: 'transparent',
+          pointStyle: pointStyle,
+          radius: 0,
         },
       ],
-      backgroundColor: 'blue',
     };
 
     return <Line

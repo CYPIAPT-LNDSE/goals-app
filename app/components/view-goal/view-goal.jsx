@@ -6,9 +6,11 @@ import LineChart from './line-chart.jsx';
 const viewGoal = ({ currentGoal, rateGoal, }) => {
 
   const ratings = currentGoal.ratings;
+  const latestRatings = ratings.slice(0, 3).reverse();
 
+  // fix this!
   const chartPadding = 10;
-  const chartWidth = Math.max(50 * ratings.length, 260);
+  const chartWidth = Math.max(50 * latestRatings.length, 260);
   const containerStyle = {
     width: `${chartWidth}px`,
     padding: `${chartPadding}px`,
@@ -18,7 +20,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
   };
 
   const time = new Date().toString();
-  const progressBars = ratings.slice(0, 3)
+  const progressBars = latestRatings
     .map(rating =>
       <ProgressBarComponent
         key={ rating.id }
@@ -40,7 +42,7 @@ const viewGoal = ({ currentGoal, rateGoal, }) => {
           <p id="line-chart-title-text">Your progress so far&nbsp;>></p>
         </div>
         <div className="line-chart-inner" style={ containerStyle }>
-          <LineChart ratings={ ratings }/>
+          <LineChart ratings={ latestRatings }/>
         </div>
       </div>
       <div className="view-goal-buttonContainer goal-detail-buttonContainer">
