@@ -1,7 +1,8 @@
 const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
-const mockData = require('./../mock.js');
+const getUser = require('./../database/get-user.js');
+const createUser = require('./../database/create-user.js');
 
 module.exports = {
   path: '/hello',
@@ -31,7 +32,7 @@ module.exports = {
 
         const accessToken = JSON.parse(body).access_token;
         if (!accessToken) {
-          reply('problem verifying user with Facebook');
+          reply('problem verifying user with Facebook, no access token');
         }
 
         const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
@@ -42,19 +43,25 @@ module.exports = {
           const fb_id = userData.id;
 
           // check if user exists in DB
-          const user = mockData.users.find(user => user.fb_id === fb_id);
+          getUser(fb_id, (getUserErr, users) => {
+            if (getUserErr) reply('error getting user from database');
 
-          if (user) {
-            const user_id = user.id;
-            request.cookieAuth.set({ id: user_id, });
-            reply.redirect('/');
-          } else {
-            reply('user not found');
-            // create a new user in DB,
-            // generate new ID
-            // set cookie
-            // redirect
-          }
+            if (users.length) {
+              request.cookieAuth.set({ id: users[0].id, });
+              reply.redirect('/');
+            } else {
+              console.log('new user');
+              createUser(fb_id, (createUserErr, user_id) => {
+                if (createUserErr) {
+                  console.log(createUserErr);
+                  reply('error generating new user');
+                } else {
+                  request.cookieAuth.set({ id: user_id, });
+                  reply.redirect('/');
+                }
+              });
+            }
+          });
         });
       });
     },

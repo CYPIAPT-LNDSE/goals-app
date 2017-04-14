@@ -1,13 +1,19 @@
-const env = require('env2');
 const fs = require('fs');
 
-env('./config.env');
-
-const dbConnection = require('./db_connection');
+const client = require('./db_connection');
 
 const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
-dbConnection.query(sql, (err, result) => {
-  if(err) throw(err);
-  console.log('Built database with result: ', result);
+client.connect((err) => {
+  if (err) throw err;
+  client.query(sql, (err, result) => {
+    if (err) throw err;
+
+    // disconnect the client
+    client.end((err) => {
+      if (err) throw err;
+      console.log('users, goals and ratings tables were created with result: ',
+      result);
+    });
+  });
 });
