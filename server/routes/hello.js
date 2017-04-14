@@ -40,14 +40,14 @@ module.exports = {
 
           const userData = JSON.parse(graphBody);
           const fb_id = userData.id;
-          console.log(fb_id);
           // check if user exists in DB
           const user = mockData.users.find(user => user.fb_id === fb_id);
 
           if (user) {
             const user_id = user.id;
             request.cookieAuth.set({ id: user_id, });
-            reply.redirect('/');
+            reply.redirect('/').
+            state('grow-user', { id: user_id, });
           } else {
             reply('user not found');
             // create a new user in DB,
