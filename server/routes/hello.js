@@ -29,6 +29,8 @@ module.exports = {
       fetch(remoteUrl, (err, response, body) => {
         if (err) { throw new Error(err); }
 
+        console.log(body);
+
         const accessToken = JSON.parse(body).access_token;
         if (!accessToken) {
           return reply('problem verifying user with Facebook, no access token');
