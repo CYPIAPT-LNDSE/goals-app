@@ -18,6 +18,15 @@ server.connection({
   },
 });
 
+server.state('new-user', {
+  ttl: 30 * 24 * 60 * 60 * 1000,
+  isSecure: process.env.NODE_ENV === 'PRODUCTION',
+  isHttpOnly: false,
+  encoding: 'base64',
+  clearInvalid: false,
+  strictHeader: true,
+});
+
 server.register([ inert, cookieAuth,], (err) => {
   if (err) { throw new Error (err); }
 
@@ -35,7 +44,6 @@ server.register([ inert, cookieAuth,], (err) => {
 });
 
 createSocket(server.listener);
-// const getUserData = require('./getUserData')(io);
 
 module.exports = {
   server: server,
