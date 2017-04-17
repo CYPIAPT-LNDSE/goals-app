@@ -17,14 +17,15 @@ module.exports = (facebookId, callback) => {
     }
 
     if (result.rows.length) {
-      callback(null, result.rows[0].user_id);
-    } else {
-      dbClient.query(createUser, [ facebookId, ], (insertErr, newUser) => {
-        if (insertErr) {
-          callback('unable to create new user');
-        }
-        callback(null, newUser);
-      });
+      return callback(null, result.rows[0].user_id);
     }
+
+    dbClient.query(createUser, [ facebookId, ], (insertErr, newUser) => {
+      if (insertErr) {
+        return callback('unable to create new user');
+      }
+
+      callback(null, newUser);
+    });
   });
 };

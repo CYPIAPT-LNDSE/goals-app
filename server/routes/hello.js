@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
-const getUser = require('./../database/get-user.js');
+const getUserDb = require('./../database/get-user.js');
 
 module.exports = {
   path: '/hello',
@@ -19,31 +19,38 @@ module.exports = {
         code: code,
       };
 
-      const remoteUrl = url.format({
+      const fbAuthUrl = url.format({
         protocol: 'https:',
         hostname: 'graph.facebook.com',
         pathname: 'v2.8/oauth/access_token',
         search: querystring.stringify(params),
       });
 
-      fetch(remoteUrl, (err, response, body) => {
-        if (err) { throw new Error(err); }
+      fetch(fbAuthUrl, (fbAuthErr, _, fbAuthBody) => {
+        if (fbAuthErr) {
+          throw new Error(fbAuthErr);
+        }
 
-        const accessToken = JSON.parse(body).access_token;
-        if (!accessToken) {
+        const fbAccessToken = JSON.parse(fbAuthBody).access_token;
+
+        if (!fbAccessToken) {
           return reply('problem verifying user with Facebook, no access token');
         }
 
-        const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
-        fetch(graphUrl, (graphErr, _, graphBody) => {
-          if (graphErr) throw new Error (graphErr);
+        const fbGraphUrl = `https://graph.facebook.com/me?access_token=${fbAccessToken}`;
 
-          const userData = JSON.parse(graphBody);
-          const fb_id = userData.id;
+        fetch(fbGraphUrl, (fbGraphErr, _, fbGraphBody) => {
+          if (fbGraphErr) {
+            throw new Error (fbGraphErr);
+          }
 
-          getUser(fb_id, (getUserErr, userId) => {
-            if (getUserErr) return reply(getUserErr + 'error getting user from database');
+          const fbUserData = JSON.parse(fbGraphBody);
+          const fbUserId = fbUserData.id;
 
+          getUserDb(fbUserId, (getUserDbErr, userId) => {
+            if (getUserDbErr) {
+              return reply(getUserDbErr + 'error getting user from database');
+            }
             request.cookieAuth.set({ id: userId, });
             reply.redirect('/');
           });
