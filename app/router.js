@@ -44,7 +44,9 @@ const router = (props) => {
         saveRating= { props.saveRating }
       />;
   case steps.LINE_CHART_DETAIL:
-    return <LineChartDetail currentGoal={ props.currentGoal }/>;
+    return <LineChartDetail
+      currentGoal={ props.currentGoal }
+    />;
   default:
     return <GoalsList
         goals={ props.goals }

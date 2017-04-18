@@ -28,7 +28,7 @@ const chartOptions = {
 };
 
 const chartHeight = 300;
-const chartWidth = 1000;
+const chartWidth = ratings => 500 + (ratings.length - 3) * 10;
 
 const getScores = arr => arr.map(rating => rating.score);
 const compileData = arr => arr.length
@@ -69,7 +69,7 @@ const LineChart = React.createClass({
       data={ chartData }
       options={ chartOptions }
       height={ chartHeight }
-      width={ chartWidth }
+      width={ 100 }
     />;
   },
 });

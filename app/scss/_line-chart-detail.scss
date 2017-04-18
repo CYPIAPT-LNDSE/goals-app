@@ -32,9 +32,10 @@ $contentHeight: 370px;
 }
 
 .detail-chart-container {
-  height: $contentHeight - $goalTileHeight;
   width: 100%;
+  height: $contentHeight - $goalTileHeight;
   border-radius: 0 0 $borderRadius $borderRadius;
   margin-bottom: -1px;
   align-self: center;
+  overflow-x: scroll;
 }
