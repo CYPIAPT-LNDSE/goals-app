@@ -13,7 +13,6 @@ import router from './../router.js';
 const MainContent = props => {
 
   const view = router(props);
-
   const navbarHeight = 90;
   const dynamicStyle = {
     height: window.innerHeight - navbarHeight,
@@ -45,6 +44,7 @@ const mapDispatchToProps = dispatch => ({
   triggerConfirmation: () => { dispatch(actionsAddNewGoal.triggerConfirmation()); },
   /*view goal actions*/
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal()); },
+  stepLineChartDetail: () => { dispatch(actionsViewGoal.stepLineChartDetail()); },
   /* rate goal actions */
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating)); },
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback()); },
