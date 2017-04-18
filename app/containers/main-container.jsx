@@ -15,7 +15,8 @@ import socket from '../sockets.js';
 const MainContent = props => {
 
   socket.on('userdata', (data) => {
-    props.onReceiveData(data);
+    console.log('data ', data);
+    // props.onReceiveData(data);
   });
 
   const view = router(props);

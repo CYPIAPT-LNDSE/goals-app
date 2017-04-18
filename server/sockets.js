@@ -4,11 +4,11 @@ const cookieParser = require('cookie');
 
 const createSocket = (listener) => {
   const io = socketio.listen(listener);
-  
+  let id = '';
   io.set('authorization', (handshakeData, accept) => {
 
     if (handshakeData.headers.cookie) {
-      const cookie = cookieParser.parse(handshakeData.headers.cookie)['new-user'];
+      id = cookieParser.parse(handshakeData.headers.cookie)['new-user'];
     } else {
       return accept('No cookie transmitted.', false);
     }
@@ -16,7 +16,9 @@ const createSocket = (listener) => {
     accept(null, true);
   });
 
-  io.on('connection', socketManager);
+  io.on('connection', (socket) => {
+    socket.emit('userdata', id);
+  });
 };
 
 module.exports = {
