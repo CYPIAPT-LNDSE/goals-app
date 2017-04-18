@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
-const getUser = require('./../database/get-user.js');
+const getUserDb = require('./../database/get-user.js');
 
 module.exports = {
   path: '/hello',
@@ -19,38 +19,40 @@ module.exports = {
         code: code,
       };
 
-      const remoteUrl = url.format({
+      const fbAuthUrl = url.format({
         protocol: 'https:',
         hostname: 'graph.facebook.com',
         pathname: 'v2.8/oauth/access_token',
         search: querystring.stringify(params),
       });
 
-      fetch(remoteUrl, (err, response, body) => {
-        if (err) { throw new Error(err); }
-
-        const accessToken = JSON.parse(body).access_token;
-        if (!accessToken) {
-          reply('problem verifying user with Facebook, no access token');
+      fetch(fbAuthUrl, (fbAuthErr, _, fbAuthBody) => {
+        if (fbAuthErr) {
+          throw new Error(fbAuthErr);
         }
 
-        const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
-        fetch(graphUrl, (graphErr, _, graphBody) => {
-          if (graphErr) throw new Error (graphErr);
+        const fbAccessToken = JSON.parse(fbAuthBody).access_token;
 
-          const userData = JSON.parse(graphBody);
-          const fb_id = userData.id;
+        if (!fbAccessToken) {
+          return reply('problem verifying user with Facebook, no access token');
+        }
 
-          // check if user exists in DB
-          getUser(fb_id, (err, users) => {
-            if (err) reply(err);
+        const fbGraphUrl = `https://graph.facebook.com/me?access_token=${fbAccessToken}`;
 
-            if (users) {
-              request.cookieAuth.set({ id: users.id, });
-              reply.redirect('/');
-            } else {
-              reply('user not found');
+        fetch(fbGraphUrl, (fbGraphErr, _, fbGraphBody) => {
+          if (fbGraphErr) {
+            throw new Error (fbGraphErr);
+          }
+
+          const fbUserData = JSON.parse(fbGraphBody);
+          const fbUserId = fbUserData.id;
+
+          getUserDb(fbUserId, (getUserDbErr, userId) => {
+            if (getUserDbErr) {
+              return reply(getUserDbErr + 'error getting user from database');
             }
+            request.cookieAuth.set({ id: userId, });
+            reply.redirect('/');
           });
         });
       });

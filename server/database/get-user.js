@@ -1,21 +1,31 @@
 const dbClient = require('./db_connection.js');
 
-const query = `
-  SELECT * from users
-  WHERE username = $1`;
+const findUser = `
+SELECT * from users
+WHERE username = $1;`;
+
+const createUser = `
+INSERT into users (username)
+VALUES ($1)
+RETURNING user_id;`;
 
 module.exports = (facebookId, callback) => {
-  dbClient.connect((err) => {
-    if (err) throw new Error (err);
-    dbClient.query(query, [facebookId,], (err, result) => {
-      if (err) {
-        callback('database error while retrieving user details');
+
+  dbClient.query(findUser, [ facebookId, ], (getErr, result) => {
+    if (getErr) {
+      return callback('database error while retrieving user details');
+    }
+
+    if (result.rows.length) {
+      return callback(null, result.rows[0].user_id);
+    }
+
+    dbClient.query(createUser, [ facebookId, ], (insertErr, newUser) => {
+      if (insertErr) {
+        return callback('unable to create new user');
       }
-      
-      callback(null, result.rows);
-      dbClient.end((err) => {
-        if (err) throw err;
-      });
+
+      callback(null, newUser);
     });
   });
 };
