@@ -7,7 +7,9 @@ const LineChartDetail = ({ currentGoal, }) => {
   const allRatings = currentGoal.ratings.slice(0).reverse();
 
   const style = {
-    width: 1000 + (allRatings.length - 3) * 10,
+    width: allRatings.length < 6
+      ? '100%'
+      : 400 + (allRatings.length - 3) * 10,
   };
 
   return (
@@ -27,6 +29,7 @@ const LineChartDetail = ({ currentGoal, }) => {
            <LineChart
              avatar={ currentGoal.avatar }
              ratings={ allRatings }
+             isChartPreview={ false }
            />
          </div>
        </div>

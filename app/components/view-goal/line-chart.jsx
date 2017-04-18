@@ -2,33 +2,37 @@ import React from 'react';
 import  { Line, } from 'react-chartjs-2';
 import icons from './../../avatars.js';
 
-const tickOptions = {
-  beginAtZero: true,
-  stepSize: 1,
-  suggestedMin: -3,
-  suggestedMax: 13,
-};
+const getOptions = (isChartPreview) => {
+  const tickOptions = {
+    beginAtZero: true,
+    stepSize: 1,
+    suggestedMin: -3,
+    suggestedMax: 13,
+  };
 
-const axesOptions = {
-  display: false,
-  ticks: tickOptions,
-  barThickness: 5,
-};
-
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    yAxes: [ axesOptions, ],
-    xAxes: [ axesOptions, ],
-  },
-  legend: {
+  const axesOptions = {
     display: false,
-  },
+    ticks: tickOptions,
+    barThickness: 5,
+  };
+
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: isChartPreview
+        ? [ axesOptions, ]
+        : [ { ...axesOptions, display: true, },],
+      xAxes: [ axesOptions, ],
+    },
+    legend: {
+      display: false,
+    },
+  };
 };
 
 const chartHeight = 300;
-const chartWidth = ratings => 500 + (ratings.length - 3) * 10;
+const chartWidth = 1000;
 
 const getScores = arr => arr.map(rating => rating.score);
 const compileData = arr => arr.length
@@ -50,6 +54,8 @@ const LineChart = React.createClass({
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
+    const chartOptions = getOptions(this.props.isChartPreview);
+
     const chartData = {
       labels: getLabels(latestRatings),
       datasets: [
@@ -68,8 +74,8 @@ const LineChart = React.createClass({
     return <Line
       data={ chartData }
       options={ chartOptions }
+      width={ chartWidth }
       height={ chartHeight }
-      width={ 100 }
     />;
   },
 });

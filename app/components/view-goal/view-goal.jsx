@@ -37,6 +37,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, }) => {
           <LineChart
             ratings={ latestRatings }
             avatar={ currentGoal.avatar }
+            isChartPreview={ true }
           />
         </div>
       </div>
