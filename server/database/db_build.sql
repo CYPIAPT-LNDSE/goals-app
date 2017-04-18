@@ -1,7 +1,7 @@
 BEGIN;
 
 CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY NOT NULL,
+  user_id TEXT PRIMARY KEY NOT NULL,
   username TEXT,
   date_created TIMESTAMP NOT NULL DEFAULT now()
 );
