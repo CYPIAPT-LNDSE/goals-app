@@ -1,5 +1,6 @@
 const socketio = require('socket.io');
-const socketManager = require('./socket-manager.js');
+// const socketManager = require('./socket-manager.js');
+const getUserData = require('./database/get-user-data.js');
 const cookieParser = require('cookie');
 
 const createSocket = (listener) => {
@@ -17,7 +18,7 @@ const createSocket = (listener) => {
   });
 
   io.on('connection', (socket) => {
-    socket.emit('userdata', id);
+    socket.emit('userdata', getUserData(id));
   });
 };
 

@@ -8,7 +8,7 @@ CREATE TABLE users (
 
 CREATE TABLE goals (
   goal_id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER NOT NULL,
+  user_id TEXT NOT NULL,
   title TEXT NOT NULL,
   rating INTEGER,
   icon TEXT,
