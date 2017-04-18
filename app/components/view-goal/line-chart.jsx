@@ -3,11 +3,16 @@ import  { Line, } from 'react-chartjs-2';
 import icons from './../../avatars.js';
 
 const getOptions = (isChartPreview) => {
+
+  const gridLineColors = Array(2).fill('transparent')
+    .concat(Array(10).fill('#fff'));
+
   const tickOptions = {
     beginAtZero: true,
     stepSize: 1,
-    suggestedMin: -3,
-    suggestedMax: 13,
+    suggestedMin: -1,
+    suggestedMax: 12,
+    display: false,
   };
 
   const axesOptions = {
@@ -22,7 +27,16 @@ const getOptions = (isChartPreview) => {
     scales: {
       yAxes: isChartPreview
         ? [ axesOptions, ]
-        : [ { ...axesOptions, display: true, },],
+        : [ {
+          ...axesOptions,
+          display: true,
+          gridLines: {
+            color: gridLineColors,
+            lineWidth: 0.5,
+            zeroLineColor: '#fff',
+            zeroLineWidth: 2,
+          },
+        }, ],
       xAxes: [ axesOptions, ],
     },
     legend: {
@@ -31,7 +45,7 @@ const getOptions = (isChartPreview) => {
   };
 };
 
-const chartHeight = 300;
+const chartHeight = 260;
 const chartWidth = 1000;
 
 const getScores = arr => arr.map(rating => rating.score);
@@ -83,6 +97,7 @@ const LineChart = React.createClass({
 LineChart.propTypes = {
   ratings: React.PropTypes.array,
   avatar: React.PropTypes.string,
+  isChartPreview: React.PropTypes.boolean,
 };
 
 export default LineChart;

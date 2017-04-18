@@ -22,7 +22,9 @@ $contentHeight: 370px;
   width: 100%;
   border-radius: $borderRadius $borderRadius 0 0;
   background-color: $light;
-  border: $blueBorderThin;
+  border-top: $blueBorderThin;
+  border-left: $blueBorderThin;
+  border-right: $blueBorderThin;
   margin-top: -1px;
   align-self: center;
 
@@ -37,6 +39,14 @@ $contentHeight: 370px;
   border-radius: 0 0 $borderRadius $borderRadius;
   margin-bottom: -1px;
   align-self: center;
-  overflow-x: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.detail-chart-container-inner {
+  height: 100%;
+
+  canvas {
+    height: $contentHeight - $goalTileHeight;
+    cursor: pointer;
+  }
 }
