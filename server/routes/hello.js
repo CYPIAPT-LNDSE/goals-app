@@ -51,10 +51,9 @@ module.exports = {
             if (getUserDbErr) {
               return reply(getUserDbErr + 'error getting user from database');
             }
-            console.log("stringifying id: ",userId.toString());
             request.cookieAuth.set({ id: userId, });
             reply.redirect('/').
-            state('new-user', { 'id': userId.toString(), });
+            state('new-user', userId.toString());
           });
         });
       });

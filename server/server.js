@@ -22,7 +22,7 @@ server.state('new-user', {
   ttl: 30 * 24 * 60 * 60 * 1000,
   isSecure: process.env.NODE_ENV === 'PRODUCTION',
   isHttpOnly: false,
-  encoding: 'base64',
+  encoding: 'none',
   clearInvalid: false,
   strictHeader: true,
 });

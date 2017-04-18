@@ -13,7 +13,6 @@ import router from './../router.js';
 import socket from '../sockets.js';
 
 const MainContent = props => {
-  // socket.emit('newuser', { id: 1, });
 
   socket.on('userdata', (data) => {
     props.onReceiveData(data);

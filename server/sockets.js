@@ -8,12 +8,8 @@ const createSocket = (listener) => {
   io.set('authorization', (handshakeData, accept) => {
 
     if (handshakeData.headers.cookie) {
-      console.log('parsed: ', cookieParser.parse(handshakeData.headers.cookie)['new-user']);
-      // console.log(cookieParser.signedCookies(handshakeData.headers.cookie, process.env.COOKIE_PASSWORD));
-      const cookie = handshakeData.headers.cookie['new-user'];
-      console.log(cookie);
+      const cookie = cookieParser.parse(handshakeData.headers.cookie)['new-user'];
     } else {
-      console.log('no cookie');
       return accept('No cookie transmitted.', false);
     }
 
