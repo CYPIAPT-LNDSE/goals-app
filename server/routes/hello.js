@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
-const mockData = require('./../mock.js');
+const getUser = require('./../database/get-user.js');
 
 module.exports = {
   path: '/hello',
@@ -31,7 +31,7 @@ module.exports = {
 
         const accessToken = JSON.parse(body).access_token;
         if (!accessToken) {
-          reply('problem verifying user with Facebook');
+          reply('problem verifying user with Facebook, no access token');
         }
 
         const graphUrl = 'https://graph.facebook.com/me?access_token=' + accessToken;
@@ -42,19 +42,16 @@ module.exports = {
           const fb_id = userData.id;
 
           // check if user exists in DB
-          const user = mockData.users.find(user => user.fb_id === fb_id);
+          getUser(fb_id, (err, users) => {
+            if (err) reply(err);
 
-          if (user) {
-            const user_id = user.id;
-            request.cookieAuth.set({ id: user_id, });
-            reply.redirect('/');
-          } else {
-            reply('user not found');
-            // create a new user in DB,
-            // generate new ID
-            // set cookie
-            // redirect
-          }
+            if (users) {
+              request.cookieAuth.set({ id: users.id, });
+              reply.redirect('/');
+            } else {
+              reply('user not found');
+            }
+          });
         });
       });
     },
