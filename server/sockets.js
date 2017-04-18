@@ -4,7 +4,7 @@ const cookieParser = require('cookie');
 
 const createSocket = (listener) => {
   const io = socketio.listen(listener);
-  // io.use(cookieParser);
+  
   io.set('authorization', (handshakeData, accept) => {
 
     if (handshakeData.headers.cookie) {
