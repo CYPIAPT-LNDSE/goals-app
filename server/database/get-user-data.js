@@ -13,7 +13,7 @@ const getUserData = (id) => {
       console.log(goalsErr);
       return '';
     }
-
+    const goals = goalsRes.rows;
     console.log(goalsRes.rows);
   });
   // for each goal get the ratings
