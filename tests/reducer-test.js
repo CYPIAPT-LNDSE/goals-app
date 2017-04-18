@@ -58,6 +58,13 @@ tape(`backstep function switches step property to last step in
       newRating: {},
     },
   };
+
+  const stateLineChartDetail = {
+    ...defaultState,
+    step: steps.LINE_CHART_DETAIL,
+    previousStep: steps.GOALS_LIST,
+    currentGoal: {},
+  };
   /* default */
   t.equal(backStep(stateGoalsList).previousStep, null, `default case: previous
     step not changed`);
@@ -93,6 +100,11 @@ tape(`backstep function switches step property to last step in
     feedback page sets step to rate-goal page`);
   t.equal(backStep(stateFeedback).previousStep, steps.RATE_GOAL, `previous step
     not changed on step back from feedback page`);
+  t.equal(backStep(stateLineChartDetail).step, steps.VIEW_GOAL, `step back from
+    line chart detail page sets page to view goal page`);
+  t.equal(backStep(stateLineChartDetail).previousStep, steps.GOALS_LIST, `step
+    back grom line chart detail page does not change previous step
+    (stays on goals list)`);
   t.end();
 });
 
@@ -499,7 +511,7 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
 });
 
 tape(`test reducer case STEP_LINE_CHART_DETAIL: sets step to LINE_CHART_DETAIL
-  and previousStep to VIEW_GOAL`, (t) => {
+  `, (t) => {
 
   const initialState = {
     ...defaultState,
@@ -513,7 +525,6 @@ tape(`test reducer case STEP_LINE_CHART_DETAIL: sets step to LINE_CHART_DETAIL
   const nextState = reducer(initialState, actionStepLineChartDetail);
 
   t.equal(nextState.step, steps.LINE_CHART_DETAIL);
-  t.equal(nextState.previousStep, steps.VIEW_GOAL);
   t.end();
 });
 
