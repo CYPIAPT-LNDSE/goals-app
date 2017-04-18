@@ -211,6 +211,12 @@ export default (state = defaultState, action) => {
       step: steps.VIEW_GOAL,
       previousStep: steps.FEEDBACK,
     };
+  case types.STEP_LINE_CHART_DETAIL:
+    return {
+      ...state,
+      step: steps.LINE_CHART_DETAIL,
+      previousStep: steps.VIEW_GOAL,
+    };
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,

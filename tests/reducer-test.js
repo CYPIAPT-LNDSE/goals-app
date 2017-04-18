@@ -498,6 +498,25 @@ tape('test reducer SAVE_GOAL: new rating saved in state', (t) => {
   t.end();
 });
 
+tape(`test reducer case STEP_LINE_CHART_DETAIL: sets step to LINE_CHART_DETAIL
+  and previousStep to VIEW_GOAL`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    step: steps.VIEW_GOAL,
+  };
+
+  const actionStepLineChartDetail = {
+    type: types.STEP_LINE_CHART_DETAIL,
+  };
+
+  const nextState = reducer(initialState, actionStepLineChartDetail);
+
+  t.equal(nextState.step, steps.LINE_CHART_DETAIL);
+  t.equal(nextState.previousStep, steps.VIEW_GOAL);
+  t.end();
+});
+
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {
