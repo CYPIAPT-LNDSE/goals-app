@@ -102,6 +102,9 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
   };
 };
 
+export const selectRatingById = (id, arr) =>
+  arr.find(rating => rating.id === id) || null;
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -220,6 +223,14 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.LINE_CHART_DETAIL,
+    };
+  case types.SELECT_RATING:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        ratingSelected: selectRatingById(action.rating, state.currentGoal.ratings),
+      },
     };
   case types.SET_PENDING_SYNC_OPEN:
     return {

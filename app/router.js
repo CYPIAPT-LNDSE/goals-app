@@ -52,6 +52,7 @@ const router = (props) => {
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
+        onSelectRating={ props.onSelectRating }
       />;
   }
 };
@@ -74,6 +75,7 @@ router.propTypes = {
   triggerConfirmation: React.PropTypes.func,
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
+  onSelectRating: React.PropTypes.func,
 };
 
 export default router;
