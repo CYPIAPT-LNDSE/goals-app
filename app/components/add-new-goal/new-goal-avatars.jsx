@@ -2,6 +2,8 @@ import React from 'react';
 
 import availableAvatars from './../../avatars.js';
 
+const avatarNames = availableAvatars.map(av => av.avatar);
+
 class Avatars extends React.Component {
 
   constructor(props) {
@@ -34,8 +36,8 @@ class Avatars extends React.Component {
       </div>
       )
     );
-    const topRow = createAvatarRow(availableAvatars.slice(0, 2));
-    const bottomRow = createAvatarRow(availableAvatars.slice(2));
+    const topRow = createAvatarRow(avatarNames.slice(0, 2));
+    const bottomRow = createAvatarRow(avatarNames.slice(2));
 
     return (
       <div className="newGoal_avatarsContainer">
