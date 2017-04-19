@@ -15,7 +15,7 @@
 .login-button {
   background-color: #3C5193;
   border-radius: 8px;
-  width: 259px;
+  width: 240px;
   border: 0;
   position: absolute;
   top: 64.5%;
@@ -36,7 +36,7 @@
 
 .login-facebook-icon {
   height: 80%;
-  margin: 10% 10px;
+  margin: 6% 10px;
 }
 
 .button-inner {
