@@ -4,15 +4,18 @@ import * as steps from './../steps.js';
 
 const tile = ({ goal, step, onSelectGoal, }) => {
 
-  const pathAvatar = `./images/avatars/${goal.avatar}.svg`;
-  const score = step === steps.RATE_GOAL
+  const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
+
+  const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
     ? goal.newRating.score || 0
     : goal.ratings && goal.ratings.length
       ? goal.ratings[0].score
       : undefined;
 
-  const style = {
-    width: (score === undefined) ? 0 : `${score * 10}%`,
+  const progressStyle = {
+    width: score === undefined
+      ? 0
+      : `${score * 10}%`,
   };
 
   const clickGoal = (goal) => {
@@ -22,14 +25,17 @@ const tile = ({ goal, step, onSelectGoal, }) => {
   };
 
   return (
-    <div className="goalTile" onClick={ () => { clickGoal(goal); } }>
+    <div
+      className="goalTile"
+      onClick={ () => { clickGoal(goal); }
+    }>
       <div
         className="goalTile_progress goal-tile-rating-green-background0"
-        style={ style }
+        style={ progressStyle }
       ></div>
       <div className="goalTile_progress"></div>
       <div className="goalTile_avatarContainer">
-        <img className="goalTile_img" src={ pathAvatar } />
+        <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
       </div>
       <div className="goalTile_nameContainer">
         <p>{ goal.name }</p>
