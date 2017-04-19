@@ -13,8 +13,10 @@ class RateGoalSlider extends React.Component {
   }
 
   render() {
+
+    const getClassName = avatar => `rate-goal-slider-inner rate-goal-slider-${avatar}`;
     return (
-      <div className="rate-goal-slider-inner">
+      <div className={ getClassName(this.props.goal.avatar) }>
         <input
           className="rate-goal-slider"
           type="range"

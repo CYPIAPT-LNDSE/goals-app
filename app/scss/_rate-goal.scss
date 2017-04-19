@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'general';
+@import 'avatars';
 
 $contentWidth: 90%;
 $ratingBubbleSize: 30px;
@@ -67,10 +68,49 @@ input[type=range]::-webkit-slider-thumb {
   height: 50px;
   width: 15px;
   background: transparent;
-  background-image: url('./../assets/images/pepper_slider.svg');
+  //background-image: url($pepperSlider);
   cursor: pointer;
   margin-top: -20px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  background: url('./../assets/images/pepper_slider.svg') no-repeat center;
+  //background: url($pepperSlider) no-repeat center;
+}
+
+.rate-goal-slider-cactus {
+  input[type=range]::-webkit-slider-thumb {
+    width: 20px;
+    background-image:
+      url($cactusSlider);
+    background:
+      url($cactusSlider) no-repeat center;
+  }
+}
+
+.rate-goal-slider-pepper {
+  input[type=range]::-webkit-slider-thumb {
+    background-image:
+      url($pepperSlider);
+    background:
+      url($pepperSlider) no-repeat center;
+  }
+}
+
+.rate-goal-slider-pumpkin {
+  input[type=range]::-webkit-slider-thumb {
+    width: 34px;
+    background-image:
+      url($pumpkinSlider);
+    background:
+      url($pumpkinSlider) no-repeat center;
+  }
+}
+
+.rate-goal-slider-flower {
+  input[type=range]::-webkit-slider-thumb {
+    width: 34px;
+    background-image:
+      url($flowerSlider);
+    background:
+      url($flowerSlider) no-repeat center;
+  }
 }
 
 input[type=range]::-webkit-slider-runnable-track {
