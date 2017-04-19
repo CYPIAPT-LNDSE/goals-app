@@ -16,6 +16,7 @@ const tile = ({ goal, step, onSelectGoal, }) => {
     width: score === undefined
       ? 0
       : `${score * 10}%`,
+    transition: 'width 1s ease',
   };
 
   const clickGoal = (goal) => {
