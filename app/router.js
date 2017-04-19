@@ -46,13 +46,13 @@ const router = (props) => {
   case steps.LINE_CHART_DETAIL:
     return <LineChartDetail
       currentGoal={ props.currentGoal }
+      onSelectRating={ props.onSelectRating }
     />;
   default:
     return <GoalsList
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
-        onSelectRating={ props.onSelectRating }
       />;
   }
 };
