@@ -68,10 +68,8 @@ input[type=range]::-webkit-slider-thumb {
   height: 50px;
   width: 15px;
   background: transparent;
-  //background-image: url($pepperSlider);
   cursor: pointer;
   margin-top: -20px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  //background: url($pepperSlider) no-repeat center;
 }
 
 .rate-goal-slider-cactus {
@@ -80,7 +78,9 @@ input[type=range]::-webkit-slider-thumb {
     background-image:
       url($cactusSlider);
     background:
-      url($cactusSlider) no-repeat center;
+      url($cactusSlider)
+      no-repeat
+      center;
   }
 }
 
@@ -89,7 +89,9 @@ input[type=range]::-webkit-slider-thumb {
     background-image:
       url($pepperSlider);
     background:
-      url($pepperSlider) no-repeat center;
+      url($pepperSlider)
+      no-repeat
+      center;
   }
 }
 
@@ -99,7 +101,9 @@ input[type=range]::-webkit-slider-thumb {
     background-image:
       url($pumpkinSlider);
     background:
-      url($pumpkinSlider) no-repeat center;
+      url($pumpkinSlider)
+      no-repeat
+      center;
   }
 }
 
@@ -109,7 +113,9 @@ input[type=range]::-webkit-slider-thumb {
     background-image:
       url($flowerSlider);
     background:
-      url($flowerSlider) no-repeat center;
+      url($flowerSlider)
+      no-repeat
+      center;
   }
 }
 
