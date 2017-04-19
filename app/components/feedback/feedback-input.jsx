@@ -16,7 +16,7 @@ class FeedbackInput extends React.Component {
         <textarea
           name="new-feedback"
           id="newFeedbackInput"
-          maxLength="200"
+          maxLength="140"
           value={ this.props.comment}
           placeholder="I gave my goal this reason because..."
           className="feedback-input"
