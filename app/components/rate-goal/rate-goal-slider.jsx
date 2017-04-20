@@ -13,17 +13,19 @@ class RateGoalSlider extends React.Component {
   }
 
   render() {
-    const avatar = this.props.goal.avatar;
 
+    const goal = this.props.goal;
+
+    const getClassName = ({ avatar, }) => `rate-goal-slider-inner rate-goal-slider-${avatar}`;
 
     return (
-      <div className="rate-goal-slider-inner">
+      <div className={ getClassName(goal) }>
         <input
           className="rate-goal-slider"
           type="range"
           min="0"
           max="10"
-          value={ (this.props.goal.newRating.score || 0) }
+          value={ (goal.newRating.score || 0) }
           step="1"
           onInput={ this.handleChange }
         />
