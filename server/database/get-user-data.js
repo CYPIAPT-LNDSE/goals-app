@@ -9,13 +9,12 @@ GROUP BY goals.goal_id, ratings.rating_id
 ORDER BY goals.goal_id, ratings.rating ASC`;
 
 
-const getUserData = (id) => {
+const getUserData = (id, callback) => {
   dbClient.query(getGoals, [ id, ], (goalsErr, goalsRes) => {
     if(goalsErr) {
-      console.log(goalsErr);
-      return '';
+      callback('');
     }
-    return formatUserData(goalsRes.rows);
+    callback(formatUserData(goalsRes.rows));
   });
 };
 

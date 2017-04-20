@@ -18,7 +18,9 @@ const createSocket = (listener) => {
   });
 
   io.on('connection', (socket) => {
-    socket.emit('userdata', getUserData(id));
+    getUserData(id, (res) => {
+      socket.emit('userdata', res);
+    });
   });
 };
 
