@@ -1,10 +1,13 @@
 @import "colors";
 
 $maxPageWidth: 600px;
+$maxContentWidth: 400px;
 $blueBorder: 2px solid $blue;
 $blueBorderThin: 1px solid $blue;
 $navItemHeight: 28px;
 $borderRadius: 6%;
+$gradientBackground: linear-gradient(270deg, $blue 0%, $lightGreen 100%);
+$goalTileHeight: 98px;
 
 @mixin flexCenterColumn {
   display: flex;
