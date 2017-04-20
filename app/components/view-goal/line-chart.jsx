@@ -77,8 +77,6 @@ const LineChart = React.createClass({
     icon.src = getIconSrc(icons, avatar);
 
     const clickFunction = (e, a) => {
-      console.log('e', e);
-      console.log('a', a);
       const index = a[0]._index;
       const rating = getRatingFromIndex(index, latestRatings);
       this.props.onSelectRating(rating);
