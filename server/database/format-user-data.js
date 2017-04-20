@@ -1,14 +1,18 @@
 module.exports = (goalsArr) => {
+  let goals = [];
+  let previousGoalId = null;
   // Add all the goals into one array with empty ratings
-  let goals = goalsArr;
-  goals.reduce((prev, current) => {
-    return prev.goal_id !== current.goal_id ? {
-      id: current.goal_id,
-      user_id: current.user_id,
-      name: current.title,
-      avatar: current.icon,
-      ratings: [],
-    } : {};
+  goalsArr.forEach ((goal) => {
+    if(previousGoalId !== goal.goal_id){
+      goals = goals.concat([{
+        id: goal.goal_id,
+        user_id: goal.user_id,
+        name: goal.title,
+        avatar: goal.icon,
+        ratings: [],
+      },]);
+      previousGoalId = goal.goal_id;
+    }
   });
   // Iterate over the goals to add ratings
   goalsArr.forEach( (goal) => {
