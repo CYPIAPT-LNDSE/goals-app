@@ -1,14 +1,20 @@
 import React from 'react';
-import GoalTileComponent from '../goal-tile.jsx'
-import ProgressBarComponent from './progress-bar.jsx'
+import GoalTileComponent from '../goal-tile.jsx';
+import ProgressBarComponent from './progress-bar.jsx';
+import LineChart from './line-chart.jsx';
 
+const viewGoal = ({ currentGoal, rateGoal, }) => {
 
-const viewGoal = ( { currentGoal, rateGoal, } ) => {
-  const progressBars = currentGoal.ratings.slice(0, 3)
+  const ratings = currentGoal.ratings;
+  const latestRatings = ratings.slice(0, 3).reverse();
+
+  const time = new Date().toString();
+  const progressBars = latestRatings
     .map(rating =>
       <ProgressBarComponent
         key={ rating.id }
         rating={ rating }
+        time={ time }
       />
    );
 
@@ -22,11 +28,10 @@ const viewGoal = ( { currentGoal, rateGoal, } ) => {
       </div>
       <div className="line-chart-container">
         <div className="line-chart-title">
-          <p>Line chart</p>
-          <img src="./images/icons/arrow_right.svg" className="line-chart-arrow" />
+          <p id="line-chart-title-text">Your progress so far&nbsp;>></p>
         </div>
-        <div className="line-chart-img">
-          <img src="images/line-chart-placeholder.png" />
+        <div className="line-chart-inner">
+          <LineChart ratings={ latestRatings } avatar={ currentGoal.avatar }/>
         </div>
       </div>
       <div className="view-goal-buttonContainer goal-detail-buttonContainer">
@@ -40,7 +45,12 @@ const viewGoal = ( { currentGoal, rateGoal, } ) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+viewGoal.propTypes = {
+  currentGoal: React.PropTypes.object,
+  rateGoal: React.PropTypes.func,
+};
 
 export default viewGoal;

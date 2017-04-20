@@ -1,73 +1,73 @@
 import React from 'react';
 import GSAP from 'react-gsap-enhancer';
-import { TweenMax, TimelineMax, } from 'gsap';
+import { TimelineMax, } from 'gsap';
 
 const createAnimation = ({target, options, }) => {
 
   const bodyFrames = [
-    { bottom: '50px', height: '0px', },
-    { bottom: '54px', height: '50px', },
-    { bottom: '66px', height: '50px', },
-    { bottom: '70px', height: '60px', },
-    { bottom: '75px', height: '65px', },
-    { bottom: '75px', height: '70px', },
-    { bottom: '80px', height: '70px', },
-    { bottom: '85px', height: '70px', },
-    { bottom: '90px', height: '72px', },
-    { bottom: '95px', height: '77px', },
-    { bottom: '97px', height: '81px', },
+    { bottom: '5px', height: '0px', },
+    { bottom: '15px', height: '50px', },
+    { bottom: '20px', height: '50px', },
+    { bottom: '25px', height: '60px', },
+    { bottom: '30px', height: '65px', },
+    { bottom: '30px', height: '70px', },
+    { bottom: '35px', height: '70px', },
+    { bottom: '40px', height: '70px', },
+    { bottom: '45px', height: '72px', },
+    { bottom: '50px', height: '77px', },
+    { bottom: '52px', height: '81px', },
   ];
 
   const armFrames = [
-    { visibility: 'hidden' },
-    { visibility: 'hidden' },
-    { visibility: 'hidden' },
-    { visibility: 'hidden' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
-    { visibility: 'visible' },
+    { visibility: 'hidden', },
+    { visibility: 'hidden', },
+    { visibility: 'hidden', },
+    { visibility: 'hidden', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
+    { visibility: 'visible', },
   ];
 
-  const vase = target.find({ id: 'vase' });
-  const cactus3 = target.find({ id: 'cactus3' });
-  const arms = target.find({ id: 'arms' });
+  const cactus3 = target.find({ id: 'cactus3', });
+  const arms = target.find({ id: 'arms', });
 
   let t1 = new TimelineMax();
 
-    const sequence = options.score > options.previousScore
-      ? bodyFrames.slice(options.previousScore, options.score + 1)
-      : bodyFrames.slice(options.score, options.previousScore + 1).reverse();
+  const getFrames = (frames, score, previousScore) => {
+    return score > previousScore
+      ? frames.slice(previousScore, score + 1)
+      : frames.slice(score, previousScore + 1).reverse();
+  };
 
-      const armSequence = options.score > options.previousScore
-        ? armFrames.slice(options.previousScore, options.score + 1)
-        : armFrames.slice(options.score, options.previousScore + 1).reverse();
+  const bodySequence = getFrames(bodyFrames, options.score, options.previousScore);
+  const armsSequence = getFrames(armFrames, options.score, options.previousScore);
 
-    sequence.forEach((frame, index) => {
-      t1.to(cactus3, 0.3, frame, )
-        .to(arms, 0.5, armSequence[index], "-=0.5")
-    });
+  bodySequence.forEach((frame, index) => {
+    t1.to(cactus3, 0.3, frame, )
+        .to(arms, 0.5, armsSequence[index], '-=0.5');
+  });
 
-    t1.eventCallback("onComplete", options.setPreviousScore());
+  t1.eventCallback('onComplete', options.setPreviousScore());
 
-    return t1;
-}
+  return t1;
+};
 
 class Cactus extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       previousScore: this.props.previousScore,
       score: this.props.score,
     };
-  };
+  }
 
   componentWillMount() {
-      this.timerID = setInterval(
+    this.timerID = setInterval(
         () => this.tick(),
         100);
   }
@@ -77,20 +77,23 @@ class Cactus extends React.Component {
   }
 
   tick() {
+
     this.setState({
       previousScore: this.props.previousScore,
       score: this.props.score,
     });
+
     const options = {
       ...this.state,
       setPreviousScore: this.props.setPreviousScore,
     };
-    console.log(options);
 
     if (options.score === options.previousScore) {
       return;
     }
+
     this.animation = this.addAnimation(createAnimation, options);
+
   }
 
   render() {
@@ -126,4 +129,10 @@ class Cactus extends React.Component {
   }
 }
 
-export default GSAP()(Cactus)
+Cactus.propTypes = {
+  previousScore: React.PropTypes.int,
+  score: React.PropTypes.int,
+  setPreviousScore: React.PropTypes.func,
+};
+
+export default GSAP()(Cactus);

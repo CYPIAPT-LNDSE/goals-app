@@ -2,27 +2,32 @@ import React from 'react';
 
 import * as steps from './../steps.js';
 
-const tile = props => {
+const tile = ({ goal, step, onSelectGoal, }) => {
 
-  const goal = props.goal;
-  const pathAvatar = `./images/avatars/${goal.avatar}.png`;
-  const score = goal.ratings && goal.ratings.length ? goal.ratings[0].score :
-    undefined;
-  const style = (score === undefined) ? {width: 0} :
-    {width: `${score*10}%`};
+  const pathAvatar = `./images/avatars/${goal.avatar}.svg`;
+  const score = step === steps.RATE_GOAL
+    ? goal.newRating.score || 0
+    : goal.ratings && goal.ratings.length
+      ? goal.ratings[0].score
+      : undefined;
+
+  const style = {
+    width: (score === undefined) ? 0 : `${score * 10}%`,
+  };
+
+  const clickGoal = (goal) => {
+    if (step === steps.GOALS_LIST) {
+      onSelectGoal(goal);
+    }
+  };
 
   return (
-    <div
-      className="goalTile"
-      onClick={ () => {
-        if (props.step === steps.GOALS_LIST) {
-          props.onSelectGoal(goal);
-        }
-      }}
-    >{/* outer div for goal tile */}
-      <div className="goalTile_progress goal-tile-rating-green-background0"
-        style={style}> {/* green background showing progress */}
-      </div>
+    <div className="goalTile" onClick={ () => { clickGoal(goal); } }>
+      <div
+        className="goalTile_progress goal-tile-rating-green-background0"
+        style={ style }
+      ></div>
+      <div className="goalTile_progress"></div>
       <div className="goalTile_avatarContainer">
         <img className="goalTile_img" src={ pathAvatar } />
       </div>
@@ -34,6 +39,12 @@ const tile = props => {
       </div>
     </div>
   );
+};
+
+tile.propTypes = {
+  goal: React.PropTypes.object,
+  step: React.PropTypes.string,
+  onSelectGoal: React.PropTypes.func,
 };
 
 export default tile;

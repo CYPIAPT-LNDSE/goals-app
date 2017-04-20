@@ -1,0 +1,61 @@
+@import "colors";
+@import "general";
+
+.menu-modal {
+
+  a, a:hover, a:active, a:visited {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+  @include modal;
+}
+
+.close-button-container {
+  position: relative;
+  align-self: flex-start;
+  height: 90px;
+  width: 100%;
+  @include navContainer;
+
+  button {
+    position: absolute;
+    right: 15px;
+    height: $navItemHeight;
+    width: $navItemHeight;
+    text-align: center;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: hsla(0, 0, 100%, 0.5);
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.menu-links-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100px;
+  max-width: 600px;
+
+  a {
+    transition: background-color 0.1s ease;
+  }
+
+  a:hover {
+    color: $light;
+    font-weight: bolder;
+  }
+}

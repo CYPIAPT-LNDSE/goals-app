@@ -1,5 +1,4 @@
 import React from 'react';
-import { TweenMax, TimeLineMax, } from 'gsap';
 
 class RateGoalSlider extends React.Component {
   constructor(props) {
@@ -9,7 +8,8 @@ class RateGoalSlider extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    this.props.onMoveSlider(event.target.value);
+    const value = parseInt(event.target.value, 10);
+    this.props.onMoveSlider(parseInt(value));
   }
 
   render() {
@@ -28,8 +28,13 @@ class RateGoalSlider extends React.Component {
           onInput={ this.handleChange }
         />
       </div>
-    )
-  };
+    );
+  }
 }
+
+RateGoalSlider.propTypes = {
+  onMoveSlider: React.PropTypes.func,
+  goal: React.PropTypes.object,
+};
 
 export default RateGoalSlider;

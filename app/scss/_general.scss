@@ -1,7 +1,61 @@
 @import "colors";
 
+$maxPageWidth: 600px;
 $blueBorder: 2px solid $blue;
 $blueBorderThin: 1px solid $blue;
+$navItemHeight: 28px;
+$borderRadius: 6%;
+
+@mixin flexCenterColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flexCenterRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@mixin navContainer {
+  position: absolute;
+  top: 30px;
+  display: inline-block;
+  height: $navItemHeight;
+  cursor: pointer;
+
+  img {
+    height: $navItemHeight;
+  }
+}
+
+@mixin modal {
+  @include flexCenterColumn;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  z-index: 1;
+  background-color: $transparentBlue;
+  color: #fff;
+  font-family: openSans;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+
+  a, a:hover, a:active, a:visited {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .modal-text {
+    color: #fff;
+    font-size: 22px;
+  }
+}
 
 @font-face {
   font-family: leagueSpartan;
@@ -37,18 +91,17 @@ $blueBorderThin: 1px solid $blue;
 
   button {
     @include regularFont;
-    width: 230px;
     height: 100%;
+    width: 230px;
     border: $blueBorder;
     border-radius: 86px;
     background-color: transparent;
     font-family: leagueSpartan;
+    padding: 0;
+    background: none;
+    outline: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
-
-    &:active, &:hover, &:focus {
-      outline: none;
-    }
 
     &:hover {
       background-color: $blue;
@@ -59,7 +112,15 @@ $blueBorderThin: 1px solid $blue;
       opacity: 0.5;
       background-color: transparent;
       color: $blue;
-      outline: none;
     }
   }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }

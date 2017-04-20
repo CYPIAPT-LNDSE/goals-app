@@ -68,3 +68,38 @@ $contentWidth: 95%;
     height: 50px;
   }
 }
+
+.confirmation-modal {
+  @include modal;
+
+  a {
+    border: 2px #fff solid;
+    border-radius: 80px;
+    width: 100px;
+    height: 30px;
+    align-self: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #fff;
+      color: $blue;
+    }
+  }
+}
+
+.path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.confirmation-tick {
+  height: 170px;
+  width: 170px;
+  align-self: center;
+  margin: 30px 0 50px 0;
+}
