@@ -4,6 +4,19 @@ $maxPageWidth: 600px;
 $blueBorder: 2px solid $blue;
 $blueBorderThin: 1px solid $blue;
 $navItemHeight: 28px;
+$borderRadius: 6%;
+
+@mixin flexCenterColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flexCenterRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 @mixin navContainer {
   position: absolute;
@@ -18,11 +31,9 @@ $navItemHeight: 28px;
 }
 
 @mixin modal {
+  @include flexCenterColumn;
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   height: 100%;
   width: 100%;
   max-width: 600px;
@@ -80,18 +91,17 @@ $navItemHeight: 28px;
 
   button {
     @include regularFont;
-    width: 230px;
     height: 100%;
+    width: 230px;
     border: $blueBorder;
     border-radius: 86px;
     background-color: transparent;
     font-family: leagueSpartan;
+    padding: 0;
+    background: none;
+    outline: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
-
-    &:active, &:hover, &:focus {
-      outline: none;
-    }
 
     &:hover {
       background-color: $blue;
@@ -102,7 +112,15 @@ $navItemHeight: 28px;
       opacity: 0.5;
       background-color: transparent;
       color: $blue;
-      outline: none;
     }
   }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
