@@ -46,6 +46,7 @@ const router = (props) => {
   case steps.LINE_CHART_DETAIL:
     return <LineChartDetail
       currentGoal={ props.currentGoal }
+      onSelectRating={ props.onSelectRating }
     />;
   default:
     return <GoalsList
@@ -74,6 +75,7 @@ router.propTypes = {
   triggerConfirmation: React.PropTypes.func,
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
+  onSelectRating: React.PropTypes.func,
 };
 
 export default router;
