@@ -1,5 +1,4 @@
 const socketio = require('socket.io');
-// const socketManager = require('./socket-manager.js');
 const getUserData = require('./database/get-user-data.js');
 const cookieParser = require('cookie');
 
