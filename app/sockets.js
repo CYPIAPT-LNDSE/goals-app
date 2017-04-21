@@ -9,10 +9,11 @@ const startSyncGoal = (goal, store) => {
   // sends data to server
   socket.emit('goal', JSON.stringify(goal), (socketErr, socketResponse) => {
     if (socketErr) {
+      console.log(socketErr);
       return store.dispatch(updateSyncFailure(goal.id));
     }
-    
-    store.dispatch(updateSyncSuccess(socketResponse.goal_id));
+    console.log(socketResponse);
+    store.dispatch(updateSyncSuccess(socketResponse));
   });
 
   // set pending sync open to true
@@ -39,6 +40,7 @@ export const socketsMiddleware = (store) =>
     };
 
 export default (store) => {
+
   socket = io();
 
   socket.on('userdata', (data) => {

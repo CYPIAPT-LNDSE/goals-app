@@ -28,11 +28,16 @@ const createSocket = (listener) => {
       const goalData = JSON.parse(data);
       handleGoalData(goalData, id, (err, result) => {
         if (err) {
-          clientCallback(true);
+          console.log(err);
+          clientCallback(err);
         } else if (result === 'goal already exists') {
           return;
         } else {
-          clientCallback(null, result.rows[0]);
+          const returnData = result.rows
+            ? result.rows[0].goal_id
+            : result;
+
+          clientCallback(null, returnData);
         }
       });
     });
