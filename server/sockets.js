@@ -24,15 +24,15 @@ const createSocket = (listener) => {
       socket.emit('userdata', res);
     });
 
-    socket.on('goal', (data) => {
+    socket.on('goal', (data, clientCallback) => {
       const goalData = JSON.parse(data);
       handleGoalData(goalData, id, (err, result) => {
         if (err) {
-          throw new Error(err);
+          clientCallback(true);
         } else if (result === 'goal already exists') {
           return;
         } else {
-          socket.emit('goalupdatesuccess', result.rows[0]);
+          clientCallback(null, result.rows[0]);
         }
       });
     });

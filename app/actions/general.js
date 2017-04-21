@@ -14,3 +14,13 @@ export const updateSyncSuccess = goalId => ({
   type: types.UPDATE_SYNC_SUCCESS,
   id: goalId,
 });
+
+export const updateSyncFailure = goalId => ({
+  type: types.UPDATE_SYNC_FAILURE,
+  id: goalId,
+});
+
+export const resetUpdateCount = goalId => ({
+  type: types.RESET_UPDATE_COUNT,
+  id: goalId,
+});
