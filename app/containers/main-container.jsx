@@ -27,7 +27,10 @@ const MainContent = props => {
   return (
     <div className="MainContent" style={ dynamicStyle }>{ view }</div>
   );
+};
 
+MainContent.propTypes = {
+  onReceiveData: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({
