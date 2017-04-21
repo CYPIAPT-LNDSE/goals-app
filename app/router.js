@@ -8,6 +8,7 @@ import AddGoal from './components/add-new-goal/add-new-goal.jsx';
 import ViewGoal from './components/view-goal/view-goal.jsx';
 import RateGoal from './components/rate-goal/rate-goal.jsx';
 import Feedback from './components/feedback/feedback.jsx';
+import LineChartDetail from './components/view-goal/line-chart-detail.jsx';
 
 const router = (props) => {
 
@@ -27,6 +28,7 @@ const router = (props) => {
     return <ViewGoal
         currentGoal = { props.currentGoal }
         rateGoal={ props.stepRateGoal }
+        stepLineChartDetail = { props.stepLineChartDetail }
       />;
   case steps.RATE_GOAL:
     return <RateGoal
@@ -41,6 +43,10 @@ const router = (props) => {
         onInputFeedback= { props.onInputFeedback }
         saveRating= { props.saveRating }
       />;
+  case steps.LINE_CHART_DETAIL:
+    return <LineChartDetail
+      currentGoal={ props.currentGoal }
+    />;
   default:
     return <GoalsList
         goals={ props.goals }
@@ -67,6 +73,7 @@ router.propTypes = {
   saveRating: React.PropTypes.func,
   triggerConfirmation: React.PropTypes.func,
   setPreviousScore: React.PropTypes.func,
+  stepLineChartDetail: React.PropTypes.func,
 };
 
 export default router;
