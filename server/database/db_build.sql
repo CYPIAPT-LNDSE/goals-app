@@ -7,10 +7,9 @@ CREATE TABLE users (
 );
 
 CREATE TABLE goals (
-  goal_id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER NOT NULL,
+  goal_id TEXT PRIMARY KEY NOT NULL,
+  user_id TEXT NOT NULL,
   title TEXT NOT NULL,
-  rating INTEGER,
   icon TEXT,
   deleted BOOLEAN DEFAULT FALSE,
   date_created TIMESTAMP NOT NULL DEFAULT now()
@@ -18,8 +17,8 @@ CREATE TABLE goals (
 
 CREATE TABLE ratings (
   rating_id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER,
-  goal_id INTEGER,
+  user_id TEXT,
+  goal_id TEXT,
   rating INTEGER,
   comment TEXT,
   date_created TIMESTAMP NOT NULL DEFAULT now()
