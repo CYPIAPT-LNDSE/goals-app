@@ -15,6 +15,7 @@ import socket from '../sockets.js';
 const MainContent = props => {
 
   socket.on('userdata', (data) => {
+    console.log(data);
     props.onReceiveData(data);
   });
 
