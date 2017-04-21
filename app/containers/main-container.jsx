@@ -10,13 +10,8 @@ import * as actionsFeedback from './../actions/feedback.js';
 import * as actionsGeneral from './../actions/general.js';
 
 import router from './../router.js';
-import socket from '../sockets.js';
 
 const MainContent = props => {
-
-  socket.on('userdata', (data) => {
-    props.onReceiveData(data);
-  });
 
   const view = router(props);
   const navbarHeight = 90;
