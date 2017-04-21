@@ -216,7 +216,7 @@ export default (state = defaultState, action) => {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-        ? { ...goal, pendingSync: {open: true,}, }
+        ? { ...goal, pendingSync: { open: true, }, }
         : goal;
       }),
     };
