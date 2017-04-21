@@ -4,7 +4,8 @@ module.exports = [
     method: 'GET',
     handler: (request, reply) => {
       request.cookieAuth.clear();
-      reply.redirect('/login');
+      reply.redirect('/login').
+      unstate('new-user');
     },
   },
 ];

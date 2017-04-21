@@ -1,12 +1,12 @@
 const hapi = require('hapi');
 const inert = require('inert');
 const fs = require('fs');
-const auth = require('hapi-auth-cookie');
+const cookieAuth = require('hapi-auth-cookie');
+const { createSocket, } = require('./sockets.js');
 
 require('env2')('./config.env');
 
 const routes = require('./index.js');
-const socket = require('./sockets.js');
 const server = new hapi.Server();
 
 server.connection({
@@ -18,7 +18,16 @@ server.connection({
   },
 });
 
-server.register([ inert, auth, ], (err) => {
+server.state('new-user', {
+  ttl: 30 * 24 * 60 * 60 * 1000,
+  isSecure: process.env.NODE_ENV === 'PRODUCTION',
+  isHttpOnly: false,
+  encoding: 'none',
+  clearInvalid: false,
+  strictHeader: true,
+});
+
+server.register([ inert, cookieAuth,], (err) => {
   if (err) { throw new Error (err); }
 
   server.auth.strategy('session', 'cookie', true, {
@@ -31,8 +40,11 @@ server.register([ inert, auth, ], (err) => {
   });
 
   server.route(routes);
+
 });
 
-socket(server.listener);
+createSocket(server.listener);
 
-module.exports = server;
+module.exports = {
+  server: server,
+};
