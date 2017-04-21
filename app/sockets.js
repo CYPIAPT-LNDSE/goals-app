@@ -1,9 +1,17 @@
 import io from 'socket.io-client';
 
-import * as types from './action_types.js';
-import { receiveDbData, } from './actions/general.js';
+import { receiveDbData, setPendingSyncOpen, updateSyncSuccess, } from './actions/general.js';
 
 let socket;
+
+const startSyncGoal = (goal, store) => {
+
+  // sends data to server
+  socket.emit('goal', JSON.stringify(goal));
+
+  // set pending sync open to true
+  store.dispatch(setPendingSyncOpen(goal));
+};
 
 export const socketsMiddleware = (store) =>
   next =>
@@ -15,7 +23,7 @@ export const socketsMiddleware = (store) =>
         goals.forEach((goal) => {
           if (goal.pendingSync && goal.pendingSync.open) return;
           if (goal.updateCount === goal.syncDBCount) return;
-          console.log('needs to sync ' + goal.name);
+          startSyncGoal(goal, store);
         });
       }
       return result;
@@ -27,4 +35,12 @@ export default (store) => {
   socket.on('userdata', (data) => {
     store.dispatch(receiveDbData(data));
   });
+
+  // handle failure here
+
+  socket.on('goalupdatesuccess', (data) => {
+    store.dispatch(updateSyncSuccess(data.goal_id));
+  });
+
+  // reset update count here
 };

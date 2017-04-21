@@ -1,6 +1,9 @@
 const socketio = require('socket.io');
-const getUserData = require('./database/get-user-data.js');
 const cookieParser = require('cookie');
+
+/* database */
+const getUserData = require('./database/get-user-data.js');
+const handleGoalData = require('./database/handle-goal-data.js');
 
 const createSocket = (listener) => {
   const io = socketio.listen(listener);
@@ -19,6 +22,19 @@ const createSocket = (listener) => {
   io.on('connection', (socket) => {
     getUserData(id, (res) => {
       socket.emit('userdata', res);
+    });
+
+    socket.on('goal', (data) => {
+      const goalData = JSON.parse(data);
+      handleGoalData(goalData, id, (err, result) => {
+        if (err) {
+          throw new Error(err);
+        } else if (result === 'goal already exists') {
+          return;
+        } else {
+          socket.emit('goalupdatesuccess', result.rows[0]);
+        }
+      });
     });
   });
 };
