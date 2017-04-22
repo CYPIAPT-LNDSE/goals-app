@@ -28,7 +28,6 @@ const createSocket = (listener) => {
       const goalData = JSON.parse(data);
       handleGoalData(goalData, id, (err, result) => {
         if (err) {
-          console.log(err);
           clientCallback(err);
         } else if (result === 'goal already exists') {
           return;

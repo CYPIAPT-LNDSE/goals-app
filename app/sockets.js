@@ -12,7 +12,6 @@ const startSyncGoal = (goal, store) => {
       console.log(socketErr);
       return store.dispatch(updateSyncFailure(goal.id));
     }
-    console.log(socketResponse);
     store.dispatch(updateSyncSuccess(socketResponse));
   });
 

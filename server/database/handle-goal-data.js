@@ -1,5 +1,6 @@
 const dbClient = require('./db_connection.js');
 
+/* queries */
 const getGoal = `
   SELECT *
   from goals
@@ -23,43 +24,63 @@ const createRating = `
   VALUES ($1, $2, $3, $4, $5);
 `;
 
-const updateGoal = (dbGoal, clientGoal, userId, callback) => {
+/* helper functions */
+const createTimestamp = date =>
+  require('moment')(date).format('YYYY-MM-DD HH:mm:ss');
+
+const getNewGoalData = (goal, userId) => [
+  goal.id, userId, goal.name, goal.avatar, createTimestamp(goal.date_created),
+];
+
+const getRatingData = (rating, { user_id, goal_id, }) => [
+  user_id, goal_id, rating.score, rating.comment, rating.time,
+];
+
+const findNewRatings = (oldRatings, newRatings) => {
+  const oldRatingsById = oldRatings.map(rating => rating.rating_id);
+  return newRatings.filter(rating => oldRatingsById.indexOf(rating) < 0);
+};
+
+
+// move this to own file for reusability??
+const addRatings = (ratings, dbGoal, finalCallback) => {
+  let count = 0;
+  let errCount = 0;
+
+  ratings.forEach(rating => {
+    dbClient.query(createRating, getRatingData(rating, dbGoal), (createRatingErr) => {
+      if (createRatingErr) {
+        errCount += 1;
+      } else {
+        count += 1;
+      }
+      if (errCount + count === ratings.length) {
+        if (errCount > 0) return finalCallback('failed to add some ratings to database');
+        return finalCallback(null, dbGoal.goal_id);
+      }
+    });
+  });
+};
+
+// compares new goal from client with old goal from DB
+const updateGoal = (dbGoal, clientGoal, callback) => {
 
   // check for new ratings
-  dbClient.query(getRatings, [ clientGoal.id, ], (getRatingsErr, getRatingsResult) => {
-    if (getRatingsErr) {
+  dbClient.query(getRatings, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
+
+    if (dbRatingsErr) {
       return callback('error getting ratings from database');
     }
 
-    if (getRatingsResult.rows.length < clientGoal.ratings.length) {
-      // iterate over ratings
-      const dbRatingsById = getRatingsResult.rows.map(dbRating => dbRating.rating_id);
-      const newRatings = clientGoal.ratings
-        .filter(clientRating => dbRatingsById.indexOf(clientRating.id) < 0);
+    const dbRatings = dbRatingsRes.rows;
 
-      let count = 0;
-      let errorCount = 0;
-
-      newRatings.forEach(rating => {
-
-        const ratingData = [
-          userId, clientGoal.id, rating.score, rating.comment, rating.time,
-        ];
-
-        dbClient.query(createRating, ratingData, (createRatingErr) => {
-          if (createRatingErr) {
-            errorCount += 0;
-            return;
-          }
-          count +=1;
-          if (count + errorCount === newRatings.length) {
-            if (errorCount > 0) return callback(errorCount);
-            else return callback(null, clientGoal.id);
-          }
-        });
-      });
+    if (dbRatings.length >= clientGoal.ratings.length) {
       return callback(null, clientGoal.id);
     }
+
+    const newRatings = findNewRatings(dbRatings, clientGoal.ratings);
+
+    addRatings(newRatings, dbGoal, callback);
   });
 };
 
@@ -73,22 +94,16 @@ module.exports = (goal, user_id, callback) => {
 
     if (getGoalResult.rows.length) {
       // adapt this for new ratings / when we have editing and deleting functionality
-      updateGoal(getGoalResult.rows[0], goal, user_id, callback);
+      updateGoal(getGoalResult.rows[0], goal, callback);
       return;
     }
 
-    const timestamp = require('moment')(goal.date_created)
-      .format('YYYY-MM-DD HH:mm:ss');
-
-    const goalData = [ goal.id, user_id, goal.name, goal.avatar, timestamp, ];
-
-    dbClient.query(addGoal, goalData, (addGoalErr, addGoalResult) => {
-      if(addGoalErr) {
+    // adapt to also handle ratings for these new goals!
+    dbClient.query(addGoal, getNewGoalData(goal, user_id), (addGoalErr) => {
+      if (addGoalErr) {
         return callback('error adding new goal to database ' + addGoalErr);
       }
-      return callback(null, addGoalResult);
+      return callback(null, goal.id);
     });
-
-
   });
 };
