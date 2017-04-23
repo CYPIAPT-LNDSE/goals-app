@@ -7,9 +7,7 @@ export const stepRateGoal = createAction(types.STEP_RATE_GOAL);
 
 export const stepLineChartDetail = createAction(types.STEP_LINE_CHART_DETAIL);
 
-export const selectRating = rating => {
-  return {
-    type: types.SELECT_RATING,
-    rating: rating,
-  };
-};
+export const selectRating = rating => ({
+  type: types.SELECT_RATING,
+  rating: rating,
+});
