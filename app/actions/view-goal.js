@@ -4,3 +4,5 @@ import { createAction, } from 'redux-actions';
 import * as types from '../action_types.js';
 
 export const stepRateGoal = createAction(types.STEP_RATE_GOAL);
+
+export const stepLineChartDetail = createAction(types.STEP_LINE_CHART_DETAIL);

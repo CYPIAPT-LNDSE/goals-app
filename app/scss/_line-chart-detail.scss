@@ -1,0 +1,52 @@
+@import "colors";
+@import "general";
+
+$contentHeight: 370px;
+
+.line-chart-container-detail {
+  max-width: $maxContentWidth;
+  height: $contentHeight;
+  width: 90%;
+  align-self: center;
+  border: $blueBorderThin;
+  border-radius: $borderRadius;
+  background: $gradientBackground;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.line-chart-detail-feedback-container {
+  height: $goalTileHeight;
+  width: 100%;
+  border-radius: $borderRadius $borderRadius 0 0;
+  background-color: $light;
+  border-top: $blueBorderThin;
+  border-left: $blueBorderThin;
+  border-right: $blueBorderThin;
+  margin-top: -1px;
+  align-self: center;
+
+  p {
+    margin: 15px 0 0 10px;
+  }
+}
+
+.detail-chart-container {
+  width: 100%;
+  height: $contentHeight - $goalTileHeight;
+  border-radius: 0 0 $borderRadius $borderRadius;
+  margin-bottom: -1px;
+  align-self: center;
+  overflow-y: scroll;
+}
+
+.detail-chart-container-inner {
+  height: 100%;
+
+  canvas {
+    height: $contentHeight - $goalTileHeight;
+    cursor: pointer;
+  }
+}
