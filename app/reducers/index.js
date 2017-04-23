@@ -47,6 +47,11 @@ export const backStep = (state) => {
         },
       },
     };
+  case steps.LINE_CHART_DETAIL:
+    return {
+      ...state,
+      step: steps.VIEW_GOAL,
+    };
   default:
     return state;
   }
@@ -210,6 +215,11 @@ export default (state = defaultState, action) => {
       ...saveRating(state, action.time, action.id),
       step: steps.VIEW_GOAL,
       previousStep: steps.FEEDBACK,
+    };
+  case types.STEP_LINE_CHART_DETAIL:
+    return {
+      ...state,
+      step: steps.LINE_CHART_DETAIL,
     };
   case types.SET_PENDING_SYNC_OPEN:
     return {

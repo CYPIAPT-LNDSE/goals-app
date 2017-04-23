@@ -27,7 +27,7 @@ $contentWidth: 95%;
 .newGoal_inputContainer-inner {
   height: 60px;
   width: $contentWidth;
-  max-width: 400px;
+  max-width: $maxContentWidth;
   align-self: center;
   position: relative;
   margin-top: 10px;

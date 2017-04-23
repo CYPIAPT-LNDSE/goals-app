@@ -2,32 +2,50 @@ import React from 'react';
 import  { Line, } from 'react-chartjs-2';
 import icons from './../../avatars.js';
 
-const tickOptions = {
-  beginAtZero: true,
-  stepSize: 1,
-  suggestedMin: -3,
-  suggestedMax: 13,
-};
+const getOptions = (isChartPreview) => {
 
-const axesOptions = {
-  display: false,
-  ticks: tickOptions,
-  barThickness: 5,
-};
+  const gridLineColors = Array(2).fill('transparent')
+    .concat(Array(10).fill('#fff'));
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    yAxes: [ axesOptions, ],
-    xAxes: [ axesOptions, ],
-  },
-  legend: {
+  const tickOptions = {
+    beginAtZero: true,
+    stepSize: 1,
+    suggestedMin: -1,
+    suggestedMax: 12,
     display: false,
-  },
+  };
+
+  const axesOptions = {
+    display: false,
+    ticks: tickOptions,
+    barThickness: 5,
+  };
+
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: isChartPreview
+        ? [ axesOptions, ]
+        : [ {
+          ...axesOptions,
+          display: true,
+          gridLines: {
+            color: gridLineColors,
+            lineWidth: 0.5,
+            zeroLineColor: '#fff',
+            zeroLineWidth: 2,
+          },
+        }, ],
+      xAxes: [ axesOptions, ],
+    },
+    legend: {
+      display: false,
+    },
+  };
 };
 
-const chartHeight = 300;
+const chartHeight = 260;
 const chartWidth = 1000;
 
 const getScores = arr => arr.map(rating => rating.score);
@@ -50,6 +68,8 @@ const LineChart = React.createClass({
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
+    const chartOptions = getOptions(this.props.isChartPreview);
+
     const chartData = {
       labels: getLabels(latestRatings),
       datasets: [
@@ -68,8 +88,8 @@ const LineChart = React.createClass({
     return <Line
       data={ chartData }
       options={ chartOptions }
-      height={ chartHeight }
       width={ chartWidth }
+      height={ chartHeight }
     />;
   },
 });
@@ -77,6 +97,7 @@ const LineChart = React.createClass({
 LineChart.propTypes = {
   ratings: React.PropTypes.array,
   avatar: React.PropTypes.string,
+  isChartPreview: React.PropTypes.boolean,
 };
 
 export default LineChart;
