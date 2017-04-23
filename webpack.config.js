@@ -4,12 +4,12 @@ const config = {
   output: {
     path: __dirname,
     publicPath: '/public/',
-    filename: 'public/[name].js'
+    filename: 'public/[name].js',
   },
 
   devServer: {
     inline: true,
-    port: 8080
+    port: 8080,
   },
 
   module: {
@@ -24,7 +24,7 @@ const config = {
       },
       {
         test: /\.s?css$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        loaders: ['style-loader', 'css-loader', 'sass-loader',],
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
@@ -33,7 +33,7 @@ const config = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url-loader',
-     },
+      },
     ],
   },
 };

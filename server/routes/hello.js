@@ -27,11 +27,18 @@ module.exports = {
       });
 
       fetch(fbAuthUrl, (fbAuthErr, _, fbAuthBody) => {
+
         if (fbAuthErr) {
           throw new Error(fbAuthErr);
         }
 
-        const fbAccessToken = JSON.parse(fbAuthBody).access_token;
+        const fbAuthParsed = JSON.parse(fbAuthBody);
+
+        if (fbAuthParsed.error) {
+          return reply(fbAuthParsed.error.message);
+        }
+
+        const fbAccessToken = fbAuthParsed.access_token;
 
         if (!fbAccessToken) {
           return reply('problem verifying user with Facebook, no access token');
@@ -40,17 +47,25 @@ module.exports = {
         const fbGraphUrl = `https://graph.facebook.com/me?access_token=${fbAccessToken}`;
 
         fetch(fbGraphUrl, (fbGraphErr, _, fbGraphBody) => {
+
           if (fbGraphErr) {
             throw new Error (fbGraphErr);
           }
 
-          const fbUserData = JSON.parse(fbGraphBody);
-          const fbUserId = fbUserData.id;
+          const fbGraphParsed = JSON.parse(fbGraphBody);
+
+          if (fbGraphParsed.error) {
+            return reply(fbGraphParsed.error.message);
+          }
+
+          const fbUserId = fbGraphParsed.id;
 
           getUserDb(fbUserId, (getUserDbErr, userId) => {
+
             if (getUserDbErr) {
-              return reply(getUserDbErr + 'error getting user from database');
+              return reply(getUserDbErr + ', error getting user from database');
             }
+
             request.cookieAuth.set({ id: userId, });
             reply.redirect('/').
             state('new-user', fbUserId.toString());
