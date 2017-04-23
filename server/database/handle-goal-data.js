@@ -36,7 +36,5 @@ module.exports = (goal, user_id, callback) => {
       }
       return callback(null, addGoalResult);
     });
-
-
   });
 };

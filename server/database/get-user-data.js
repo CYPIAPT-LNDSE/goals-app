@@ -1,5 +1,5 @@
 const dbClient = require('./db_connection.js');
-const formatUserData = require('./format-user-data');
+const formatUserData = require('../helpers/format-user-data');
 
 const getGoals = `
   SELECT
@@ -13,11 +13,11 @@ const getGoals = `
     ratings.date_created
   FROM (goals LEFT OUTER JOIN ratings ON goals.goal_id = ratings.goal_id)
   WHERE
-    goals.user_id=$1 
+    goals.user_id=$1
   AND
     goals.deleted=false
   GROUP BY goals.goal_id, ratings.rating_id
-  ORDER BY goals.goal_id, ratings.rating ASC
+  ORDER BY ratings.date_created DESC NULLS LAST
 `;
 
 
