@@ -52,8 +52,8 @@ module.exports = {
               return reply(getUserDbErr + 'error getting user from database');
             }
             request.cookieAuth.set({ id: userId, });
-            reply.redirect('/').
-            state('new-user', fbUserId.toString());
+            reply.redirect('/');
+            // state('grow-user', fbUserId.toString());
           });
         });
       });
