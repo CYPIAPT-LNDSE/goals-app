@@ -9,20 +9,16 @@
 }
 
 .feedback-goal-tile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flexCenterColumn;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 .feedback-question-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 289px;
+  @include flexCenterColumn;
   height: 44px;
-  margin-left: 16px;
+  align-self: center;
+
   p {
     color: $blue;
     font-size: 14px;
@@ -30,15 +26,14 @@
 }
 
 .feedback-input-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 289px;
+  @include flexCenterColumn;
+  width: 90%;
+  max-width: 400px;
   height: 208px;
   border: $blueBorderThin;
   border-radius: 6px;
-  margin-left: 15.5px;
   background-color: $light;
+  align-self: center;
 
   textarea {
     height: 100%;
