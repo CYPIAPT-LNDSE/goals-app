@@ -14,6 +14,4 @@ const createSocket = (listener) => {
   io.on('connection', socketManager);
 };
 
-module.exports = {
-  createSocket: createSocket,
-};
+module.exports = createSocket;
