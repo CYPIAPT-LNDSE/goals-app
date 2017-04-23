@@ -18,13 +18,11 @@ const socketManager = (socket) => {
   socket.on('goal', (data, clientCallback) => {
     const goalData = JSON.parse(data);
 
-    handleGoalData(goalData, id, (err, result) => {
-      if (err) {
+    handleGoalData(goalData, id, (dbErr, dbResult) => {
+      if (dbErr) {
         clientCallback(true);
-      } else if (result === 'goal already exists') {
-        return;
       } else {
-        clientCallback(null, result.rows[0]);
+        clientCallback(null, dbResult);
       }
     });
   });
