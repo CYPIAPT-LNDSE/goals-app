@@ -31,7 +31,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, }) => {
           <p
             id="line-chart-title-text"
             onClick={ stepLineChartDetail }
-          >Your progress so far&nbsp;>></p>
+          >Your progress so far&nbsp;&gt;</p>
         </div>
         <div className="line-chart-inner">
           <LineChart

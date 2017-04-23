@@ -1,26 +1,17 @@
 const socketio = require('socket.io');
-const getUserData = require('./database/get-user-data.js');
-const cookieParser = require('cookie');
+const socketManager = require('./socket-manager.js');
 
 const createSocket = (listener) => {
   const io = socketio.listen(listener);
-  let id = '';
-  io.set('authorization', (handshakeData, accept) => {
 
-    if (handshakeData.headers.cookie) {
-      id = cookieParser.parse(handshakeData.headers.cookie)['new-user'];
-    } else {
-      return accept('No cookie transmitted.', false);
+  io.use((socket, next) => {
+    if(socket.request.headers.cookie){
+      next();
     }
-
-    accept(null, true);
+    next(new Error('Authentication error'));
   });
 
-  io.on('connection', (socket) => {
-    getUserData(id, (res) => {
-      socket.emit('userdata', res);
-    });
-  });
+  io.on('connection', socketManager);
 };
 
 module.exports = {
