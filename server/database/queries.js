@@ -17,8 +17,8 @@ const getRatings = `
 `;
 
 const insertRating = `
-  INSERT into ratings (user_id, goal_id, rating, comment, date_created)
-  VALUES ($1, $2, $3, $4, $5);
+  INSERT into ratings (rating_id, user_id, goal_id, rating, comment, date_created)
+  VALUES ($1, $2, $3, $4, $5, $6);
 `;
 
 module.exports = {

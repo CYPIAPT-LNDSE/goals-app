@@ -20,7 +20,7 @@ const socketManager = (socket) => {
 
     handleGoalData(goalData, id, (dbErr, dbResult) => {
       if (dbErr) {
-        clientCallback(true);
+        clientCallback(dbErr);
       } else {
         clientCallback(null, dbResult);
       }
