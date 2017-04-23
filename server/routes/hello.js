@@ -67,8 +67,7 @@ module.exports = {
             }
 
             request.cookieAuth.set({ id: userId, });
-            reply.redirect('/').
-            state('new-user', fbUserId.toString());
+            reply.redirect('/');
           });
         });
       });

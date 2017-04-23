@@ -2,7 +2,7 @@ const hapi = require('hapi');
 const inert = require('inert');
 const fs = require('fs');
 const cookieAuth = require('hapi-auth-cookie');
-const { createSocket, } = require('./sockets.js');
+const createSocket = require('./sockets.js');
 
 require('env2')('./config.env');
 
@@ -16,15 +16,6 @@ server.connection({
     key : fs.readFileSync('./key.pem'),
     cert : fs.readFileSync('./cert.pem'),
   },
-});
-
-server.state('new-user', {
-  ttl: 30 * 24 * 60 * 60 * 1000,
-  isSecure: process.env.NODE_ENV === 'PRODUCTION',
-  isHttpOnly: false,
-  encoding: 'none',
-  clearInvalid: false,
-  strictHeader: true,
 });
 
 server.register([ inert, cookieAuth,], (err) => {
@@ -45,6 +36,4 @@ server.register([ inert, cookieAuth,], (err) => {
 
 createSocket(server.listener);
 
-module.exports = {
-  server: server,
-};
+module.exports = server;
