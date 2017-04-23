@@ -1,28 +1,7 @@
 const dbClient = require('./db_connection.js');
 
 /* queries */
-const getGoal = `
-  SELECT *
-  from goals
-  WHERE goal_id = $1
-`;
-
-const addGoal = `
-  INSERT into goals (goal_id, user_id, title, icon, date_created)
-  VALUES ($1, $2, $3, $4, $5)
-  RETURNING goal_id
-`;
-
-const getRatings = `
-  SELECT *
-  from ratings
-  WHERE goal_id = $1
-`;
-
-const createRating = `
-  INSERT into ratings (user_id, goal_id, rating, comment, date_created)
-  VALUES ($1, $2, $3, $4, $5);
-`;
+import * as queries from './queries.js';
 
 /* helper functions */
 const createTimestamp = date =>
@@ -41,14 +20,13 @@ const findNewRatings = (oldRatings, newRatings) => {
   return newRatings.filter(rating => oldRatingsById.indexOf(rating) < 0);
 };
 
-
 // move this to own file for reusability??
 const addRatings = (ratings, dbGoal, finalCallback) => {
   let count = 0;
   let errCount = 0;
 
   ratings.forEach(rating => {
-    dbClient.query(createRating, getRatingData(rating, dbGoal), (createRatingErr) => {
+    dbClient.query(queries.insertRating, getRatingData(rating, dbGoal), (createRatingErr) => {
       if (createRatingErr) {
         errCount += 1;
       } else {
@@ -66,7 +44,7 @@ const addRatings = (ratings, dbGoal, finalCallback) => {
 const updateGoal = (dbGoal, clientGoal, callback) => {
 
   // check for new ratings
-  dbClient.query(getRatings, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
+  dbClient.query(queries.getRatings, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
 
     if (dbRatingsErr) {
       return callback('error getting ratings from database');
@@ -87,7 +65,7 @@ const updateGoal = (dbGoal, clientGoal, callback) => {
 module.exports = (goal, user_id, callback) => {
   const goalId = goal.id;
 
-  dbClient.query(getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
+  dbClient.query(queries.getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
       return callback('error data from database');
     }
@@ -99,7 +77,7 @@ module.exports = (goal, user_id, callback) => {
     }
 
     // adapt to also handle ratings for these new goals!
-    dbClient.query(addGoal, getNewGoalData(goal, user_id), (addGoalErr) => {
+    dbClient.query(queries.insertGoal, getNewGoalData(goal, user_id), (addGoalErr) => {
       if (addGoalErr) {
         return callback('error adding new goal to database ' + addGoalErr);
       }
