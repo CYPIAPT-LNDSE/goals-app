@@ -47,6 +47,7 @@ const mapDispatchToProps = dispatch => ({
   /*view goal actions*/
   stepRateGoal: () => { dispatch(actionsViewGoal.stepRateGoal()); },
   stepLineChartDetail: () => { dispatch(actionsViewGoal.stepLineChartDetail()); },
+  onSelectRating: (rating) => { dispatch(actionsViewGoal.selectRating(rating)); },
   /* rate goal actions */
   onMoveSlider: (rating) => { dispatch(actionsRateGoal.moveSlider(rating)); },
   stepFeedback: () => { dispatch(actionsRateGoal.stepFeedback()); },
