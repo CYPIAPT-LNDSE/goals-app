@@ -66,7 +66,7 @@ module.exports = {
               return reply(getUserDbErr + ', error getting user from database');
             }
 
-            request.cookieAuth.set({ id: userId, });
+            request.cookieAuth.set({ id: userId.toString(), });
             reply.redirect('/');
           });
         });
