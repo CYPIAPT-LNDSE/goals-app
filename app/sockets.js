@@ -9,7 +9,7 @@ const startSyncGoal = (goal, store) => {
   // sends data to server
   socket.emit('goal', JSON.stringify(goal), (socketErr, socketResponse) => {
     if (socketErr) {
-      console.log(socketErr);
+      console.log('error updating goal ' + goal.id + socketErr);
       return store.dispatch(updateSyncFailure(goal.id));
     }
     store.dispatch(updateSyncSuccess(socketResponse));
