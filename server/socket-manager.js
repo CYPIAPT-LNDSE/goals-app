@@ -1,9 +1,11 @@
-const mockData = require('./mock.js');
+const cookieParser = require('cookie');
+const iron = require('iron');
 
-const goals = mockData.goals;
 const socketManager = (socket) => {
-  socket.on('newuser', (id) => {
-    socket.emit('userdata', JSON.stringify(goals));
+  let id = '';
+  const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
+  iron.unseal(cookie, process.env.COOKIE_PASSWORD, iron.defaults, (err, decodedCookie) => {
+    id = decodedCookie.id;
   });
 };
 

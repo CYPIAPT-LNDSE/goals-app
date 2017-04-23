@@ -53,7 +53,6 @@ module.exports = {
             }
             request.cookieAuth.set({ id: userId, });
             reply.redirect('/');
-            // state('grow-user', fbUserId.toString());
           });
         });
       });

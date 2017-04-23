@@ -18,15 +18,6 @@ server.connection({
   },
 });
 
-server.state('new-user', {
-  ttl: 30 * 24 * 60 * 60 * 1000,
-  isSecure: process.env.NODE_ENV === 'PRODUCTION',
-  isHttpOnly: false,
-  encoding: 'none',
-  clearInvalid: false,
-  strictHeader: true,
-});
-
 server.register([ inert, cookieAuth,], (err) => {
   if (err) { throw new Error (err); }
 
