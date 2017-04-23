@@ -36,6 +36,4 @@ server.register([ inert, cookieAuth,], (err) => {
 
 createSocket(server.listener);
 
-module.exports = {
-  server: server,
-};
+module.exports = server;
