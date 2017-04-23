@@ -1,15 +1,12 @@
 const dbClient = require('./db_connection.js');
-const uuidV1 = require('uuid/v1');
 
 const findUser = `
 SELECT * from users
 WHERE username = $1;`;
 
-const newId = uuidV1();
-
 const createUser = `
-INSERT into users (user_id, username)
-VALUES ($1, $2)
+INSERT into users (username)
+VALUES ($1)
 RETURNING user_id;`;
 
 module.exports = (facebookId, callback) => {
@@ -23,7 +20,7 @@ module.exports = (facebookId, callback) => {
       return callback(null, result.rows[0].user_id);
     }
 
-    dbClient.query(createUser, [ newId, facebookId, ], (insertErr, newUser) => {
+    dbClient.query(createUser, [ facebookId, ], (insertErr, newUser) => {
       if (insertErr) {
         return callback('unable to create new user');
       }
