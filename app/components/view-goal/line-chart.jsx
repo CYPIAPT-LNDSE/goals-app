@@ -100,8 +100,6 @@ const LineChart = React.createClass({
 
     const chartOptions = getOptions(this.props.isChartPreview);
 
-    console.log(chartOptions);
-
     const chartData = {
       labels: getLabels(latestRatings),
       datasets: [
