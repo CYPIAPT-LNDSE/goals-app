@@ -1,12 +1,17 @@
 const socketio = require('socket.io');
+const socketManager = require('./socket-manager.js');
 
-module.exports =  (listener) => {
+const createSocket = (listener) => {
   const io = socketio.listen(listener);
-  io.on('connection', (socket) => {
-    console.log("new connection");
 
-    socket.on('newGoals', (data) => {
-      console.log(data);
-    });
+  io.use((socket, next) => {
+    if(socket.request.headers.cookie ){
+      next();
+    }
+    next(new Error('Authentication error'));
   });
+
+  io.on('connection', socketManager);
 };
+
+module.exports = createSocket;

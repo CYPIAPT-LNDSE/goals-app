@@ -7,11 +7,18 @@ import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 import * as actionsViewGoal from './../actions/view-goal.js';
 import * as actionsRateGoal from './../actions/rate-goal.js';
 import * as actionsFeedback from './../actions/feedback.js';
+import * as actionsGeneral from './../actions/general.js';
 
 import router from './../router.js';
+import socket from '../sockets.js';
 
 const MainContent = props => {
 
+  socket.emit('authenticate');
+  socket.on('userdata', (data) => {
+    props.onReceiveData(data);
+  });
+  
   const view = router(props);
   const navbarHeight = 90;
   const dynamicStyle = {
@@ -19,9 +26,7 @@ const MainContent = props => {
   };
 
   return (
-  <div className="MainContent" style={ dynamicStyle }>
-      { view }
-    </div>
+    <div className="MainContent" style={ dynamicStyle }>{ view }</div>
   );
 
 };
@@ -52,6 +57,8 @@ const mapDispatchToProps = dispatch => ({
   /* goal feedback actions */
   onInputFeedback: (input) => { dispatch(actionsFeedback.inputFeedback(input)); },
   saveRating: (time, id) => { dispatch(actionsFeedback.saveRating(time, id)); },
+  /* general */
+  onReceiveData: (data) => { dispatch(actionsGeneral.receiveDbData(data)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

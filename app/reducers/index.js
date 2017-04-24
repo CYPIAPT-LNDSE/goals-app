@@ -255,6 +255,11 @@ export default (state = defaultState, action) => {
         return { ...goal, updateCount:0, syncDBCount: 0, };
       }),
     };
+  case types.RECEIVE_DB_DATA:
+    return {
+      ...state,
+      goals: action.goals,
+    };
   default:
     return state;
   }
