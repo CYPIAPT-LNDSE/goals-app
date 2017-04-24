@@ -1,6 +1,9 @@
 const pg = require('pg');
 const Pool = pg.Pool;
 const url = require('url');
+require('env2')('./config.env');
+
+require('env2')('./config.env');
 
 pg.defaults.ssl = true;
 
