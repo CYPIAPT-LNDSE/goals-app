@@ -21,7 +21,6 @@ import router from './../router.js';
 const MainContent = props => {
 
   const view = router(props);
-
   const navbarHeight = 90;
   const dynamicStyle = {
     height: window.innerHeight - navbarHeight,
