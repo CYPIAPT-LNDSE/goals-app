@@ -42,6 +42,9 @@ const getOptions = (isChartPreview) => {
     legend: {
       display: false,
     },
+    tooltips: {
+      enabled: false,
+    },
   };
 };
 
