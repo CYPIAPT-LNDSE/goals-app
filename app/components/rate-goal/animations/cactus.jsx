@@ -37,18 +37,17 @@ const createAnimation = ({target, options, }) => {
 
   let t1 = new TimelineMax();
 
-  const getFrames = (frames, score, previousScore) => {
-    return score > previousScore
+  const getFrames = (frames, score, previousScore) =>
+    score > previousScore
       ? frames.slice(previousScore, score + 1)
       : frames.slice(score, previousScore + 1).reverse();
-  };
 
   const bodySequence = getFrames(bodyFrames, options.score, options.previousScore);
   const armsSequence = getFrames(armFrames, options.score, options.previousScore);
 
   bodySequence.forEach((frame, index) => {
-    t1.to(cactus3, 0.3, frame, )
-        .to(arms, 0.5, armsSequence[index], '-=0.5');
+    t1.to(cactus3, 0.1, frame, )
+      .to(arms, 0.1, armsSequence[index], '-=0.5');
   });
 
   t1.eventCallback('onComplete', options.setPreviousScore());

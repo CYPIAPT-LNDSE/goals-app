@@ -16,7 +16,8 @@ class RateGoalSlider extends React.Component {
 
     const goal = this.props.goal;
 
-    const getClassName = ({ avatar, }) => `rate-goal-slider-inner rate-goal-slider-${avatar}`;
+    const getClassName = ({ avatar, }) =>
+      `rate-goal-slider-inner rate-goal-slider-${avatar}`;
 
     return (
       <div className={ getClassName(goal) }>
