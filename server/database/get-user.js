@@ -2,10 +2,10 @@ const dbClient = require('./db_connection.js');
 
 const findUser = `
 SELECT * from users
-WHERE username = $1;`;
+WHERE user_id = $1;`;
 
 const createUser = `
-INSERT into users (username)
+INSERT into users (user_id)
 VALUES ($1)
 RETURNING user_id;`;
 

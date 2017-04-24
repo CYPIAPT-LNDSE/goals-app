@@ -2,7 +2,14 @@ import React from 'react';
 import  { Line, } from 'react-chartjs-2';
 import icons from './../../avatars.js';
 
-const getOptions = (isChartPreview) => {
+const getScaleLabelOptions = (label) => ({
+  display: true,
+  labelString: label,
+  fontColor: 'white',
+  fontSize: 16,
+});
+
+const getAxesOptions = (axis, isChartPreview) => {
 
   const gridLineColors = Array(2).fill('transparent')
     .concat(Array(10).fill('#fff'));
@@ -15,20 +22,27 @@ const getOptions = (isChartPreview) => {
     display: false,
   };
 
-  const axesOptions = {
+  const defaultOptions = {
     display: false,
     ticks: tickOptions,
     barThickness: 5,
   };
 
-  return {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: isChartPreview
-        ? [ axesOptions, ]
-        : [ {
-          ...axesOptions,
+  return isChartPreview
+    ? defaultOptions
+    : axis === 'x'
+        ? {
+          ...defaultOptions,
+          scaleLabel: getScaleLabelOptions('Time'),
+          display: true,
+          gridLines: {
+            color: 'transparent',
+            zeroLineColor: 'transparent',
+          },
+        }
+        : {
+          ...defaultOptions,
+          scaleLabel: getScaleLabelOptions('Ratings'),
           display: true,
           gridLines: {
             color: gridLineColors,
@@ -36,11 +50,27 @@ const getOptions = (isChartPreview) => {
             zeroLineColor: '#fff',
             zeroLineWidth: 2,
           },
-        }, ],
-      xAxes: [ axesOptions, ],
+        };
+};
+
+const getOptions = (isChartPreview) => {
+
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: isChartPreview
+        ? [ getAxesOptions('y', true), ]
+        : [ getAxesOptions('y', false), ],
+      xAxes: isChartPreview
+        ? [ getAxesOptions('x', true), ]
+        : [ getAxesOptions('x', false), ],
     },
     legend: {
       display: false,
+    },
+    tooltips: {
+      enabled: false,
     },
   };
 };
@@ -75,6 +105,7 @@ const LineChart = React.createClass({
       datasets: [
         {
           data: compileData(latestRatings),
+          label: 'Ratings',
           lineTension: 0.3,
           borderColor: '#fff',
           fill: false,

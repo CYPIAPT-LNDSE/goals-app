@@ -6,8 +6,6 @@ import ConfirmationModal from './confirmation.jsx';
 
 const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, triggerConfirmation, }) => {
 
-  console.log(onInputGoal);
-
   const goal = {
     ...newGoal,
     id: newGoalId,
@@ -28,14 +26,10 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
     <div className="addNewGoal">
       { modal }
       <div className="newGoal_inputContainer-outer">
-        <label
-          htmlFor="newGoalInput"
-          className="newGoal_label"
-        >Set a goal and choose a plant to grow with it</label>
-      <NewGoalInput
-        newGoal={ newGoal }
-        onInputGoal={ onInputGoal }
-      />
+        <label htmlFor="newGoalInput" className="newGoal_label">
+          Set a goal and choose a plant to grow with it
+        </label>
+      <NewGoalInput newGoal={ newGoal } onInputGoal={ onInputGoal } />
       </div>
       <Avatars
         onSelectAvatar={ onSelectAvatar }
