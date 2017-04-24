@@ -50,6 +50,12 @@ module.exports = (goal, user_id, callback) => {
       if (addGoalErr) {
         return callback('error adding new goal to database ' + addGoalErr);
       }
+
+      if (goal.ratings.length) {
+        addRatings(goal.ratings, { goal_id: goal.id, user_id: user_id, }, (callback));
+        return;
+      }
+
       return callback(null, goal.id);
     });
   });
