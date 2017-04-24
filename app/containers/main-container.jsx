@@ -14,10 +14,11 @@ import socket from '../sockets.js';
 
 const MainContent = props => {
 
+  socket.emit('authenticate');
   socket.on('userdata', (data) => {
     props.onReceiveData(data);
   });
-
+  
   const view = router(props);
   const navbarHeight = 90;
   const dynamicStyle = {
