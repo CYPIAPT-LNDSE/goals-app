@@ -6,6 +6,8 @@ import ConfirmationModal from './confirmation.jsx';
 
 const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, triggerConfirmation, }) => {
 
+  console.log(onInputGoal);
+
   const goal = {
     ...newGoal,
     id: newGoalId,

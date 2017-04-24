@@ -2,14 +2,14 @@ import * as types from './../action_types.js';
 import avatarTypes from './../avatars.js';
 import { createAction, } from 'redux-actions';
 
-export const inputGoal = input => {
+export const onInputGoal = input => {
   return {
     type: types.INPUT_GOAL,
     input: input,
   };
 };
 
-export const selectAvatar = avatar => {
+export const onSelectAvatar = avatar => {
   return {
     type: types.SELECT_AVATAR,
     avatar: avatar,
