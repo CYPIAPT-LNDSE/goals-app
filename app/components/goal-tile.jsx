@@ -44,6 +44,12 @@ const tile = ({ goal, step, onSelectGoal, }) => {
       <div className="goalTile_rating">
         <p>{ score }</p>
       </div>
+      <div className="goalTile_editContainer">
+        { /* img of edit pen */ }
+      </div>
+      <div className="goalTile_deleteContainer">
+        { /* img of delete bin */ }
+      </div>
     </div>
   );
 };

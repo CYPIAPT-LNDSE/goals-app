@@ -6,6 +6,7 @@ $imgHeight: 83px;
 .goalTile {
   position: relative;
   border-radius: 6px;
+  border-right: 5px solid $borderBlue;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -64,4 +65,25 @@ $imgHeight: 83px;
   left: 0;
   height: 100%;
   z-index: -1;
+}
+
+.goalTile_editContainer {
+  	height: $goalTileHeight;
+    width: 96px;
+    border: 1px solid $blue;
+    border-radius: 0;
+    background-color: $light;
+    margin-left: 5%;
+    visibility: hidden;
+    position: relative;
+}
+
+.goalTile_deleteContainer {
+  height: $goalTileHeight;
+  width: 96px;
+  border: 1px solid $blue;
+  border-radius: 0 6px 6px 0;
+  background-color: $light;
+  visibility: hidden;
+  position: relative;
 }
