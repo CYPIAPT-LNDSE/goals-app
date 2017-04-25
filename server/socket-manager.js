@@ -22,9 +22,13 @@ const socketManager = (socket) => {
         socket.emit('authentication_error');
         clientCallback('auth error');
       }
-      getUserData(id, (data) => {
+      getUserData(id, (err, data) => {
+        if(err) {
+          console.log(err);
+          data = '';
+        }
         user_id = id;
-        clientCallback(null, id);
+        clientCallback(err, id);
         socket.emit('userdata', data);
       });
     });

@@ -23,12 +23,12 @@ const getRatings = (user_id, goals, finalCallBack) => {
   goals.forEach( (goal) => {
     dbClient.query(getRatingsQuery, [ goal.id, ],
     (err, ratingsRes) => {
-      if (err) finalCallBack('');
+      if (err) finalCallBack(err);
       goal.ratings = (ratingsRes.rows)
         ? formatUserRatings(ratingsRes.rows)
         : [];
       if (count === goals.length) {
-        finalCallBack(JSON.stringify(goals));
+        finalCallBack(null, JSON.stringify(goals));
       } else {
         count += 1;
       }
