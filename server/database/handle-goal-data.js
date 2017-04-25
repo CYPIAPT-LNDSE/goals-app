@@ -17,12 +17,13 @@ module.exports = (goal, user_id, callback) => {
 
   dbClient.query(getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
+      console.log("Error retreiving goal from database, ", getGoalErr);
       return callback('error data from database');
     }
 
     if (getGoalResult.rows.length) {
       // adapt this for new ratings / when we have editing and deleting functionality
-      return callback(null, 'goal already exists');
+      return callback(null, { alreadyExists : true, });
     }
 
     const timestamp = require('moment')(goal.date_created)

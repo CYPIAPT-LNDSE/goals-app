@@ -64,7 +64,7 @@ export const socketsMiddleware = store => next => {
 
 const socketStarter = (store) => {
   const socket = io();
-  socket.on('userdata', (data) => {
+  socket.on('userData', (data) => {
     store.dispatch(receiveDbData(data));
   });
   return socket;

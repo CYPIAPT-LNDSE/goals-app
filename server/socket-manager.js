@@ -22,25 +22,29 @@ const socketManager = (socket) => {
         socket.emit('authentication_error');
         clientCallback('auth error');
       }
-      getUserData(id, (data) => {
+      getUserData(id, (err, data) => {
+        if(err) {
+          console.log(err);
+          data = '';
+        }
         user_id = id;
-        clientCallback(null, id);
-        socket.emit('userdata', data);
+        clientCallback(err, id);
+        socket.emit('userData', data);
       });
     });
-  });
 
-  socket.on('goal', (data, clientCallback) => {
-    const goalData = JSON.parse(data);
+    socket.on('goal', (data, clientCallback) => {
+      const goalData = JSON.parse(data);
 
-    handleGoalData(goalData, user_id, (err, result) => {
-      if (err) {
-        clientCallback(true);
-      } else if (result === 'goal already exists') {
-        return;
-      } else {
-        clientCallback(null, result.rows[0]);
-      }
+      handleGoalData(goalData, user_id, (err, result) => {
+        if (err) {
+          clientCallback(true);
+        } else if (result.alreadyExists) {
+          return;
+        } else {
+          clientCallback(null, result.rows[0]);
+        }
+      });
     });
   });
 };
