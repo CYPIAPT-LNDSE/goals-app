@@ -14,14 +14,14 @@ const getRatingsQuery = `
     ratings.comment,
     ratings.date_created
   FROM ratings
-  WHERE user_id=$1 AND goal_id=$2
+  WHERE goal_id=$1
   ORDER BY ratings.date_created DESC
 `;
 
 const getRatings = (user_id, goals, finalCallBack) => {
   let count = 1;
   goals.forEach( (goal) => {
-    dbClient.query(getRatingsQuery, [ user_id, goal.id, ],
+    dbClient.query(getRatingsQuery, [ goal.id, ],
     (err, ratingsRes) => {
       if (err) finalCallBack('');
       goal.ratings = (ratingsRes.rows)
