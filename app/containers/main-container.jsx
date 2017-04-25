@@ -15,6 +15,7 @@ const actionsMainContainer = {
   ...actionsViewGoal,
   ...actionsRateGoal,
   ...actionsFeedback,
+  ...actionsGeneral,
 };
 
 import router from './../router.js';
@@ -39,10 +40,6 @@ const MainContent = props => {
       { view }
     </div>
   );
-};
-
-MainContent.propTypes = {
-  onReceiveData: React.PropTypes.func,
 };
 
 MainContent.propTypes = {

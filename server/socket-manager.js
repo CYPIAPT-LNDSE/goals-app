@@ -13,7 +13,7 @@ const authenticateCookie = (socket, callback) => {
 const socketManager = (socket) => {
   socket.on('authenticate', () => {
     authenticateCookie(socket, (err, id) => {
-      if(err) socket.emit('User not authenticated');
+      if(err) socket.emit('authentication_error');
       getUserData(id, (data) => {
         socket.emit('userdata', data);
       });
