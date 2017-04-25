@@ -101,6 +101,7 @@ const getIconSrc = (icons, avatar) =>
 const LineChart = React.createClass({
 
   render() {
+
     const avatar = this.props.avatar;
     const latestRatings = this.props.ratings;
     const icon = new Image ();

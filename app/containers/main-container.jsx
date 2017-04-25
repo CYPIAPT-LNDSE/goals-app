@@ -29,7 +29,6 @@ class MainContent extends React.Component {
   }
 
   render() {
-
     const props = this.props;
     const view = router(props);
     const navbarHeight = 90;
