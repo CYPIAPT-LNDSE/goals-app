@@ -21,34 +21,32 @@ const actionsMainContainer = {
 import router from './../router.js';
 
 const MainContent = props => {
-// 
-// <<<<<<< HEAD
-//   socket.emit('authenticate');
-//
-//   socket.on('userdata', (data) => {
-//     props.onReceiveData(data);
-//   });
-//
-// =======
-// >>>>>>> socket-manager-client
+
   const view = router(props);
   const navbarHeight = 90;
   const dynamicStyle = {
     height: window.innerHeight - navbarHeight,
   };
 
+  if (!props.user.isAuthenticated && !props.user.authPending) {
+    props.setAuthPending();
+  }
+  
   return (
-    <div className="MainContent" style={ dynamicStyle }>
-      { view }
-    </div>
+      <div className="MainContent" style={ dynamicStyle }>
+        { view }
+      </div>
   );
 };
 
 MainContent.propTypes = {
   onReceiveData: React.PropTypes.func,
+  setAuthPending: React.PropTypes.func,
+  user: React.PropTypes.object,
 };
 
 const mapStateToProps = state => ({
+  user: state.user,
   goals: state.goals,
   step: state.step,
   newGoal: state.newGoal,

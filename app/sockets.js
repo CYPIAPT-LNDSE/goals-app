@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 
-import { receiveDbData, setPendingSyncOpen, updateSyncSuccess, updateSyncFailure, resetUpdateCount, } from './actions/general.js';
-
-let socket;
+import {
+  receiveDbData, setPendingSyncOpen, updateSyncSuccess, updateSyncFailure, resetUpdateCount, authSuccess, } from './actions/general.js';
+import * as types from './action_types.js';let socket;
 
 const startSyncGoal = (goal, store) => {
 
@@ -11,7 +11,7 @@ const startSyncGoal = (goal, store) => {
     if (socketErr) {
       return store.dispatch(updateSyncFailure(goal.id));
     }
-    
+
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
 
@@ -24,6 +24,15 @@ export const socketsMiddleware = (store) =>
     action => {
       const result = next(action);
       if (socket) {
+        if (action.type === types.SET_AUTH_PENDING) {
+          socket.emit('authenticate', null, (socketErr, user_id) => {
+            if (socketErr) {
+              console.log('error authenticating user');
+              return store.dispatch(authFailure());
+            }
+            return store.dispatch(authSuccess(user_id));
+          });
+        }
         const goals = store.getState().goals;
         if (!window.navigator.onLine) return;
         goals.forEach((goal) => {
@@ -42,6 +51,8 @@ export default (store) => {
   socket = io();
 
   socket.on('userdata', (data) => {
-    store.dispatch(receiveDbData(data));
+    if (store.getState().user.isAuthenticated) {
+      store.dispatch(receiveDbData(data));
+    }
   });
 };

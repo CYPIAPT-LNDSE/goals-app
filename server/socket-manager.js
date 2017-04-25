@@ -14,10 +14,14 @@ const authenticateCookie = (socket, callback) => {
 };
 
 const socketManager = (socket) => {
-  socket.on('authenticate', () => {
+  socket.on('authenticate', (_, clientCallback) => {
     authenticateCookie(socket, (err, id) => {
-      if(err) socket.emit('authentication_error');
+      if(err) {
+        socket.emit('authentication_error');
+        clientCallback('auth error');
+      }
       getUserData(id, (data) => {
+        clientCallback(null, id);
         socket.emit('userdata', data);
       });
     });
