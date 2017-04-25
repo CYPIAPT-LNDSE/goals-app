@@ -4,11 +4,13 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, triggerConfirmation, }) => {
+import uuidV1 from 'uuid/v1';
+
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
 
   const goal = {
     ...newGoal,
-    id: newGoalId,
+    id: uuidV1(),
   };
 
   const saveGoal = () => {
@@ -55,7 +57,6 @@ addGoal.propTypes = {
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,
   saveNewGoal: React.PropTypes.func,
-  newGoalId: React.PropTypes.number,
   triggerConfirmation: React.PropTypes.func,
 };
 

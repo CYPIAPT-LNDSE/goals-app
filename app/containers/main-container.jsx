@@ -19,16 +19,18 @@ const actionsMainContainer = {
 };
 
 import router from './../router.js';
-import socket from '../sockets.js';
 
 const MainContent = props => {
-
-  socket.emit('authenticate');
-
-  socket.on('userdata', (data) => {
-    props.onReceiveData(data);
-  });
-
+// 
+// <<<<<<< HEAD
+//   socket.emit('authenticate');
+//
+//   socket.on('userdata', (data) => {
+//     props.onReceiveData(data);
+//   });
+//
+// =======
+// >>>>>>> socket-manager-client
   const view = router(props);
   const navbarHeight = 90;
   const dynamicStyle = {

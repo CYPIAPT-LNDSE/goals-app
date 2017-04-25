@@ -1,6 +1,9 @@
 const cookieParser = require('cookie');
 const iron = require('iron');
+
+/* database */
 const getUserData = require('./database/get-user-data.js');
+const handleGoalData = require('./database/handle-goal-data.js');
 
 const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
@@ -17,6 +20,20 @@ const socketManager = (socket) => {
       getUserData(id, (data) => {
         socket.emit('userdata', data);
       });
+    });
+  });
+
+  socket.on('goal', (data, clientCallback) => {
+    const goalData = JSON.parse(data);
+
+    handleGoalData(goalData, id, (err, result) => {
+      if (err) {
+        clientCallback(true);
+      } else if (result === 'goal already exists') {
+        return;
+      } else {
+        clientCallback(null, result.rows[0]);
+      }
     });
   });
 };

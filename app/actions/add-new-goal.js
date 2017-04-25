@@ -25,7 +25,7 @@ export const saveNewGoal = (goal) => {
       created: new Date(),
       avatar: (goal.avatar || avatarTypes[0].avatar),
       ratings: [],
-      updateCount: 1,
+      updateCount: 0,
       syncDBCount: 0,
       pendingSync: {
         open: false,

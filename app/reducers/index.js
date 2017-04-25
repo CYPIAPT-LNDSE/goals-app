@@ -226,7 +226,7 @@ export default (state = defaultState, action) => {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-        ? { ...goal, pendingSync: {open: true,}, }
+        ? { ...goal, pendingSync: { open: true, }, }
         : goal;
       }),
     };
@@ -252,7 +252,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: mapWithId(state, action, (goal) => {
-        return { ...goal, updateCount:0, syncDBCount: 0, };
+        return { ...goal, updateCount: 0, syncDBCount: 0, };
       }),
     };
   case types.RECEIVE_DB_DATA:
