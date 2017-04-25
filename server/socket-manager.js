@@ -39,7 +39,7 @@ const socketManager = (socket) => {
       handleGoalData(goalData, user_id, (err, result) => {
         if (err) {
           clientCallback(true);
-        } else if (result === 'goal already exists') {
+        } else if (result.alreadyExists) {
           return;
         } else {
           clientCallback(null, result.rows[0]);
