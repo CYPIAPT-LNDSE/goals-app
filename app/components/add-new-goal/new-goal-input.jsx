@@ -1,6 +1,8 @@
 import React from 'react';
 
 class NewGoalInput extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +25,7 @@ class NewGoalInput extends React.Component {
           type="text"
           onKeyUp={ this.handleChange }
           onChange={ this.handleChange }
-          autoFocus
+          autoFocus={ window.innerHeight > 600 }
         />
       </div>
     );
