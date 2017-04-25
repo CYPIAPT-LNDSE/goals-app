@@ -106,8 +106,8 @@ const LineChart = React.createClass({
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
-    const clickFunction = (e, a) => {
-      const index = a[0]._index;
+    const clickFunction = (_, activePoints) => {
+      const index = activePoints[0]._index;
       const rating = getRatingFromIndex(index, latestRatings);
       this.props.onSelectRating(rating);
     };
