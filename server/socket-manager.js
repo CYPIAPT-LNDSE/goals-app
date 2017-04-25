@@ -19,33 +19,37 @@ const socketManager = (socket) => {
   socket.on('authenticate', (_, clientCallback) => {
     authenticateCookie(socket, (err, id) => {
       if (err) {
-        socket.emit('authentication_error');
-        clientCallback('auth error');
+        console.log(err);
+        return clientCallback('auth error');
       }
+      //lets client know authentication was successful
+      user_id = id;
+      clientCallback(null, user_id);
+
       getUserData(id, (err, data) => {
         if (err) {
           console.log(err);
           data = '';
         }
-        user_id = id;
-        clientCallback(err, id);
         socket.emit('userData', data);
       });
-    });
 
-    socket.on('goal', (data, clientCallback) => {
-      const goalData = JSON.parse(data);
+      socket.on('goal', (data, clientCallback) => {
+        const goalData = JSON.parse(data);
 
-      handleGoalData(goalData, user_id, (err, result) => {
-        if (err) {
-          clientCallback(true);
-        } else if (result.alreadyExists) {
-          return;
-        } else {
-          clientCallback(null, result.rows[0]);
-        }
+        handleGoalData(goalData, user_id, (err, result) => {
+          if (err) {
+            clientCallback(true);
+          } else if (result.alreadyExists) {
+            return;
+          } else {
+            clientCallback(null, result.rows[0]);
+          }
+        });
       });
     });
+
+
   });
 };
 
