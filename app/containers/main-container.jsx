@@ -20,24 +20,30 @@ const actionsMainContainer = {
 
 import router from './../router.js';
 
-const MainContent = props => {
+class MainContent extends React.Component {
 
-  const view = router(props);
-  const navbarHeight = 90;
-  const dynamicStyle = {
-    height: window.innerHeight - navbarHeight,
-  };
-
-  if (!props.user.isAuthenticated && !props.user.authPending) {
-    props.setAuthPending();
+  componentDidMount() {
+    if (!this.props.user.isAuthenticated && !this.props.user.authPending) {
+      this.props.setAuthPending();
+    }
   }
-  
-  return (
-      <div className="MainContent" style={ dynamicStyle }>
-        { view }
-      </div>
-  );
-};
+
+  render() {
+
+    const props = this.props;
+    const view = router(props);
+    const navbarHeight = 90;
+    const dynamicStyle = {
+      height: window.innerHeight - navbarHeight,
+    };
+
+    return (
+        <div className="MainContent" style={ dynamicStyle }>
+          { view }
+        </div>
+    );
+  }
+}
 
 MainContent.propTypes = {
   onReceiveData: React.PropTypes.func,

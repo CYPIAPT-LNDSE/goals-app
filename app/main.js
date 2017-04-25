@@ -10,7 +10,7 @@ import reducer from './reducers/index.js';
 import App from './app.jsx';
 
 /* sockets */
-import socketStarter, { socketsMiddleware, } from './sockets.js';
+import { socketsMiddleware, } from './sockets.js';
 
 const createStoreWithMiddleware = applyMiddleware(socketsMiddleware)(createStore);
 
@@ -18,7 +18,7 @@ const store = createStoreWithMiddleware(
   reducer, window.devToolsExtension && window.devToolsExtension()
 );
 
-socketStarter(store);
+// socketStarter(store);
 
 ReactDOM.render(
   <Provider store={ store }>
