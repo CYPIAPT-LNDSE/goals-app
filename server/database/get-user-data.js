@@ -2,7 +2,11 @@ const dbClient = require('./db_connection.js');
 const { formatUserGoals, formatUserRatings, } = require('../helpers/format-user-data');
 
 const getGoalsQuery = `
-  SELECT goals.user_id, goals.goal_id, goals.title, goals.icon
+  SELECT
+    goals.user_id,
+    goals.goal_id,
+    goals.title,
+    goals.icon
   FROM goals
   WHERE user_id=$1 AND goals.deleted=false
 `;
@@ -38,6 +42,7 @@ const getRatings = (user_id, goals, finalCallBack) => {
 
 const getUserData = (user_id, finalCallBack) => {
   dbClient.query(getGoalsQuery, [ user_id, ], (err, res) => {
+    if (err) console.log(err);
     const formattedGoals = formatUserGoals(res.rows);
     const goalsWithRatings = getRatings(user_id, formattedGoals, finalCallBack);
     return JSON.stringify(goalsWithRatings);

@@ -8,7 +8,7 @@ const handleGoalData = require('./database/handle-goal-data.js');
 const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
   iron.unseal(cookie, process.env.COOKIE_PASSWORD, iron.defaults, (err, decodedCookie) => {
-    if(err) callback(err);
+    if (err) callback(err);
     callback(null, decodedCookie.id);
   });
 };
@@ -23,7 +23,7 @@ const socketManager = (socket) => {
         clientCallback('auth error');
       }
       getUserData(id, (err, data) => {
-        if(err) {
+        if (err) {
           console.log(err);
           data = '';
         }
