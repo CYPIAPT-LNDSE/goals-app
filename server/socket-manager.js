@@ -29,10 +29,10 @@ const socketManager = (socket) => {
         }
         user_id = id;
         clientCallback(err, id);
-        socket.emit('userdata', data);
+        socket.emit('userData', data);
       });
     });
-    
+
     socket.on('goal', (data, clientCallback) => {
       const goalData = JSON.parse(data);
 

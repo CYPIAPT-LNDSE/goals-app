@@ -49,7 +49,7 @@ export const socketsMiddleware = (store) =>
 export default (store) => {
   socket = io();
 
-  socket.on('userdata', (data) => {
+  socket.on('userData', (data) => {
     if (store.getState().user.isAuthenticated) {
       store.dispatch(receiveDbData(data));
     }
