@@ -6,7 +6,6 @@ $imgHeight: 83px;
 .goalTile {
   position: relative;
   border-radius: 6px;
-  border-right: 5px solid $borderBlue;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -86,4 +85,12 @@ $imgHeight: 83px;
   background-color: $light;
   visibility: hidden;
   position: relative;
+}
+
+.rightBorder {
+  height: $goalTileHeight;
+  width: 5px;
+  border-right: 5px solid $borderBlue;
+  border-radius: 0 6px 6px 0;
+  z-index: 1;
 }

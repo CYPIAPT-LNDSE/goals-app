@@ -5,6 +5,12 @@ import GoalTile from '../goal-tile.jsx';
 import * as steps from './../../steps.js';
 
 const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
+  goals = [{
+    id: 0,
+    name: 'I will eat more pizza',
+    avatar: 'pumpkin',
+    user_id: 0,
+  },];
 
   const goalsListItems = goals.map(goal => {
     return (
@@ -13,7 +19,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
           goal={ goal }
           step={ steps.GOALS_LIST }
           onSelectGoal={ onSelectGoal }
-        />
+          />
       </li>);
   });
 
@@ -30,7 +36,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
             name="button"
             className="goalsList_button"
             onClick={ stepAddGoal }
-          >ADD A GOAL &nbsp;+</button>
+            >ADD A GOAL &nbsp;+</button>
         </div>
       </div>
       <div className="goalsList_list">
