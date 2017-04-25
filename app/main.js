@@ -1,16 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/* redux */
 import { Provider, } from 'react-redux';
+import { createStore, applyMiddleware, } from 'redux';
+import reducer from './reducers/index.js';
 
 /* components */
 import App from './app.jsx';
 
-/* redux */
-import Store from './reducers/index.js';
-import { createStore, } from 'redux';
+/* sockets */
+import { socketsMiddleware, } from './sockets.js';
 
-const store = createStore(Store, window.devToolsExtension && window.devToolsExtension());
+const createStoreWithMiddleware = applyMiddleware(socketsMiddleware)(createStore);
+
+const store = createStoreWithMiddleware(
+  reducer, window.devToolsExtension && window.devToolsExtension()
+);
+
+// socketStarter(store);
 
 ReactDOM.render(
   <Provider store={ store }>
