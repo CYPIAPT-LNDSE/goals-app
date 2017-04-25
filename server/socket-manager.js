@@ -32,19 +32,19 @@ const socketManager = (socket) => {
         socket.emit('userdata', data);
       });
     });
-  });
+    
+    socket.on('goal', (data, clientCallback) => {
+      const goalData = JSON.parse(data);
 
-  socket.on('goal', (data, clientCallback) => {
-    const goalData = JSON.parse(data);
-
-    handleGoalData(goalData, user_id, (err, result) => {
-      if (err) {
-        clientCallback(true);
-      } else if (result === 'goal already exists') {
-        return;
-      } else {
-        clientCallback(null, result.rows[0]);
-      }
+      handleGoalData(goalData, user_id, (err, result) => {
+        if (err) {
+          clientCallback(true);
+        } else if (result === 'goal already exists') {
+          return;
+        } else {
+          clientCallback(null, result.rows[0]);
+        }
+      });
     });
   });
 };
