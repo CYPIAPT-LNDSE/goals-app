@@ -14,13 +14,11 @@ const router = (props) => {
 
   switch (props.step) {
   case steps.ADD_GOAL: {
-    const newGoalId = (props.goals.map(g => g.id).sort((a, b) => b - a)[0] + 1 || 0);
     return <AddGoal
         newGoal={ props.newGoal }
         onInputGoal={ props.onInputGoal }
         onSelectAvatar={ props.onSelectAvatar }
         saveNewGoal={ props.saveNewGoal }
-        newGoalId={ newGoalId }
         triggerConfirmation= { props.triggerConfirmation }
       />;
   }

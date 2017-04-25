@@ -1,15 +1,47 @@
 const cookieParser = require('cookie');
 const iron = require('iron');
-const getUserData = require('./database/get-user-data.js');
 
-const socketManager = (socket) => {
-  let id = '';
+/* database */
+const getUserData = require('./database/get-user-data.js');
+const handleGoalData = require('./database/handle-goal-data.js');
+
+const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
   iron.unseal(cookie, process.env.COOKIE_PASSWORD, iron.defaults, (err, decodedCookie) => {
-    id = decodedCookie.id;
+    if(err) callback(err);
+    callback(null, decodedCookie.id);
   });
-  getUserData(id, (res) => {
-    socket.emit('userdata', res);
+};
+
+const socketManager = (socket) => {
+  let user_id = '';
+
+  socket.on('authenticate', (_, clientCallback) => {
+    authenticateCookie(socket, (err, id) => {
+      if (err) {
+        socket.emit('authentication_error');
+        clientCallback('auth error');
+      }
+      getUserData(id, (data) => {
+        user_id = id;
+        clientCallback(null, id);
+        socket.emit('userdata', data);
+      });
+    });
+  });
+
+  socket.on('goal', (data, clientCallback) => {
+    const goalData = JSON.parse(data);
+
+    handleGoalData(goalData, user_id, (err, result) => {
+      if (err) {
+        clientCallback(true);
+      } else if (result === 'goal already exists') {
+        return;
+      } else {
+        clientCallback(null, result.rows[0]);
+      }
+    });
   });
 };
 
