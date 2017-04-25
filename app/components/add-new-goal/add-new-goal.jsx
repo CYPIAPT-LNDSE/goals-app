@@ -4,21 +4,12 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId, triggerConfirmation, }) => {
-
-  const goal = {
-    ...newGoal,
-    id: newGoalId,
-  };
-
-  const saveGoal = () => {
-    saveNewGoal(goal);
-  };
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
 
   const modal = newGoal.confirmation
     ? <ConfirmationModal
-      triggerConfirmation={ triggerConfirmation }
-      saveGoal={ saveGoal }
+        triggerConfirmation={ triggerConfirmation }
+        saveGoal={ () => { saveNewGoal(newGoal); } }
     />
     : null;
 
@@ -26,14 +17,10 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, newGoalId,
     <div className="addNewGoal">
       { modal }
       <div className="newGoal_inputContainer-outer">
-        <label
-          htmlFor="newGoalInput"
-          className="newGoal_label"
-        >Set a goal and choose a plant to grow with it</label>
-      <NewGoalInput
-        newGoal={ newGoal }
-        onInputGoal={ onInputGoal }
-      />
+        <label htmlFor="newGoalInput" className="newGoal_label">
+          Set a goal and choose a plant to grow with it
+        </label>
+      <NewGoalInput newGoal={ newGoal } onInputGoal={ onInputGoal } />
       </div>
       <Avatars
         onSelectAvatar={ onSelectAvatar }
@@ -59,7 +46,6 @@ addGoal.propTypes = {
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,
   saveNewGoal: React.PropTypes.func,
-  newGoalId: React.PropTypes.number,
   triggerConfirmation: React.PropTypes.func,
 };
 

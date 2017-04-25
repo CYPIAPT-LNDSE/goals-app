@@ -2,6 +2,11 @@ import * as steps from './../steps.js';
 import * as types from './../action_types.js';
 
 const defaultState = {
+  user: {
+    isAuthenticated: false,
+    authPending: false,
+    id: null,
+  },
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
@@ -232,12 +237,38 @@ export default (state = defaultState, action) => {
         ratingSelected: selectRatingById(action.rating, state.currentGoal.ratings),
       },
     };
+  case types.SET_AUTH_PENDING:
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        authPending: true,
+      },
+    };
+  case types.AUTH_SUCCESS:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: true,
+        id: action.user_id,
+        authPending: false,
+      },
+    };
+  case types.AUTH_FAILURE:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: false,
+        id: null,
+        authPending: false,
+      },
+    };
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-        ? { ...goal, pendingSync: {open: true,}, }
+        ? { ...goal, pendingSync: { open: true, }, }
         : goal;
       }),
     };
@@ -263,7 +294,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: mapWithId(state, action, (goal) => {
-        return { ...goal, updateCount:0, syncDBCount: 0, };
+        return { ...goal, updateCount: 0, syncDBCount: 0, };
       }),
     };
   case types.RECEIVE_DB_DATA:
