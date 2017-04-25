@@ -1,4 +1,4 @@
-module.exports = (goals) => {
+const formatUserGoals = (goals) => {
   return goals.map((goal) => {
     return {
       id: goal.goal_id,
@@ -8,4 +8,17 @@ module.exports = (goals) => {
       ratings: [],
     };
   });
+};
+
+const formatUserRatings = (ratings) =>
+  ratings.map((rating) => ({
+    id: rating.rating_id,
+    score: rating.rating,
+    time: rating.date_created,
+    comment: rating.comment,
+  }));
+
+module.exports = {
+  formatUserGoals: formatUserGoals,
+  formatUserRatings: formatUserRatings,
 };
