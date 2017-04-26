@@ -9,6 +9,10 @@ $borderRadius: 6%;
 $gradientBackground: linear-gradient(270deg, $blue 0%, $lightGreen 100%);
 $goalTileHeight: 98px;
 
+/* breakpoints */
+$breakpoint-xs: (max-height: 550px);
+$breakpoint-xxs: (max-height: 490px);
+
 @mixin flexCenterColumn {
   display: flex;
   flex-direction: column;
