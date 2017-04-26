@@ -12,19 +12,33 @@ import {
 
 import * as types from './action_types.js';
 
+const onUpdateSyncFailure = (store, { id, }, action) => {
+  return store.dispatch(action(id));
+};
+
 const syncGoal = (goal, store, socket) => {
+
+  // set pending sync open to true
+  store.dispatch(setPendingSyncOpen(goal));
+
+  const onTimeout = () => {
+    onUpdateSyncFailure(store, goal, updateSyncFailure);
+  };
+
+  const timer = window.setTimeout(onTimeout, 1000 * 20);
 
   // sends data to server
   socket.emit('goal', JSON.stringify(goal), (socketErr, socketResponse) => {
+
+    window.clearTimeout(timer);
+
     if (socketErr) {
-      return store.dispatch(updateSyncFailure(goal.id));
+      onUpdateSyncFailure(store, goal, updateSyncFailure);
+      return;
     }
 
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
-
-  // set pending sync open to true
-  store.dispatch(setPendingSyncOpen(goal));
 };
 
 const checkGoalForUpdates = (goal, store, socket) => {
@@ -50,10 +64,12 @@ export const socketsMiddleware = store => next => {
       });
     }
 
-    const goals = store.getState().goals;
-
+    // end if no network connection,
+    // else iterate over goals, checking for updates
+    // updated goals sent to server through socket
+    // state updated with pending updates
     if (!window.navigator.onLine) return;
-
+    const goals = store.getState().goals;
     goals.forEach((goal) => {
       checkGoalForUpdates(goal, store, socket);
     });
