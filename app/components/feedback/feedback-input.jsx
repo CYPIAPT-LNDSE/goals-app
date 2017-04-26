@@ -23,7 +23,7 @@ class FeedbackInput extends React.Component {
           type="text"
           onKeyUp={ this.handleChange }
           onChange={ this.handleChange }
-          autoFocus
+          autoFocus={ this.props.screenHeight > 600 }
         />
       </div>
     );
@@ -33,6 +33,7 @@ class FeedbackInput extends React.Component {
 FeedbackInput.propTypes = {
   onInputFeedback: React.PropTypes.func,
   comment: React.PropTypes.string,
+  screenHeight: React.PropTypes.number,
 };
 
 export default FeedbackInput;

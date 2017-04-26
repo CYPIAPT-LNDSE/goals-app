@@ -4,7 +4,7 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, screenHeight, }) => {
 
   const modal = newGoal.confirmation
     ? <ConfirmationModal
@@ -20,7 +20,11 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
         <label htmlFor="newGoalInput" className="newGoal_label">
           Set a goal and choose a plant to grow with it
         </label>
-      <NewGoalInput newGoal={ newGoal } onInputGoal={ onInputGoal } />
+        <NewGoalInput
+          newGoal={ newGoal }
+          onInputGoal={ onInputGoal }
+          screenHeight={ screenHeight }
+        />
       </div>
       <Avatars
         onSelectAvatar={ onSelectAvatar }
@@ -47,6 +51,7 @@ addGoal.propTypes = {
   onSelectAvatar: React.PropTypes.func,
   saveNewGoal: React.PropTypes.func,
   triggerConfirmation: React.PropTypes.func,
+  screenHeight: React.PropTypes.number,
 };
 
 export default addGoal;

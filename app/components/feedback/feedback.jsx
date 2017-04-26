@@ -5,7 +5,7 @@ import FeedbackInput from './feedback-input.jsx';
 
 import * as steps from './../../steps.js';
 
-const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => {
+const Feedback = ({ currentGoal, onInputFeedback, saveRating, screenHeight, }) => {
   return (
     <div className='feedback-page'>
       <div className='feedback-goal-tile-container'>
@@ -17,6 +17,7 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => {
       <FeedbackInput
         onInputFeedback= { onInputFeedback }
         comment= { currentGoal.newRating.comment }
+        screenHeight={ screenHeight }
       />
     <div className='feedback-buttonContainer goal-detail-buttonContainer'>
         <div className='button-outer'>
@@ -36,6 +37,7 @@ Feedback.propTypes = {
   currentGoal: React.PropTypes.object,
   onInputFeedback: React.PropTypes.func,
   saveRating: React.PropTypes.func,
+  screenHeight: React.PropTypes.number,
 };
 
 export default Feedback;

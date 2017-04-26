@@ -19,14 +19,15 @@ const router = (props) => {
         onInputGoal={ props.onInputGoal }
         onSelectAvatar={ props.onSelectAvatar }
         saveNewGoal={ props.saveNewGoal }
-        triggerConfirmation= { props.triggerConfirmation }
+        triggerConfirmation={ props.triggerConfirmation }
+        screenHeight={ props.screenHeight }
       />;
   }
   case steps.VIEW_GOAL:
     return <ViewGoal
-        currentGoal = { props.currentGoal }
+        currentGoal={ props.currentGoal }
         rateGoal={ props.stepRateGoal }
-        stepLineChartDetail = { props.stepLineChartDetail }
+        stepLineChartDetail={ props.stepLineChartDetail }
       />;
   case steps.RATE_GOAL:
     return <RateGoal
@@ -38,8 +39,9 @@ const router = (props) => {
   case steps.FEEDBACK:
     return <Feedback
         currentGoal={ props.currentGoal }
-        onInputFeedback= { props.onInputFeedback }
-        saveRating= { props.saveRating }
+        onInputFeedback={ props.onInputFeedback }
+        saveRating={ props.saveRating }
+        screenHeight={ props.screenHeight }
       />;
   case steps.LINE_CHART_DETAIL:
     return <LineChartDetail
@@ -74,6 +76,7 @@ router.propTypes = {
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
+  screenHeight: React.PropTypes.number,
 };
 
 export default router;
