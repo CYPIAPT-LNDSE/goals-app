@@ -1,6 +1,9 @@
 import React from 'react';
 import  { Line, } from 'react-chartjs-2';
+
 import icons from './../../avatars.js';
+
+const getRatingFromIndex = (index, ratings) => ratings[index - 1].id;
 
 const getScaleLabelOptions = (label) => ({
   display: true,
@@ -53,11 +56,14 @@ const getAxesOptions = (axis, isChartPreview) => {
         };
 };
 
-const getOptions = (isChartPreview) => {
+const getOptions = (isChartPreview, fn) => {
 
   return {
     responsive: true,
     maintainAspectRatio: false,
+    onClick: isChartPreview
+      ? null
+      : fn,
     scales: {
       yAxes: isChartPreview
         ? [ getAxesOptions('y', true), ]
@@ -79,6 +85,7 @@ const chartHeight = 260;
 const chartWidth = 1000;
 
 const getScores = arr => arr.map(rating => rating.score);
+
 const compileData = arr => arr.length
   ? [0,].concat(getScores(arr)).concat(arr[arr.length - 1].score)
   : [];
@@ -87,18 +94,26 @@ const getStyles = (arr, avatar) =>
   ['circle',].concat(Array(arr.length).fill(avatar));
 
 const getLabels = arr => Array(arr.length + 2).fill('');
+
 const getIconSrc = (icons, avatar) =>
   icons.find(icon => icon.avatar === avatar).image;
 
 const LineChart = React.createClass({
 
   render() {
+
     const avatar = this.props.avatar;
     const latestRatings = this.props.ratings;
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
-    const chartOptions = getOptions(this.props.isChartPreview);
+    const clickFunction = (_, activePoints) => {
+      const index = activePoints[0]._index;
+      const rating = getRatingFromIndex(index, latestRatings);
+      this.props.onSelectRating(rating);
+    };
+
+    const chartOptions = getOptions(this.props.isChartPreview, clickFunction);
 
     const chartData = {
       labels: getLabels(latestRatings),
@@ -111,7 +126,7 @@ const LineChart = React.createClass({
           fill: false,
           pointBorderColor: 'transparent',
           pointStyle: getStyles(latestRatings, icon),
-          radius: 0,
+          hitRadius: 25,
         },
       ],
     };
@@ -129,6 +144,7 @@ LineChart.propTypes = {
   ratings: React.PropTypes.array,
   avatar: React.PropTypes.string,
   isChartPreview: React.PropTypes.boolean,
+  onSelectRating: React.PropTypes.func,
 };
 
 export default LineChart;

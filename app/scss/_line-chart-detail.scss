@@ -30,7 +30,13 @@ $contentHeight: 370px;
   align-self: center;
 
   p {
-    margin: 15px 0 0 10px;
+    margin: 10px 0 0 10px;
+  }
+
+  .detail-feedback-time, .detail-feedback-comment {
+    font-size: 10px;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   &:after {

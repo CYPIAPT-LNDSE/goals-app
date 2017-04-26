@@ -18,6 +18,7 @@ export const TRIGGER_CONFIRMATION = 'TRIGGER_CONFIRMATION';
 /* view goal actions */
 export const STEP_RATE_GOAL = 'STEP_RATE_GOAL';
 export const STEP_LINE_CHART_DETAIL = 'STEP_LINE_CHART_DETAIL';
+export const SELECT_RATING = 'SELECT_RATING';
 
 /* rate goal actions */
 export const STEP_FEEDBACK = 'STEP_FEEDBACK';
