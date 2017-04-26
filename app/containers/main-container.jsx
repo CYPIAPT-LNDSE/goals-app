@@ -15,38 +15,44 @@ const actionsMainContainer = {
   ...actionsViewGoal,
   ...actionsRateGoal,
   ...actionsFeedback,
+  ...actionsGeneral,
 };
 
 import router from './../router.js';
-import socket from '../sockets.js';
 
-const MainContent = props => {
+class MainContent extends React.Component {
 
-  socket.emit('authenticate');
+  componentDidMount() {
+    if (!this.props.user.isAuthenticated && !this.props.user.authPending) {
+      this.props.setAuthPending();
+    }
+  }
 
-  socket.on('userdata', (data) => {
-    props.onReceiveData(data);
-  });
+  render() {
 
-  const view = router(props);
-  const navbarHeight = 90;
-  const dynamicStyle = {
-    height: window.innerHeight - navbarHeight,
-  };
+    const props = this.props;
+    const view = router(props);
+    const navbarHeight = 90;
+    const dynamicStyle = {
+      height: window.innerHeight - navbarHeight,
+    };
 
-  return (
-    <div className="MainContent" style={ dynamicStyle }>
-      { view }
-    </div>
-  );
-
-};
+    return (
+        <div className="MainContent" style={ dynamicStyle }>
+          { view }
+        </div>
+    );
+  }
+}
 
 MainContent.propTypes = {
   onReceiveData: React.PropTypes.func,
+  setAuthPending: React.PropTypes.func,
+  user: React.PropTypes.object,
 };
 
 const mapStateToProps = state => ({
+  user: state.user,
   goals: state.goals,
   step: state.step,
   newGoal: state.newGoal,

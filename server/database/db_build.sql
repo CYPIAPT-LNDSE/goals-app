@@ -9,7 +9,6 @@ CREATE TABLE goals (
   goal_id TEXT PRIMARY KEY NOT NULL,
   user_id TEXT NOT NULL,
   title TEXT NOT NULL,
-  rating INTEGER,
   icon TEXT,
   deleted BOOLEAN DEFAULT FALSE,
   date_created TIMESTAMP NOT NULL DEFAULT now()
