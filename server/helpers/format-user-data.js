@@ -1,31 +1,25 @@
-module.exports = (goalsArr) => {
-  let goals = [];
-  let previousGoalId = null;
-  // Add all the goals into one array with empty ratings
-  goalsArr.forEach ((goal) => {
-    if(previousGoalId !== goal.goal_id){
-      goals = goals.concat([{
-        id: goal.goal_id,
-        user_id: goal.user_id,
-        name: goal.title,
-        avatar: goal.icon,
-        ratings: [],
-      },]);
-      previousGoalId = goal.goal_id;
-    }
+const formatUserGoals = (goals) => {
+  return goals.map((goal) => {
+    return {
+      id: goal.goal_id,
+      user_id: goal.user_id,
+      name: goal.title,
+      avatar: goal.icon,
+      ratings: [],
+      created: goal.date_created,
+    };
   });
-  // Iterate over the goals to add ratings
-  goalsArr.forEach( (goal) => {
-    goals.forEach ((formattedGoal, index) => {
-      if(goal.goal_id === goals[index].id){
-        goals[index].ratings = goal.rating ? goals[index].ratings.concat([{
-          id: goal.rating_id,
-          score: goal.rating,
-          comment: goal.comment,
-          time: goal.date_created,
-        },]) : [];
-      }
-    });
-  });
-  return JSON.stringify(goals);
+};
+
+const formatUserRatings = (ratings) =>
+  ratings.map((rating) => ({
+    id: rating.rating_id,
+    score: rating.rating,
+    time: rating.date_created,
+    comment: rating.comment,
+  }));
+
+module.exports = {
+  formatUserGoals: formatUserGoals,
+  formatUserRatings: formatUserRatings,
 };

@@ -5,7 +5,14 @@ import icons from './../../avatars.js';
 
 const getRatingFromIndex = (index, ratings) => ratings[index - 1].id;
 
-const getOptions = (isChartPreview, fn) => {
+const getScaleLabelOptions = (label) => ({
+  display: true,
+  labelString: label,
+  fontColor: 'white',
+  fontSize: 16,
+});
+
+const getAxesOptions = (axis, isChartPreview) => {
 
   const gridLineColors = Array(2).fill('transparent')
     .concat(Array(10).fill('#fff'));
@@ -18,11 +25,38 @@ const getOptions = (isChartPreview, fn) => {
     display: false,
   };
 
-  const axesOptions = {
+  const defaultOptions = {
     display: false,
     ticks: tickOptions,
     barThickness: 5,
   };
+
+  return isChartPreview
+    ? defaultOptions
+    : axis === 'x'
+        ? {
+          ...defaultOptions,
+          scaleLabel: getScaleLabelOptions('Time'),
+          display: true,
+          gridLines: {
+            color: 'transparent',
+            zeroLineColor: 'transparent',
+          },
+        }
+        : {
+          ...defaultOptions,
+          scaleLabel: getScaleLabelOptions('Ratings'),
+          display: true,
+          gridLines: {
+            color: gridLineColors,
+            lineWidth: 0.5,
+            zeroLineColor: '#fff',
+            zeroLineWidth: 2,
+          },
+        };
+};
+
+const getOptions = (isChartPreview, fn) => {
 
   return {
     responsive: true,
@@ -32,21 +66,17 @@ const getOptions = (isChartPreview, fn) => {
       : fn,
     scales: {
       yAxes: isChartPreview
-        ? [ axesOptions, ]
-        : [ {
-          ...axesOptions,
-          display: true,
-          gridLines: {
-            color: gridLineColors,
-            lineWidth: 0.5,
-            zeroLineColor: '#fff',
-            zeroLineWidth: 2,
-          },
-        }, ],
-      xAxes: [ axesOptions, ],
+        ? [ getAxesOptions('y', true), ]
+        : [ getAxesOptions('y', false), ],
+      xAxes: isChartPreview
+        ? [ getAxesOptions('x', true), ]
+        : [ getAxesOptions('x', false), ],
     },
     legend: {
       display: false,
+    },
+    tooltips: {
+      enabled: false,
     },
   };
 };
@@ -71,13 +101,14 @@ const getIconSrc = (icons, avatar) =>
 const LineChart = React.createClass({
 
   render() {
+
     const avatar = this.props.avatar;
     const latestRatings = this.props.ratings;
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
-    const clickFunction = (e, a) => {
-      const index = a[0]._index;
+    const clickFunction = (_, activePoints) => {
+      const index = activePoints[0]._index;
       const rating = getRatingFromIndex(index, latestRatings);
       this.props.onSelectRating(rating);
     };
@@ -89,6 +120,7 @@ const LineChart = React.createClass({
       datasets: [
         {
           data: compileData(latestRatings),
+          label: 'Ratings',
           lineTension: 0.3,
           borderColor: '#fff',
           fill: false,

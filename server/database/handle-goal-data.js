@@ -35,6 +35,7 @@ module.exports = (goal, user_id, callback) => {
 
   dbClient.query(queries.getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
+      console.log(getGoalErr);
       return callback('error getting data from database');
     }
 
@@ -43,7 +44,16 @@ module.exports = (goal, user_id, callback) => {
       // adapt this when we have editing and deleting functionality
       updateGoal(getGoalResult.rows[0], goal, callback);
       return;
+// =======
+//       console.log("Error retreiving goal from database, ", getGoalErr);
+//       return callback('error data from database');
     }
+
+//     if (getGoalResult.rows.length) {
+//       // adapt this for new ratings / when we have editing and deleting functionality
+//       return callback(null, { alreadyExists : true, });
+// >>>>>>> master
+//     }
 
     // still to do: adapt to also handle ratings for these new goals!
     dbClient.query(queries.insertGoal, getNewGoalData(goal, user_id), (addGoalErr) => {

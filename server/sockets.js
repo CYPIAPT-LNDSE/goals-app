@@ -8,7 +8,7 @@ const createSocket = (listener) => {
     if (socket.request.headers.cookie) {
       next();
     }
-    
+
     next(new Error('Authentication error'));
   });
 

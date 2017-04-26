@@ -2,12 +2,18 @@ import * as steps from './../steps.js';
 import * as types from './../action_types.js';
 
 const defaultState = {
+  user: {
+    isAuthenticated: false,
+    authPending: false,
+    id: null,
+  },
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
   newGoal: {},
   currentGoal: {},
+  setScreenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -232,6 +238,32 @@ export default (state = defaultState, action) => {
         ratingSelected: selectRatingById(action.rating, state.currentGoal.ratings),
       },
     };
+  case types.SET_AUTH_PENDING:
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        authPending: true,
+      },
+    };
+  case types.AUTH_SUCCESS:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: true,
+        id: action.user_id,
+        authPending: false,
+      },
+    };
+  case types.AUTH_FAILURE:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: false,
+        id: null,
+        authPending: false,
+      },
+    };
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
@@ -270,6 +302,11 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: action.goals,
+    };
+  case types.SET_SCREEN_HEIGHT:
+    return {
+      ...state,
+      setScreenHeight: action.height,
     };
   default:
     return state;

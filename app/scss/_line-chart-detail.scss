@@ -18,6 +18,7 @@ $contentHeight: 370px;
 }
 
 .line-chart-detail-feedback-container {
+  position: relative;
   height: $goalTileHeight;
   width: 100%;
   border-radius: $borderRadius $borderRadius 0 0;
@@ -36,6 +37,17 @@ $contentHeight: 370px;
     font-size: 10px;
     overflow-wrap: break-word;
     hyphens: auto;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 75%;
+    bottom: -50%;
+    display: block;
+    border: 25px solid transparent;
+    border-top-color: $light;
+    width: 0;
   }
 }
 
