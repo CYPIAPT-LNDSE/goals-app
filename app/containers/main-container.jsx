@@ -22,6 +22,11 @@ import router from './../router.js';
 
 class MainContent extends React.Component {
 
+  componentWillMount() {
+    const screenHeight = window.innerHeight;
+    this.props.setScreenHeight(screenHeight);
+  }
+
   componentDidMount() {
     if (!this.props.user.isAuthenticated && !this.props.user.authPending) {
       this.props.setAuthPending();
@@ -34,7 +39,7 @@ class MainContent extends React.Component {
     const view = router(props);
     const navbarHeight = 90;
     const dynamicStyle = {
-      height: window.innerHeight - navbarHeight,
+      height: `${Math.max(props.screenHeight - navbarHeight, 400)}px`,
     };
 
     return (
@@ -49,6 +54,7 @@ MainContent.propTypes = {
   onReceiveData: React.PropTypes.func,
   setAuthPending: React.PropTypes.func,
   user: React.PropTypes.object,
+  setScreenHeight: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({

@@ -37,3 +37,6 @@ export const UPDATE_SYNC_SUCCESS = 'UPDATE_SYNC_SUCCESS';
 export const UPDATE_SYNC_FAILURE = 'UPDATE_SYNC_FAILURE';
 export const RESET_UPDATE_COUNT = 'RESET_UPDATE_COUNT';
 export const RECEIVE_DB_DATA = 'RECEIVE_DB_DATA';
+
+/* other general actions */
+export const SET_SCREEN_HEIGHT = 'SET_SCREEN_HEIGHT';
