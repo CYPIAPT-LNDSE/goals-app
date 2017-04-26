@@ -6,9 +6,11 @@ const getGoalsQuery = `
     goals.user_id,
     goals.goal_id,
     goals.title,
-    goals.icon
+    goals.icon,
+    goals.date_created
   FROM goals
   WHERE user_id=$1 AND goals.deleted=false
+  ORDER BY goals.date_created ASC
 `;
 
 const getRatingsQuery = `
