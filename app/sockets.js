@@ -1,14 +1,22 @@
 import io from 'socket.io-client';
 
-import { receiveDbData, setPendingSyncOpen, updateSyncSuccess, updateSyncFailure, resetUpdateCount, } from './actions/general.js';
+import {
+  receiveDbData,
+  setPendingSyncOpen,
+  updateSyncSuccess,
+  updateSyncFailure,
+  resetUpdateCount,
+  authSuccess,
+  authFailure,
+} from './actions/general.js';
 
-let socket;
+import * as types from './action_types.js';
 
 const onUpdateSyncFailure = (store, { id, }, action) => {
   return store.dispatch(action(id));
 };
 
-const startSyncGoal = (goal, store) => {
+const syncGoal = (goal, store, socket) => {
 
   // set pending sync open to true
   store.dispatch(setPendingSyncOpen(goal));
@@ -31,33 +39,49 @@ const startSyncGoal = (goal, store) => {
 
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
-
-
 };
 
-export const socketsMiddleware = (store) =>
-  next =>
-    action => {
-      const result = next(action);
-      if (socket) {
-        const goals = store.getState().goals;
-        if (!window.navigator.onLine || !socket.connected) return;
-        goals.forEach((goal) => {
-          if (goal.pendingSync && goal.pendingSync.open) return;
-          if (goal.updateCount > 0 && goal.updateCount === goal.syncDBCount) {
-            return store.dispatch(resetUpdateCount(goal.id));
-          }
-          if (goal.updateCount === goal.syncDBCount) return;
-          startSyncGoal(goal, store);
-        });
-      }
-      return result;
-    };
+const checkGoalForUpdates = (goal, store, socket) => {
+  if (goal.pendingSync && goal.pendingSync.open) return;
+  if (goal.updateCount > 0 && goal.updateCount === goal.syncDBCount) {
+    return store.dispatch(resetUpdateCount(goal.id));
+  }
+  if (goal.updateCount === goal.syncDBCount) return;
+  syncGoal(goal, store, socket);
+};
 
-export default (store) => {
-  socket = io();
+export const socketsMiddleware = store => next => {
+  const socket = socketStarter(store);
+  return action => {
+    const result = next(action);
 
-  socket.on('userdata', (data) => {
+    if (action.type === types.SET_AUTH_PENDING) {
+      socket.emit('authenticate', null, (socketErr, user_id) => {
+        if (socketErr) {
+          return store.dispatch(authFailure());
+        }
+        return store.dispatch(authSuccess(user_id));
+      });
+    }
+
+    // end if no network connection,
+    // else iterate over goals, checking for updates
+    // updated goals sent to server through socket
+    // state updated with pending updates
+    if (!window.navigator.onLine) return;
+    const goals = store.getState().goals;
+    goals.forEach((goal) => {
+      checkGoalForUpdates(goal, store, socket);
+    });
+
+    return result;
+  };
+};
+
+const socketStarter = (store) => {
+  const socket = io();
+  socket.on('userData', (data) => {
     store.dispatch(receiveDbData(data));
   });
+  return socket;
 };

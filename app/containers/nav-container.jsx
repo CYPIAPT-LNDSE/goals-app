@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect, } from 'react-redux';
+
 import Nav from '../components/nav.jsx';
 import * as actionsNav from './../actions/nav.js';
 
 const NavContent = props => {
   return (
     <Nav
-      step= { props.step }
-      onNavClick= { props.onNavClick }
-      onBackButtonClick= { props.onBackButtonClick }
+      step={ props.step }
+      onNavClick={ props.onNavClick }
+      onBackButtonClick={ props.onBackButtonClick }
       menu={ props.menu }
-      toggleMenu = { props.toggleMenu }
+      toggleMenu ={ props.toggleMenu }
     />
   );
 };
@@ -21,7 +22,6 @@ NavContent.propTypes = {
   toggleMenu: React.PropTypes.func,
   onBackButtonClick: React.PropTypes.func,
   menu: React.PropTypes.bool,
-  onBackButtonClick: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -29,10 +29,4 @@ const mapStateToProps = state => ({
   menu: state.menu,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onNavClick: () => { dispatch(actionsNav.onNavClick()); },
-  onBackButtonClick: () => { dispatch(actionsNav.onBackButtonClick()); },
-  toggleMenu: () => { dispatch(actionsNav.toggleMenu()); },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavContent);
+export default connect(mapStateToProps, actionsNav)(NavContent);

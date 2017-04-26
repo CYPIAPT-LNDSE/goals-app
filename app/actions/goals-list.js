@@ -5,7 +5,7 @@ import * as types from '../action_types.js';
 
 export const stepAddGoal = createAction(types.STEP_ADD_GOAL);
 
-export const selectGoal = goal => {
+export const onSelectGoal = goal => {
   return {
     type: types.SELECT_GOAL,
     goal: goal,

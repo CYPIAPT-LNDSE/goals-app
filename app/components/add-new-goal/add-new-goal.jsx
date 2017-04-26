@@ -4,23 +4,12 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-import uuidV1 from 'uuid/v1';
-
 const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, }) => {
-
-  const goal = {
-    ...newGoal,
-    id: uuidV1(),
-  };
-
-  const saveGoal = () => {
-    saveNewGoal(goal);
-  };
 
   const modal = newGoal.confirmation
     ? <ConfirmationModal
-      triggerConfirmation={ triggerConfirmation }
-      saveGoal={ saveGoal }
+        triggerConfirmation={ triggerConfirmation }
+        saveGoal={ () => { saveNewGoal(newGoal); } }
     />
     : null;
 
@@ -28,14 +17,10 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
     <div className="addNewGoal">
       { modal }
       <div className="newGoal_inputContainer-outer">
-        <label
-          htmlFor="newGoalInput"
-          className="newGoal_label"
-        >Set a goal and choose a plant to grow with it</label>
-      <NewGoalInput
-        newGoal={ newGoal }
-        onInputGoal={ onInputGoal }
-      />
+        <label htmlFor="newGoalInput" className="newGoal_label">
+          Set a goal and choose a plant to grow with it
+        </label>
+      <NewGoalInput newGoal={ newGoal } onInputGoal={ onInputGoal } />
       </div>
       <Avatars
         onSelectAvatar={ onSelectAvatar }
