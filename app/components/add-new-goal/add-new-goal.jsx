@@ -4,7 +4,7 @@ import Avatars from './new-goal-avatars.jsx';
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
 
-const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, screenHeight, }) => {
+const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, screenHeight, dynamicStyle, }) => {
 
   const modal = newGoal.confirmation
     ? <ConfirmationModal
@@ -14,7 +14,7 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
     : null;
 
   return (
-    <div className="addNewGoal">
+    <div className="addNewGoal" style={ dynamicStyle }>
       { modal }
       <div className="newGoal_inputContainer-outer">
         <label htmlFor="newGoalInput" className="newGoal_label">
@@ -52,6 +52,7 @@ addGoal.propTypes = {
   saveNewGoal: React.PropTypes.func,
   triggerConfirmation: React.PropTypes.func,
   screenHeight: React.PropTypes.number,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default addGoal;

@@ -22,9 +22,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: leagueSpartan;
-  justify-content: center;
-  display: flex;
-  min-height: 100vh;
+  // justify-content: center;
+  // display: flex;
+  //min-height: 100vh;
 }
 
 .MainContent {
@@ -50,10 +50,19 @@ input, textarea {
   letter-spacing: 2px;
 }
 
-.page {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
+ul {
+  padding: 0;
+  margin: 0;
 }
+
+li {
+  list-style: none;
+}
+
+// .page {
+//   //height: 100%;
+//   //width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-content: space-between;
+// }

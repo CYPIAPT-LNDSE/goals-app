@@ -9,9 +9,11 @@ $borderRadius: 6%;
 $gradientBackground: linear-gradient(270deg, $blue 0%, $lightGreen 100%);
 $goalTileHeight: 98px;
 
-/* breakpoints */
+/* breakpoints --> default is optimised for iPhone 5 */
+/* smaller than iPhone 5 */
 $breakpoint-xxs: (max-height: 490px);
 $breakpoint-xs: (max-height: 550px);
+/* larger than iPhone 5 */
 $breakpoint-l: (min-height: 600px);
 
 
@@ -123,13 +125,4 @@ $breakpoint-l: (min-height: 600px);
       color: $blue;
     }
   }
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  list-style: none;
 }
