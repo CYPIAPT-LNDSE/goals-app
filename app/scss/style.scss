@@ -22,32 +22,13 @@ body {
   padding: 0;
   margin: 0;
   font-family: leagueSpartan;
-  // justify-content: center;
-  // display: flex;
-  //min-height: 100vh;
-}
-
-.MainContent {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  width: 100vw;
-  max-width: $maxPageWidth;
-
-  p {
-    color: $blue;
-    letter-spacing: 2.1px;
-  }
 }
 
 p {
+  color: $blue;
+  letter-spacing: 2.1px;
   margin: 0;
   font-size: 12px;
-}
-
-input, textarea {
-  font-family: openSans;
-  letter-spacing: 2px;
 }
 
 ul {
@@ -59,10 +40,15 @@ li {
   list-style: none;
 }
 
-// .page {
-//   //height: 100%;
-//   //width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-content: space-between;
-// }
+input, textarea {
+  font-family: openSans;
+  letter-spacing: 2px;
+}
+
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100vw;
+  max-width: $maxPageWidth;
+}
