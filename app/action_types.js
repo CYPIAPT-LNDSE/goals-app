@@ -8,6 +8,7 @@ export const BACK_BUTTON_CLICK = 'BACK_BUTTON_CLICK';
 /* goals list actions */
 export const STEP_ADD_GOAL = 'STEP_ADD_GOAL';
 export const SELECT_GOAL = 'SELECT_GOAL';
+export const BORDER_GOAL_CLICK = 'BORDER_GOAL_CLICK';
 
 /* add goal actions */
 export const INPUT_GOAL = 'INPUT_GOAL';

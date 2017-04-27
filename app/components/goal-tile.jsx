@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as steps from './../steps.js';
 
-const tile = ({ goal, step, onSelectGoal, }) => {
+const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick, }) => {
 
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
@@ -19,25 +19,20 @@ const tile = ({ goal, step, onSelectGoal, }) => {
     transition: 'width 1s ease',
   };
 
-  let isVisible = false;
-
-  let editStyle = (isVisible) ? {
-    visibility : 'visible',
-    borderLeft : '5px solid #1F65AC',
-  } : {};
-
-  const deleteStyle = {
-    visibility : 'hidden',
-  };
-
-  const clickBorder = () => {
-    console.log('clicked');
-    console.log(editStyle);
-    isVisible = true;
-  };
-
   const editIcon = './images/icons/edit-icon.svg';
   const deleteIcon = './images/icons/delete-icon.svg';
+
+  const editStyle = (visibleEditDelete) ?
+  { visibility : 'visible', borderLeft : '5px solid #1F65AC', } :
+  { visibility : 'hidden' , border : '0px', };
+
+  const deleteStyle = (visibleEditDelete) ?
+  { visibility : 'visible', borderRadius : '0 6px 6px 0', } :
+  { visibility : 'hidden', borderRadius : '0', };
+
+  const borderStyle = (visibleEditDelete) ?
+  { visibility: 'hidden', } :
+  { visibility: 'visible', };
 
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
@@ -77,7 +72,10 @@ const tile = ({ goal, step, onSelectGoal, }) => {
         title="Edit goal"
       />
     </div>
-    <div className="goalTile_deleteContainer">
+    <div
+      className="goalTile_deleteContainer"
+      style={ deleteStyle }
+      >
       <img
         className="goalTile_icon"
         src={ deleteIcon }
@@ -85,7 +83,10 @@ const tile = ({ goal, step, onSelectGoal, }) => {
         title="Edit goal"
       />
     </div>
-    <div className="rightBorder" onClick = {clickBorder} />
+    <div
+      className="rightBorder"
+      onClick = { onBorderClick }
+      style = { borderStyle } />
   </div>
   );
 };
@@ -94,6 +95,8 @@ tile.propTypes = {
   goal: React.PropTypes.object,
   step: React.PropTypes.string,
   onSelectGoal: React.PropTypes.func,
+  visibleEditDelete: React.PropTypes.bool,
+  onBorderClick: React.PropTypes.func,
 };
 
 export default tile;

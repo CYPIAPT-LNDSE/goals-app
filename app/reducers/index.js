@@ -11,6 +11,7 @@ const defaultState = {
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
+  visibleEditDelete: false,
   newGoal: {},
   currentGoal: {},
   setScreenHeight: null,
@@ -127,6 +128,11 @@ export default (state = defaultState, action) => {
     };
   case types.BACK_BUTTON_CLICK:
     return backStep(state);
+  case types.BORDER_GOAL_CLICK:
+    return {
+      ...state,
+      visibleEditDelete: !state.visibleEditDelete,
+    };
   case types.STEP_ADD_GOAL:
     return {
       ...state,

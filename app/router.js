@@ -51,6 +51,8 @@ const router = (props) => {
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
+        visibleEditDelete={ props.visibleEditDelete }
+        onBorderClick={ props.onBorderClick }
       />;
   }
 };
@@ -60,6 +62,8 @@ router.propTypes = {
   goals: React.PropTypes.array,
   stepAddGoal: React.PropTypes.func,
   onSelectGoal: React.PropTypes.func,
+  visibleEditDelete: React.PropTypes.bool,
+  onBorderClick: React.PropTypes.func,
   currentGoal: React.PropTypes.object,
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,

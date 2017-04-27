@@ -62,6 +62,7 @@ const mapStateToProps = state => ({
   step: state.step,
   newGoal: state.newGoal,
   currentGoal: state.currentGoal,
+  visibleEditDelete: state.visibleEditDelete,
 });
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);

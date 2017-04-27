@@ -11,3 +11,5 @@ export const onSelectGoal = goal => {
     goal: goal,
   };
 };
+
+export const onBorderClick = createAction(types.BORDER_GOAL_CLICK);
