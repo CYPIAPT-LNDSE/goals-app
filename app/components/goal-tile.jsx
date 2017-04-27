@@ -6,8 +6,8 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
 onDeleteGoal, }) => {
 
   const visible = (goal.deleted) ?
-  { visibility: 'hidden', } :
-  { visibility: 'visible', };
+  { display: 'none', } :
+  { display: 'flex', };
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
   const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
