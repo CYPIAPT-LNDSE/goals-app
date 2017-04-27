@@ -208,6 +208,9 @@ export default (state = defaultState, action) => {
       ...state,
       step: steps.EDIT_GOAL,
       previousStep: steps.GOALS_LIST,
+      currentGoal: {
+        ...action.goal,
+      },
     };
   case types.STEP_RATE_GOAL:
     return {

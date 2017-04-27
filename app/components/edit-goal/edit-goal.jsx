@@ -1,14 +1,20 @@
 import React from 'react';
 
+import * as steps from './../../steps.js';
+import GoalTile from '../goal-tile.jsx';
 import NewGoalInput from '../add-new-goal/new-goal-input.jsx';
 
 const editGoal = ({ goal, onInputGoal, onSaveEditGoal, }) => {
 
   return (
     <div className="editGoal">
+      <GoalTile
+        goal={ goal }
+        step={ steps.EDIT_GOAL }
+        />
       <div className="editGoal_inputContainer-outer">
         <label htmlFor="editGoalInput" className="editGoal_label">
-          Set a goal and choose a plant to grow with it
+          Change your goal's title
         </label>
       <NewGoalInput newGoal={ goal } onInputGoal={ onInputGoal } />
       </div>
@@ -20,7 +26,7 @@ const editGoal = ({ goal, onInputGoal, onSaveEditGoal, }) => {
             className="editGoal_button"
             disabled={ !goal.name }
             onClick={ onSaveEditGoal }
-          >ADD</button>
+          >SAVE</button>
         </div>
       </div>
     </div>
