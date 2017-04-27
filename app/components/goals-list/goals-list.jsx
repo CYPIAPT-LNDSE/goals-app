@@ -4,13 +4,14 @@ import GoalTile from '../goal-tile.jsx';
 
 import * as steps from './../../steps.js';
 
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal, visibleEditDelete, onBorderClick, }) => {
-  goals = [{
-    id: 0,
-    name: 'I will eat more pizza',
-    avatar: 'pumpkin',
-    user_id: 0,
-  },];
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal, visibleEditDelete,
+  onBorderClick, onDeleteGoal, }) => {
+  // goals = [{
+  //   id: 0,
+  //   name: 'I will eat more pizza',
+  //   avatar: 'pumpkin',
+  //   user_id: 0,
+  // },];
 
   const goalsListItems = goals.map(goal => {
     return (
@@ -21,6 +22,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, visibleEditDelete, onBord
           onSelectGoal={ onSelectGoal }
           visibleEditDelete={ visibleEditDelete }
           onBorderClick={ onBorderClick }
+          onDeleteGoal={ onDeleteGoal }
           />
       </li>);
   });
@@ -52,6 +54,9 @@ GoalsList.propTypes = {
   goals: React.PropTypes.array,
   stepAddGoal: React.PropTypes.func,
   onSelectGoal: React.PropTypes.func,
+  visibleEditDelete: React.PropTypes.bool,
+  onBorderClick: React.PropTypes.func,
+  onDeleteGoal: React.PropTypes.func,
 };
 
 export default GoalsList;

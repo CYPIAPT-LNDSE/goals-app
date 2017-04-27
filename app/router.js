@@ -53,6 +53,7 @@ const router = (props) => {
         onSelectGoal={ props.onSelectGoal }
         visibleEditDelete={ props.visibleEditDelete }
         onBorderClick={ props.onBorderClick }
+        onDeleteGoal={ props.onDeleteGoal }
       />;
   }
 };
@@ -64,6 +65,7 @@ router.propTypes = {
   onSelectGoal: React.PropTypes.func,
   visibleEditDelete: React.PropTypes.bool,
   onBorderClick: React.PropTypes.func,
+  onDeleteGoal: React.PropTypes.func,
   currentGoal: React.PropTypes.object,
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,

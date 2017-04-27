@@ -112,6 +112,19 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
+const removeGoal = ({ goals, }, goal) => {
+  const index = goals.indexOf(goal);
+  const beforeGoal = goals.slice(0, index);
+  const afterGoal = goals.slice(index+1, goals.length);
+  return beforeGoal.concat(afterGoal);
+};
+
+export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
+  let goals = mapWithId(state, goal, () => fn(goal));
+  goals = removeGoal(state, goal);
+  return goals;
+};
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -128,11 +141,6 @@ export default (state = defaultState, action) => {
     };
   case types.BACK_BUTTON_CLICK:
     return backStep(state);
-  case types.BORDER_GOAL_CLICK:
-    return {
-      ...state,
-      visibleEditDelete: !state.visibleEditDelete,
-    };
   case types.STEP_ADD_GOAL:
     return {
       ...state,
@@ -178,6 +186,16 @@ export default (state = defaultState, action) => {
         ...action.goal,
         newRating: {},
       },
+    };
+  case types.BORDER_GOAL_CLICK:
+    return {
+      ...state,
+      visibleEditDelete: !state.visibleEditDelete,
+    };
+  case types.DELETE_GOAL:
+    return {
+      ...state,
+      goals: removeGoalFromArray(state, action, increaseUpdateCount),
     };
   case types.STEP_RATE_GOAL:
     return {

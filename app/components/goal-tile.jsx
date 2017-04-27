@@ -2,7 +2,8 @@ import React from 'react';
 
 import * as steps from './../steps.js';
 
-const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick, }) => {
+const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
+onDeleteGoal, }) => {
 
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
@@ -71,6 +72,7 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick, }) =
     <div
       className="goalTile_deleteContainer"
       style={ deleteStyle }
+      onClick={ () => { onDeleteGoal(goal); }}
       >
       <img
         className="goalTile_icon"
@@ -93,6 +95,7 @@ tile.propTypes = {
   onSelectGoal: React.PropTypes.func,
   visibleEditDelete: React.PropTypes.bool,
   onBorderClick: React.PropTypes.func,
+  onDeleteGoal: React.PropTypes.func,
 };
 
 export default tile;
