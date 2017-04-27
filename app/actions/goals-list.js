@@ -12,7 +12,12 @@ export const onSelectGoal = goal => {
   };
 };
 
-export const onBorderClick = createAction(types.BORDER_GOAL_CLICK);
+export const onBorderClick = goal => {
+  return {
+    type: types.BORDER_GOAL_CLICK,
+    goal: goal,
+  };
+};
 export const onDeleteGoal = goal => {
   return {
     type: types.DELETE_GOAL,

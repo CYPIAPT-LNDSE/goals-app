@@ -11,7 +11,6 @@ const defaultState = {
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
-  visibleEditDelete: false,
   newGoal: {},
   currentGoal: {},
   setScreenHeight: null,
@@ -112,7 +111,7 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
-const removeGoal = ({ goals, }, goal) => {
+export const removeGoal = ({ goals, }, goal) => {
   const index = goals.indexOf(goal);
   const beforeGoal = goals.slice(0, index);
   const afterGoal = goals.slice(index+1, goals.length);
@@ -123,6 +122,15 @@ export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
   let goals = mapWithId(state, goal, () => fn(goal));
   goals = removeGoal(state, goal);
   return goals;
+};
+
+export const changeVisibility = (state, { goal, }, fn = goal => {
+  return {
+    ...goal,
+    visibleEditDelete: !goal.visibilty,
+  };
+}) => {
+  return mapWithId(state, goal, fn);
 };
 
 export default (state = defaultState, action) => {
@@ -190,7 +198,7 @@ export default (state = defaultState, action) => {
   case types.BORDER_GOAL_CLICK:
     return {
       ...state,
-      visibleEditDelete: !state.visibleEditDelete,
+      goals: changeVisibility(state, action),
     };
   case types.DELETE_GOAL:
     return {

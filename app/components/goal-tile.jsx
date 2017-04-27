@@ -83,7 +83,7 @@ onDeleteGoal, }) => {
     </div>
     <div
       className="rightBorder"
-      onClick = { onBorderClick }
+      onClick = { () => { onBorderClick(goal); }}
     />
   </div>
   );

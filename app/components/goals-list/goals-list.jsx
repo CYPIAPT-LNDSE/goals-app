@@ -4,7 +4,7 @@ import GoalTile from '../goal-tile.jsx';
 
 import * as steps from './../../steps.js';
 
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal, visibleEditDelete,
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
   onBorderClick, onDeleteGoal, }) => {
   // goals = [{
   //   id: 0,
@@ -20,7 +20,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, visibleEditDelete,
           goal={ goal }
           step={ steps.GOALS_LIST }
           onSelectGoal={ onSelectGoal }
-          visibleEditDelete={ visibleEditDelete }
+          visibleEditDelete={ goal.visibleEditDelete }
           onBorderClick={ onBorderClick }
           onDeleteGoal={ onDeleteGoal }
           />
