@@ -6,12 +6,6 @@ import * as steps from './../../steps.js';
 
 const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
   onBorderClick, onDeleteGoal, }) => {
-  // goals = [{
-  //   id: 0,
-  //   name: 'I will eat more pizza',
-  //   avatar: 'pumpkin',
-  //   user_id: 0,
-  // },];
 
   const goalsListItems = goals.map(goal => {
     return (
