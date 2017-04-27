@@ -8,6 +8,7 @@ import * as actionsViewGoal from './../actions/view-goal.js';
 import * as actionsRateGoal from './../actions/rate-goal.js';
 import * as actionsFeedback from './../actions/feedback.js';
 import * as actionsGeneral from './../actions/general.js';
+import * as actionsEditGoal from './../actions/edit-goal.js';
 
 const actionsMainContainer = {
   ...actionsGoalsList,
@@ -16,6 +17,7 @@ const actionsMainContainer = {
   ...actionsRateGoal,
   ...actionsFeedback,
   ...actionsGeneral,
+  ...actionsEditGoal,
 };
 
 import router from './../router.js';
@@ -62,7 +64,6 @@ const mapStateToProps = state => ({
   step: state.step,
   newGoal: state.newGoal,
   currentGoal: state.currentGoal,
-  visibleEditDelete: state.visibleEditDelete,
 });
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);

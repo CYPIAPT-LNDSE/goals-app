@@ -203,6 +203,12 @@ export default (state = defaultState, action) => {
       ...state,
       goals: removeGoalFromArray(state, action, increaseUpdateCount),
     };
+  case types.EDIT_GOAL:
+    return {
+      ...state,
+      step: steps.EDIT_GOAL,
+      previousStep: steps.GOALS_LIST,
+    };
   case types.STEP_RATE_GOAL:
     return {
       ...state,

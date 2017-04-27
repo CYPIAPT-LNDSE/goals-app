@@ -3,7 +3,7 @@ import React from 'react';
 import * as steps from './../steps.js';
 
 const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
-onDeleteGoal, }) => {
+onDeleteGoal, onEditGoal, }) => {
 
   const visible = (goal.deleted) ?
   { display: 'none', } :
@@ -64,6 +64,7 @@ onDeleteGoal, }) => {
     <div
       className="goalTile_editContainer"
       style={ editStyle }
+      onClick={ () => { onEditGoal(goal); }}
       >
       <img
         className="goalTile_icon"
@@ -99,6 +100,7 @@ tile.propTypes = {
   visibleEditDelete: React.PropTypes.bool,
   onBorderClick: React.PropTypes.func,
   onDeleteGoal: React.PropTypes.func,
+  onEditGoal: React.PropTypes.func,
 };
 
 export default tile;

@@ -18,9 +18,17 @@ export const onBorderClick = goal => {
     goal: goal,
   };
 };
+
 export const onDeleteGoal = goal => {
   return {
     type: types.DELETE_GOAL,
+    goal: goal,
+  };
+};
+
+export const onEditGoal = goal => {
+  return {
+    type: types.EDIT_GOAL,
     goal: goal,
   };
 };
