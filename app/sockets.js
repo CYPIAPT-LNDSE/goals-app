@@ -39,6 +39,20 @@ const syncGoal = (goal, store, socket) => {
 
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
+
+  if(goal.deleted) {
+    socket.emit('deleteGoal', JSON.stringify(goal), (socketErr, socketResponse) => {
+
+      window.clearTimeout(timer);
+
+      if (socketErr) {
+        onUpdateSyncFailure(store, goal, updateSyncFailure);
+        return;
+      }
+
+      store.dispatch(updateSyncSuccess(socketResponse.goal_id));
+    });
+  }
 };
 
 const checkGoalForUpdates = (goal, store, socket) => {

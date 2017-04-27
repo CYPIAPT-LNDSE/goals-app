@@ -47,6 +47,10 @@ const socketManager = (socket) => {
           }
         });
       });
+
+      socket.on('deleteGoal', (data, clientCallback) => {
+        // code to delete goal from the database
+      });
     });
 
 
