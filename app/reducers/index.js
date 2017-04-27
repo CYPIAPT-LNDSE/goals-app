@@ -127,7 +127,7 @@ export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
 export const changeVisibility = (state, { goal, }, fn = goal => {
   return {
     ...goal,
-    visibleEditDelete: !goal.visibilty,
+    visibleEditDelete: !goal.visibleEditDelete,
   };
 }) => {
   return mapWithId(state, goal, fn);
