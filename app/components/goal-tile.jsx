@@ -5,6 +5,9 @@ import * as steps from './../steps.js';
 const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
 onDeleteGoal, }) => {
 
+  const visible = (goal.deleted) ?
+  { visibility: 'hidden', } :
+  { visibility: 'visible', };
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
   const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
@@ -38,7 +41,7 @@ onDeleteGoal, }) => {
   };
 
   return (
-    <div className="goalTile">
+    <div className="goalTile" style={visible}>
     <div
       className="outerContainer"
       onClick={ () => { clickGoal(goal); }

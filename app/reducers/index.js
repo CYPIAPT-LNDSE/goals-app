@@ -111,17 +111,15 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
-export const removeGoal = ({ goals, }, goal) => {
-  const index = goals.indexOf(goal);
-  const beforeGoal = goals.slice(0, index);
-  const afterGoal = goals.slice(index+1, goals.length);
-  return beforeGoal.concat(afterGoal);
-};
-
 export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
-  let goals = mapWithId(state, goal, () => fn(goal));
-  goals = removeGoal(state, goal);
-  return goals;
+  const goals = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals, }, (goal), goal => {
+    return {
+      ...goal,
+      deleted : true,
+      visibleEditDelete: false,
+    };
+  });
 };
 
 export const changeVisibility = (state, { goal, }, fn = goal => {

@@ -28,6 +28,7 @@ export const saveNewGoal = (goal) => {
       avatar: (goal.avatar || avatarTypes[0].avatar),
       ratings: [],
       visibleEditDelete: false,
+      deleted: false,
       updateCount: 0,
       syncDBCount: 0,
       pendingSync: {
