@@ -4,28 +4,36 @@ import moment from 'moment';
 import GoalTileComponent from '../goal-tile.jsx';
 import LineChart from './line-chart.jsx';
 
+const defaultWidth = 400;
+const animationName = 'scroll';
+
 class LineChartDetail extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      customWidth: props.currentGoal.ratings.length < 6
+        ? null
+        : defaultWidth + (props.currentGoal.ratings.length - 3) * 10,
+    };
+  }
 
   componentDidMount() {
     const currentGoal = this.props.currentGoal;
     const latestRating = currentGoal.ratings[0];
-    if (latestRating) {
-      this.props.onSelectRating(latestRating.id);
-    }
+    window.setTimeout(() => {
+      if (latestRating) {
+        this.props.onSelectRating(latestRating.id);
+        document.querySelector('.detail-chart-container')
+          .scrollLeft += defaultWidth + this.state.customWidth;
+      }
+    }, 2000);
   }
 
   render() {
 
     const currentGoal = this.props.currentGoal;
-
     const allRatings = currentGoal.ratings.slice(0).reverse();
-
-    const containerStyle = {
-      width: allRatings.length < 6
-          ? '100%'
-          : 400 + (allRatings.length - 3) * 10,
-    };
-
     const feedbackStyle = {
       opacity: currentGoal.ratingSelected
           ? 1
@@ -44,7 +52,31 @@ class LineChartDetail extends React.Component {
         ? currentGoal.ratingSelected.comment
         : '';
 
+    const animation = `
+          @keyframes ${animationName} {
+            from {
+              margin-left: 0;
+            }
+            to {
+              margin-left: ${0 - this.state.customWidth + defaultWidth}px;
+            }
+          }
+      `;
+
+    const stylesheet = document.styleSheets[0];
+    stylesheet.insertRule(animation, stylesheet.cssRules.length);
+
+    const containerStyle = !this.state.customWidth
+      ? { width: '100%', }
+      : {
+        width: this.state.customWidth,
+        animationName: animationName,
+        animationTimingFunction: 'ease-in-out',
+        animationDuration: '2s',
+      };
+
     return (
+
      <div className="line-chart-detail goal-detail-page">
        <div className="goal-detail-goal-tile-container">
          <GoalTileComponent goal={ currentGoal } />

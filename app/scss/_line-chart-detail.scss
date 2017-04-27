@@ -28,6 +28,7 @@ $contentHeight: 370px;
   border-right: $blueBorderThin;
   margin-top: -1px;
   align-self: center;
+  transition: opacity 1s;
 
   p {
     margin: 10px 0 0 10px;
@@ -62,6 +63,7 @@ $contentHeight: 370px;
 
 .detail-chart-container-inner {
   height: 100%;
+  margin-left: 0;
 
   canvas {
     height: $contentHeight - $goalTileHeight;
