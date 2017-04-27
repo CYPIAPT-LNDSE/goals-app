@@ -59,6 +59,7 @@ const getAxesOptions = (axis, isChartPreview) => {
 const getOptions = (isChartPreview, fn) => {
 
   return {
+    animation: false,
     responsive: true,
     maintainAspectRatio: false,
     onClick: isChartPreview
@@ -90,15 +91,35 @@ const compileData = arr => arr.length
   ? [0,].concat(getScores(arr)).concat(arr[arr.length - 1].score)
   : [];
 
-const getStyles = (arr, avatar) =>
-  ['circle',].concat(Array(arr.length).fill(avatar));
+// const getStyles = (arr, avatar) =>
+//   ['circle',].concat(Array(arr.length).fill(avatar));
+
+const getStyles = (arr, avatar, selectedIndex) =>
+  Array(arr.length + 1).fill('circle')
+    .map((point, index) => index === selectedIndex ? avatar : point);
 
 const getLabels = arr => Array(arr.length + 2).fill('');
 
 const getIconSrc = (icons, avatar) =>
   icons.find(icon => icon.avatar === avatar).image;
 
-const LineChart = React.createClass({
+class LineChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.changeRatings = this.changeRatings.bind(this);
+    this.state = {
+      ratingSelected: this.props.ratings.length,
+    };
+  }
+
+  changeRatings(rating) {
+    this.props.onSelectRating(rating);
+  }
+
+  componentDidMount() {
+    this.setState({ ...this.state, });
+  }
 
   render() {
 
@@ -109,8 +130,9 @@ const LineChart = React.createClass({
 
     const clickFunction = (_, activePoints) => {
       const index = activePoints[0]._index;
+      this.setState({...this.state, ratingSelected: index, });
       const rating = getRatingFromIndex(index, latestRatings);
-      this.props.onSelectRating(rating);
+      this.changeRatings(rating);
     };
 
     const chartOptions = getOptions(this.props.isChartPreview, clickFunction);
@@ -125,7 +147,9 @@ const LineChart = React.createClass({
           borderColor: '#fff',
           fill: false,
           pointBorderColor: 'transparent',
-          pointStyle: getStyles(latestRatings, icon),
+          radius: 10,
+          backgroundColor: '#fff',
+          pointStyle: getStyles(latestRatings, icon, this.state.ratingSelected),
           hitRadius: 25,
         },
       ],
@@ -136,9 +160,10 @@ const LineChart = React.createClass({
       options={ chartOptions }
       width={ chartWidth }
       height={ chartHeight }
+      redraw={ !this.props.isChartPreview }
     />;
-  },
-});
+  }
+}
 
 LineChart.propTypes = {
   ratings: React.PropTypes.array,

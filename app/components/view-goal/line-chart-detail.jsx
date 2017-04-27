@@ -23,11 +23,13 @@ class LineChartDetail extends React.Component {
     const latestRating = currentGoal.ratings[0];
     window.setTimeout(() => {
       if (latestRating) {
-        this.props.onSelectRating(latestRating.id);
+        document.querySelector('.detail-chart-container-inner')
+          .style.marginLeft = 0;
         document.querySelector('.detail-chart-container')
-          .scrollLeft += defaultWidth + this.state.customWidth;
+          .scrollLeft += 1000;
+        this.props.onSelectRating(latestRating.id);
       }
-    }, 2000);
+    }, 1500);
   }
 
   render() {
@@ -72,7 +74,8 @@ class LineChartDetail extends React.Component {
         width: this.state.customWidth,
         animationName: animationName,
         animationTimingFunction: 'ease-in-out',
-        animationDuration: '2s',
+        animationDuration: '1s',
+        marginLeft: 0 - this.state.customWidth + defaultWidth,
       };
 
     return (
