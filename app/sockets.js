@@ -38,8 +38,8 @@ const syncGoal = (goal, store, socket) => {
       return;
     }
 
-    if (!socketResponse.goal_id) {
-      throw new Error('response did not contain a valid goal id');
+    if (typeof(socketResponse) !== 'string') {
+      throw new Error('response was not a valid goal id');
     }
 
     store.dispatch(updateSyncSuccess(socketResponse));
