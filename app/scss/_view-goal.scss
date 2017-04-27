@@ -1,6 +1,7 @@
 @import 'general';
 @import 'colors';
 @import 'progress-animation';
+@import 'arrow-animation';
 
 $titleHeight: 25px;
 $chartHeight: 100px;
@@ -96,53 +97,6 @@ $contentMaxWidth: 400px;
   height: 80px;
 }
 
-/* arrow stuff */
-
-$ani-speed: 2s;
-$ani-delay: 1s;
-
-.arrow {
-  opacity: 1;
-  position: absolute;
-    left: 55%;
-    top: 56%;
-
-  animation: arrow-movement $ani-speed ease-in-out 3;
-
-  &:before, &:after {
-    background: transparent;
-    content: '>';
-    display: block;
-    height: 1px;
-    position: absolute;
-      top: 0;
-      left: 0;
-    width: 3px;
-  }
-
-  &:before {
-    transform-origin: top left;
-    color: transparent;
-  }
-
-  &:after {
-    transform-origin: top right;
-    color: $light;
-  }
-}
-
-// Animation
-@keyframes arrow-movement {
-  0%   {
-    opacity: 0;
-    left: 50%;
-  }
-
-  70% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
+.arrow-1 {
+  @extend .arrow;
 }
