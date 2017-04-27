@@ -2,14 +2,14 @@
 $animation-speed: 2s;
 $animation-delay: 1s;
 $animation-repeat: 3;
+$animation-start-pos: 0px;
 
 $arrow-animation: arrow-movement $animation-speed ease-in-out $animation-repeat;
 
 .arrow {
   opacity: 1;
-  position: absolute;
-  left: 55%;
-  top: 56%;
+  position: relative;
+  margin-left: $animation-start-pos;
   animation: $arrow-animation;
 
   &:before, &:after {
@@ -30,7 +30,7 @@ $arrow-animation: arrow-movement $animation-speed ease-in-out $animation-repeat;
 @keyframes arrow-movement {
   0%   {
     opacity: 0;
-    left: 50%;
+    margin-left: $animation-start-pos - 10;
   }
   70% { opacity: 1; }
   100% {  opacity: 0; }
