@@ -38,6 +38,10 @@ const syncGoal = (goal, store, socket) => {
       return;
     }
 
+    if (!socketResponse.goal_id) {
+      throw new Error('response did not contain a valid goal id');
+    }
+
     store.dispatch(updateSyncSuccess(socketResponse));
   });
 };
@@ -86,6 +90,6 @@ const socketStarter = (store) => {
   socket.on('userData', (data) => {
     store.dispatch(receiveDbData(data));
   });
-  
+
   return socket;
 };
