@@ -6,6 +6,14 @@ import LineChart from './line-chart.jsx';
 
 const defaultWidth = 400;
 const animationName = 'scroll';
+const animationDuration = 1;
+
+const getAnimationFrame = (name, width, defaultWidth) => `
+  @keyframes ${name} {
+    from { margin-left: 0; }
+    to { margin-left: ${0 - width + defaultWidth}px; }
+  }
+`;
 
 class LineChartDetail extends React.Component {
 
@@ -29,13 +37,15 @@ class LineChartDetail extends React.Component {
           .scrollLeft += 1000;
         this.props.onSelectRating(latestRating.id);
       }
-    }, 1500);
+    }, (animationDuration * 1000 + 500));
   }
 
   render() {
 
     const currentGoal = this.props.currentGoal;
+
     const allRatings = currentGoal.ratings.slice(0).reverse();
+
     const feedbackStyle = {
       opacity: currentGoal.ratingSelected
           ? 1
@@ -54,16 +64,9 @@ class LineChartDetail extends React.Component {
         ? currentGoal.ratingSelected.comment
         : '';
 
-    const animation = `
-          @keyframes ${animationName} {
-            from {
-              margin-left: 0;
-            }
-            to {
-              margin-left: ${0 - this.state.customWidth + defaultWidth}px;
-            }
-          }
-      `;
+    const animation = getAnimationFrame(
+      animationName, this.state.width, defaultWidth
+    );
 
     const stylesheet = document.styleSheets[0];
     stylesheet.insertRule(animation, stylesheet.cssRules.length);
@@ -74,12 +77,11 @@ class LineChartDetail extends React.Component {
         width: this.state.customWidth,
         animationName: animationName,
         animationTimingFunction: 'ease-in-out',
-        animationDuration: '1s',
+        animationDuration: `${animationDuration}s`,
         marginLeft: 0 - this.state.customWidth + defaultWidth,
       };
 
     return (
-
      <div className="line-chart-detail goal-detail-page">
        <div className="goal-detail-goal-tile-container">
          <GoalTileComponent goal={ currentGoal } />

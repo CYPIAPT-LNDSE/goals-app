@@ -91,9 +91,6 @@ const compileData = arr => arr.length
   ? [0,].concat(getScores(arr)).concat(arr[arr.length - 1].score)
   : [];
 
-// const getStyles = (arr, avatar) =>
-//   ['circle',].concat(Array(arr.length).fill(avatar));
-
 const getStyles = (arr, avatar, selectedIndex) =>
   Array(arr.length + 1).fill('circle')
     .map((point, index) => index === selectedIndex ? avatar : point);
