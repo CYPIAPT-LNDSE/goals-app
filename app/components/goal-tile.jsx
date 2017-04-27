@@ -36,6 +36,9 @@ const tile = ({ goal, step, onSelectGoal, }) => {
     isVisible = true;
   };
 
+  const editIcon = './images/icons/edit-icon.svg';
+  const deleteIcon = './images/icons/delete-icon.svg';
+
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
       onSelectGoal(goal);
@@ -67,10 +70,20 @@ const tile = ({ goal, step, onSelectGoal, }) => {
       className="goalTile_editContainer"
       style={ editStyle }
       >
-      { /* img of edit pen */ }
+      <img
+        className="goalTile_icon"
+        src={ editIcon }
+        alt="Edit your goal"
+        title="Edit goal"
+      />
     </div>
     <div className="goalTile_deleteContainer">
-      { /* img of delete bin */ }
+      <img
+        className="goalTile_icon"
+        src={ deleteIcon }
+        alt="Edit your goal"
+        title="Edit goal"
+      />
     </div>
     <div className="rightBorder" onClick = {clickBorder} />
   </div>

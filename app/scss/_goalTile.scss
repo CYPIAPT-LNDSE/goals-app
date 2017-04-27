@@ -66,30 +66,33 @@ $imgHeight: 83px;
   z-index: -1;
 }
 
+@mixin goalTile_container {
+  display: flex;
+  justify-content: center;
+  height: 96px;
+  width: 91px;
+  border: 1px solid $blue;
+  border-radius: 0;
+  background-color: $light;
+  // visibility: hidden;
+  position: relative;
+}
 .goalTile_editContainer {
-  	height: $goalTileHeight;
-    width: 96px;
-    border: 1px solid $blue;
-    border-radius: 0;
-    background-color: $light;
-    margin-left: 5%;
-    visibility: hidden;
-    position: relative;
+  @include goalTile_container;
+    margin-left: 7%;
 }
 
 .goalTile_deleteContainer {
-  height: $goalTileHeight;
-  width: 96px;
-  border: 1px solid $blue;
-  border-radius: 0 6px 6px 0;
-  background-color: $light;
-  visibility: hidden;
-  position: relative;
+  @include goalTile_container;
+}
+
+.goalTile_icon {
+  align-self: center;
+  height: 30px;
 }
 
 .rightBorder {
   height: $goalTileHeight;
-  width: 5px;
   border-right: 5px solid $borderBlue;
   border-radius: 0 6px 6px 0;
   z-index: 1;
