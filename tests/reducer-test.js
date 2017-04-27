@@ -528,6 +528,53 @@ tape(`test reducer case STEP_LINE_CHART_DETAIL: sets step to LINE_CHART_DETAIL
   t.end();
 });
 
+tape(`test reducer case SELECT_RATING sets the rating selected property
+  to an object representing a rating`, (t) => {
+
+  const initialState = {
+    ...defaultState,
+    currentGoal: {
+      ratings: [
+        {
+          id: 0,
+          score: 7,
+        },
+        {
+          id: 1,
+          score: 2,
+        },
+      ],
+    },
+  };
+
+  const actionSelectRating = {
+    type: types.SELECT_RATING,
+    rating: 0,
+  };
+
+  const actionSelectInvalidRating = {
+    ...actionSelectRating,
+    rating: 5,
+  };
+
+  const nextState = reducer(initialState, actionSelectRating);
+  const stateNoRatingSelected = reducer(initialState, actionSelectInvalidRating);
+
+  t.equal(nextState.currentGoal.ratingSelected.id,
+    0,
+    'correct rating selected'
+  );
+  t.equal(nextState.currentGoal.ratingSelected.score,
+    7,
+    'ratingSelected has correct score'
+  );
+  t.deepEqual(stateNoRatingSelected.currentGoal.ratingSelected,
+    null,
+    'ratingSelected null if invalid rating id passed'
+  );
+  t.end();
+});
+
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {

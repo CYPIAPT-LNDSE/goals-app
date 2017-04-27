@@ -2,12 +2,18 @@ import * as steps from './../steps.js';
 import * as types from './../action_types.js';
 
 const defaultState = {
+  user: {
+    isAuthenticated: false,
+    authPending: false,
+    id: null,
+  },
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
   newGoal: {},
   currentGoal: {},
+  setScreenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -101,6 +107,9 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
     newRating: {},
   };
 };
+
+export const selectRatingById = (id, arr) =>
+  arr.find(rating => rating.id === id) || null;
 
 export default (state = defaultState, action) => {
   switch(action.type) {
@@ -221,12 +230,46 @@ export default (state = defaultState, action) => {
       ...state,
       step: steps.LINE_CHART_DETAIL,
     };
+  case types.SELECT_RATING:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        ratingSelected: selectRatingById(action.rating, state.currentGoal.ratings),
+      },
+    };
+  case types.SET_AUTH_PENDING:
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        authPending: true,
+      },
+    };
+  case types.AUTH_SUCCESS:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: true,
+        id: action.user_id,
+        authPending: false,
+      },
+    };
+  case types.AUTH_FAILURE:
+    return {
+      ...state,
+      user: {
+        isAuthenticated: false,
+        id: null,
+        authPending: false,
+      },
+    };
   case types.SET_PENDING_SYNC_OPEN:
     return {
       ...state,
       goals: state.goals.map((goal) => {
         return action.id === goal.id
-        ? { ...goal, pendingSync: {open: true,}, }
+        ? { ...goal, pendingSync: { open: true, }, }
         : goal;
       }),
     };
@@ -252,13 +295,18 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: mapWithId(state, action, (goal) => {
-        return { ...goal, updateCount:0, syncDBCount: 0, };
+        return { ...goal, updateCount: 0, syncDBCount: 0, };
       }),
     };
   case types.RECEIVE_DB_DATA:
     return {
       ...state,
       goals: action.goals,
+    };
+  case types.SET_SCREEN_HEIGHT:
+    return {
+      ...state,
+      setScreenHeight: action.height,
     };
   default:
     return state;

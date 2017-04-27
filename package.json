@@ -35,7 +35,6 @@
     "chart.js": "^2.5.0",
     "css-loader": "^0.26.2",
     "env2": "^2.1.1",
-    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "gsap": "^1.19.1",
     "hapi": "^16.1.0",
@@ -61,6 +60,7 @@
     "socket.io-cookie": "0.0.1",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
+    "uuid": "^3.0.1",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
