@@ -23,16 +23,12 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick, }) =
   const deleteIcon = './images/icons/delete-icon.svg';
 
   const editStyle = (visibleEditDelete) ?
-  { visibility : 'visible', borderLeft : '5px solid #1F65AC', } :
-  { visibility : 'hidden' , border : '0px', };
+  { visibility : 'visible', } :
+  { visibility : 'hidden' , };
 
   const deleteStyle = (visibleEditDelete) ?
-  { visibility : 'visible', borderRadius : '0 6px 6px 0', } :
-  { visibility : 'hidden', borderRadius : '0', };
-
-  const borderStyle = (visibleEditDelete) ?
-  { visibility: 'hidden', } :
-  { visibility: 'visible', };
+  { visibility : 'visible', } :
+  { visibility : 'hidden', };
 
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
@@ -86,7 +82,7 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick, }) =
     <div
       className="rightBorder"
       onClick = { onBorderClick }
-      style = { borderStyle } />
+    />
   </div>
   );
 };
