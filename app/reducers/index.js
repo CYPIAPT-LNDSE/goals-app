@@ -111,13 +111,13 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
-export const removeGoalFromList = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+export const removeGoalFromList = (state, { goal, }) => {
+  return mapWithId(state, goal, goal => {
     return {
       ...goal,
       deleted : true,
       visibleEditDelete: false,
+      updateCount: (goal.updateCount + 1 || 1),
     };
   });
 };
@@ -133,7 +133,7 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
 
 export const editGoal = (state, { goal, }, fn = goal => goal) => {
   const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+  return mapWithId({ goals, }, goal, goal => {
     return {
       ...goal,
       name: goal.name,
@@ -142,6 +142,7 @@ export const editGoal = (state, { goal, }, fn = goal => goal) => {
     };
   });
 };
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
