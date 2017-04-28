@@ -1,15 +1,13 @@
 import React from 'react';
 
 class NewGoalInput extends React.Component {
-
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.props.onInputGoal(event.target.value);
+    this.props.onInputEditGoal(event.target.value);
   }
 
   render() {
