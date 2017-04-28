@@ -51,7 +51,7 @@ const router = (props) => {
     return <EditGoal
       goal={ props.currentGoal }
       newGoal={ props.newGoal }
-      onInputGoal={ props.onInputGoal }
+      onInputEditGoal={ props.onInputEditGoal }
       onSaveEditGoal={ props.onSaveEditGoal }
     />;
   default:
@@ -92,6 +92,7 @@ router.propTypes = {
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
   toggleDeleteModal: React.PropTypes.func,
+  onInputEditGoal: React.PropTypes.func,
 };
 
 export default router;
