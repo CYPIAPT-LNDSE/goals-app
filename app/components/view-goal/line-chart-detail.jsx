@@ -4,65 +4,115 @@ import moment from 'moment';
 import GoalTileComponent from '../goal-tile.jsx';
 import LineChart from './line-chart.jsx';
 
-const LineChartDetail = ({ currentGoal, onSelectRating, }) => {
+const defaultWidth = 400;
+const animationName = 'scroll';
+const animationDuration = 1;
 
-  const allRatings = currentGoal.ratings.slice(0).reverse();
+const getAnimationFrame = (name, width, defaultWidth) => `
+  @keyframes ${name} {
+    from { margin-left: 0; }
+    to { margin-left: ${0 - width + defaultWidth}px; }
+  }
+`;
 
-  const containerStyle = {
-    width: allRatings.length < 6
-      ? '100%'
-      : 400 + (allRatings.length - 3) * 10,
-  };
+class LineChartDetail extends React.Component {
 
-  const feedbackStyle = {
-    opacity: currentGoal.ratingSelected
-      ? 1
-      : 0,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      customWidth: props.currentGoal.ratings.length < 6
+        ? null
+        : defaultWidth + (props.currentGoal.ratings.length - 3) * 10,
+    };
+  }
 
-  const time = currentGoal.ratingSelected
-    ? currentGoal.ratingSelected.time
-    : {};
+  componentDidMount() {
+    const currentGoal = this.props.currentGoal;
+    const latestRating = currentGoal.ratings[0];
+    window.setTimeout(() => {
+      if (latestRating) {
+        document.querySelector('.detail-chart-container-inner')
+          .style.marginLeft = 0;
+        document.querySelector('.detail-chart-container')
+          .scrollLeft += 1000;
+        this.props.onSelectRating(latestRating.id);
+      }
+    }, (animationDuration * 1000 + 500));
+  }
 
-  const score = currentGoal.ratingSelected
-    ? currentGoal.ratingSelected.score
-    : null;
+  render() {
 
-  const comment = currentGoal.ratingSelected
-    ? currentGoal.ratingSelected.comment
-    : '';
+    const currentGoal = this.props.currentGoal;
 
-  return (
-   <div className="line-chart-detail goal-detail-page">
-     <div className="goal-detail-goal-tile-container">
-       <GoalTileComponent goal={ currentGoal } />
-     </div>
-     <div className="line-chart-container-detail">
-       <div className="line-chart-detail-feedback-container" style={ feedbackStyle }>
-         <p className="detail-feedback-time">
-           { moment(time).format('LLLL') }
-         </p>
-         <p className="detail-feedback-score">
-           You rated your progress { score }/10
-         </p>
-         <p className="detail-feedback-comment">
-           { comment }
-         </p>
+    const allRatings = currentGoal.ratings.slice(0).reverse();
+
+    const feedbackStyle = {
+      opacity: currentGoal.ratingSelected
+          ? 1
+          : 0,
+    };
+
+    const time = currentGoal.ratingSelected
+        ? currentGoal.ratingSelected.time
+        : {};
+
+    const score = currentGoal.ratingSelected
+        ? currentGoal.ratingSelected.score
+        : null;
+
+    const comment = currentGoal.ratingSelected
+        ? currentGoal.ratingSelected.comment
+        : '';
+
+    const animation = getAnimationFrame(
+      animationName, this.state.width, defaultWidth
+    );
+
+    const stylesheet = document.styleSheets[0];
+    stylesheet.insertRule(animation, stylesheet.cssRules.length);
+
+    const containerStyle = !this.state.customWidth
+      ? { width: '100%', }
+      : {
+        width: this.state.customWidth,
+        animationName: animationName,
+        animationTimingFunction: 'ease-in-out',
+        animationDuration: `${animationDuration}s`,
+        marginLeft: 0 - this.state.customWidth + defaultWidth,
+      };
+
+    return (
+     <div className="line-chart-detail goal-detail-page">
+       <div className="goal-detail-goal-tile-container">
+         <GoalTileComponent goal={ currentGoal } />
        </div>
-       <div className="detail-chart-container">
-         <div className="detail-chart-container-inner" style={ containerStyle }>
-           <LineChart
-             avatar={ currentGoal.avatar }
-             ratings={ allRatings }
-             isChartPreview={ false }
-             onSelectRating={ onSelectRating }
-           />
+       <div className="line-chart-container-detail">
+         <div className="line-chart-detail-feedback-container" style={ feedbackStyle }>
+           <p className="detail-feedback-time">
+             { moment(time).format('LLLL') }
+           </p>
+           <p className="detail-feedback-score">
+             You rated your progress { score }/10
+           </p>
+           <p className="detail-feedback-comment">
+             { comment }
+           </p>
+         </div>
+         <div className="detail-chart-container">
+           <div className="detail-chart-container-inner" style={ containerStyle }>
+             <LineChart
+               avatar={ currentGoal.avatar }
+               ratings={ allRatings }
+               isChartPreview={ false }
+               onSelectRating={ this.props.onSelectRating }
+             />
+           </div>
          </div>
        </div>
      </div>
-   </div>
-  );
-};
+    );
+  }
+}
 
 LineChartDetail.propTypes = {
   currentGoal: React.PropTypes.object,

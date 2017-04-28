@@ -1,6 +1,7 @@
 @import 'general';
 @import 'colors';
 @import 'progress-animation';
+@import 'arrow-animation';
 
 $titleHeight: 25px;
 $chartHeight: 100px;
@@ -83,6 +84,22 @@ $contentMaxWidth: 400px;
   width: 100%;
   background-color: $blue;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+}
+
+.line-chart-title-text {
+  width: 70%;
+}
+
+.line-chart-title-arrow {
+  width: 30%;
+  margin-top: 5px;
+}
+
+.arrow-1 {
+  @extend .arrow;
 }
 
 #line-chart-title-text {

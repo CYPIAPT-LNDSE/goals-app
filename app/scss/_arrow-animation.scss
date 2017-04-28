@@ -1,0 +1,37 @@
+/* arrow stuff */
+$animation-speed: 2s;
+$animation-delay: 1s;
+$animation-repeat: 3;
+$animation-start-pos: 0px;
+
+$arrow-animation: arrow-movement $animation-speed ease-in-out $animation-repeat;
+
+.arrow {
+  opacity: 1;
+  position: relative;
+  margin-left: $animation-start-pos;
+  animation: $arrow-animation;
+
+  &:before, &:after {
+    background: transparent;
+    content: '>';
+    display: block;
+    height: 1px;
+    width: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+  }
+
+  &:after { color: $light; }
+}
+
+@keyframes arrow-movement {
+  0%   {
+    opacity: 0;
+    margin-left: $animation-start-pos - 10;
+  }
+  70% { opacity: 1; }
+  100% {  opacity: 0; }
+}
