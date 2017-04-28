@@ -23,6 +23,10 @@ $miniContainerWidth: 91px;
   z-index: 0;
 }
 
+.outerContainer {
+  width: 100%;
+}
+
 .goalTile_avatarContainer {
   height: $imgHeight;
   width: 68px;
