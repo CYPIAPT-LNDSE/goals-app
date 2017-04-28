@@ -111,13 +111,13 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
-export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+export const removeGoalFromList = (state, { goal, }) => {
+  return mapWithId(state, goal, goal => {
     return {
       ...goal,
       deleted : true,
       visibleEditDelete: false,
+      updateCount: (goal.updateCount + 1 || 1),
     };
   });
 };
@@ -132,16 +132,17 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
 };
 
 export const editGoal = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+  const goalsList = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals: goalsList, }, goal, editedGoal => {
     return {
-      ...goal,
-      name: goal.name,
+      ...editedGoal,
+      name: editedGoal.name,
       edited : true,
-      visibleEditDelete: !goal.visibleEditDelete,
+      visibleEditDelete: !editedGoal.visibleEditDelete,
     };
   });
 };
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -175,7 +176,7 @@ export default (state = defaultState, action) => {
   case types.INPUT_EDIT_GOAL:
     return {
       ...state,
-      newGoal: {
+      currentGoal: {
         ...state.currentGoal,
         name: action.input,
       },
@@ -222,7 +223,7 @@ export default (state = defaultState, action) => {
   case types.DELETE_GOAL:
     return {
       ...state,
-      goals: removeGoalFromArray(state, action, increaseUpdateCount),
+      goals: removeGoalFromList(state, action, increaseUpdateCount),
     };
   case types.EDIT_GOAL:
     return {

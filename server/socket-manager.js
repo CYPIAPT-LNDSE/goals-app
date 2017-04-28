@@ -35,6 +35,7 @@ const socketManager = (socket) => {
       });
 
       socket.on('goal', (data, clientCallback) => {
+        console.log('goal was changed');
         const goalData = JSON.parse(data);
 
         handleGoalData(goalData, user_id, (err, result) => {
@@ -48,15 +49,6 @@ const socketManager = (socket) => {
         });
       });
 
-      // goal was deleted
-      socket.on('deleteGoal', (data, clientCallback) => {
-        // code to delete goal from the database, set deleted to true
-      });
-
-      // goal was edited
-      socket.on('editGoal', (data, clientCallback) => {
-        // code to edit goal title in the database
-      });
     });
 
   });

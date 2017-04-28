@@ -12,13 +12,10 @@ onDeleteGoal, onEditGoal, }) => {
   };
 
   const rightBorderStyle = {
-    visibility: step === steps.GOALS_LIST
-      ? 'visible'
-      : 'hidden',
+    display: step === steps.GOALS_LIST
+      ? 'inherit'
+      : 'none',
   };
-
-  const border = (step === steps.GOALS_LIST) ?
-  { visibility: 'visible', } : { visibility: 'hidden', };
 
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
@@ -42,6 +39,9 @@ onDeleteGoal, onEditGoal, }) => {
     width: visibleEditDelete
       ? '185px'
       : 0,
+    display: step === steps.GOALS_LIST
+      ? 'flex'
+      : 'none',
   };
 
   const buttonStyle = {
@@ -57,26 +57,26 @@ onDeleteGoal, onEditGoal, }) => {
   };
 
   return (
-    <div className="goalTile" style={ displayedInList }>
-    <div
-      className="outerContainer"
-      onClick={ () => { clickGoal(goal); } }
-    >
-    <div
-      className="goalTile_progress goal-tile-rating-green-background0"
-      style={ progressStyle }
-    ></div>
-    <div className="goalTile_progress"></div>
-    <div className="goalTile_avatarContainer">
-      <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
+    <div className="goalTile" style={ displayedInList } >
+      <div
+        className="outerContainer"
+        onClick={ () => { clickGoal(goal); } }
+      >
+        <div
+          className="goalTile_progress goal-tile-rating-green-background0"
+          style={ progressStyle }
+       />
+      <div className="goalTile_progress"></div>
+      <div className="goalTile_avatarContainer">
+        <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
+      </div>
+      <div className="goalTile_nameContainer">
+        <p>{ goal.name }</p>
+      </div>
+      <div className="goalTile_rating">
+        <p>{ score }</p>
+      </div>
     </div>
-    <div className="goalTile_nameContainer">
-      <p>{ goal.name }</p>
-    </div>
-    <div className="goalTile_rating">
-      <p>{ score }</p>
-    </div>
-  </div>
     <div className="edit-delete-container" style={ editDeleteStyle }>
       <div
         className="goalTile_editContainer"
