@@ -131,14 +131,17 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
   return mapWithId(state, goal, fn);
 };
 
-export const editGoal = (state, { goal, }, fn = goal => goal) => {
-  const goalsList = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals: goalsList, }, goal, editedGoal => {
+export const hideEditDeleteAll = goals =>
+  goals.map(goal => ({ ...goal, visibleEditDelete: false, }));
+
+export const editGoal = (state) => {
+  const goalsList = mapWithId(state, state.currentGoal, increaseUpdateCount);
+  return mapWithId({ goals: goalsList, }, state.currentGoal, editedGoal => {
     return {
       ...editedGoal,
-      name: editedGoal.name,
+      name: state.currentGoal.name,
       edited : true,
-      visibleEditDelete: !editedGoal.visibleEditDelete,
+      visibleEditDelete: false,
     };
   });
 };
@@ -154,6 +157,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.GOALS_LIST,
+      goals: hideEditDeleteAll(state.goals),
       previousStep: null,
       currentGoal: {},
     };
@@ -229,6 +233,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.EDIT_GOAL,
+      goals: hideEditDeleteAll(state.goals),
       previousStep: steps.GOALS_LIST,
       currentGoal: {
         ...action.goal,
@@ -237,7 +242,7 @@ export default (state = defaultState, action) => {
   case types.SAVE_EDIT_GOAL:
     return {
       ...state,
-      goals: editGoal(state, action, increaseUpdateCount),
+      goals: editGoal(state),
       step: steps.GOALS_LIST,
       previousStep: steps.EDIT_GOAL,
     };

@@ -4,7 +4,7 @@ import * as steps from './../../steps.js';
 import GoalTile from '../goal-tile.jsx';
 import NewGoalInput from '../add-new-goal/new-goal-input.jsx';
 
-const editGoal = ({ goal, newGoal, onInputGoal, onSaveEditGoal, }) => {
+const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
 
   return (
     <div className="editGoal">
@@ -16,7 +16,7 @@ const editGoal = ({ goal, newGoal, onInputGoal, onSaveEditGoal, }) => {
         <label htmlFor="editGoalInput" className="editGoal_label">
           Change your goal's title
         </label>
-      <NewGoalInput newGoal={ newGoal } onInputGoal={ onInputGoal } />
+      <NewGoalInput newGoal={ goal } onInputEditGoal={ onInputEditGoal } />
       </div>
       <div className="editGoal_buttonContainer">
         <div className="button-outer">
@@ -25,7 +25,8 @@ const editGoal = ({ goal, newGoal, onInputGoal, onSaveEditGoal, }) => {
             name="button"
             className="editGoal_button"
             disabled={ !goal.name }
-            onClick={ () => { onSaveEditGoal(goal); }}
+            value={ newGoal.name }
+            onClick={ onSaveEditGoal }
           >SAVE</button>
         </div>
       </div>
@@ -36,7 +37,7 @@ const editGoal = ({ goal, newGoal, onInputGoal, onSaveEditGoal, }) => {
 editGoal.propTypes = {
   goal: React.PropTypes.object,
   newGoal: React.PropTypes.object,
-  onInputGoal: React.PropTypes.func,
+  onInputEditGoal: React.PropTypes.func,
   onSaveEditGoal: React.PropTypes.func,
 };
 
