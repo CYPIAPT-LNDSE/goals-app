@@ -48,11 +48,16 @@ const socketManager = (socket) => {
         });
       });
 
+      // goal was deleted
       socket.on('deleteGoal', (data, clientCallback) => {
-        // code to delete goal from the database
+        // code to delete goal from the database, set deleted to true
+      });
+
+      // goal was edited
+      socket.on('editGoal', (data, clientCallback) => {
+        // code to edit goal title in the database
       });
     });
-
 
   });
 };

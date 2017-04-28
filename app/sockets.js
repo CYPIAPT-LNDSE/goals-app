@@ -40,8 +40,24 @@ const syncGoal = (goal, store, socket) => {
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
 
+  // send a delete emit event when goal was deleted
   if(goal.deleted) {
     socket.emit('deleteGoal', JSON.stringify(goal), (socketErr, socketResponse) => {
+
+      window.clearTimeout(timer);
+
+      if (socketErr) {
+        onUpdateSyncFailure(store, goal, updateSyncFailure);
+        return;
+      }
+
+      store.dispatch(updateSyncSuccess(socketResponse.goal_id));
+    });
+  }
+
+  // send an edit emit event when goal was edited
+  if(goal.edited) {
+    socket.emit('editGoal', JSON.stringify(goal), (socketErr, socketResponse) => {
 
       window.clearTimeout(timer);
 
