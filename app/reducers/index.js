@@ -132,13 +132,13 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
 };
 
 export const editGoal = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, goal, goal => {
+  const goalsList = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals: goalsList, }, goal, editedGoal => {
     return {
-      ...goal,
-      name: goal.name,
+      ...editedGoal,
+      name: editedGoal.name,
       edited : true,
-      visibleEditDelete: !goal.visibleEditDelete,
+      visibleEditDelete: !editedGoal.visibleEditDelete,
     };
   });
 };
