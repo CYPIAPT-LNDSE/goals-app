@@ -65,3 +65,35 @@ $imgHeight: 83px;
   height: 100%;
   z-index: -1;
 }
+
+@mixin goalTile_container {
+  display: flex;
+  justify-content: center;
+  height: 96px;
+  width: 91px;
+  border: 1px solid $blue;
+  border-radius: 0;
+  background-color: $light;
+  visibility: hidden;
+  position: relative;
+}
+.goalTile_editContainer {
+  @include goalTile_container;
+    margin-left: 7%;
+}
+
+.goalTile_deleteContainer {
+  @include goalTile_container;
+}
+
+.goalTile_icon {
+  align-self: center;
+  height: 30px;
+}
+
+.rightBorder {
+  height: $goalTileHeight;
+  border-right: 5px solid $borderBlue;
+  border-radius: 0 6px 6px 0;
+  z-index: 1;
+}

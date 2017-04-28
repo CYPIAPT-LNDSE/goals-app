@@ -13,6 +13,7 @@ const defaultState = {
   menu: false,
   newGoal: {},
   currentGoal: {},
+  setScreenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -110,6 +111,38 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
+export const removeGoalFromList = (state, { goal, }) => {
+  return mapWithId(state, goal, goal => {
+    return {
+      ...goal,
+      deleted : true,
+      visibleEditDelete: false,
+      updateCount: (goal.updateCount + 1 || 1),
+    };
+  });
+};
+
+export const changeVisibility = (state, { goal, }, fn = goal => {
+  return {
+    ...goal,
+    visibleEditDelete: !goal.visibleEditDelete,
+  };
+}) => {
+  return mapWithId(state, goal, fn);
+};
+
+export const editGoal = (state, { goal, }, fn = goal => goal) => {
+  const goalsList = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals: goalsList, }, goal, editedGoal => {
+    return {
+      ...editedGoal,
+      name: editedGoal.name,
+      edited : true,
+      visibleEditDelete: !editedGoal.visibleEditDelete,
+    };
+  });
+};
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -134,8 +167,18 @@ export default (state = defaultState, action) => {
     };
   case types.INPUT_GOAL:
     return {
-      ...state, newGoal: {
-        ...state.newGoal, name: action.input,
+      ...state,
+      newGoal: {
+        ...state.newGoal,
+        name: action.input,
+      },
+    };
+  case types.INPUT_EDIT_GOAL:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        name: action.input,
       },
     };
   case types.SELECT_AVATAR:
@@ -171,6 +214,32 @@ export default (state = defaultState, action) => {
         ...action.goal,
         newRating: {},
       },
+    };
+  case types.BORDER_GOAL_CLICK:
+    return {
+      ...state,
+      goals: changeVisibility(state, action),
+    };
+  case types.DELETE_GOAL:
+    return {
+      ...state,
+      goals: removeGoalFromList(state, action, increaseUpdateCount),
+    };
+  case types.EDIT_GOAL:
+    return {
+      ...state,
+      step: steps.EDIT_GOAL,
+      previousStep: steps.GOALS_LIST,
+      currentGoal: {
+        ...action.goal,
+      },
+    };
+  case types.SAVE_EDIT_GOAL:
+    return {
+      ...state,
+      goals: editGoal(state, action, increaseUpdateCount),
+      step: steps.GOALS_LIST,
+      previousStep: steps.EDIT_GOAL,
     };
   case types.STEP_RATE_GOAL:
     return {
@@ -278,7 +347,7 @@ export default (state = defaultState, action) => {
       goals: mapWithId(state, action, (goal) => {
         return {
           ...goal,
-          syncDBCount: goal.syncDBCount + 1,
+          syncDBCount: goal.syncDBCount ? goal.syncDBCount + 1 : 1,
           pendingSync: { open: false, },
         };
       }),
@@ -301,6 +370,11 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: action.goals,
+    };
+  case types.SET_SCREEN_HEIGHT:
+    return {
+      ...state,
+      setScreenHeight: action.height,
     };
   default:
     return state;

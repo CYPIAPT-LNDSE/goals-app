@@ -1,6 +1,6 @@
 import * as types from './../action_types.js';
 
-export const setAuthPending = data => ({
+export const setAuthPending = () => ({
   type: types.SET_AUTH_PENDING,
 });
 
@@ -36,4 +36,9 @@ export const updateSyncFailure = goalId => ({
 export const resetUpdateCount = goalId => ({
   type: types.RESET_UPDATE_COUNT,
   id: goalId,
+});
+
+export const setScreenHeight = height => ({
+  type: types.SET_SCREEN_HEIGHT,
+  height: height,
 });

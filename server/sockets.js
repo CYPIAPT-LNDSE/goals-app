@@ -5,9 +5,10 @@ const createSocket = (listener) => {
   const io = socketio.listen(listener);
 
   io.use((socket, next) => {
-    if(socket.request.headers.cookie ){
+    if (socket.request.headers.cookie) {
       next();
     }
+
     next(new Error('Authentication error'));
   });
 

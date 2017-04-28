@@ -6,6 +6,7 @@ const formatUserGoals = (goals) => {
       name: goal.title,
       avatar: goal.icon,
       ratings: [],
+      created: goal.date_created,
     };
   });
 };

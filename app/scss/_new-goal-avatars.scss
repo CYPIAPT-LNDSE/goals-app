@@ -1,8 +1,6 @@
 @import 'colors';
 @import 'general';
 
-
-
 .newGoal_avatarsContainer-row {
   display: flex;
   flex-direction: row;
@@ -13,6 +11,16 @@
   height: 138px;
   width: 140px;
   margin: 3px;
+
+  @media #{$breakpoint-xs} {
+    height: 110px;
+    width: 110px;
+  }
+
+  @media #{$breakpoint-xxs} {
+    height: 100px;
+    width: 100px;
+  }
 
   img {
     height: 100%;

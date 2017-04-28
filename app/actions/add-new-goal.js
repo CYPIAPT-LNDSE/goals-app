@@ -1,6 +1,8 @@
 import * as types from './../action_types.js';
 import avatarTypes from './../avatars.js';
 import { createAction, } from 'redux-actions';
+import uuidV1 from 'uuid/v1';
+
 
 export const onInputGoal = input => {
   return {
@@ -20,11 +22,13 @@ export const saveNewGoal = (goal) => {
   const newGoal = {
     type: types.SAVE_NEW_GOAL,
     goal: {
-      id: goal.id,
+      id: uuidV1(),
       name: goal.name,
       created: new Date(),
       avatar: (goal.avatar || avatarTypes[0].avatar),
       ratings: [],
+      visibleEditDelete: false,
+      deleted: false,
       updateCount: 0,
       syncDBCount: 0,
       pendingSync: {

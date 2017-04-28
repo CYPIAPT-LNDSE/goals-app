@@ -2,6 +2,8 @@ import React from 'react';
 import  { Line, } from 'react-chartjs-2';
 import icons from './../../avatars.js';
 
+const getRatingFromIndex = (index, ratings) => ratings[index - 1].id;
+
 const getScaleLabelOptions = (label) => ({
   display: true,
   labelString: label,
@@ -53,11 +55,14 @@ const getAxesOptions = (axis, isChartPreview) => {
         };
 };
 
-const getOptions = (isChartPreview) => {
+const getOptions = (isChartPreview, fn) => {
 
   return {
     responsive: true,
     maintainAspectRatio: false,
+    onClick: isChartPreview
+      ? null
+      : fn,
     scales: {
       yAxes: isChartPreview
         ? [ getAxesOptions('y', true), ]
@@ -93,12 +98,19 @@ const getIconSrc = (icons, avatar) =>
 const LineChart = React.createClass({
 
   render() {
+
     const avatar = this.props.avatar;
     const latestRatings = this.props.ratings;
     const icon = new Image ();
     icon.src = getIconSrc(icons, avatar);
 
-    const chartOptions = getOptions(this.props.isChartPreview);
+    const clickFunction = (_, activePoints) => {
+      const index = activePoints[0]._index;
+      const rating = getRatingFromIndex(index, latestRatings);
+      this.props.onSelectRating(rating);
+    };
+
+    const chartOptions = getOptions(this.props.isChartPreview, clickFunction);
 
     const chartData = {
       labels: getLabels(latestRatings),

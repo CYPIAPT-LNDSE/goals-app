@@ -8,6 +8,7 @@ import * as actionsViewGoal from './../actions/view-goal.js';
 import * as actionsRateGoal from './../actions/rate-goal.js';
 import * as actionsFeedback from './../actions/feedback.js';
 import * as actionsGeneral from './../actions/general.js';
+import * as actionsEditGoal from './../actions/edit-goal.js';
 
 const actionsMainContainer = {
   ...actionsGoalsList,
@@ -16,33 +17,45 @@ const actionsMainContainer = {
   ...actionsRateGoal,
   ...actionsFeedback,
   ...actionsGeneral,
+  ...actionsEditGoal,
 };
 
 import router from './../router.js';
 
-const MainContent = props => {
+class MainContent extends React.Component {
 
-  const view = router(props);
-  const navbarHeight = 90;
-  const dynamicStyle = {
-    height: window.innerHeight - navbarHeight,
-  };
-
-  if (!props.user.isAuthenticated && !props.user.authPending) {
-    props.setAuthPending();
+  componentWillMount() {
+    const screenHeight = window.innerHeight;
+    this.props.setScreenHeight(screenHeight);
   }
 
-  return (
-      <div className="MainContent" style={ dynamicStyle }>
-        { view }
-      </div>
-  );
-};
+  componentDidMount() {
+    if (!this.props.user.isAuthenticated && !this.props.user.authPending) {
+      this.props.setAuthPending();
+    }
+  }
+
+  render() {
+    const props = this.props;
+    const view = router(props);
+    const navbarHeight = 90;
+    const dynamicStyle = {
+      height: `${Math.max(props.screenHeight - navbarHeight, 400)}px`,
+    };
+
+    return (
+        <div className="MainContent" style={ dynamicStyle }>
+          { view }
+        </div>
+    );
+  }
+}
 
 MainContent.propTypes = {
   onReceiveData: React.PropTypes.func,
   setAuthPending: React.PropTypes.func,
   user: React.PropTypes.object,
+  setScreenHeight: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -52,6 +65,5 @@ const mapStateToProps = state => ({
   newGoal: state.newGoal,
   currentGoal: state.currentGoal,
 });
-
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);
