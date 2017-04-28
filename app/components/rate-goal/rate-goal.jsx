@@ -5,8 +5,7 @@ import * as steps from './../../steps.js';
 
 import Cactus from './animations/cactus.jsx';
 
-const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore,
-  onBorderClick, }) => {
+const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) => {
 
   const score = currentGoal.newRating.score || 0;
 
@@ -22,8 +21,6 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore,
         <GoalTileComponent
           goal={ currentGoal }
           step={ steps.RATE_GOAL }
-          visibleEditDelete={ currentGoal.visibleEditDelete || false }
-          onBorderClick= { onBorderClick }
         />
       </div>
       <div className="rate-goal-animation-container">
@@ -56,7 +53,6 @@ RateGoal.propTypes = {
   onMoveSlider: React.PropTypes.func,
   feedback: React.PropTypes.func,
   setPreviousScore: React.PropTypes.func,
-  onBorderClick: React.PropTypes.func,
 };
 
 export default RateGoal;

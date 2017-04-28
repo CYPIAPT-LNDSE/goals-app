@@ -28,7 +28,6 @@ const router = (props) => {
         currentGoal = { props.currentGoal }
         rateGoal={ props.stepRateGoal }
         stepLineChartDetail = { props.stepLineChartDetail }
-        onBorderClick={ props.onBorderClick }
       />;
   case steps.RATE_GOAL:
     return <RateGoal
@@ -36,7 +35,6 @@ const router = (props) => {
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
         setPreviousScore={ props.setPreviousScore }
-        onBorderClick={ props.onBorderClick }
       />;
   case steps.FEEDBACK:
     return <Feedback
