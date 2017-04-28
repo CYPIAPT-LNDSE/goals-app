@@ -5,9 +5,17 @@ import * as steps from './../steps.js';
 const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
 onDeleteGoal, onEditGoal, }) => {
 
-  const visible = (goal.deleted) ?
-  { display: 'none', } :
-  { display: 'flex', };
+  const displayedInList = {
+    display: goal.deleted
+      ? 'none'
+      : 'flex',
+  };
+
+  const rightBorderStyle = {
+    visibility: step === steps.GOALS_LIST
+      ? 'visible'
+      : 'hidden',
+  };
 
   const border = (step === steps.GOALS_LIST) ?
   { visibility: 'visible', } : { visibility: 'hidden', };
@@ -15,28 +23,32 @@ onDeleteGoal, onEditGoal, }) => {
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
   const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
-  ? goal.newRating.score || 0
-  : goal.ratings && goal.ratings.length
-  ? goal.ratings[0].score
-  : undefined;
+    ? goal.newRating.score || 0
+    : goal.ratings && goal.ratings.length
+      ? goal.ratings[0].score
+      : undefined;
 
   const progressStyle = {
     width: score === undefined
-    ? 0
-    : `${score * 10}%`,
+      ? 0
+      : `${score * 10}%`,
     transition: 'width 1s ease',
   };
 
   const editIcon = './images/icons/edit-icon.svg';
   const deleteIcon = './images/icons/delete-icon.svg';
 
-  const editStyle = (visibleEditDelete) ?
-  { visibility : 'visible', } :
-  { visibility : 'hidden' , };
+  const editDeleteStyle = {
+    width: visibleEditDelete
+      ? '185px'
+      : 0,
+  };
 
-  const deleteStyle = (visibleEditDelete) ?
-  { visibility : 'visible', } :
-  { visibility : 'hidden', };
+  const buttonStyle = {
+    width: visibleEditDelete
+      ? '91px'
+      : 0,
+  };
 
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
@@ -45,15 +57,15 @@ onDeleteGoal, onEditGoal, }) => {
   };
 
   return (
-    <div className="goalTile" style={visible}>
+    <div className="goalTile" style={ displayedInList }>
     <div
       className="outerContainer"
-      onClick={ () => { clickGoal(goal); }
-    }>
+      onClick={ () => { clickGoal(goal); } }
+    >
     <div
       className="goalTile_progress goal-tile-rating-green-background0"
       style={ progressStyle }
-      ></div>
+    ></div>
     <div className="goalTile_progress"></div>
     <div className="goalTile_avatarContainer">
       <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
@@ -65,34 +77,38 @@ onDeleteGoal, onEditGoal, }) => {
       <p>{ score }</p>
     </div>
   </div>
-    <div
-      className="goalTile_editContainer"
-      style={ editStyle }
-      onClick={ () => { onEditGoal(goal); }}
+    <div className="edit-delete-container" style={ editDeleteStyle }>
+      <div
+        className="goalTile_editContainer"
+        onClick={ () => { onEditGoal(goal); }}
+        style={ buttonStyle }
       >
-      <img
-        className="goalTile_icon"
-        src={ editIcon }
-        alt="Edit your goal"
-        title="Edit goal"
-      />
-    </div>
-    <div
-      className="goalTile_deleteContainer"
-      style={ deleteStyle }
-      onClick={ () => { onDeleteGoal(goal); }}
+        <img
+          className="goalTile_icon"
+          src={ editIcon }
+          alt="Edit your goal"
+          title="Edit goal"
+          style={ buttonStyle }
+        />
+      </div>
+      <div
+        className="goalTile_deleteContainer"
+        onClick={ () => { onDeleteGoal(goal); } }
+        style={ buttonStyle }
       >
-      <img
-        className="goalTile_icon"
-        src={ deleteIcon }
-        alt="Edit your goal"
-        title="Edit goal"
-      />
+        <img
+          className="goalTile_icon"
+          src={ deleteIcon }
+          alt="Edit your goal"
+          title="Edit goal"
+          style={ buttonStyle }
+        />
+      </div>
     </div>
     <div
       className="rightBorder"
       onClick = { () => { onBorderClick(goal); }}
-      style = { border }
+      style = { rightBorderStyle }
     />
   </div>
   );

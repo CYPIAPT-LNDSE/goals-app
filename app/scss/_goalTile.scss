@@ -2,6 +2,11 @@
 @import 'colors';
 
 $imgHeight: 83px;
+$miniContainerWidth: 91px;
+
+@mixin editDeleteAnimation {
+  transition: width 0.5s;
+}
 
 .goalTile {
   position: relative;
@@ -66,20 +71,29 @@ $imgHeight: 83px;
   z-index: -1;
 }
 
+.edit-delete-container {
+  position: absolute;
+  right: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  z-index: 1;
+  @include editDeleteAnimation;
+}
+
 @mixin goalTile_container {
   display: flex;
   justify-content: center;
   height: 96px;
-  width: 91px;
+  width: $miniContainerWidth;
   border: 1px solid $blue;
   border-radius: 0;
   background-color: $light;
-  visibility: hidden;
-  position: relative;
+  @include editDeleteAnimation;
 }
+
 .goalTile_editContainer {
   @include goalTile_container;
-    margin-left: 7%;
 }
 
 .goalTile_deleteContainer {
@@ -92,8 +106,10 @@ $imgHeight: 83px;
 }
 
 .rightBorder {
+  position: absolute;
+  right: 0;
   height: $goalTileHeight;
   border-right: 5px solid $borderBlue;
   border-radius: 0 6px 6px 0;
-  z-index: 1;
+  z-index: 2;
 }
