@@ -35,7 +35,6 @@ const socketManager = (socket) => {
       });
 
       socket.on('goal', (data, clientCallback) => {
-        console.log('goal was changed');
         const goalData = JSON.parse(data);
 
         handleGoalData(goalData, user_id, (dbErr, dbResult) => {

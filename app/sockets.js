@@ -87,6 +87,6 @@ const socketStarter = (store) => {
   socket.on('userData', (data) => {
     store.dispatch(receiveDbData(data));
   });
-  
+
   return socket;
 };

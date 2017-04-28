@@ -29,6 +29,29 @@ const updateGoal = (dbGoal, clientGoal, callback) => {
   });
 };
 
+const deleteGoal = (goal, callback) => {
+  dbClient.query(queries.deleteGoal, [ goal.id, ], (dbDeleteGoalErr, dbDeletedGoalId) => {
+
+    if (dbDeleteGoalErr) {
+      return callback('error deleting goal in database');
+    }
+
+    return callback(null, dbDeletedGoalId);
+  });
+};
+
+const editGoal = (goal, callback) => {
+  dbClient.query(queries.editGoal, [ goal.name, goal.id, ], (dbEditedGoalErr,
+    dbEditedGoalId) => {
+
+    if (dbEditedGoalErr) {
+      return callback('error getting ratings from database');
+    }
+
+    return callback(null, dbEditedGoalId);
+  });
+};
+
 module.exports = (goal, user_id, callback) => {
 
   const goalId = goal.id;
@@ -42,7 +65,14 @@ module.exports = (goal, user_id, callback) => {
     if (getGoalResult.rows.length) {
       // goal already exists, check for new ratings
       // adapt this when we have editing and deleting functionality
-      updateGoal(getGoalResult.rows[0], goal, callback);
+      const oldGoal = getGoalResult.rows[0];
+      if (goal.deleted) {
+        deleteGoal(goal, callback);
+      } else if (goal.edited) {
+        editGoal(goal, callback);
+      } else {
+        updateGoal(oldGoal, goal, callback);
+      }
       return;
     }
 
