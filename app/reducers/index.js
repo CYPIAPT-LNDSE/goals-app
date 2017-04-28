@@ -121,7 +121,7 @@ export const removeGoalFromArray = (state, goalId) => {
       ...goal,
       deleted : true,
       visibleEditDelete: false,
-      updateCount: goal.updateCount + 1,
+      updateCount: (goal.updateCount + 1 || 1),
     };
   });
 };
@@ -136,16 +136,17 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
 };
 
 export const editGoal = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+  const goalsList = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals: goalsList, }, goal, editedGoal => {
     return {
-      ...goal,
-      name: goal.name,
+      ...editedGoal,
+      name: editedGoal.name,
       edited : true,
-      visibleEditDelete: !goal.visibleEditDelete,
+      visibleEditDelete: !editedGoal.visibleEditDelete,
     };
   });
 };
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -179,7 +180,7 @@ export default (state = defaultState, action) => {
   case types.INPUT_EDIT_GOAL:
     return {
       ...state,
-      newGoal: {
+      currentGoal: {
         ...state.currentGoal,
         name: action.input,
       },

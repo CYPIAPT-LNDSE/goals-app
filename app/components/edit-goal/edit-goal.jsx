@@ -25,7 +25,7 @@ const editGoal = ({ goal, newGoal, onInputGoal, onSaveEditGoal, }) => {
             name="button"
             className="editGoal_button"
             disabled={ !goal.name }
-            onClick={ () => { onSaveEditGoal(newGoal); }}
+            onClick={ () => { onSaveEditGoal(goal); }}
           >SAVE</button>
         </div>
       </div>
