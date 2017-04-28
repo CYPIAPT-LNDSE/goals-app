@@ -7,6 +7,7 @@ const defaultState = {
     authPending: false,
     id: null,
   },
+  dataLoaded: false,
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
@@ -302,6 +303,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: action.goals,
+      dataLoaded: true,
     };
   case types.SET_SCREEN_HEIGHT:
     return {

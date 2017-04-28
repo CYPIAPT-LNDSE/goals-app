@@ -34,17 +34,19 @@ class MainContent extends React.Component {
   }
 
   render() {
+
     const props = this.props;
     const view = router(props);
     const navbarHeight = 90;
     const dynamicStyle = {
-      height: `${Math.max(props.screenHeight - navbarHeight, 400)}px`,
+      height: `${ Math.max(props.screenHeight - navbarHeight, 400) }px`,
     };
 
     return (
-        <div className="MainContent" style={ dynamicStyle }>
-          { view }
-        </div>
+
+      <div className="MainContent" style={ dynamicStyle }>
+        { view }
+      </div>
     );
   }
 }
@@ -54,6 +56,8 @@ MainContent.propTypes = {
   setAuthPending: React.PropTypes.func,
   user: React.PropTypes.object,
   setScreenHeight: React.PropTypes.func,
+  goals: React.PropTypes.array,
+  dataLoaded: React.PropTypes.boolean,
 };
 
 const mapStateToProps = state => ({
@@ -62,6 +66,7 @@ const mapStateToProps = state => ({
   step: state.step,
   newGoal: state.newGoal,
   currentGoal: state.currentGoal,
+  dataLoaded: state.dataLoaded,
 });
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);

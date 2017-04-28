@@ -51,6 +51,7 @@ const router = (props) => {
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
+        dataLoaded={ props.dataLoaded }
       />;
   }
 };
@@ -74,6 +75,7 @@ router.propTypes = {
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
+  dataLoaded: React.PropTypes.boolean,
 };
 
 export default router;
