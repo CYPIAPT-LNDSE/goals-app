@@ -28,6 +28,7 @@ const router = (props) => {
         currentGoal = { props.currentGoal }
         rateGoal={ props.stepRateGoal }
         stepLineChartDetail = { props.stepLineChartDetail }
+        onBorderClick={ props.onBorderClick }
       />;
   case steps.RATE_GOAL:
     return <RateGoal
@@ -35,6 +36,7 @@ const router = (props) => {
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
         setPreviousScore={ props.setPreviousScore }
+        onBorderClick={ props.onBorderClick }
       />;
   case steps.FEEDBACK:
     return <Feedback
@@ -50,7 +52,9 @@ const router = (props) => {
   case steps.EDIT_GOAL:
     return <EditGoal
       goal={ props.currentGoal }
+      newGoal={ props.newGoal }
       onInputGoal={ props.onInputGoal }
+      onSaveEditGoal={ props.onSaveEditGoal }
     />;
   default:
     return <GoalsList
@@ -72,6 +76,7 @@ router.propTypes = {
   onBorderClick: React.PropTypes.func,
   onDeleteGoal: React.PropTypes.func,
   onEditGoal: React.PropTypes.func,
+  onSaveEditGoal: React.PropTypes.func,
   currentGoal: React.PropTypes.object,
   onInputGoal: React.PropTypes.func,
   onSelectAvatar: React.PropTypes.func,

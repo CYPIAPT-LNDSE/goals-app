@@ -131,6 +131,17 @@ export const changeVisibility = (state, { goal, }, fn = goal => {
   return mapWithId(state, goal, fn);
 };
 
+export const editGoal = (state, { goal, }, fn = goal => goal) => {
+  const goals = mapWithId(state, goal, () => fn(goal));
+  return mapWithId({ goals, }, (goal), goal => {
+    return {
+      ...goal,
+      name: goal.name,
+      edited : true,
+      visibleEditDelete: !goal.visibleEditDelete,
+    };
+  });
+};
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -155,8 +166,18 @@ export default (state = defaultState, action) => {
     };
   case types.INPUT_GOAL:
     return {
-      ...state, newGoal: {
-        ...state.newGoal, name: action.input,
+      ...state,
+      newGoal: {
+        ...state.newGoal,
+        name: action.input,
+      },
+    };
+  case types.INPUT_EDIT_GOAL:
+    return {
+      ...state,
+      newGoal: {
+        ...state.currentGoal,
+        name: action.input,
       },
     };
   case types.SELECT_AVATAR:
@@ -211,6 +232,13 @@ export default (state = defaultState, action) => {
       currentGoal: {
         ...action.goal,
       },
+    };
+  case types.SAVE_EDIT_GOAL:
+    return {
+      ...state,
+      goals: editGoal(state, action, increaseUpdateCount),
+      step: steps.GOALS_LIST,
+      previousStep: steps.EDIT_GOAL,
     };
   case types.STEP_RATE_GOAL:
     return {

@@ -19,6 +19,7 @@ export const SAVE_NEW_GOAL = 'SAVE_NEW_GOAL';
 export const TRIGGER_CONFIRMATION = 'TRIGGER_CONFIRMATION';
 
 /* edit goal actions */
+export const INPUT_EDIT_GOAL = 'INPUT_EDIT_GOAL';
 export const SAVE_EDIT_GOAL = 'SAVE_EDIT_GOAL';
 
 /* view goal actions */

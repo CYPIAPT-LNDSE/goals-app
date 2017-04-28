@@ -8,6 +8,10 @@ onDeleteGoal, onEditGoal, }) => {
   const visible = (goal.deleted) ?
   { display: 'none', } :
   { display: 'flex', };
+
+  const border = (step === steps.GOALS_LIST) ?
+  { visibility: 'visible', } : { visibility: 'hidden', };
+
   const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
 
   const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
@@ -88,6 +92,7 @@ onDeleteGoal, onEditGoal, }) => {
     <div
       className="rightBorder"
       onClick = { () => { onBorderClick(goal); }}
+      style = { border }
     />
   </div>
   );
