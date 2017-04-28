@@ -11,6 +11,10 @@ const defaultState = {
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
+  deleteModal: {
+    display: false,
+    goal: null,
+  },
   newGoal: {},
   currentGoal: {},
   setScreenHeight: null,
@@ -111,13 +115,13 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
-export const removeGoalFromArray = (state, { goal, }, fn = goal => goal) => {
-  const goals = mapWithId(state, goal, () => fn(goal));
-  return mapWithId({ goals, }, (goal), goal => {
+export const removeGoalFromArray = (state, goalId) => {
+  return mapWithId(state, { id: goalId, }, goal => {
     return {
       ...goal,
       deleted : true,
       visibleEditDelete: false,
+      updateCount: goal.updateCount + 1,
     };
   });
 };
@@ -219,10 +223,22 @@ export default (state = defaultState, action) => {
       ...state,
       goals: changeVisibility(state, action),
     };
+  case types.TOGGLE_DELETE_MODAL:
+    return {
+      ...state,
+      deleteModal: {
+        display: !state.deleteModal.display,
+        goal: action.goalId || null,
+      },
+    };
   case types.DELETE_GOAL:
     return {
       ...state,
-      goals: removeGoalFromArray(state, action, increaseUpdateCount),
+      goals: removeGoalFromArray(state, action.goalId),
+      deleteModal: {
+        display: false,
+        goal: null,
+      },
     };
   case types.EDIT_GOAL:
     return {

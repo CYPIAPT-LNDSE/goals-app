@@ -62,6 +62,8 @@ const router = (props) => {
         onBorderClick={ props.onBorderClick }
         onDeleteGoal={ props.onDeleteGoal }
         onEditGoal={ props.onEditGoal }
+        toggleDeleteModal={ props.toggleDeleteModal }
+        deleteModal={ props.deleteModal }
       />;
   }
 };
@@ -89,6 +91,7 @@ router.propTypes = {
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
+  toggleDeleteModal: React.PropTypes.func,
 };
 
 export default router;
