@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
+import DeleteModal from './delete-modal.jsx';
 
 import * as steps from './../../steps.js';
 
@@ -28,6 +29,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
 
   return (
     <div className="page goalsList" style={ dynamicStyle }>
+      <DeleteModal />
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
           <button
