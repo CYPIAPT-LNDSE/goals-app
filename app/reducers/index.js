@@ -27,6 +27,12 @@ export const backStep = (state) => {
       step: steps.GOALS_LIST,
       previousStep: null,
     };
+  case steps.EDIT_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+    };
   case steps.VIEW_GOAL:
     return {
       ...state,
