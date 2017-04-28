@@ -70,9 +70,8 @@ module.exports = (goal, user_id, callback) => {
         deleteGoal(goal, callback);
       } else if (goal.edited) {
         editGoal(goal, callback);
-      } else {
-        updateGoal(oldGoal, goal, callback);
       }
+      updateGoal(oldGoal, goal, callback);
       return;
     }
 
