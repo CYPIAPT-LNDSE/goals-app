@@ -30,13 +30,9 @@ onDeleteGoal, onEditGoal, }) => {
   const editIcon = './images/icons/edit-icon.svg';
   const deleteIcon = './images/icons/delete-icon.svg';
 
-  const editStyle = (visibleEditDelete) ?
+  const editDeleteStyle = (visibleEditDelete) ?
   { visibility : 'visible', } :
   { visibility : 'hidden' , };
-
-  const deleteStyle = (visibleEditDelete) ?
-  { visibility : 'visible', } :
-  { visibility : 'hidden', };
 
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
@@ -67,7 +63,7 @@ onDeleteGoal, onEditGoal, }) => {
   </div>
     <div
       className="goalTile_editContainer"
-      style={ editStyle }
+      style={ editDeleteStyle }
       onClick={ () => { onEditGoal(goal); }}
       >
       <img
@@ -79,7 +75,7 @@ onDeleteGoal, onEditGoal, }) => {
     </div>
     <div
       className="goalTile_deleteContainer"
-      style={ deleteStyle }
+      style={ editDeleteStyle }
       onClick={ () => { onDeleteGoal(goal); }}
       >
       <img
