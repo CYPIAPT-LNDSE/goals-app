@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as steps from './../../steps.js';
 import GoalTile from '../goal-tile.jsx';
-import NewGoalInput from '../add-new-goal/new-goal-input.jsx';
+import EditGoalInput from './edit-goal-input.jsx';
 
 const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
 
@@ -16,7 +16,7 @@ const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
         <label htmlFor="editGoalInput" className="editGoal_label">
           Change your goal's title
         </label>
-      <NewGoalInput newGoal={ goal } onInputEditGoal={ onInputEditGoal } />
+      <EditGoalInput newGoal={ goal } onInputEditGoal={ onInputEditGoal } />
       </div>
       <div className="editGoal_buttonContainer">
         <div className="button-outer">
