@@ -38,19 +38,16 @@ const socketManager = (socket) => {
         console.log('goal was changed');
         const goalData = JSON.parse(data);
 
-        handleGoalData(goalData, user_id, (err, result) => {
+        handleGoalData(goalData, user_id, (dbErr, dbResult) => {
           if (err) {
-            clientCallback(true);
-          } else if (result.alreadyExists) {
-            return;
+            clientCallback(dbErr);
           } else {
-            clientCallback(null, result.rows[0]);
+            clientCallback(null, dbResult);
           }
         });
       });
 
     });
-
   });
 };
 

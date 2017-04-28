@@ -1,41 +1,63 @@
 const dbClient = require('./db_connection.js');
 
-const getGoal = `
-  SELECT *
-    from goals
-  WHERE goal_id = $1
-`;
+/* queries */
+const queries = require('./queries.js');
+const addRatings = require('./add-ratings.js');
 
-const addGoal = `
-  INSERT into goals (goal_id, user_id, title, icon, date_created)
-  VALUES ($1, $2, $3, $4, $5)
-  RETURNING goal_id
-`;
+/* helper functions */
+const { getNewGoalData, findNewRatings, } = require('./../helpers/handle-goals.js');
+
+// compares new goal from client with old goal from DB, adds missing ratings to database
+const updateGoal = (dbGoal, clientGoal, callback) => {
+
+  // check for new ratings
+  dbClient.query(queries.getRatings, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
+
+    if (dbRatingsErr) {
+      return callback('error getting ratings from database');
+    }
+
+    const dbRatings = dbRatingsRes.rows;
+
+    if (dbRatings.length >= clientGoal.ratings.length) {
+      return callback(null, clientGoal.id);
+    }
+
+    const newRatings = findNewRatings(dbRatings, clientGoal.ratings);
+
+    addRatings(newRatings, dbGoal, callback);
+  });
+};
 
 module.exports = (goal, user_id, callback) => {
+
   const goalId = goal.id;
 
-  dbClient.query(getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
+  dbClient.query(queries.getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
-      console.log("Error retreiving goal from database, ", getGoalErr);
-      return callback('error data from database');
+      console.log(getGoalErr);
+      return callback('error getting data from database');
     }
 
     if (getGoalResult.rows.length) {
-      // adapt this for new ratings / when we have editing and deleting functionality
-      return callback(null, { alreadyExists : true, });
+      // goal already exists, check for new ratings
+      // adapt this when we have editing and deleting functionality
+      updateGoal(getGoalResult.rows[0], goal, callback);
+      return;
     }
 
-    const timestamp = require('moment')(goal.date_created)
-      .format('YYYY-MM-DD HH:mm:ss');
 
-    const goalData = [ goal.id, user_id, goal.name, goal.avatar, timestamp, ];
-
-    dbClient.query(addGoal, goalData, (addGoalErr, addGoalResult) => {
-      if(addGoalErr) {
+    dbClient.query(queries.insertGoal, getNewGoalData(goal, user_id), (addGoalErr) => {
+      if (addGoalErr) {
         return callback('error adding new goal to database ' + addGoalErr);
       }
-      return callback(null, addGoalResult);
+
+      if (goal.ratings.length) {
+        addRatings(goal.ratings, { goal_id: goal.id, user_id: user_id, }, (callback));
+        return;
+      }
+
+      return callback(null, goal.id);
     });
   });
 };

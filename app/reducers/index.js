@@ -347,7 +347,7 @@ export default (state = defaultState, action) => {
       goals: mapWithId(state, action, (goal) => {
         return {
           ...goal,
-          syncDBCount: goal.syncDBCount + 1,
+          syncDBCount: goal.syncDBCount ? goal.syncDBCount + 1 : 1,
           pendingSync: { open: false, },
         };
       }),

@@ -33,11 +33,12 @@ const syncGoal = (goal, store, socket) => {
     window.clearTimeout(timer);
 
     if (socketErr) {
+      console.log('error updating goal ' + goal.id + socketErr);
       onUpdateSyncFailure(store, goal, updateSyncFailure);
       return;
     }
 
-    store.dispatch(updateSyncSuccess(socketResponse.goal_id));
+    store.dispatch(updateSyncSuccess(socketResponse));
   });
 
 };
@@ -82,8 +83,10 @@ export const socketsMiddleware = store => next => {
 
 const socketStarter = (store) => {
   const socket = io();
+
   socket.on('userData', (data) => {
     store.dispatch(receiveDbData(data));
   });
+  
   return socket;
 };
