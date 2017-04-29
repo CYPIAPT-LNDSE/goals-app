@@ -33,7 +33,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) =>
           onMoveSlider={ onMoveSlider }
           />
       </div>
-      <div className="rate-goal-buttonContainer goal-detail-buttonContainer">
+      <div className="rate-goal-button-container goal-detail-button-container">
         <div className="button-outer">
           <button
             type="button"
