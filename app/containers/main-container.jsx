@@ -42,7 +42,7 @@ class MainContent extends React.Component {
     };
 
     return (
-        <div className="MainContent" style={ dynamicStyle }>
+        <div className="main-content" style={ dynamicStyle }>
           { view }
         </div>
     );
