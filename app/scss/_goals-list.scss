@@ -1,18 +1,18 @@
 @import 'colors';
 @import 'general';
 
-.goalsList_buttonContainer {
+.goals-list-button-container {
   @include ctaButton;
 }
 
-.goalsList {
+.goals-list {
   background: url(./../assets/images/background.png);
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.goalsList_list {
+.goals-list-list {
   @include flexCenterRow;
   width: 100%;
   height: 100%;
