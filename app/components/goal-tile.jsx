@@ -27,21 +27,21 @@ const tile = ({ goal, step, onSelectGoal, }) => {
 
   return (
     <div
-      className="goalTile"
+      className="goal-tile"
       onClick={ () => { clickGoal(goal); }
     }>
       <div
-        className="goalTile_progress goal-tile-rating-green-background0"
+        className="goal-tile-progress goal-tile-rating-green-background0"
         style={ progressStyle }
       ></div>
-      <div className="goalTile_progress"></div>
-      <div className="goalTile_avatarContainer">
-        <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
+    <div className="goal-tile_progress"></div>
+      <div className="goal-tile-avatar-container">
+        <img className="goal-tile-img" src={ pathAvatar(goal.avatar) } />
       </div>
-      <div className="goalTile_nameContainer">
+      <div className="goal-tile-name-container">
         <p>{ goal.name }</p>
       </div>
-      <div className="goalTile_rating">
+      <div className="goal-tile-rating">
         <p>{ score }</p>
       </div>
     </div>

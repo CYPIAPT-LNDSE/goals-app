@@ -3,7 +3,7 @@
 
 $imgHeight: 83px;
 
-.goalTile {
+.goal-tile {
   position: relative;
   border-radius: 6px;
   display: flex;
@@ -18,7 +18,7 @@ $imgHeight: 83px;
   z-index: 0;
 }
 
-.goalTile_avatarContainer {
+.goal-tile-avatar-container {
   height: $imgHeight;
   width: 68px;
   margin: 5px;
@@ -28,7 +28,7 @@ $imgHeight: 83px;
   }
 }
 
-.goalTile_nameContainer {
+.goal-tile-name-container {
   position: absolute;
   right: 10px;
   width: 75%;
@@ -39,7 +39,7 @@ $imgHeight: 83px;
   top: 20px;
 }
 
-.goalTile_rating {
+.goal-tile-rating {
   position: absolute;
   right: 10px;
   top: 50px;
