@@ -34,7 +34,6 @@ const tile = ({ goal, step, onSelectGoal, }) => {
         className="goal-tile-progress goal-tile-rating-green-background0"
         style={ progressStyle }
       ></div>
-    <div className="goal-tile_progress"></div>
       <div className="goal-tile-avatar-container">
         <img className="goal-tile-img" src={ pathAvatar(goal.avatar) } />
       </div>
