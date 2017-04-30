@@ -18,8 +18,6 @@ const store = createStoreWithMiddleware(
   reducer, window.devToolsExtension && window.devToolsExtension()
 );
 
-// socketStarter(store);
-
 ReactDOM.render(
   <Provider store={ store }>
     <App />
