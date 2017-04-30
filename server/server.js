@@ -6,7 +6,7 @@ const createSocket = require('./sockets.js');
 
 require('env2')('./config.env');
 
-const routes = require('./index.js');
+const routes = require('./routes/index.js');
 const server = new hapi.Server();
 
 server.connection({

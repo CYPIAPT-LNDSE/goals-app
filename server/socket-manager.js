@@ -4,7 +4,8 @@ const iron = require('iron');
 /* model */
 const getUserData = require('./model/get-user-data.js');
 
-const handleGoalData = require('./database/handle-goal-data.js');
+/* controller */
+const receiveGoalData = require('./controller/receive-goal-data.js');
 
 const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
@@ -38,14 +39,11 @@ const socketManager = (socket) => {
       socket.on('goal', (data, clientCallback) => {
         const goalData = JSON.parse(data);
 
-        handleGoalData(goalData, user_id, (dbErr, dbResult) => {
-          // dbResult is an array, default with async module
-          // send first value back to client (goal_id)
-          if (err) {
-            clientCallback(dbErr);
-          } else {
-            clientCallback(null, dbResult[0]);
-          }
+        receiveGoalData(goalData, user_id, (err, res) => {
+          // result is goal id of updated goal
+          if (err) return clientCallback(err);
+          // success: goal id send back to client
+          clientCallback(null, res);
         });
       });
     });
