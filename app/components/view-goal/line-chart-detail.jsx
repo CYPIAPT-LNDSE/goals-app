@@ -4,7 +4,7 @@ import moment from 'moment';
 import GoalTileComponent from '../goal-tile.jsx';
 import LineChart from './line-chart.jsx';
 
-const LineChartDetail = ({ currentGoal, onSelectRating, }) => {
+const LineChartDetail = ({ currentGoal, onSelectRating, dynamicStyle, }) => {
 
   const allRatings = currentGoal.ratings.slice(0).reverse();
 
@@ -33,7 +33,7 @@ const LineChartDetail = ({ currentGoal, onSelectRating, }) => {
     : '';
 
   return (
-   <div className="line-chart-detail goal-detail-page">
+   <div className="line-chart-detail goal-detail-page" style={ dynamicStyle }>
      <div className="goal-detail-goal-tile-container">
        <GoalTileComponent goal={ currentGoal } />
      </div>
@@ -67,6 +67,7 @@ const LineChartDetail = ({ currentGoal, onSelectRating, }) => {
 LineChartDetail.propTypes = {
   currentGoal: React.PropTypes.object,
   onSelectRating: React.PropTypes.func,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default LineChartDetail;
