@@ -1,0 +1,7 @@
+node_modules
+public/main.js
+*.pem
+*.json
+*.md
+*.log
+config.env

@@ -1,12 +1,7 @@
 const pg = require('pg');
 const Pool = pg.Pool;
 const url = require('url');
-<<<<<<< HEAD
 require('env2')('./config.env');
-
-require('env2')('./config.env');
-=======
->>>>>>> 07e361d... fixes lots of linting errors, related #307
 
 pg.defaults.ssl = true;
 
