@@ -9,9 +9,13 @@ $borderRadius: 6%;
 $gradientBackground: linear-gradient(270deg, $blue 0%, $lightGreen 100%);
 $goalTileHeight: 98px;
 
-/* breakpoints */
-$breakpoint-xs: (max-height: 550px);
+/* breakpoints --> default is optimised for iPhone 5 */
+/* smaller than iPhone 5 */
 $breakpoint-xxs: (max-height: 490px);
+$breakpoint-xs: (max-height: 550px);
+/* larger than iPhone 5 */
+$breakpoint-l: (min-height: 600px);
+
 
 @mixin flexCenterColumn {
   display: flex;
@@ -141,13 +145,4 @@ $breakpoint-xxs: (max-height: 490px);
       color: $blue;
     }
   }
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  list-style: none;
 }
