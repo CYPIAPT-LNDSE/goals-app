@@ -39,6 +39,7 @@ const syncGoal = (goal, store, socket) => {
 
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
+
 };
 
 const checkGoalForUpdates = (goal, store, socket) => {

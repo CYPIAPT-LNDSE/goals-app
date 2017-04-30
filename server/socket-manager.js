@@ -47,8 +47,8 @@ const socketManager = (socket) => {
           }
         });
       });
-    });
 
+    });
 
   });
 };
