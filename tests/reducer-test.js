@@ -578,7 +578,7 @@ tape(`test reducer case SELECT_RATING sets the rating selected property
 tape('test reducer set pending sync open: pending sync set to open', (t) => {
 
   const initialState = {
-    goals: [{id: 1, pendingSync: {open: false,},},],
+    goals: [ { id: 1, pendingSync: { open: false, }, }, ],
   };
 
   const actionSetPendingSyncOpen = {
@@ -594,7 +594,7 @@ tape('test reducer set pending sync open: pending sync set to open', (t) => {
 tape('test reducer UPDATE_SYNC_SUCCESS: sync set to 1 and pending sync set to false', (t) => {
 
   const initialState = {
-    goals: [ {id: 1, syncDBCount: 0, pendingSync: { open: true, }, }, ],
+    goals: [ { id: 1, syncDBCount: 0, pendingSync: { open: true, }, }, ],
   };
 
   const actionUpdateSyncSuccess = {
@@ -627,7 +627,7 @@ tape('test reducer UPDATE_SYNC_SUCCESS: pending sync set to false', (t) => {
 tape('test reducer RESET_UPDATE_COUNT: updateCount and syncDBCount set to 0', (t) => {
 
   const initialState = {
-    goals: [ {id: 1, updateCount: 1, syncDBCount: 2,}, ],
+    goals: [ { id: 1, updateCount: 1, syncDBCount: 2, }, ],
   };
   const actionResetUpdateCount = {
     type: types.RESET_UPDATE_COUNT,
