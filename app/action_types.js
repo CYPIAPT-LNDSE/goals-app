@@ -11,6 +11,7 @@ export const SELECT_GOAL = 'SELECT_GOAL';
 export const BORDER_GOAL_CLICK = 'BORDER_GOAL_CLICK';
 export const DELETE_GOAL = 'DELETE_GOAL';
 export const EDIT_GOAL = 'EDIT_GOAL';
+export const TOGGLE_DELETE_MODAL = 'TOGGLE_DELETE_MODAL';
 
 /* add goal actions */
 export const INPUT_GOAL = 'INPUT_GOAL';

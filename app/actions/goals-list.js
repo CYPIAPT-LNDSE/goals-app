@@ -19,10 +19,15 @@ export const onBorderClick = goal => {
   };
 };
 
-export const onDeleteGoal = goal => {
+export const toggleDeleteModal = ({ id, }) => ({
+  type: types.TOGGLE_DELETE_MODAL,
+  goalId: id,
+});
+
+export const onDeleteGoal = goalId => {
   return {
     type: types.DELETE_GOAL,
-    goal: goal,
+    goalId: goalId,
   };
 };
 

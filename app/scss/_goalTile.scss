@@ -89,10 +89,11 @@ $miniContainerWidth: 91px;
   display: flex;
   justify-content: center;
   height: 96px;
-  width: $miniContainerWidth;
+  width: 55%;
   border: 1px solid $blue;
   border-radius: 0;
   background-color: $light;
+  position: relative;
   @include editDeleteAnimation;
 }
 

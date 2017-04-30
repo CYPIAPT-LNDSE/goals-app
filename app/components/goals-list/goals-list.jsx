@@ -1,11 +1,12 @@
 import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
+import DeleteModal from './delete-modal.jsx';
 
 import * as steps from './../../steps.js';
 
 const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
-  onBorderClick, onDeleteGoal, onEditGoal, }) => {
+  onBorderClick, onDeleteGoal, onEditGoal, deleteModal, toggleDeleteModal, }) => {
 
   const goalsListItems = goals.map(goal => {
     return (
@@ -18,7 +19,8 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
           onBorderClick={ onBorderClick }
           onDeleteGoal={ onDeleteGoal }
           onEditGoal={ onEditGoal }
-          />
+          toggleDeleteModal={ toggleDeleteModal }
+        />
       </li>);
   });
 
@@ -26,8 +28,17 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
     height: Math.max(window.innerHeight - 90, goals.length * 108 + 115),
   };
 
+  const overlay = deleteModal.display
+    ? <DeleteModal
+        toggleDeleteModal={ toggleDeleteModal }
+        deleteModal={ deleteModal }
+        onDeleteGoal={ onDeleteGoal }
+      />
+    : null;
+
   return (
     <div className="page goalsList" style={ dynamicStyle }>
+      { overlay }
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
           <button
@@ -35,7 +46,7 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
             name="button"
             className="goalsList_button"
             onClick={ stepAddGoal }
-            >ADD A GOAL &nbsp;+</button>
+          >ADD A GOAL &nbsp;+</button>
         </div>
       </div>
       <div className="goalsList_list">
@@ -53,6 +64,8 @@ GoalsList.propTypes = {
   onBorderClick: React.PropTypes.func,
   onDeleteGoal: React.PropTypes.func,
   onEditGoal: React.PropTypes.func,
+  toggleDeleteModal: React.PropTypes.func,
+  deleteModal: React.PropTypes.object,
 };
 
 export default GoalsList;
