@@ -1,8 +1,9 @@
 const cookieParser = require('cookie');
 const iron = require('iron');
 
-/* database */
-const getUserData = require('./database/get-user-data.js');
+/* model */
+const getUserData = require('./model/get-user-data.js');
+
 const handleGoalData = require('./database/handle-goal-data.js');
 
 const authenticateCookie = (socket, callback) => {

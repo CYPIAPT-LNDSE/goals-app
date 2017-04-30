@@ -1,7 +1,9 @@
-const dbClient = require('./db_connection.js');
-const { formatUserGoals, formatUserRatings, } = require('../helpers/format-user-data');
+/* database */
+const dbClient = require('./../database/db_connection.js');
+const queries = require('./../database/queries.js');
 
-const queries = require('./queries.js');
+/* helpers */
+const { formatUserGoals, formatUserRatings, } = require('../helpers/format-user-data');
 
 const getRatings = (user_id, goals, finalCallBack) => {
   let count = 1;

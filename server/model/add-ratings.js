@@ -1,8 +1,10 @@
 const async = require('async');
-const dbClient = require('./db_connection.js');
 
-const queries = require('./queries.js');
+/* database */
+const dbClient = require('./../database/db_connection.js');
+const queries = require('./../database/queries.js');
 
+/* helpers */
 const { getRatingData, } = require('./../helpers/handle-goals.js');
 
 const insertRating = (rating, goal, cb) => {
@@ -24,7 +26,7 @@ module.exports = (ratings, goal, finalCallback) => {
         if (err) {
           return cb(err);
         }
-        return cb(null, goal.goal_id);
+        cb(null, goal.goal_id);
       });
     };
     tasks = tasks.concat(nextTask);
