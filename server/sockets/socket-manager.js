@@ -2,10 +2,11 @@ const cookieParser = require('cookie');
 const iron = require('iron');
 
 /* model */
-const getUserData = require('./model/get-user-data.js');
+//const getUserData = require('./../model/get-user-data.js');
 
 /* controller */
-const receiveGoalData = require('./controller/receive-goal-data.js');
+const receiveGoalData = require('./../controller/receive-goal-data.js');
+const getUserData = require('./../controller/get-user-data.js');
 
 const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
