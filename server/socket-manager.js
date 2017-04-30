@@ -38,10 +38,12 @@ const socketManager = (socket) => {
         const goalData = JSON.parse(data);
 
         handleGoalData(goalData, user_id, (dbErr, dbResult) => {
+          // dbResult is an array, default with async module
+          // send first value back to client (goal_id)
           if (err) {
             clientCallback(dbErr);
           } else {
-            clientCallback(null, dbResult);
+            clientCallback(null, dbResult[0]);
           }
         });
       });
