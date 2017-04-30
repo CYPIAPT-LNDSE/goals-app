@@ -1,7 +1,34 @@
-const getGoal = `
+/* users */
+
+const getUserById = `
+  SELECT * from users
+  WHERE user_id = $1
+`;
+
+const insertUser = `
+  INSERT into users (user_id)
+  VALUES ($1)
+  RETURNING user_id
+`;
+
+/* goals */
+
+const getGoalById = `
   SELECT *
   from goals
   WHERE goal_id = $1
+`;
+
+const getGoalsByUserId = `
+  SELECT
+    goals.user_id,
+    goals.goal_id,
+    goals.title,
+    goals.icon,
+    goals.date_created
+  FROM goals
+  WHERE user_id=$1 AND goals.deleted=false
+  ORDER BY goals.date_created ASC
 `;
 
 const insertGoal = `
@@ -10,10 +37,17 @@ const insertGoal = `
   RETURNING goal_id
 `;
 
-const getRatings = `
-  SELECT *
-  from ratings
-  WHERE goal_id = $1
+/* ratings */
+
+const getRatingsByGoalId = `
+  SELECT
+    ratings.rating_id,
+    ratings.rating,
+    ratings.comment,
+    ratings.date_created
+  FROM ratings
+  WHERE goal_id=$1
+  ORDER BY ratings.date_created DESC
 `;
 
 const insertRating = `
@@ -22,8 +56,11 @@ const insertRating = `
 `;
 
 module.exports = {
-  getGoal: getGoal,
+  getUserById: getUserById,
+  insertUser: insertUser,
+  getGoalById: getGoalById,
+  getGoalsByUserId: getGoalsByUserId,
   insertGoal: insertGoal,
-  getRatings: getRatings,
+  getRatingsByGoalId: getRatingsByGoalId,
   insertRating: insertRating,
 };

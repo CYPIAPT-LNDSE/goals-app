@@ -11,7 +11,7 @@ const { getNewGoalData, findNewRatings, } = require('./../helpers/handle-goals.j
 const updateGoal = (dbGoal, clientGoal, callback) => {
 
   // check for new ratings
-  dbClient.query(queries.getRatings, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
+  dbClient.query(queries.getRatingsByGoalId, [ clientGoal.id, ], (dbRatingsErr, dbRatingsRes) => {
 
     if (dbRatingsErr) {
       return callback('error getting ratings from database');
@@ -33,7 +33,7 @@ module.exports = (goal, user_id, callback) => {
 
   const goalId = goal.id;
 
-  dbClient.query(queries.getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
+  dbClient.query(queries.getGoalById, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
       console.log("Error retreiving goal from database, ", getGoalErr); // eslint-disable-line
       return callback('error getting data from database');

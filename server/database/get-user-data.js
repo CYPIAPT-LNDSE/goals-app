@@ -1,33 +1,12 @@
 const dbClient = require('./db_connection.js');
 const { formatUserGoals, formatUserRatings, } = require('../helpers/format-user-data');
 
-const getGoalsQuery = `
-  SELECT
-    goals.user_id,
-    goals.goal_id,
-    goals.title,
-    goals.icon,
-    goals.date_created
-  FROM goals
-  WHERE user_id=$1 AND goals.deleted=false
-  ORDER BY goals.date_created ASC
-`;
-
-const getRatingsQuery = `
-  SELECT
-    ratings.rating_id,
-    ratings.rating,
-    ratings.comment,
-    ratings.date_created
-  FROM ratings
-  WHERE goal_id=$1
-  ORDER BY ratings.date_created DESC
-`;
+const queries = require('./queries.js');
 
 const getRatings = (user_id, goals, finalCallBack) => {
   let count = 1;
   goals.forEach((goal) => {
-    dbClient.query(getRatingsQuery, [ goal.id, ],
+    dbClient.query(queries.getRatingsByGoalId, [ goal.id, ],
     (err, ratingsRes) => {
       if (err) finalCallBack(err);
       goal.ratings = (ratingsRes.rows)
@@ -43,7 +22,7 @@ const getRatings = (user_id, goals, finalCallBack) => {
 };
 
 const getUserData = (user_id, finalCallBack) => {
-  dbClient.query(getGoalsQuery, [ user_id, ], (err, res) => {
+  dbClient.query(queries.getGoalsByUserId, [ user_id, ], (err, res) => {
     if (err) {
       console.log(err); // eslint-disable-line
     }
