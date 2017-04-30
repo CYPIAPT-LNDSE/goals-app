@@ -26,7 +26,7 @@ const getRatingsQuery = `
 
 const getRatings = (user_id, goals, finalCallBack) => {
   let count = 1;
-  goals.forEach( (goal) => {
+  goals.forEach((goal) => {
     dbClient.query(getRatingsQuery, [ goal.id, ],
     (err, ratingsRes) => {
       if (err) finalCallBack(err);

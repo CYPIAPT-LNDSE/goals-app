@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 tape('Is the server running', (t) => {
-  server.start( (err) => {
+  server.start((err) => {
     if (err) {
       t.error('failed test', err);
     } else {
