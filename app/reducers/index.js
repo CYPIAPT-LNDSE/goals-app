@@ -14,7 +14,7 @@ const defaultState = {
   menu: false,
   newGoal: {},
   currentGoal: {},
-  setScreenHeight: null,
+  screenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -308,7 +308,7 @@ export default (state = defaultState, action) => {
   case types.SET_SCREEN_HEIGHT:
     return {
       ...state,
-      setScreenHeight: action.height,
+      screenHeight: action.height,
     };
   default:
     return state;
