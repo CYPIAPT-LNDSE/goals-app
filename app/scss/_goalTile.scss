@@ -37,10 +37,10 @@ $miniContainerWidth: 91px;
   }
 
   @media #{$breakpoint-xs} {
-    height: $imgHeightXs;
+    height: $imgHeight;
 
     img {
-      height: $imgHeightXs;
+      height: $imgHeight;
     }
   }
 

@@ -24,24 +24,6 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
       </li>);
   });
 
-import LoadingModal from './../loading-modal.jsx';
-
-import * as steps from './../../steps.js';
-
-const createListItem = (goal, fn) => (
-  <li key={ goal.id } >
-    <GoalTile
-      goal={ goal }
-      step={ steps.GOALS_LIST }
-      onSelectGoal={ fn }
-    />
-  </li>
-);
-
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal, dataLoaded, }) => {
-
-  const goalsListItems = goals.map(goal => createListItem(goal, onSelectGoal));
-
   const dynamicStyle = {
     height: Math.max(window.innerHeight - 90, goals.length * 108 + 115),
   };
@@ -52,15 +34,11 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, dataLoaded, }) => {
         deleteModal={ deleteModal }
         onDeleteGoal={ onDeleteGoal }
       />
-
-  const loading = !dataLoaded
-    ? <LoadingModal />
     : null;
 
   return (
     <div className="page goalsList" style={ dynamicStyle }>
       { overlay }
-      { loading }
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
           <button
@@ -88,7 +66,6 @@ GoalsList.propTypes = {
   onEditGoal: React.PropTypes.func,
   toggleDeleteModal: React.PropTypes.func,
   deleteModal: React.PropTypes.object,
-  dataLoaded: React.PropTypes.boolean,
 };
 
 export default GoalsList;

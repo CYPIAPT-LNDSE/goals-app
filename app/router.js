@@ -99,13 +99,10 @@ router.propTypes = {
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
-<<<<<<< HEAD
   toggleDeleteModal: React.PropTypes.func,
   onInputEditGoal: React.PropTypes.func,
-=======
   dataLoaded: React.PropTypes.boolean,
   screenHeight: React.PropTypes.number,
->>>>>>> 67dd9c9e6262854f9e839a6d3255f97bffdf4295
 };
 
 export default router;
