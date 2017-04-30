@@ -13,6 +13,7 @@
 @import 'slider-animation';
 @import 'menu';
 @import 'line-chart-detail';
+@import 'loading-modal';
 
 html {
   font-size: 1em;
@@ -33,27 +34,33 @@ body {
   align-content: space-between;
   width: 100vw;
   max-width: $maxPageWidth;
-
-  p {
-    color: $blue;
-    letter-spacing: 2.1px;
-  }
 }
 
 p {
+  color: $blue;
+  letter-spacing: 2.1px;
   margin: 0;
   font-size: 12px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
 
 input, textarea {
   font-family: openSans;
   letter-spacing: 2px;
 }
-
-.page {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-}
+//
+// .MainContent {
+  // display: flex;
+  // flex-direction: column;
+  // align-content: space-between;
+  // width: 100vw;
+  // max-width: $maxPageWidth;
+// }

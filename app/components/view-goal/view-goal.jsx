@@ -3,7 +3,7 @@ import GoalTileComponent from '../goal-tile.jsx';
 import ProgressBarComponent from './progress-bar.jsx';
 import LineChart from './line-chart.jsx';
 
-const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, }) => {
+const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, }) => {
 
   const ratings = currentGoal.ratings;
   const latestRatings = ratings.slice(0, 3).reverse();
@@ -19,7 +19,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, }) => {
    );
 
   return (
-    <div className="view-goal goal-detail-page">
+    <div className="view-goal goal-detail-page" style={ dynamicStyle }>
       <div className="goal-detail-goal-tile-container">
         <GoalTileComponent goal={ currentGoal } />
       </div>
@@ -59,6 +59,7 @@ viewGoal.propTypes = {
   currentGoal: React.PropTypes.object,
   rateGoal: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default viewGoal;

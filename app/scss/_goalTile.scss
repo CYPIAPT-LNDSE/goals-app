@@ -1,7 +1,8 @@
 @import 'general';
 @import 'colors';
 
-$imgHeight: 83px;
+$imgHeight: 80px;
+$imgHeightXs: 70px;
 
 .goal-tile {
   position: relative;
@@ -26,17 +27,43 @@ $imgHeight: 83px;
   img {
     height: $imgHeight;
   }
+
+  @media #{$breakpoint-xs} {
+    height: $imgHeightXs;
+
+    img {
+      height: $imgHeightXs;
+    }
+  }
+
 }
 
 .goal-tile-name-container {
   position: absolute;
-  right: 10px;
   width: 75%;
   max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   top: 20px;
+  right: -3px;
+
+  p {
+    width: 100%;
+  }
+
+  @media #{$breakpoint-xs} {
+    top: 10px;
+  }
+
+  @media #{$breakpoint-l} {
+    max-width: 300px;
+
+    p {
+      font-size: 13px;
+      line-height: 15px;
+    }
+  }
 }
 
 .goal-tile-rating {
@@ -50,6 +77,10 @@ $imgHeight: 83px;
   background-color: $light;
   display: flex;
   justify-content: center;
+
+  @media #{$breakpoint-xs} {
+    top: 40px;
+  }
 
   p {
     align-self: center;

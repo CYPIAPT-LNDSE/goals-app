@@ -10,7 +10,7 @@ import RateGoal from './components/rate-goal/rate-goal.jsx';
 import Feedback from './components/feedback/feedback.jsx';
 import LineChartDetail from './components/view-goal/line-chart-detail.jsx';
 
-const router = (props) => {
+const router = (props, style) => {
 
   switch (props.step) {
   case steps.ADD_GOAL: {
@@ -19,14 +19,17 @@ const router = (props) => {
         onInputGoal={ props.onInputGoal }
         onSelectAvatar={ props.onSelectAvatar }
         saveNewGoal={ props.saveNewGoal }
-        triggerConfirmation= { props.triggerConfirmation }
+        triggerConfirmation={ props.triggerConfirmation }
+        screenHeight={ props.screenHeight }
+        dynamicStyle={ style }
       />;
   }
   case steps.VIEW_GOAL:
     return <ViewGoal
-        currentGoal = { props.currentGoal }
+        currentGoal={ props.currentGoal }
         rateGoal={ props.stepRateGoal }
-        stepLineChartDetail = { props.stepLineChartDetail }
+        stepLineChartDetail={ props.stepLineChartDetail }
+        dynamicStyle={ style }
       />;
   case steps.RATE_GOAL:
     return <RateGoal
@@ -34,23 +37,28 @@ const router = (props) => {
         feedback={ props.stepFeedback }
         onMoveSlider={ props.onMoveSlider }
         setPreviousScore={ props.setPreviousScore }
+        dynamicStyle={ style }
       />;
   case steps.FEEDBACK:
     return <Feedback
         currentGoal={ props.currentGoal }
-        onInputFeedback= { props.onInputFeedback }
-        saveRating= { props.saveRating }
+        onInputFeedback={ props.onInputFeedback }
+        saveRating={ props.saveRating }
+        screenHeight={ props.screenHeight }
+        dynamicStyle={ style }
       />;
   case steps.LINE_CHART_DETAIL:
     return <LineChartDetail
       currentGoal={ props.currentGoal }
       onSelectRating={ props.onSelectRating }
+      dynamicStyle={ style }
     />;
   default:
     return <GoalsList
         goals={ props.goals }
         stepAddGoal={ props.stepAddGoal }
         onSelectGoal={ props.onSelectGoal }
+        dataLoaded={ props.dataLoaded }
       />;
   }
 };
@@ -74,6 +82,8 @@ router.propTypes = {
   setPreviousScore: React.PropTypes.func,
   stepLineChartDetail: React.PropTypes.func,
   onSelectRating: React.PropTypes.func,
+  dataLoaded: React.PropTypes.boolean,
+  screenHeight: React.PropTypes.number,
 };
 
 export default router;

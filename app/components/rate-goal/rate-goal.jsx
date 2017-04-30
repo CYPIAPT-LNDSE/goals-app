@@ -5,7 +5,7 @@ import * as steps from './../../steps.js';
 
 import Cactus from './animations/cactus.jsx';
 
-const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) => {
+const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, dynamicStyle, }) => {
 
   const score = currentGoal.newRating.score || 0;
 
@@ -16,7 +16,7 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, }) =>
   />;
 
   return (
-    <div className="rate-goal goal-detail-page">
+    <div className="rate-goal goal-detail-page" style={ dynamicStyle }>
       <div className="goal-detail-goal-tile-container">
         <GoalTileComponent
           goal={ currentGoal }
@@ -53,6 +53,7 @@ RateGoal.propTypes = {
   onMoveSlider: React.PropTypes.func,
   feedback: React.PropTypes.func,
   setPreviousScore: React.PropTypes.func,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default RateGoal;

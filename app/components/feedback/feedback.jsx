@@ -5,9 +5,9 @@ import FeedbackInput from './feedback-input.jsx';
 
 import * as steps from './../../steps.js';
 
-const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => {
+const Feedback = ({ currentGoal, onInputFeedback, saveRating, screenHeight, dynamicStyle, }) => {
   return (
-    <div className='feedback-page'>
+    <div className='feedback-page' style={ dynamicStyle }>
       <div className='feedback-goal-tile-container'>
         <GoalTileComponent goal={ currentGoal } step={ steps.FEEDBACK }/>
       </div>
@@ -17,6 +17,7 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, }) => {
       <FeedbackInput
         onInputFeedback= { onInputFeedback }
         comment= { currentGoal.newRating.comment }
+        screenHeight={ screenHeight }
       />
     <div className='feedback-button-container goal-detail-button-container'>
         <div className='button-outer'>
@@ -36,6 +37,8 @@ Feedback.propTypes = {
   currentGoal: React.PropTypes.object,
   onInputFeedback: React.PropTypes.func,
   saveRating: React.PropTypes.func,
+  screenHeight: React.PropTypes.number,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default Feedback;

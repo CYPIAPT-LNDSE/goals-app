@@ -7,13 +7,14 @@ const defaultState = {
     authPending: false,
     id: null,
   },
+  dataLoaded: false,
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
   newGoal: {},
   currentGoal: {},
-  setScreenHeight: null,
+  screenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -302,11 +303,12 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: action.goals,
+      dataLoaded: true,
     };
   case types.SET_SCREEN_HEIGHT:
     return {
       ...state,
-      setScreenHeight: action.height,
+      screenHeight: action.height,
     };
   default:
     return state;
