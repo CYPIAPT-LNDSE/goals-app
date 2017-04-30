@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="35px" viewBox="0 0 27 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>delete_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-1144.000000, -692.000000)">
+            <g id="delete_icon" transform="translate(1135.000000, 687.000000)">
+                <path d="M11.25,35.625 C11.25,37.6875 12.9375,39.375 15,39.375 L30,39.375 C32.0625,39.375 33.75,37.6875 33.75,35.625 L33.75,13.125 L11.25,13.125 L11.25,35.625 L11.25,35.625 Z M35.625,7.5 L29.0625,7.5 L27.1875,5.625 L17.8125,5.625 L15.9375,7.5 L9.375,7.5 L9.375,11.25 L35.625,11.25 L35.625,7.5 L35.625,7.5 Z" id="Shape" fill="#1F65AC"></path>
+                <polygon id="Shape" points="0 0 45 0 45 45 0 45"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

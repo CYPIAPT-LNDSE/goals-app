@@ -1,8 +1,12 @@
 @import 'general';
 @import 'colors';
 
-$imgHeight: 80px;
-$imgHeightXs: 70px;
+$imgHeight: 83px;
+$miniContainerWidth: 91px;
+
+@mixin editDeleteAnimation {
+  transition: width 0.5s;
+}
 
 .goalTile {
   position: relative;
@@ -19,6 +23,10 @@ $imgHeightXs: 70px;
   z-index: 0;
 }
 
+.outerContainer {
+  width: 100%;
+}
+
 .goalTile_avatarContainer {
   height: $imgHeight;
   width: 68px;
@@ -29,10 +37,10 @@ $imgHeightXs: 70px;
   }
 
   @media #{$breakpoint-xs} {
-    height: $imgHeightXs;
+    height: $imgHeight;
 
     img {
-      height: $imgHeightXs;
+      height: $imgHeight;
     }
   }
 
@@ -95,4 +103,48 @@ $imgHeightXs: 70px;
   left: 0;
   height: 100%;
   z-index: -1;
+}
+
+.edit-delete-container {
+  position: absolute;
+  right: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  z-index: 1;
+  @include editDeleteAnimation;
+}
+
+@mixin goalTile_container {
+  display: flex;
+  justify-content: center;
+  height: 96px;
+  width: 55%;
+  border: 1px solid $blue;
+  border-radius: 0;
+  background-color: $light;
+  position: relative;
+  @include editDeleteAnimation;
+}
+
+.goalTile_editContainer {
+  @include goalTile_container;
+}
+
+.goalTile_deleteContainer {
+  @include goalTile_container;
+}
+
+.goalTile_icon {
+  align-self: center;
+  height: 30px;
+}
+
+.rightBorder {
+  position: absolute;
+  right: 0;
+  height: $goalTileHeight;
+  border-right: 5px solid $borderBlue;
+  border-radius: 0 6px 6px 0;
+  z-index: 2;
 }

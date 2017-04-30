@@ -66,6 +66,26 @@ $breakpoint-l: (min-height: 600px);
     color: #fff;
     font-size: 22px;
   }
+
+  h2, p {
+    color: #fff;
+  }
+}
+
+@mixin modalButton {
+  border: 2px #fff solid;
+  border-radius: 80px;
+  width: 100px;
+  height: 30px;
+  align-self: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: $blue;
+  }
 }
 
 @font-face {

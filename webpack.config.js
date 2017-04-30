@@ -19,12 +19,12 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-2', ],
+          presets: [ 'es2015', 'react', 'stage-2', ],
         },
       },
       {
         test: /\.s?css$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader',],
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader', ],
       },
       {
         test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
