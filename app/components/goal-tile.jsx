@@ -17,23 +17,12 @@ onDeleteGoal, onEditGoal, }) => {
       : 'none',
   };
 
-  const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
-
-  const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
-    ? goal.newRating.score || 0
-    : goal.ratings && goal.ratings.length
-      ? goal.ratings[0].score
-      : undefined;
-
   const progressStyle = {
     width: score === undefined
       ? 0
       : `${score * 10}%`,
     transition: 'width 1s ease',
   };
-
-  const editIcon = './images/icons/edit-icon.svg';
-  const deleteIcon = './images/icons/delete-icon.svg';
 
   const editDeleteStyle = {
     width: visibleEditDelete
@@ -49,6 +38,17 @@ onDeleteGoal, onEditGoal, }) => {
       ? '91px'
       : 0,
   };
+
+  const pathAvatar = avatarName => `./images/avatars/${avatarName}.svg`;
+
+  const score = step === steps.RATE_GOAL || step === steps.FEEDBACK
+    ? goal.newRating.score || 0
+    : goal.ratings && goal.ratings.length
+      ? goal.ratings[0].score
+      : undefined;
+
+  const editIcon = './images/icons/edit-icon.svg';
+  const deleteIcon = './images/icons/delete-icon.svg';
 
   const clickGoal = (goal) => {
     if (step === steps.GOALS_LIST) {
