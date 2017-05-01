@@ -11,7 +11,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
   const ratings = currentGoal.ratings;
   const latestRatings = ratings.slice(0, 3).reverse();
 
-  const time = new Date().toString();^
+  const time = new Date().toString();
   const progressBars = latestRatings
     .map(rating =>
       <ProgressBarComponent
