@@ -1,16 +1,15 @@
 @import 'colors';
 @import 'general';
 
-$contentWidth: 95%;
-
-.add-new-goal {
+.edit-goal {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+  margin-top: 40px;
 }
 
-.new-goal-input-container-outer {
+.edit-goal-input-container-outer {
   padding: 10px 10px 0 10px;
   display: flex;
   flex-direction: column;
@@ -18,14 +17,15 @@ $contentWidth: 95%;
   text-align: center;
 }
 
-.new-goal-label {
+.edit-goal-label {
   @include regularFont;
   width: $contentWidth;
   align-self: center;
+  margin-top: 20px;
 }
 
-.new-goal-input-container-inner {
-  height: 60px;
+.edit-goal-input-container-inner {
+  height: 80px;
   width: $contentWidth;
   max-width: $maxContentWidth;
   align-self: center;
@@ -40,7 +40,7 @@ $contentWidth: 95%;
   }
 }
 
-.new-goal-input {
+.edit-goal-input {
   padding: 5%;
   height: 80%;
   width: 80%;
@@ -52,39 +52,12 @@ $contentWidth: 95%;
   resize: none;
 }
 
-.new-goal-avatars-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  width: $contentWidth;
-}
-
-.new-goal-button-container {
+.edit-goal-button-container {
   @include ctaButton;
   height: 56px;
 
   .button-outer {
     height: 50px;
+    margin-top: 50%;
   }
-}
-
-.confirmation-modal {
-  @include modal;
-  a { @include modalButton; }
-}
-
-.path {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-}
-
-.confirmation-tick {
-  height: 170px;
-  width: 170px;
-  align-self: center;
-  margin: 30px 0 50px 0;
 }

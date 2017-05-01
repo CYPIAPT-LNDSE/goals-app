@@ -39,6 +39,7 @@ const syncGoal = (goal, store, socket) => {
 
     store.dispatch(updateSyncSuccess(socketResponse.goal_id));
   });
+
 };
 
 const checkGoalForUpdates = (goal, store, socket) => {
@@ -58,7 +59,7 @@ export const socketsMiddleware = store => next => {
     if (action.type === types.SET_AUTH_PENDING) {
       socket.emit('authenticate', null, (socketErr, user_id) => {
         if (socketErr) {
-          console.log('authentication error');
+          console.log('authentication error'); // eslint-disable-line
           return store.dispatch(authFailure());
         }
         return store.dispatch(authSuccess(user_id));
