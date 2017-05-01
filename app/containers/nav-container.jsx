@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 
+/* components */
 import Nav from '../components/nav.jsx';
+
+/* action creators */
 import * as actionsNav from './../actions/nav.js';
 
 const NavContent = props => {
@@ -17,11 +21,11 @@ const NavContent = props => {
 };
 
 NavContent.propTypes = {
-  step: React.PropTypes.string,
-  onNavClick: React.PropTypes.func,
-  toggleMenu: React.PropTypes.func,
-  onBackButtonClick: React.PropTypes.func,
-  menu: React.PropTypes.bool,
+  step: PropTypes.string,
+  onNavClick: PropTypes.func,
+  toggleMenu: PropTypes.func,
+  onBackButtonClick: PropTypes.func,
+  menu: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import availableAvatars from './../../avatars.js';
 
@@ -22,10 +23,10 @@ class Avatars extends React.Component {
       arr.map(av => (
         <div
           className="newGoal_avatarBox"
-          key={`avatar_${av}`}
+          key={ `avatar_${av}` }
           onClick={ this.handleChange }
         >
-        <label id={`avatar_${av}`}>
+        <label id={ `avatar_${av}` }>
           <input
             type="radio"
             name="avatar"
@@ -53,7 +54,7 @@ class Avatars extends React.Component {
 }
 
 Avatars.propTypes = {
-  onSelectAvatar: React.PropTypes.func,
+  onSelectAvatar: PropTypes.func,
 };
 
 export default Avatars;

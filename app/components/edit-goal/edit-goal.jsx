@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import * as steps from './../../steps.js';
+/* components */
 import GoalTile from '../goal-tile.jsx';
 import EditGoalInput from './edit-goal-input.jsx';
+
+import * as steps from './../../steps.js';
 
 const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
 
@@ -35,10 +38,10 @@ const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
 };
 
 editGoal.propTypes = {
-  goal: React.PropTypes.object,
-  newGoal: React.PropTypes.object,
-  onInputEditGoal: React.PropTypes.func,
-  onSaveEditGoal: React.PropTypes.func,
+  goal: PropTypes.object,
+  newGoal: PropTypes.object,
+  onInputEditGoal: PropTypes.func,
+  onSaveEditGoal: PropTypes.func,
 };
 
 export default editGoal;

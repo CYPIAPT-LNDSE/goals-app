@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DeleteModal = ({ toggleDeleteModal, deleteModal, onDeleteGoal, }) => (
   <div className="delete-modal">
@@ -20,7 +21,7 @@ const DeleteModal = ({ toggleDeleteModal, deleteModal, onDeleteGoal, }) => (
           <div className="button-outer">
             <button
               className="delete-modal-button"
-              onClick={ () => onDeleteGoal(deleteModal.goal)}
+              onClick={ () => onDeleteGoal(deleteModal.goal) }
             >
               Yup, I'm sure
             </button>
@@ -33,9 +34,9 @@ const DeleteModal = ({ toggleDeleteModal, deleteModal, onDeleteGoal, }) => (
 );
 
 DeleteModal.propTypes = {
-  toggleDeleteModal: React.PropTypes.func,
-  deleteModal: React.PropTypes.boolean,
-  onDeleteGoal: React.PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
+  deleteModal: PropTypes.boolean,
+  onDeleteGoal: PropTypes.func,
 };
 
 export default DeleteModal;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoadingModal = () => {
-  return(
+  return (
     <div className="loading-modal">
       <div className="spinner"></div>
     </div>

@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import GSAP from 'react-gsap-enhancer';
 import { TimelineMax, } from 'gsap';
 
-const createAnimation = ({target, options, }) => {
+const createAnimation = ({ target, options, }) => {
 
   const bodyFrames = [
     { bottom: '5px', height: '0px', },
@@ -46,7 +48,7 @@ const createAnimation = ({target, options, }) => {
   const armsSequence = getFrames(armFrames, options.score, options.previousScore);
 
   bodySequence.forEach((frame, index) => {
-    t1.to(cactus3, 0.1, frame, )
+    t1.to(cactus3, 0.1, frame,)
       .to(arms, 0.1, armsSequence[index], '-=0.5');
   });
 
@@ -129,9 +131,9 @@ class Cactus extends React.Component {
 }
 
 Cactus.propTypes = {
-  previousScore: React.PropTypes.int,
-  score: React.PropTypes.int,
-  setPreviousScore: React.PropTypes.func,
+  previousScore: PropTypes.int,
+  score: PropTypes.int,
+  setPreviousScore: PropTypes.func,
 };
 
 export default GSAP()(Cactus);

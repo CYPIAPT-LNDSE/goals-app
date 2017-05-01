@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 
-/* actions */
+/* action creators */
 import * as actionsGoalsList from './../actions/goals-list.js';
 import * as actionsAddNewGoal from './../actions/add-new-goal.js';
 import * as actionsViewGoal from './../actions/view-goal.js';
@@ -64,13 +65,13 @@ class MainContent extends React.Component {
 }
 
 MainContent.propTypes = {
-  onReceiveData: React.PropTypes.func,
-  setAuthPending: React.PropTypes.func,
-  user: React.PropTypes.object,
-  setScreenHeight: React.PropTypes.func,
-  goals: React.PropTypes.array,
-  dataLoaded: React.PropTypes.boolean,
-  screenHeight: React.PropTypes.number,
+  onReceiveData: PropTypes.func,
+  setAuthPending: PropTypes.func,
+  user: PropTypes.object,
+  setScreenHeight: PropTypes.func,
+  goals: PropTypes.array,
+  dataLoaded: PropTypes.boolean,
+  screenHeight: PropTypes.number,
 };
 
 const mapStateToProps = state => ({

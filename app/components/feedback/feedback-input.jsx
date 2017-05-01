@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class FeedbackInput extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class FeedbackInput extends React.Component {
           name="new-feedback"
           id="newFeedbackInput"
           maxLength="140"
-          value={ this.props.comment}
+          value={ this.props.comment }
           placeholder="I gave my goal this reason because..."
           className="feedback-input"
           type="text"
@@ -31,9 +32,9 @@ class FeedbackInput extends React.Component {
 }
 
 FeedbackInput.propTypes = {
-  onInputFeedback: React.PropTypes.func,
-  comment: React.PropTypes.string,
-  screenHeight: React.PropTypes.number,
+  onInputFeedback: PropTypes.func,
+  comment: PropTypes.string,
+  screenHeight: PropTypes.number,
 };
 
 export default FeedbackInput;

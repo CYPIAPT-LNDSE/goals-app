@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/* components */
 import GoalTile from '../goal-tile.jsx';
 import DeleteModal from './delete-modal.jsx';
 
@@ -57,15 +59,15 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
 };
 
 GoalsList.propTypes = {
-  goals: React.PropTypes.array,
-  stepAddGoal: React.PropTypes.func,
-  onSelectGoal: React.PropTypes.func,
-  visibleEditDelete: React.PropTypes.bool,
-  onBorderClick: React.PropTypes.func,
-  onDeleteGoal: React.PropTypes.func,
-  onEditGoal: React.PropTypes.func,
-  toggleDeleteModal: React.PropTypes.func,
-  deleteModal: React.PropTypes.object,
+  goals: PropTypes.array,
+  stepAddGoal: PropTypes.func,
+  onSelectGoal: PropTypes.func,
+  visibleEditDelete: PropTypes.bool,
+  onBorderClick: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  onEditGoal: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
+  deleteModal: PropTypes.object,
 };
 
 export default GoalsList;

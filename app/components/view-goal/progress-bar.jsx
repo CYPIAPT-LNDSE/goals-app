@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const ProgressBarComponent = ({ rating, time, }) => {
@@ -27,8 +28,8 @@ const ProgressBarComponent = ({ rating, time, }) => {
 };
 
 ProgressBarComponent.propTypes = {
-  rating: React.PropTypes.object,
-  time: React.PropTypes.string,
+  rating: PropTypes.object,
+  time: PropTypes.string,
 };
 
 export default ProgressBarComponent;

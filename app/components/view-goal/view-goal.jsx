@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+/* components */
 import GoalTileComponent from '../goal-tile.jsx';
 import ProgressBarComponent from './progress-bar.jsx';
 import LineChart from './line-chart.jsx';
@@ -8,7 +11,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
   const ratings = currentGoal.ratings;
   const latestRatings = ratings.slice(0, 3).reverse();
 
-  const time = new Date().toString();
+  const time = new Date().toString();^
   const progressBars = latestRatings
     .map(rating =>
       <ProgressBarComponent
@@ -56,10 +59,10 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
 };
 
 viewGoal.propTypes = {
-  currentGoal: React.PropTypes.object,
-  rateGoal: React.PropTypes.func,
-  stepLineChartDetail: React.PropTypes.func,
-  dynamicStyle: React.PropTypes.object,
+  currentGoal: PropTypes.object,
+  rateGoal: PropTypes.func,
+  stepLineChartDetail: PropTypes.func,
+  dynamicStyle: PropTypes.object,
 };
 
 export default viewGoal;

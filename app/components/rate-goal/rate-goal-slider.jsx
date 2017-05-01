@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class RateGoalSlider extends React.Component {
   constructor(props) {
@@ -36,8 +37,8 @@ class RateGoalSlider extends React.Component {
 }
 
 RateGoalSlider.propTypes = {
-  onMoveSlider: React.PropTypes.func,
-  goal: React.PropTypes.object,
+  onMoveSlider: PropTypes.func,
+  goal: PropTypes.object,
 };
 
 export default RateGoalSlider;

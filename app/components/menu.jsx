@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MenuComponent = ({ menu, toggleMenu, }) => {
 
@@ -30,8 +31,8 @@ const MenuComponent = ({ menu, toggleMenu, }) => {
 };
 
 MenuComponent.propTypes = {
-  menu: React.PropTypes.bool,
-  toggleMenu: React.PropTypes.func,
+  menu: PropTypes.bool,
+  toggleMenu: PropTypes.func,
 };
 
 export default MenuComponent;

@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+/* components */
 import GoalTileComponent from '../goal-tile.jsx';
 import RateGoalSlider from './rate-goal-slider.jsx';
+
 import * as steps from './../../steps.js';
 
 import Cactus from './animations/cactus.jsx';
@@ -49,11 +53,11 @@ const RateGoal = ({ currentGoal, onMoveSlider, feedback, setPreviousScore, dynam
 };
 
 RateGoal.propTypes = {
-  currentGoal: React.PropTypes.object,
-  onMoveSlider: React.PropTypes.func,
-  feedback: React.PropTypes.func,
-  setPreviousScore: React.PropTypes.func,
-  dynamicStyle: React.PropTypes.object,
+  currentGoal: PropTypes.object,
+  onMoveSlider: PropTypes.func,
+  feedback: PropTypes.func,
+  setPreviousScore: PropTypes.func,
+  dynamicStyle: PropTypes.object,
 };
 
 export default RateGoal;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as steps from './../steps.js';
 
@@ -75,7 +76,7 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
     <div
       className="goalTile_editContainer"
       style={ editDeleteStyle }
-      onClick={ () => { onEditGoal(goal); }}
+      onClick={ () => { onEditGoal(goal); } }
       >
       <img
         className="goalTile_icon"
@@ -100,7 +101,7 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
     </div>
     <div
       className="rightBorder"
-      onClick = { () => { onBorderClick(goal); }}
+      onClick = { () => { onBorderClick(goal); } }
       style = { rightBorderStyle }
     />
   </div>
@@ -108,14 +109,14 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
 };
 
 tile.propTypes = {
-  goal: React.PropTypes.object,
-  step: React.PropTypes.string,
-  onSelectGoal: React.PropTypes.func,
-  visibleEditDelete: React.PropTypes.bool,
-  onBorderClick: React.PropTypes.func,
-  onDeleteGoal: React.PropTypes.func,
-  onEditGoal: React.PropTypes.func,
-  toggleDeleteModal: React.PropTypes.func,
+  goal: PropTypes.object,
+  step: PropTypes.string,
+  onSelectGoal: PropTypes.func,
+  visibleEditDelete: PropTypes.bool,
+  onBorderClick: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  onEditGoal: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
 };
 
 export default tile;

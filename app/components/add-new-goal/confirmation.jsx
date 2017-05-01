@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ConfirmationModal extends React.Component {
   constructor(props) {
@@ -29,8 +30,8 @@ class ConfirmationModal extends React.Component {
 }
 
 ConfirmationModal.propTypes = {
-  saveGoal: React.PropTypes.func,
-  confirmation: React.PropTypes.bool,
+  saveGoal: PropTypes.func,
+  confirmation: PropTypes.bool,
 };
 
 export default ConfirmationModal;
