@@ -1,9 +1,6 @@
 const cookieParser = require('cookie');
 const iron = require('iron');
 
-/* model */
-//const getUserData = require('./../model/get-user-data.js');
-
 /* controller */
 const receiveGoalData = require('./../controller/receive-goal-data.js');
 const getUserData = require('./../controller/get-user-data.js');
