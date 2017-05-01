@@ -19,7 +19,7 @@ const socketManager = (socket) => {
   socket.on('authenticate', (_, clientCallback) => {
     authenticateCookie(socket, (err, id) => {
       if (err) {
-        console.log(err);
+        console.log(err); // eslint-disable-line
         return clientCallback('auth error');
       }
       //lets client know authentication was successful
@@ -28,7 +28,7 @@ const socketManager = (socket) => {
 
       getUserData(id, (err, data) => {
         if (err) {
-          console.log(err);
+          console.log(err); // eslint-disable-line
           data = '';
         }
         socket.emit('userData', data);
@@ -47,8 +47,8 @@ const socketManager = (socket) => {
           }
         });
       });
-    });
 
+    });
 
   });
 };

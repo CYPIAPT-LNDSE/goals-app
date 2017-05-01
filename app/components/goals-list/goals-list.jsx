@@ -1,10 +1,12 @@
 import React from 'react';
 
 import GoalTile from '../goal-tile.jsx';
+import DeleteModal from './delete-modal.jsx';
 
 import * as steps from './../../steps.js';
 
-const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
+const GoalsList = ({ goals, stepAddGoal, onSelectGoal,
+  onBorderClick, onDeleteGoal, onEditGoal, deleteModal, toggleDeleteModal, }) => {
 
   const goalsListItems = goals.map(goal => {
     return (
@@ -13,6 +15,11 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
           goal={ goal }
           step={ steps.GOALS_LIST }
           onSelectGoal={ onSelectGoal }
+          visibleEditDelete={ goal.visibleEditDelete }
+          onBorderClick={ onBorderClick }
+          onDeleteGoal={ onDeleteGoal }
+          onEditGoal={ onEditGoal }
+          toggleDeleteModal={ toggleDeleteModal }
         />
       </li>);
   });
@@ -21,8 +28,17 @@ const GoalsList = ({ goals, stepAddGoal, onSelectGoal, }) => {
     height: Math.max(window.innerHeight - 90, goals.length * 108 + 115),
   };
 
+  const overlay = deleteModal.display
+    ? <DeleteModal
+        toggleDeleteModal={ toggleDeleteModal }
+        deleteModal={ deleteModal }
+        onDeleteGoal={ onDeleteGoal }
+      />
+    : null;
+
   return (
     <div className="page goalsList" style={ dynamicStyle }>
+      { overlay }
       <div className="goalsList_buttonContainer">
         <div className="button-outer">
           <button
@@ -44,6 +60,12 @@ GoalsList.propTypes = {
   goals: React.PropTypes.array,
   stepAddGoal: React.PropTypes.func,
   onSelectGoal: React.PropTypes.func,
+  visibleEditDelete: React.PropTypes.bool,
+  onBorderClick: React.PropTypes.func,
+  onDeleteGoal: React.PropTypes.func,
+  onEditGoal: React.PropTypes.func,
+  toggleDeleteModal: React.PropTypes.func,
+  deleteModal: React.PropTypes.object,
 };
 
 export default GoalsList;

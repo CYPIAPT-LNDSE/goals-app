@@ -1,14 +1,13 @@
 import React from 'react';
 
 class NewGoalInput extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.props.onInputGoal(event.target.value);
+    this.props.onInputEditGoal(event.target.value);
   }
 
   render() {
@@ -24,7 +23,7 @@ class NewGoalInput extends React.Component {
           type="text"
           onKeyUp={ this.handleChange }
           onChange={ this.handleChange }
-          autoFocus={ this.props.screenHeight > 600 }
+          autoFocus={ window.innerHeight > 600 }
         />
       </div>
     );
@@ -34,7 +33,6 @@ class NewGoalInput extends React.Component {
 NewGoalInput.propTypes = {
   onInputGoal: React.PropTypes.func,
   newGoal: React.PropTypes.object,
-  screenHeight: React.PropTypes.number,
 };
 
 export default NewGoalInput;

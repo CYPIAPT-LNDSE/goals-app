@@ -8,6 +8,7 @@ import * as actionsViewGoal from './../actions/view-goal.js';
 import * as actionsRateGoal from './../actions/rate-goal.js';
 import * as actionsFeedback from './../actions/feedback.js';
 import * as actionsGeneral from './../actions/general.js';
+import * as actionsEditGoal from './../actions/edit-goal.js';
 
 const actionsMainContainer = {
   ...actionsGoalsList,
@@ -16,6 +17,7 @@ const actionsMainContainer = {
   ...actionsRateGoal,
   ...actionsFeedback,
   ...actionsGeneral,
+  ...actionsEditGoal,
 };
 
 import router from './../router.js';
@@ -34,17 +36,29 @@ class MainContent extends React.Component {
   }
 
   render() {
+
     const props = this.props;
-    const view = router(props);
+
     const navbarHeight = 90;
+    const fullPageHeight = `
+      ${ Math.max(props.screenHeight - navbarHeight, 400) }px
+    `;
+
     const dynamicStyle = {
-      height: `${Math.max(props.screenHeight - navbarHeight, 400)}px`,
+      minHeight: fullPageHeight,
     };
 
+    const viewStyle = {
+      height: fullPageHeight,
+    };
+
+    const view = router(props, viewStyle);
+
     return (
-        <div className="MainContent" style={ dynamicStyle }>
-          { view }
-        </div>
+
+      <div className="MainContent" style={ dynamicStyle }>
+        { view }
+      </div>
     );
   }
 }
@@ -54,6 +68,9 @@ MainContent.propTypes = {
   setAuthPending: React.PropTypes.func,
   user: React.PropTypes.object,
   setScreenHeight: React.PropTypes.func,
+  goals: React.PropTypes.array,
+  dataLoaded: React.PropTypes.boolean,
+  screenHeight: React.PropTypes.number,
 };
 
 const mapStateToProps = state => ({
@@ -62,6 +79,9 @@ const mapStateToProps = state => ({
   step: state.step,
   newGoal: state.newGoal,
   currentGoal: state.currentGoal,
+  deleteModal: state.deleteModal,
+  dataLoaded: state.dataLoaded,
+  screenHeight: state.screenHeight,
 });
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);

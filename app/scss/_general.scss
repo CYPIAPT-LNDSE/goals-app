@@ -9,9 +9,13 @@ $borderRadius: 6%;
 $gradientBackground: linear-gradient(270deg, $blue 0%, $lightGreen 100%);
 $goalTileHeight: 98px;
 
-/* breakpoints */
-$breakpoint-xs: (max-height: 550px);
+/* breakpoints --> default is optimised for iPhone 5 */
+/* smaller than iPhone 5 */
 $breakpoint-xxs: (max-height: 490px);
+$breakpoint-xs: (max-height: 550px);
+/* larger than iPhone 5 */
+$breakpoint-l: (min-height: 600px);
+
 
 @mixin flexCenterColumn {
   display: flex;
@@ -61,6 +65,26 @@ $breakpoint-xxs: (max-height: 490px);
   .modal-text {
     color: #fff;
     font-size: 22px;
+  }
+
+  h2, p {
+    color: #fff;
+  }
+}
+
+@mixin modalButton {
+  border: 2px #fff solid;
+  border-radius: 80px;
+  width: 100px;
+  height: 30px;
+  align-self: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: $blue;
   }
 }
 
@@ -121,13 +145,4 @@ $breakpoint-xxs: (max-height: 490px);
       color: $blue;
     }
   }
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  list-style: none;
 }
