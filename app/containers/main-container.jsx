@@ -44,9 +44,23 @@ class MainContent extends React.Component {
       ${ Math.max(props.screenHeight - navbarHeight, 400) }px
     `;
 
-    const dynamicStyle = {
+    const styleRegularView = {
       minHeight: fullPageHeight,
     };
+
+    const styleModal = {
+      height: fullPageHeight,
+      overflow: 'hidden',
+    };
+
+    const modalViewOn = !props.dataLoaded
+      || props.menu
+      || props.deleteModal.display
+      || props.newGoal.confirmation;
+
+    const dynamicStyle = modalViewOn
+       ? styleModal
+       : styleRegularView;
 
     const viewStyle = {
       height: fullPageHeight,
@@ -82,6 +96,7 @@ const mapStateToProps = state => ({
   deleteModal: state.deleteModal,
   dataLoaded: state.dataLoaded,
   screenHeight: state.screenHeight,
+  menu: state.menu,
 });
 
 export default connect(mapStateToProps, actionsMainContainer)(MainContent);
