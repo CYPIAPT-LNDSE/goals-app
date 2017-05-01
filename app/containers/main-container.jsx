@@ -20,7 +20,7 @@ const actionsMainContainer = {
   ...actionsEditGoal,
 };
 
-import router from './../router.js';
+import router from './../router.jsx';
 
 class MainContent extends React.Component {
 
