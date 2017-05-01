@@ -18,7 +18,7 @@ server.connection({
   },
 });
 
-server.register([ inert, cookieAuth,], (err) => {
+server.register([ inert, cookieAuth, ], (err) => {
   if (err) { throw new Error (err); }
 
   server.auth.strategy('session', 'cookie', true, {

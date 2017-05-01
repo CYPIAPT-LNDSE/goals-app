@@ -76,35 +76,34 @@ class LineChartDetail extends React.Component {
       };
 
     return (
-
-     <div className="line-chart-detail goal-detail-page">
-       <div className="goal-detail-goal-tile-container">
-         <GoalTileComponent goal={ currentGoal } />
+      <div className="line-chart-detail goal-detail-page" style={ this.props.dynamicStyle }>
+        <div className="goal-detail-goal-tile-container">
+          <GoalTileComponent goal={ currentGoal } />
+        </div>
+        <div className="line-chart-container-detail">
+        <div className="line-chart-detail-feedback-container" style={ feedbackStyle }>
+          <p className="detail-feedback-time">
+            { moment(time).format('LLLL') }
+          </p>
+          <p className="detail-feedback-score">
+            You rated your progress { score }/10
+          </p>
+          <p className="detail-feedback-comment">
+            { comment }
+          </p>
        </div>
-       <div className="line-chart-container-detail">
-         <div className="line-chart-detail-feedback-container" style={ feedbackStyle }>
-           <p className="detail-feedback-time">
-             { moment(time).format('LLLL') }
-           </p>
-           <p className="detail-feedback-score">
-             You rated your progress { score }/10
-           </p>
-           <p className="detail-feedback-comment">
-             { comment }
-           </p>
-         </div>
-         <div className="detail-chart-container">
-           <div className="detail-chart-container-inner" style={ containerStyle }>
-             <LineChart
-               avatar={ currentGoal.avatar }
-               ratings={ allRatings }
-               isChartPreview={ false }
-               onSelectRating={ this.props.onSelectRating }
-             />
-           </div>
-         </div>
-       </div>
-     </div>
+       <div className="detail-chart-container">
+         <div className="detail-chart-container-inner" style={ containerStyle }>
+           <LineChart
+             avatar={ currentGoal.avatar }
+             ratings={ allRatings }
+             isChartPreview={ false }
+             onSelectRating={ this.props.onSelectRating }
+           />
+          </div>
+        </div>
+      </div>
+    </div>
     );
   }
 }
@@ -112,6 +111,7 @@ class LineChartDetail extends React.Component {
 LineChartDetail.propTypes = {
   currentGoal: React.PropTypes.object,
   onSelectRating: React.PropTypes.func,
+  dynamicStyle: React.PropTypes.object,
 };
 
 export default LineChartDetail;

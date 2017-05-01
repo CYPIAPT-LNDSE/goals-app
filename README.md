@@ -1,6 +1,6 @@
-# GoalGrow
+# Grow
 
-You can view the app [here](https://cypiapt-lndse.github.io/goals-app/).
+You can view the app [here](https://polar-dawn-55555.herokuapp.com/).
 
 GoalGrow is an app primarily aimed at 12-18 year-olds in the CAMHs system. Our young users can set themselves goals, either on their own at home, or in a session with a clinician.
 

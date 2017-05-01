@@ -9,7 +9,7 @@ import NavContainer from './containers/nav-container.jsx';
 const App = () => {
 
   return (
-    <div className="page">
+    <div>
       <NavContainer />
       <MainContainer />
     </div>

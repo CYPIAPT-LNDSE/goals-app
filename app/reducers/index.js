@@ -7,13 +7,18 @@ const defaultState = {
     authPending: false,
     id: null,
   },
+  dataLoaded: false,
   goals: [],
   step: steps.GOALS_LIST,
   previousStep: null,
   menu: false,
+  deleteModal: {
+    display: false,
+    goal: null,
+  },
   newGoal: {},
   currentGoal: {},
-  setScreenHeight: null,
+  screenHeight: null,
 };
 
 export const backStep = (state) => {
@@ -22,6 +27,12 @@ export const backStep = (state) => {
 
   switch(step) {
   case steps.ADD_GOAL:
+    return {
+      ...state,
+      step: steps.GOALS_LIST,
+      previousStep: null,
+    };
+  case steps.EDIT_GOAL:
     return {
       ...state,
       step: steps.GOALS_LIST,
@@ -111,6 +122,41 @@ export const addRatingToCurrentGoal = ({ currentGoal, }, newRating) => {
 export const selectRatingById = (id, arr) =>
   arr.find(rating => rating.id === id) || null;
 
+export const removeGoalFromArray = (state, goalId) => {
+  return mapWithId(state, { id: goalId, }, goal => {
+    return {
+      ...goal,
+      deleted : true,
+      visibleEditDelete: false,
+      updateCount: (goal.updateCount + 1 || 1),
+    };
+  });
+};
+
+export const changeVisibility = (state, { goal, }, fn = goal => {
+  return {
+    ...goal,
+    visibleEditDelete: !goal.visibleEditDelete,
+  };
+}) => {
+  return mapWithId(state, goal, fn);
+};
+
+export const hideEditDeleteAll = goals =>
+  goals.map(goal => ({ ...goal, visibleEditDelete: false, }));
+
+export const editGoal = (state) => {
+  const goalsList = mapWithId(state, state.currentGoal, increaseUpdateCount);
+  return mapWithId({ goals: goalsList, }, state.currentGoal, editedGoal => {
+    return {
+      ...editedGoal,
+      name: state.currentGoal.name,
+      edited : true,
+      visibleEditDelete: false,
+    };
+  });
+};
+
 export default (state = defaultState, action) => {
   switch(action.type) {
   case types.TOGGLE_MENU:
@@ -122,6 +168,7 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       step: steps.GOALS_LIST,
+      goals: hideEditDeleteAll(state.goals),
       previousStep: null,
       currentGoal: {},
     };
@@ -135,8 +182,18 @@ export default (state = defaultState, action) => {
     };
   case types.INPUT_GOAL:
     return {
-      ...state, newGoal: {
-        ...state.newGoal, name: action.input,
+      ...state,
+      newGoal: {
+        ...state.newGoal,
+        name: action.input,
+      },
+    };
+  case types.INPUT_EDIT_GOAL:
+    return {
+      ...state,
+      currentGoal: {
+        ...state.currentGoal,
+        name: action.input,
       },
     };
   case types.SELECT_AVATAR:
@@ -172,6 +229,45 @@ export default (state = defaultState, action) => {
         ...action.goal,
         newRating: {},
       },
+    };
+  case types.BORDER_GOAL_CLICK:
+    return {
+      ...state,
+      goals: changeVisibility(state, action),
+    };
+  case types.TOGGLE_DELETE_MODAL:
+    return {
+      ...state,
+      deleteModal: {
+        display: !state.deleteModal.display,
+        goal: action.goalId || null,
+      },
+    };
+  case types.DELETE_GOAL:
+    return {
+      ...state,
+      goals: removeGoalFromArray(state, action.goalId),
+      deleteModal: {
+        display: false,
+        goal: null,
+      },
+    };
+  case types.EDIT_GOAL:
+    return {
+      ...state,
+      step: steps.EDIT_GOAL,
+      goals: hideEditDeleteAll(state.goals),
+      previousStep: steps.GOALS_LIST,
+      currentGoal: {
+        ...action.goal,
+      },
+    };
+  case types.SAVE_EDIT_GOAL:
+    return {
+      ...state,
+      goals: editGoal(state),
+      step: steps.GOALS_LIST,
+      previousStep: steps.EDIT_GOAL,
     };
   case types.STEP_RATE_GOAL:
     return {
@@ -302,11 +398,12 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       goals: action.goals,
+      dataLoaded: true,
     };
   case types.SET_SCREEN_HEIGHT:
     return {
       ...state,
-      setScreenHeight: action.height,
+      screenHeight: action.height,
     };
   default:
     return state;
