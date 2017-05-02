@@ -3,14 +3,14 @@
 
 $contentWidth: 95%;
 
-.addNewGoal {
+.add-new-goal {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
 }
 
-.newGoal_inputContainer-outer {
+.new-goal-input-container-outer {
   padding: 10px 10px 0 10px;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,13 @@ $contentWidth: 95%;
   text-align: center;
 }
 
-.newGoal_label {
+.new-goal-label {
   @include regularFont;
   width: $contentWidth;
   align-self: center;
 }
 
-.newGoal_inputContainer-inner {
+.new-goal-input-container-inner {
   height: 60px;
   width: $contentWidth;
   max-width: $maxContentWidth;
@@ -40,7 +40,7 @@ $contentWidth: 95%;
   }
 }
 
-.newGoal_input {
+.new-goal-input {
   padding: 5%;
   height: 80%;
   width: 80%;
@@ -52,7 +52,7 @@ $contentWidth: 95%;
   resize: none;
 }
 
-.newGoal_avatarsContainer {
+.new-goal-avatars-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +60,7 @@ $contentWidth: 95%;
   width: $contentWidth;
 }
 
-.newGoal_buttonContainer {
+.new-goal-button-container {
   @include ctaButton;
   height: 56px;
 

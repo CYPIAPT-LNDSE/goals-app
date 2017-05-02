@@ -14,10 +14,10 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
     : null;
 
   return (
-    <div className="addNewGoal" style={ dynamicStyle }>
+    <div className="add-new-goal">
       { modal }
-      <div className="newGoal_inputContainer-outer">
-        <label htmlFor="newGoalInput" className="newGoal_label">
+      <div className="new-goal-input-container-outer">
+        <label htmlFor="newGoalInput" className="new-goal-label">
           Set a goal and choose a plant to grow with it
         </label>
         <NewGoalInput
@@ -30,12 +30,12 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
         onSelectAvatar={ onSelectAvatar }
         newGoal={ newGoal }
       />
-      <div className="newGoal_buttonContainer">
+    <div className="new-goal-button-container">
         <div className="button-outer">
           <button
             type="button"
             name="button"
-            className="newGoal_button"
+            className="new-goal-button"
             disabled={ !newGoal.name }
             onClick={ triggerConfirmation }
           >ADD</button>

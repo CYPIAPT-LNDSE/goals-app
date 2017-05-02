@@ -45,20 +45,20 @@ const GoalsList = props => {
     : null;
 
   return (
-    <div className="page goalsList" style={ dynamicStyle }>
+    <div className="page goals-list" style={ dynamicStyle }>
       { loading }
       { overlay }
-      <div className="goalsList_buttonContainer">
+      <div className="goals-list-button-container">
         <div className="button-outer">
           <button
             type="button"
             name="button"
-            className="goalsList_button"
+            className="goals-list-button"
             onClick={ props.stepAddGoal }
           >ADD A GOAL &nbsp;+</button>
         </div>
       </div>
-      <div className="goalsList_list">
+      <div className="goals-list-list">
         <ul>{ goalsListItems }</ul>
       </div>
     </div>

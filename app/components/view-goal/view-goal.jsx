@@ -41,7 +41,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
           />
         </div>
       </div>
-      <div className="view-goal-buttonContainer goal-detail-buttonContainer">
+      <div className="view-goal-button-container goal-detail-button-container">
         <div className="button-outer">
           <button
             type="button"
