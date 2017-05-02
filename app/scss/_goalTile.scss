@@ -8,7 +8,7 @@ $miniContainerWidth: 91px;
   transition: width 0.5s;
 }
 
-.goalTile {
+.goal-tile {
   position: relative;
   border-radius: 6px;
   display: flex;
@@ -23,11 +23,11 @@ $miniContainerWidth: 91px;
   z-index: 0;
 }
 
-.outerContainer {
+.outer-container {
   width: 100%;
 }
 
-.goalTile_avatarContainer {
+.goal-tile-avatar-container {
   height: $imgHeight;
   width: 68px;
   margin: 5px;
@@ -46,7 +46,7 @@ $miniContainerWidth: 91px;
 
 }
 
-.goalTile_nameContainer {
+.goal-tile-name-container {
   position: absolute;
   width: 75%;
   max-width: 200px;
@@ -74,7 +74,7 @@ $miniContainerWidth: 91px;
   }
 }
 
-.goalTile_rating {
+.goal-tile-rating {
   position: absolute;
   right: 10px;
   top: 50px;
@@ -115,7 +115,7 @@ $miniContainerWidth: 91px;
   @include editDeleteAnimation;
 }
 
-@mixin goalTile_container {
+@mixin goalTileContainer {
   display: flex;
   justify-content: center;
   height: 96px;
@@ -127,20 +127,20 @@ $miniContainerWidth: 91px;
   @include editDeleteAnimation;
 }
 
-.goalTile_editContainer {
-  @include goalTile_container;
+.goal-tile-edit-container {
+  @include goalTileContainer;
 }
 
-.goalTile_deleteContainer {
-  @include goalTile_container;
+.goal-tile-delete-container {
+  @include goalTileContainer;
 }
 
-.goalTile_icon {
+.goal-tile-icon {
   align-self: center;
   height: 30px;
 }
 
-.rightBorder {
+.right-border {
   position: absolute;
   right: 0;
   height: $goalTileHeight;

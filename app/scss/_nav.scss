@@ -6,7 +6,7 @@
   height: 90px;
 }
 
-.nav_backContainer {
+.nav-back-container {
   @include navContainer;
   left: 14px;
   img {
@@ -14,14 +14,14 @@
   }
 }
 
-.nav_logoContainer {
+.nav-logo-container {
   @include navContainer;
   left: 50%;
   margin-left: -50px;
   width: 100px;
 }
 
-.nav_menuContainer {
+.nav-menu-container {
   @include navContainer;
   right: 15px;
 }

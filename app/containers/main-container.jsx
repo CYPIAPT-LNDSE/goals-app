@@ -55,10 +55,9 @@ class MainContent extends React.Component {
     const view = router(props, viewStyle);
 
     return (
-
-      <div className="MainContent" style={ dynamicStyle }>
-        { view }
-      </div>
+        <div className="main-content" style={ dynamicStyle }>
+          { view }
+        </div>
     );
   }
 }
