@@ -1,3 +1,5 @@
+import uuidV1 from 'uuid/v1';
+
 import * as types from '../action_types.js';
 
 export const onInputFeedback = input => ({
@@ -5,8 +7,8 @@ export const onInputFeedback = input => ({
   input: input,
 });
 
-export const saveRating = (time, id) => ({
+export const saveRating = () => ({
   type: types.SAVE_RATING,
-  time: time,
-  id: id,
+  time: new Date(),
+  id: uuidV1(),
 });

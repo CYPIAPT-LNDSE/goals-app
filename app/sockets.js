@@ -38,6 +38,10 @@ const syncGoal = (goal, store, socket) => {
       return;
     }
 
+    if (typeof(socketResponse) !== 'string') {
+      throw new Error('response was not a valid goal id');
+    }
+
     store.dispatch(updateSyncSuccess(socketResponse));
   });
 
