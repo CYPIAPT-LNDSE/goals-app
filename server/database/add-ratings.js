@@ -10,7 +10,7 @@ module.exports = (ratings, dbGoal, finalCallback) => {
   ratings.forEach(rating => {
     dbClient.query(insertRating, getRatingData(rating, dbGoal), (createRatingErr) => {
       if (createRatingErr) {
-        console.log(createRatingErr);
+        console.log(createRatingErr); // eslint-disable-line
         errCount += 1;
       } else {
         count += 1;

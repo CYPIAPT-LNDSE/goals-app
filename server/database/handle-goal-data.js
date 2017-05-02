@@ -58,8 +58,8 @@ module.exports = (goal, user_id, callback) => {
 
   dbClient.query(queries.getGoal, [ goalId, ], (getGoalErr, getGoalResult) => {
     if (getGoalErr) {
-      console.log(getGoalErr);
-      return callback('error getting data from database');
+      console.log("Error retreiving goal from database, ", getGoalErr); // eslint-disable-line
+      return callback('error data from database');
     }
 
     if (getGoalResult.rows.length) {

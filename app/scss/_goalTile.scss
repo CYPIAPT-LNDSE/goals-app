@@ -2,8 +2,13 @@
 @import 'colors';
 
 $imgHeight: 83px;
+$miniContainerWidth: 91px;
 
-.goalTile {
+@mixin editDeleteAnimation {
+  transition: width 0.5s;
+}
+
+.goal-tile {
   position: relative;
   border-radius: 6px;
   display: flex;
@@ -18,7 +23,11 @@ $imgHeight: 83px;
   z-index: 0;
 }
 
-.goalTile_avatarContainer {
+.outer-container {
+  width: 100%;
+}
+
+.goal-tile-avatar-container {
   height: $imgHeight;
   width: 68px;
   margin: 5px;
@@ -26,20 +35,46 @@ $imgHeight: 83px;
   img {
     height: $imgHeight;
   }
+
+  @media #{$breakpoint-xs} {
+    height: $imgHeight;
+
+    img {
+      height: $imgHeight;
+    }
+  }
+
 }
 
-.goalTile_nameContainer {
+.goal-tile-name-container {
   position: absolute;
-  right: 10px;
   width: 75%;
   max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   top: 20px;
+  right: -3px;
+
+  p {
+    width: 100%;
+  }
+
+  @media #{$breakpoint-xs} {
+    top: 10px;
+  }
+
+  @media #{$breakpoint-l} {
+    max-width: 300px;
+
+    p {
+      font-size: 13px;
+      line-height: 15px;
+    }
+  }
 }
 
-.goalTile_rating {
+.goal-tile-rating {
   position: absolute;
   right: 10px;
   top: 50px;
@@ -50,6 +85,10 @@ $imgHeight: 83px;
   background-color: $light;
   display: flex;
   justify-content: center;
+
+  @media #{$breakpoint-xs} {
+    top: 40px;
+  }
 
   p {
     align-self: center;
@@ -66,34 +105,46 @@ $imgHeight: 83px;
   z-index: -1;
 }
 
-@mixin goalTile_container {
+.edit-delete-container {
+  position: absolute;
+  right: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  z-index: 1;
+  @include editDeleteAnimation;
+}
+
+@mixin goalTileContainer {
   display: flex;
   justify-content: center;
   height: 96px;
-  width: 91px;
+  width: 55%;
   border: 1px solid $blue;
   border-radius: 0;
   background-color: $light;
-  visibility: hidden;
   position: relative;
-}
-.goalTile_editContainer {
-  @include goalTile_container;
-    margin-left: 7%;
+  @include editDeleteAnimation;
 }
 
-.goalTile_deleteContainer {
-  @include goalTile_container;
+.goal-tile-edit-container {
+  @include goalTileContainer;
 }
 
-.goalTile_icon {
+.goal-tile-delete-container {
+  @include goalTileContainer;
+}
+
+.goal-tile-icon {
   align-self: center;
   height: 30px;
 }
 
-.rightBorder {
+.right-border {
+  position: absolute;
+  right: 0;
   height: $goalTileHeight;
   border-right: 5px solid $borderBlue;
   border-radius: 0 6px 6px 0;
-  z-index: 1;
+  z-index: 2;
 }

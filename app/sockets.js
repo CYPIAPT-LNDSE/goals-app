@@ -33,7 +33,7 @@ const syncGoal = (goal, store, socket) => {
     window.clearTimeout(timer);
 
     if (socketErr) {
-      console.log('error updating goal ' + goal.id + socketErr);
+      console.log('error updating goal ' + goal.id + socketErr); // eslint-disable-line
       onUpdateSyncFailure(store, goal, updateSyncFailure);
       return;
     }
@@ -60,7 +60,7 @@ export const socketsMiddleware = store => next => {
     if (action.type === types.SET_AUTH_PENDING) {
       socket.emit('authenticate', null, (socketErr, user_id) => {
         if (socketErr) {
-          console.log('authentication error');
+          console.log('authentication error'); // eslint-disable-line
           return store.dispatch(authFailure());
         }
         return store.dispatch(authSuccess(user_id));
