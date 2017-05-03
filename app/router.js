@@ -103,6 +103,7 @@ router.propTypes = {
   onInputEditGoal: React.PropTypes.func,
   dataLoaded: React.PropTypes.boolean,
   screenHeight: React.PropTypes.number,
+  deleteModal: React.PropTypes.object,
 };
 
 export default router;
