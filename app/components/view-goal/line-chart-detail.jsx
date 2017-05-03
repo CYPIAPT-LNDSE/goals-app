@@ -7,16 +7,12 @@ import LineChart from './line-chart.jsx';
 const defaultWidth = 400;
 const animationName = 'scroll';
 
-class LineChartDetail extends React.Component {
+const customWidth = (defaultWidth, ratings) =>
+  ratings.length < 6
+    ? 0
+    : defaultWidth + (ratings.length - 3) * 10;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      customWidth: props.currentGoal.ratings.length < 6
-        ? null
-        : defaultWidth + (props.currentGoal.ratings.length - 3) * 10,
-    };
-  }
+class LineChartDetail extends React.Component {
 
   componentDidMount() {
     const currentGoal = this.props.currentGoal;
@@ -25,7 +21,7 @@ class LineChartDetail extends React.Component {
       if (latestRating) {
         this.props.onSelectRating(latestRating.id);
         document.querySelector('.detail-chart-container')
-          .scrollLeft += defaultWidth + this.state.customWidth;
+          .scrollLeft += defaultWidth + customWidth(defaultWidth, currentGoal.ratings);
       }
     }, 2000);
   }
@@ -58,7 +54,7 @@ class LineChartDetail extends React.Component {
               margin-left: 0;
             }
             to {
-              margin-left: ${0 - this.state.customWidth + defaultWidth}px;
+              margin-left: ${0 - customWidth(defaultWidth, currentGoal.ratings) + defaultWidth}px;
             }
           }
       `;
@@ -66,10 +62,10 @@ class LineChartDetail extends React.Component {
     const stylesheet = document.styleSheets[0];
     stylesheet.insertRule(animation, stylesheet.cssRules.length);
 
-    const containerStyle = !this.state.customWidth
+    const containerStyle = (!customWidth(defaultWidth, currentGoal.ratings))
       ? { width: '100%', }
       : {
-        width: this.state.customWidth,
+        width: customWidth(defaultWidth, currentGoal.ratings),
         animationName: animationName,
         animationTimingFunction: 'ease-in-out',
         animationDuration: '2s',
