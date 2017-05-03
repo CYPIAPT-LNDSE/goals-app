@@ -25,7 +25,7 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, screenHeight, dyna
             type='button'
             name='button'
             className='new-feedback-button'
-            onClick = { () => { saveRating(new Date(), Math.random() * 100); } }
+            onClick = { () => { saveRating(); } }
           >Save</button>
       </div>
     </div>
