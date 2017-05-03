@@ -7,23 +7,23 @@ import EditGoalInput from './edit-goal-input.jsx';
 const editGoal = ({ goal, newGoal, onInputEditGoal, onSaveEditGoal, }) => {
 
   return (
-    <div className="editGoal">
+    <div className="edit-goal">
       <GoalTile
         goal={ goal }
         step={ steps.EDIT_GOAL }
         />
-      <div className="editGoal_inputContainer-outer">
-        <label htmlFor="editGoalInput" className="editGoal_label">
+      <div className="edit-goal-input-container-outer">
+        <label htmlFor="editGoalInput" className="edit-goal-label">
           Change your goal's title
         </label>
       <EditGoalInput newGoal={ goal } onInputEditGoal={ onInputEditGoal } />
       </div>
-      <div className="editGoal_buttonContainer">
+      <div className="edit-goal-button-container">
         <div className="button-outer">
           <button
             type="button"
             name="button"
-            className="editGoal_button"
+            className="edit-goal-button"
             disabled={ !goal.name }
             value={ newGoal.name }
             onClick={ onSaveEditGoal }

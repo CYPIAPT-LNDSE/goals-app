@@ -21,7 +21,7 @@ class Avatars extends React.Component {
     const createAvatarRow = arr =>
       arr.map(av => (
         <div
-          className="newGoal_avatarBox"
+          className="new-goal-avatar-box"
           key={`avatar_${av}`}
           onClick={ this.handleChange }
         >
@@ -40,11 +40,11 @@ class Avatars extends React.Component {
     const bottomRow = createAvatarRow(avatarNames.slice(2));
 
     return (
-      <div className="newGoal_avatarsContainer">
-        <div className="newGoal_avatarsContainer-row">
+      <div className="new-goal-avatars-container">
+        <div className="new-goal-avatars-container-row">
           { topRow }
         </div>
-        <div className="newGoal_avatarsContainer-row">
+        <div className="new-goal-avatars-container-row">
           { bottomRow }
         </div>
       </div>
