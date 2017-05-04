@@ -21,6 +21,7 @@ const { findNewRatings, } = require('./../helpers/handle-goals.js');
     4. add any missing ratings
     5. if goal doesn't exist yet, add goal to DB
     6. if newly added goal already has new ratings, add those ratings
+    
 */
 
 const handleDeleted = (goal, cb) => {
