@@ -11,15 +11,17 @@ const getGoalRatings = require('./../model/get-goal-ratings.js');
 /* helpers */
 const { findNewRatings, } = require('./../helpers/handle-goals.js');
 
-/* waterfall steps */
-// if goal deleted, delete goal --> implement later
-// OTHERWISE
-// 1. get details of goal from DB
-// 2. if goal edited on client, change name --> implement later
-// 3. get existing ratings for goal from DB
-// 4. add any missing ratings
-// 5. if goal doesn't exist yet, add goal to DB
-// 6. if newly added goal already has new ratings, add those ratings
+/* waterfall steps
+
+  if goal deleted on client, delete goal
+  otherwise
+    1. get details of goal from DB
+    2. if goal edited on client, change name
+    3. get existing ratings for goal from DB
+    4. add any missing ratings
+    5. if goal doesn't exist yet, add goal to DB
+    6. if newly added goal already has new ratings, add those ratings
+*/
 
 const handleDeleted = (goal, cb) => {
   deleteGoalDb(goal, (err) => {
