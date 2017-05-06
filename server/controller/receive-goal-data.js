@@ -1,23 +1,36 @@
 const async = require('async');
 
 /* model */
+const deleteGoalDb = require('./../model/delete-goal.js');
+const getGoalDetails = require('./../model/get-goal-details.js');
+const editGoalDb = require('./../model/edit-goal.js');
 const addRatings = require('./../model/add-ratings.js');
 const addGoal = require('./../model/add-goal.js');
-const getGoalDetails = require('./../model/get-goal-details.js');
 const getGoalRatings = require('./../model/get-goal-ratings.js');
 
 /* helpers */
 const { findNewRatings, } = require('./../helpers/handle-goals.js');
 
-/* waterfall steps */
-// if goal deleted, delete goal --> implement later
-// OTHERWISE
-// 1. get details of goal from DB
-// 2. if goal edited on client, change name --> implement later
-// 3. get existing ratings for goal from DB
-// 4. add any missing ratings
-// 5. if goal doesn't exist yet, add goal to DB
-// 6. if newly added goal already has new ratings, add those ratings
+/* waterfall steps
+
+  if goal deleted on client, delete goal
+  otherwise
+    1. get details of goal from DB
+    2. if goal edited on client, change name
+    3. get existing ratings for goal from DB
+    4. add any missing ratings
+    5. if goal doesn't exist yet, add goal to DB
+    6. if newly added goal already has new ratings, add those ratings
+
+*/
+
+const handleEdits = (data, cb) => {
+  if (!data.clientGoal.edited) return cb(null, data);
+  editGoalDb(data.clientGoal, (err) => {
+    if (err) return cb(err);
+    cb(null, data);
+  });
+};
 
 const goalRatings = (data, cb) => {
   if (!data.dbGoal) return cb(null, data);
@@ -57,6 +70,14 @@ const addNewRatings = (data, cb) => {
 
 module.exports = (goal, userId, finalCallback) => {
 
+  if (goal.deleted) {
+    deleteGoalDb(goal, (err) => {
+      if (err) return finalCallback(err);
+      finalCallback(null, goal.id);
+    });
+    return;
+  }
+
   const goalDetails = (cb) => {
     getGoalDetails(goal.id, (err, res) => {
       if (err) return cb(err);
@@ -70,8 +91,8 @@ module.exports = (goal, userId, finalCallback) => {
     });
   };
 
-  const tasks = [ goalDetails, goalRatings, addRatingsToGoal, addGoalIfNotExists,
-    addNewRatings, ];
+  const tasks = [ goalDetails, handleEdits, goalRatings, addRatingsToGoal,
+    addGoalIfNotExists, addNewRatings, ];
 
   async.waterfall(tasks, (err, data) => {
     if (err) finalCallback(err);
