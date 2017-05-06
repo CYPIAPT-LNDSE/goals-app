@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as steps from '../steps.js';
 import Menu from './../components/menu.jsx';
@@ -47,11 +48,11 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
 };
 
 Nav.propTypes = {
-  onNavClick: React.PropTypes.func,
-  toggleMenu: React.PropTypes.func,
-  menu: React.PropTypes.bool,
-  onBackButtonClick: React.PropTypes.func,
-  step: React.PropTypes.string,
+  onNavClick: PropTypes.func,
+  toggleMenu: PropTypes.func,
+  menu: PropTypes.bool,
+  onBackButtonClick: PropTypes.func,
+  step: PropTypes.string,
 };
 
 export default Nav;

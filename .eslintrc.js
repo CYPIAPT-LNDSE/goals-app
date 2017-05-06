@@ -17,6 +17,7 @@ module.exports = {
       "error",
       "single"
     ],
+    "react/jsx-curly-spacing": [2, "always"],
     "semi": [
       "error",
       "always"

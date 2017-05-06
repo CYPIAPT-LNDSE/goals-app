@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/* components */
 import GoalTileComponent from '../goal-tile.jsx';
 import FeedbackInput from './feedback-input.jsx';
 
@@ -34,11 +36,11 @@ const Feedback = ({ currentGoal, onInputFeedback, saveRating, screenHeight, dyna
 };
 
 Feedback.propTypes = {
-  currentGoal: React.PropTypes.object,
-  onInputFeedback: React.PropTypes.func,
-  saveRating: React.PropTypes.func,
-  screenHeight: React.PropTypes.number,
-  dynamicStyle: React.PropTypes.object,
+  currentGoal: PropTypes.object,
+  onInputFeedback: PropTypes.func,
+  saveRating: PropTypes.func,
+  screenHeight: PropTypes.number,
+  dynamicStyle: PropTypes.object,
 };
 
 export default Feedback;

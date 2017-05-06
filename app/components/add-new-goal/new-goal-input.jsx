@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NewGoalInput extends React.Component {
 
@@ -32,9 +33,9 @@ class NewGoalInput extends React.Component {
 }
 
 NewGoalInput.propTypes = {
-  onInputGoal: React.PropTypes.func,
-  newGoal: React.PropTypes.object,
-  screenHeight: React.PropTypes.number,
+  onInputGoal: PropTypes.func,
+  newGoal: PropTypes.object,
+  screenHeight: PropTypes.number,
 };
 
 export default NewGoalInput;

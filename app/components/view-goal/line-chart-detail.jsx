@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
+/* components */
 import GoalTileComponent from '../goal-tile.jsx';
 import LineChart from './line-chart.jsx';
 
@@ -105,9 +107,9 @@ class LineChartDetail extends React.Component {
 }
 
 LineChartDetail.propTypes = {
-  currentGoal: React.PropTypes.object,
-  onSelectRating: React.PropTypes.func,
-  dynamicStyle: React.PropTypes.object,
+  currentGoal: PropTypes.object,
+  onSelectRating: PropTypes.func,
+  dynamicStyle: PropTypes.object,
 };
 
 export default LineChartDetail;

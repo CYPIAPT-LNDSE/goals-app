@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as steps from './steps.js';
 
@@ -77,33 +78,33 @@ const router = (props, style) => {
 };
 
 router.propTypes = {
-  step: React.PropTypes.string,
-  goals: React.PropTypes.array,
-  stepAddGoal: React.PropTypes.func,
-  onSelectGoal: React.PropTypes.func,
-  onBorderClick: React.PropTypes.func,
-  onDeleteGoal: React.PropTypes.func,
-  onEditGoal: React.PropTypes.func,
-  onSaveEditGoal: React.PropTypes.func,
-  currentGoal: React.PropTypes.object,
-  onInputGoal: React.PropTypes.func,
-  onSelectAvatar: React.PropTypes.func,
-  onMoveSlider: React.PropTypes.func,
-  onInputFeedback: React.PropTypes.func,
-  stepFeedback: React.PropTypes.func,
-  stepRateGoal: React.PropTypes.func,
-  newGoal: React.PropTypes.object,
-  saveNewGoal: React.PropTypes.func,
-  saveRating: React.PropTypes.func,
-  triggerConfirmation: React.PropTypes.func,
-  setPreviousScore: React.PropTypes.func,
-  stepLineChartDetail: React.PropTypes.func,
-  onSelectRating: React.PropTypes.func,
-  toggleDeleteModal: React.PropTypes.func,
-  onInputEditGoal: React.PropTypes.func,
-  dataLoaded: React.PropTypes.boolean,
-  screenHeight: React.PropTypes.number,
-  deleteModal: React.PropTypes.boolean,
+  step: PropTypes.string,
+  goals: PropTypes.array,
+  stepAddGoal: PropTypes.func,
+  onSelectGoal: PropTypes.func,
+  onBorderClick: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  onEditGoal: PropTypes.func,
+  onSaveEditGoal: PropTypes.func,
+  currentGoal: PropTypes.object,
+  onInputGoal: PropTypes.func,
+  onSelectAvatar: PropTypes.func,
+  onMoveSlider: PropTypes.func,
+  onInputFeedback: PropTypes.func,
+  stepFeedback: PropTypes.func,
+  stepRateGoal: PropTypes.func,
+  newGoal: PropTypes.object,
+  saveNewGoal: PropTypes.func,
+  saveRating: PropTypes.func,
+  triggerConfirmation: PropTypes.func,
+  setPreviousScore: PropTypes.func,
+  stepLineChartDetail: PropTypes.func,
+  onSelectRating: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
+  onInputEditGoal: PropTypes.func,
+  dataLoaded: PropTypes.bool,
+  screenHeight: PropTypes.number,
+  deleteModal: PropTypes.bool,
 };
 
 export default router;

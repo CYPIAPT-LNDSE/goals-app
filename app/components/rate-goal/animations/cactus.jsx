@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import GSAP from 'react-gsap-enhancer';
 import { TimelineMax, } from 'gsap';
 
@@ -143,9 +145,9 @@ class Cactus extends React.Component {
   }
 
 Cactus.propTypes = {
-  previousScore: React.PropTypes.int,
-  score: React.PropTypes.int,
-  setPreviousScore: React.PropTypes.func,
+  previousScore: PropTypes.int,
+  score: PropTypes.int,
+  setPreviousScore: PropTypes.func,
 };
 
 export default GSAP()(Cactus);

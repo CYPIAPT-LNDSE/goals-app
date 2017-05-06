@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  { Line, } from 'react-chartjs-2';
 
+/* icons for nodes on chart */
 import icons from './../../avatars.js';
 
 const getRatingFromIndex = (index, ratings) => ratings[index - 1].id;
@@ -87,11 +89,11 @@ const chartWidth = 1000;
 const getScores = arr => arr.map(rating => rating.score);
 
 const compileData = arr => arr.length
-  ? [0,].concat(getScores(arr)).concat(arr[arr.length - 1].score)
+  ? [ 0, ].concat(getScores(arr)).concat(arr[arr.length - 1].score)
   : [];
 
 const getStyles = (arr, avatar) =>
-  ['circle',].concat(Array(arr.length).fill(avatar));
+  [ 'circle', ].concat(Array(arr.length).fill(avatar));
 
 const getLabels = arr => Array(arr.length + 2).fill('');
 
@@ -141,10 +143,10 @@ const LineChart = React.createClass({
 });
 
 LineChart.propTypes = {
-  ratings: React.PropTypes.array,
-  avatar: React.PropTypes.string,
-  isChartPreview: React.PropTypes.boolean,
-  onSelectRating: React.PropTypes.func,
+  ratings: PropTypes.array,
+  avatar: PropTypes.string,
+  isChartPreview: PropTypes.boolean,
+  onSelectRating: PropTypes.func,
 };
 
 export default LineChart;

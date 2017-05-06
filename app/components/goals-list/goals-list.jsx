@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* components */
 import GoalTile from '../goal-tile.jsx';
@@ -65,22 +66,34 @@ const GoalsList = props => {
   );
 };
 
+GoalsList.propTypes = {
+  goals: PropTypes.array,
+  stepAddGoal: PropTypes.func,
+  onSelectGoal: PropTypes.func,
+  visibleEditDelete: PropTypes.bool,
+  onBorderClick: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  onEditGoal: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
+  deleteModal: PropTypes.object,
+};
+
 createGoalListItem.propTypes = {
-  onSelectGoal: React.PropTypes.func,
-  visibleEditDelete: React.PropTypes.bool,
-  onBorderClick: React.PropTypes.func,
-  onDeleteGoal: React.PropTypes.func,
-  onEditGoal: React.PropTypes.func,
-  toggleDeleteModal: React.PropTypes.func,
+  onSelectGoal: PropTypes.func,
+  visibleEditDelete: PropTypes.bool,
+  onBorderClick: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  onEditGoal: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
 };
 
 GoalsList.propTypes = {
-  goals: React.PropTypes.array,
-  stepAddGoal: React.PropTypes.func,
-  toggleDeleteModal: React.PropTypes.func,
-  onDeleteGoal: React.PropTypes.func,
-  deleteModal: React.PropTypes.object,
-  dataLoaded: React.PropTypes.boolean,
+  goals: PropTypes.array,
+  stepAddGoal: PropTypes.func,
+  toggleDeleteModal: PropTypes.func,
+  onDeleteGoal: PropTypes.func,
+  deleteModal: PropTypes.object,
+  dataLoaded: PropTypes.boolean,
 };
 
 export default GoalsList;

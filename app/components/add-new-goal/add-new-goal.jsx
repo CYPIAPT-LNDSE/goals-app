@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Avatars from './new-goal-avatars.jsx';
+/* components */
 import NewGoalInput from './new-goal-input.jsx';
 import ConfirmationModal from './confirmation.jsx';
+
+import Avatars from './new-goal-avatars.jsx';
 
 const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerConfirmation, screenHeight, dynamicStyle, }) => {
 
@@ -46,13 +49,13 @@ const addGoal = ({ newGoal, onInputGoal, onSelectAvatar, saveNewGoal, triggerCon
 };
 
 addGoal.propTypes = {
-  newGoal: React.PropTypes.object,
-  onInputGoal: React.PropTypes.func,
-  onSelectAvatar: React.PropTypes.func,
-  saveNewGoal: React.PropTypes.func,
-  triggerConfirmation: React.PropTypes.func,
-  screenHeight: React.PropTypes.number,
-  dynamicStyle: React.PropTypes.object,
+  newGoal: PropTypes.object,
+  onInputGoal: PropTypes.func,
+  onSelectAvatar: PropTypes.func,
+  saveNewGoal: PropTypes.func,
+  triggerConfirmation: PropTypes.func,
+  screenHeight: PropTypes.number,
+  dynamicStyle: PropTypes.object,
 };
 
 export default addGoal;
