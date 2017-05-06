@@ -13,14 +13,14 @@ class NewGoalInput extends React.Component {
 
   render() {
     return (
-      <div className="newGoal_inputContainer-inner">
+      <div className="new-goal-input-container-inner">
         <textarea
           name="new-goal"
           id="newGoalInput"
           maxLength="50"
           value={ this.props.newGoal.name }
           placeholder="My goal is..."
-          className="newGoal_input"
+          className="new-goal-input"
           type="text"
           onKeyUp={ this.handleChange }
           onChange={ this.handleChange }

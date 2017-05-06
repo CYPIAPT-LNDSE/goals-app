@@ -30,13 +30,15 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
         { progressBars }
       </div>
       <div className="line-chart-container">
-        <div className="line-chart-title">
-          <p
-            id="line-chart-title-text"
-            onClick={ stepLineChartDetail }
-          >Your progress so far&nbsp;&gt;</p>
+        <div className="line-chart-title" onClick={ stepLineChartDetail }>
+          <div className="line-chart-title-text">
+            <p id="line-chart-title-text">Your progress so far&nbsp;</p>
+          </div>
+          <div className="line-chart-title-arrow">
+            <div className="arrow-1" />
+          </div>
         </div>
-        <div className="line-chart-inner">
+        <div className="line-chart-inner" onClick={ stepLineChartDetail }>
           <LineChart
             ratings={ latestRatings }
             avatar={ currentGoal.avatar }
@@ -44,7 +46,7 @@ const viewGoal = ({ currentGoal, rateGoal, stepLineChartDetail, dynamicStyle, })
           />
         </div>
       </div>
-      <div className="view-goal-buttonContainer goal-detail-buttonContainer">
+      <div className="view-goal-button-container goal-detail-button-container">
         <div className="button-outer">
           <button
             type="button"

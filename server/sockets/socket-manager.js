@@ -1,9 +1,9 @@
 const cookieParser = require('cookie');
 const iron = require('iron');
 
-/* database */
-const getUserData = require('./database/get-user-data.js');
-const handleGoalData = require('./database/handle-goal-data.js');
+/* controller */
+const receiveGoalData = require('./../controller/receive-goal-data.js');
+const getUserData = require('./../controller/get-user-data.js');
 
 const authenticateCookie = (socket, callback) => {
   const cookie = cookieParser.parse(socket.request.headers.cookie)['grow-user'];
@@ -37,19 +37,14 @@ const socketManager = (socket) => {
       socket.on('goal', (data, clientCallback) => {
         const goalData = JSON.parse(data);
 
-        handleGoalData(goalData, user_id, (err, result) => {
-          if (err) {
-            clientCallback(true);
-          } else if (result.alreadyExists) {
-            return;
-          } else {
-            clientCallback(null, result.rows[0]);
-          }
+        receiveGoalData(goalData, user_id, (err, res) => {
+          // result is goal id of updated goal
+          if (err) return clientCallback(err);
+          // success: goal id send back to client
+          clientCallback(null, res);
         });
       });
-
     });
-
   });
 };
 

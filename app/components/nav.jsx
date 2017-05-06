@@ -18,7 +18,7 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
     <div>
       <Menu menu={ menu } toggleMenu={ toggleMenu }/>
       <nav className="nav">
-        <div className="nav_backContainer">
+        <div className="nav-back-container">
           <img
             className="back"
             src={ pathBack }
@@ -26,7 +26,7 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
             style={ backButtonStyle }
           />
         </div>
-        <div className="nav_logoContainer">
+        <div className="nav-logo-container">
           <img
             src={ pathLogo }
             alt="Grow"
@@ -34,7 +34,7 @@ const Nav = ({ onNavClick, onBackButtonClick, step, menu, toggleMenu, }) => {
             onClick = { onNavClick }
           />
         </div>
-        <div className="nav_menuContainer">
+        <div className="nav-menu-container">
           <img
             className="menu"
             src={ pathMenu }

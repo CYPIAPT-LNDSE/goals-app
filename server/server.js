@@ -2,11 +2,11 @@ const hapi = require('hapi');
 const inert = require('inert');
 const fs = require('fs');
 const cookieAuth = require('hapi-auth-cookie');
-const createSocket = require('./sockets.js');
+const createSocket = require('./sockets/sockets.js');
 
 require('env2')('./config.env');
 
-const routes = require('./index.js');
+const routes = require('./routes/index.js');
 const server = new hapi.Server();
 
 server.connection({

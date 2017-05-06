@@ -1,7 +1,7 @@
 @import 'colors';
 @import 'general';
 
-.editGoal {
+.edit-goal {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -9,7 +9,7 @@
   margin-top: 40px;
 }
 
-.editGoal_inputContainer-outer {
+.edit-goal-input-container-outer {
   padding: 10px 10px 0 10px;
   display: flex;
   flex-direction: column;
@@ -17,14 +17,14 @@
   text-align: center;
 }
 
-.editGoal_label {
+.edit-goal-label {
   @include regularFont;
   width: $contentWidth;
   align-self: center;
   margin-top: 20px;
 }
 
-.editGoal_inputContainer-inner {
+.edit-goal-input-container-inner {
   height: 80px;
   width: $contentWidth;
   max-width: $maxContentWidth;
@@ -40,7 +40,7 @@
   }
 }
 
-.editGoal_input {
+.edit-goal-input {
   padding: 5%;
   height: 80%;
   width: 80%;
@@ -52,7 +52,7 @@
   resize: none;
 }
 
-.editGoal_buttonContainer {
+.edit-goal-button-container {
   @include ctaButton;
   height: 56px;
 

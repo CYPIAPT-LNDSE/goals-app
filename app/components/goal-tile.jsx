@@ -53,33 +53,33 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
   };
 
   return (
-    <div className="goalTile" style={ displayInList }>
+    <div className="goal-tile" style={ displayInList }>
     <div
-      className="outerContainer"
+      className="outer-container"
       onClick={ () => { clickGoal(goal); }
     }>
     <div
-      className="goalTile_progress goal-tile-rating-green-background0"
+      className="goal-tile-progress goal-tile-rating-green-background0"
       style={ progressStyle }
       ></div>
-    <div className="goalTile_progress"></div>
-    <div className="goalTile_avatarContainer">
-      <img className="goalTile_img" src={ pathAvatar(goal.avatar) } />
+    <div className="goal-tile-progress"></div>
+    <div className="goal-tile-avatar-container">
+      <img className="goal-tile-img" src={ pathAvatar(goal.avatar) } />
     </div>
-    <div className="goalTile_nameContainer">
+    <div className="goal-tile-name-container">
       <p>{ goal.name }</p>
     </div>
-    <div className="goalTile_rating">
+    <div className="goal-tile-rating">
       <p>{ score }</p>
     </div>
   </div>
     <div
-      className="goalTile_editContainer"
+      className="goal-tile-edit-container"
       style={ editDeleteStyle }
       onClick={ () => { onEditGoal(goal); } }
       >
       <img
-        className="goalTile_icon"
+        className="goal-tile-icon"
         src={ editIcon }
         alt="Edit your goal"
         title="Edit goal"
@@ -87,12 +87,12 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
       />
     </div>
     <div
-      className="goalTile_deleteContainer"
+      className="goal-tile-delete-container"
       style={ editDeleteStyle }
       onClick={ () => { toggleDeleteModal(goal); } }
     >
       <img
-        className="goalTile_icon"
+        className="goal-tile-icon"
         src={ deleteIcon }
         alt="Edit your goal"
         title="Edit goal"
@@ -100,7 +100,7 @@ const tile = ({ goal, step, onSelectGoal, visibleEditDelete, onBorderClick,
       />
     </div>
     <div
-      className="rightBorder"
+      className="right-border"
       onClick = { () => { onBorderClick(goal); } }
       style = { rightBorderStyle }
     />

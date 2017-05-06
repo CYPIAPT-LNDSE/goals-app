@@ -1,7 +1,9 @@
 const querystring = require('querystring');
 const url = require('url');
 const fetch = require('request');
-const getUserDb = require('./../database/get-user.js');
+
+/* model */
+const getUserDb = require('./../model/get-user.js');
 
 module.exports = {
   path: '/hello',
