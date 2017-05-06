@@ -102,9 +102,9 @@ router.propTypes = {
   onSelectRating: PropTypes.func,
   toggleDeleteModal: PropTypes.func,
   onInputEditGoal: PropTypes.func,
-  dataLoaded: PropTypes.boolean,
+  dataLoaded: PropTypes.bool,
   screenHeight: PropTypes.number,
-  deleteModal: PropTypes.boolean,
+  deleteModal: PropTypes.bool,
 };
 
 export default router;
