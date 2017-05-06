@@ -21,15 +21,8 @@ const { findNewRatings, } = require('./../helpers/handle-goals.js');
     4. add any missing ratings
     5. if goal doesn't exist yet, add goal to DB
     6. if newly added goal already has new ratings, add those ratings
-    
-*/
 
-const handleDeleted = (goal, cb) => {
-  deleteGoalDb(goal, (err) => {
-    if (err) return cb(err);
-    cb(null, goal);
-  });
-};
+*/
 
 const handleEdits = (data, cb) => {
   if (!data.clientGoal.edited) return cb(null, data);
@@ -78,10 +71,11 @@ const addNewRatings = (data, cb) => {
 module.exports = (goal, userId, finalCallback) => {
 
   if (goal.deleted) {
-    handleDeleted(goal, (err) => {
+    deleteGoalDb(goal, (err) => {
       if (err) return finalCallback(err);
       finalCallback(null, goal.id);
     });
+    return;
   }
 
   const goalDetails = (cb) => {
