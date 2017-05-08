@@ -6,7 +6,7 @@ Young users can set themselves goals, either on their own at home or in a sessio
 
 ### About Grow
 
-Our [initial prototype](https://cypiapt-lndse.github.io/goals-app/) was built as part of a hackathon event hosted by Anna Freud Center and Founders and Coders.
+Our [initial prototype](https://cypiapt-lndse.github.io/goals-app/) was built as part of a hackathon event hosted by Anna Freud Centre and Founders and Coders.
 
 We chose the theme of growth, focussing on plants and vegetables like you might have in a garden. Each goal is represented by a choice of plant. The plant grows with progress. The user can review their overall progress based on an ecosystem of the plants they have grown.
 
