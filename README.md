@@ -1,48 +1,60 @@
 # Grow
 
-You can view the app [here](https://polar-dawn-55555.herokuapp.com/).
+Grow is an app for managing your personal goals, aimed primarily at users aged 12-18 in the CAMHs system.
 
-GoalGrow is an app primarily aimed at 12-18 year-olds in the CAMHs system. Our young users can set themselves goals, either on their own at home, or in a session with a clinician.
+Young users can set themselves goals, either on their own at home or in a session with a clinician.
 
-We have chosen the theme of growth, focussing on plants and vegetables like you might have in a garden. Each goal is represented by a choice of plant. The plant grows with progress. The user can review their overall progress based on an ecosystem of the plants they have grown.
+### About Grow
 
-For our MVP we have focussed on the following user journeys:
+Our [initial prototype](https://cypiapt-lndse.github.io/goals-app/) was built as part of a hackathon event hosted by Anna Freud Centre and Founders and Coders.
 
-## As a young user I can see a list of goals I'm working towards, so that I can keep my goals in mind at all times
+We chose the theme of growth, focussing on plants and vegetables like you might have in a garden. Each goal is represented by a choice of plant. The plant grows with progress. The user can review their overall progress based on an ecosystem of the plants they have grown.
 
-On our landing page, the user immediately sees a list of all goals they have set so far. The layout is optimised for viewing 3 goals at one time. A user can add a new goal if they want to.
+Our app was chosen to be turned into a working MVP, which was then built over a period of 6 weeks.
 
-## As a young user I want to be able to set my own goals easily
+### User journeys
 
-We have a clear "Add a goal" call to action on the app's landing page. By adding a new goal, they have a short and simple input field. Users are not required to add too much text. Instead they can choose an image. In the future they might be able to add a custom image or take a photo from their camera. When they add a goal, they are redirected back to the landing page / list of existing goals.
+We focussed on the following requirements:
 
-## As a young user I want to rate my progress towards a goal so that I have a record to review with my clinician.
-
-We have made the process of reviewing a goal as fun and simple as possible. The user sees a basic animation of a flower growing as they rate their progress on a sliding scale. The user can submit their progress and then compare it to recent ratings.
-
-## As a user I can review my progress over time
-
-This step is primarily aimed at users who will be rating their progress in a session with a clinician. We use a diagram, which is made up of a collection of animated sliding scales.
+* As a young user I can see a list of goals I'm working towards, so that I can keep my goals in mind at all times
+* As a young user I want to be able to set my own goals easily
+* As a young user I want to rate my progress towards a goal so that I have a record to review with my clinician.
+* As a user I can review my progress over time
 
 
+### How to build locally
 
-## Building
+Requirements:
+* Node
+* PostgreSQL
+* A registered Facebook app
 
-If running for the first time:
+Follow these steps:
+* Clone this repo
+* `npm install`
+* Create a `config.env` file in the root directory with the following values:
 
-```sass public/styles/style.scss public/styles/style.css```
+```
+BASE_URL=https://localhost:4000
+FB_APP_ID={ ID_OF_FACEBOOK_APP }
+FB_CLIENT_SECRET={ FACEBOOK_CLIENT_SECRET }
+COOKIE_PASSWORD={ NICE_SECURE_PASSWORD }
+GROW_DB_URL={ LINK_TO_POSTGRES_DB }
+```
+* `node server/database/db_build.js`
+* Run `npm start` and `npm run watch` simultaneously
+* To test: `npm test`
 
-Every time:
+### Our tech stack
 
-```sass --watch public/styles/style.scss:public/styles/style.css```
-
-## Tech stack
-
-- Hapi server
-- Postgres database
-- User authentication (either with a username and password, or a passwordless option via email token)
-- Simple mail server
-- A dynamic frontend with animations; we would like to use React and Redux. If, for whatever reason, we were to ease off on the animations and move towards more static content (for instance because of brower compatibility concerns), we could do it without the React.
-- Server-side testing with Tape
+- hapi.js
+- PostgreSQL
+- oAuth with Facebook
+- Socket.io
+- React
+- Redux
+- GSAP
+- Chart.js
+- SASS
+- Tape
 - CI with Travis
-- Deploy to Heroku or AWS
