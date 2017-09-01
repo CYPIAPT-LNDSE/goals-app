@@ -9,16 +9,6 @@ style.css.map
 
 # build
 
-# prototype stuff
-
-prototype/public/.sass-cache/*
-prototype/public/styles/sass/style.css
-prototype/public/styles/sass/style.css
-prototype/public/styles/style.css.map
-prototype/public/styles/sass/style.css.map
-prototype/public/styles/stye.css.map
-prototype/public/styles/style.css
-
 node_modules
 
 *.pem
@@ -27,5 +17,6 @@ tests/db-tests/*
 
 config.env
 
-public/fonts
 public/main.js
+
+.elasticbeanstalk/*
