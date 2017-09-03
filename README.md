@@ -78,6 +78,10 @@ In order to deploy to the production version of the app on AWS Elastic Beanstalk
 - Access to the AWS console (requires login details)
 - Credentials for the AWS / Elastic beanstalk CLI tool
 
-Once you have access to the CLI, you can deploy with the command: `eb deploy grow-env`
+Once you have access to the CLI, you need to initialise Elastic Beanstalk for your local repository: `eb init --profile { AWS_USER_PROFILE }`
 
-In order to deploy faster, you can build the app locally, force add / commit the webpack bundle  to source control (locally) and amend the `npm start command` to only start the server (i.e. remove the build step) before deploying 
+This prompts you to select a region (must be 15 - eu-west-2), an application (goals-app), and whether you want to use code commit (no).
+
+you can deploy with the command: `eb deploy grow-env`
+
+In order to deploy faster, you can build the app locally, force add / commit the webpack bundle  to source control (locally) and amend the `npm start command` to only start the server (i.e. remove the build step) before deploying
