@@ -41,6 +41,18 @@ FB_CLIENT_SECRET={ FACEBOOK_CLIENT_SECRET }
 COOKIE_PASSWORD={ NICE_SECURE_PASSWORD }
 GROW_DB_URL={ LINK_TO_POSTGRES_DB }
 ```
+
+For our AWS production DB we now have a separate set of env variables, which can be used if you want to test locally but with the production DB instance.
+```
+RDS_HOSTNAME={ HOSTNAME }
+RDS_PORT=5432
+RDS_DB_NAME=growdb
+RDS_USERNAME={ USERNAME }
+RDS_PASSWORD={ PASSWORD }
+```
+
+The variable names differ from those set on Heroku in order to be consistent with RDS's own conventions.
+
 * `node server/database/db_build.js`
 * Run `npm start` and `npm run watch` simultaneously
 * To test: `npm test`
@@ -58,3 +70,18 @@ GROW_DB_URL={ LINK_TO_POSTGRES_DB }
 - SASS
 - Tape
 - CI with Travis
+
+### AWS
+
+In order to deploy to the production version of the app on AWS Elastic Beanstalk you will need at least one of the following:
+
+- Access to the AWS console (requires login details)
+- Credentials for the AWS / Elastic beanstalk CLI tool
+
+Once you have access to the CLI, you need to initialise Elastic Beanstalk for your local repository: `eb init --profile { AWS_USER_PROFILE }`
+
+This prompts you to select a region (must be 15 - eu-west-2), an application (goals-app), and whether you want to use code commit (no).
+
+you can deploy with the command: `eb deploy grow-env`
+
+In order to deploy faster, you can build the app locally, force add / commit the webpack bundle  to source control (locally) and amend the `npm start command` to only start the server (i.e. remove the build step) before deploying
